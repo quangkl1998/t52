@@ -4,14 +4,14 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "Components/Banner/Banner.css";
 import { Autoplay, Pagination } from "swiper";
-import banner1 from "Assets/banner-1.jpg";
-import banner1Mobile from "Assets/Banner1-mobile.jpg";
-import banner2 from "Assets/Banner2.jpg";
-import banner2Mobile from "Assets/Banner2-mobile.jpg";
-import banner3 from "Assets/Banner3.jpg";
-import banner3Mobile from "Assets/Banner3-mobile.jpg";
-import banner4 from "Assets/Banner4.jpg";
-import banner4Mobile from "Assets/Banner4-mobile.jpg";
+import banner1 from "Assets/Banner/banner-1.jpg";
+import banner1Mobile from "Assets/Banner/Banner1-mobile.jpg";
+import banner2 from "Assets/Banner/Banner2.jpg";
+import banner2Mobile from "Assets/Banner/Banner2-mobile.jpg";
+import banner3 from "Assets/Banner/Banner3.jpg";
+import banner3Mobile from "Assets/Banner/Banner3-mobile.jpg";
+import banner4 from "Assets/Banner/Banner4.jpg";
+import banner4Mobile from "Assets/Banner/Banner4-mobile.jpg";
 const Banner = () => {
   return (
     <>
