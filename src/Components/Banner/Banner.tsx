@@ -21,15 +21,15 @@ const Banner = () => {
                 centeredSlides={true}
                 cssMode={true}
                 mousewheel={true}
-                /*   autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-          waitForTransition: true,
-        }} */
+                autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    waitForTransition: true,
+                }}
                 pagination={{
                     clickable: true,
                 }}
-                modules={[/* Autoplay, */ Pagination]}
+                modules={[Autoplay, Pagination]}
                 className="mySwiper"
             >
                 <SwiperSlide>

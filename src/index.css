@@ -14,3 +14,7 @@ body {
 code {
   font-family: 'Roboto', sans-serif;
 }
+
+ul {
+  margin-bottom: 0 !important;
+}

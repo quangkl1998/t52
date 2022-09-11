@@ -6,12 +6,11 @@ import OutStandingService from "Components/OutStandingService/OutStandingService
 import Partner from "Components/Partner/Partner";
 import Prize from "Components/Prize/Prize";
 import ReView from "Components/ReView/ReView";
-import React from "react";
 
 const Home = () => {
     return (
         <div>
-            <div className="h-32"></div>
+            <div className="lg:h-36 h-20"></div>
             <Banner />
             <OutStandingService />
             <FinancialSolution />
