@@ -11,6 +11,7 @@ import React from "react";
 const Home = () => {
     return (
         <div>
+            <div className="h-32"></div>
             <Banner />
             <OutStandingService />
             <FinancialSolution />

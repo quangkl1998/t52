@@ -6,7 +6,7 @@ import NavLinks from "./Navlinks";
 const Header = () => {
     const [open, setOpen] = useState(false);
     return (
-        <nav className="bg-white">
+        <nav className="bg-white z-10 fixed w-full">
             <div className="flex items-center font-medium justify-around">
                 <div className="z-50 p-5 md:w-auto w-full flex justify-between">
                     <img
@@ -60,7 +60,7 @@ const Header = () => {
                 {/* Mobile nav */}
                 <ul
                     className={`
-        md:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4
+        md:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 z-10 pl-4
         duration-500 ${open ? "left-0" : "left-[-100%]"}
         `}
                 >
