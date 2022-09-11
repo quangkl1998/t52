@@ -6,3 +6,15 @@
   height: 120px;
   margin-top: -16px;
 }
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #00833e !important;
+}
+.ant-tabs-tab-btn {
+  color: #686868 !important;
+}
+.ant-tabs-tab-btn:hover {
+  color: #00833e !important;
+}
+.ant-tabs-nav-operations {
+  display: none !important;
+}
