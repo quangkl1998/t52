@@ -11,6 +11,8 @@ import LoanByRegisMoto from "Pages/LoanByRegisMoto/LoanByRegisMoto";
 import LoanByRegisCar from "Pages/LoanByRegisCar/LoanByRegisCar";
 import LoanByOther from "Pages/LoanByOther/LoanByOther";
 
+import "antd/dist/antd.css";
+
 function App() {
     return (
         <BrowserRouter>

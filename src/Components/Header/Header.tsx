@@ -1,131 +1,79 @@
 import { useState, useEffect } from "react";
-import {
-    Navbar,
-    MobileNav,
-    Typography,
-    Button,
-    IconButton,
-} from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+import Logo from "Assets/Logo.png";
+import NavLinks from "./Navlinks";
 
 const Header = () => {
-    const [openNav, setOpenNav] = useState(false);
-
-    useEffect(() => {
-        window.addEventListener(
-            "resize",
-            () => window.innerWidth >= 960 && setOpenNav(false),
-        );
-    }, []);
-
-    const navList = (
-        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <a href="#" className="flex items-center">
-                    Pages
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <a href="#" className="flex items-center">
-                    Account
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <a href="#" className="flex items-center">
-                    Blocks
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <a href="#" className="flex items-center">
-                    Docs
-                </a>
-            </Typography>
-        </ul>
-    );
-
+    const [open, setOpen] = useState(false);
     return (
-        <div className="mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4">
-            <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
-                <Typography
-                    as="a"
-                    href="#"
-                    variant="small"
-                    className="mr-4 cursor-pointer py-1.5 font-normal"
-                >
-                    <span>Material Tailwind</span>
-                </Typography>
-                <div className="hidden lg:block">{navList}</div>
-                <Button
-                    variant="gradient"
-                    size="sm"
-                    className="hidden lg:inline-block text-gray-800"
-                >
-                    <span>Buy Now</span>
-                </Button>
-                <IconButton
-                    variant="text"
-                    className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-                    ripple={false}
-                    onClick={() => setOpenNav(!openNav)}
-                >
-                    {openNav ? (
+        <nav className="bg-white">
+            <div className="flex items-center font-medium justify-around">
+                <div className="z-50 p-5 md:w-auto w-full flex justify-between">
+                    <img
+                        src={Logo}
+                        alt="logo"
+                        className="md:cursor-pointer h-9"
+                    />
+                    <div
+                        className="text-3xl md:hidden"
+                        onClick={() => setOpen(!open)}
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
+                            width={22}
+                            height={15}
+                            viewBox="0 0 22 15"
                             fill="none"
-                            className="h-6 w-6"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M6 18L18 6M6 6l12 12"
+                            <rect
+                                width={22}
+                                height={3}
+                                rx="1.5"
+                                fill="#00833E"
+                            />
+                            <rect
+                                y={6}
+                                width={22}
+                                height={3}
+                                rx="1.5"
+                                fill="#00833E"
+                            />
+                            <rect
+                                y={12}
+                                width={22}
+                                height={3}
+                                rx="1.5"
+                                fill="#00833E"
                             />
                         </svg>
-                    ) : (
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
-                    )}
-                </IconButton>
+                    </div>
+                </div>
+                <ul className="md:flex hidden uppercase items-center gap-8 font-[Poppins]">
+                    <li>
+                        <Link to="/" className="py-7 px-3 inline-block">
+                            Home
+                        </Link>
+                    </li>
+                    <NavLinks />
+                </ul>
+                <div className="md:block hidden">aaaa</div>
+                {/* Mobile nav */}
+                <ul
+                    className={`
+        md:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4
+        duration-500 ${open ? "left-0" : "left-[-100%]"}
+        `}
+                >
+                    <li>
+                        <Link to="/" className="py-7 px-3 inline-block">
+                            Home
+                        </Link>
+                    </li>
+                    <NavLinks />
+                    <div className="py-5">aaaa</div>
+                </ul>
             </div>
-            <MobileNav open={openNav}>
-                {navList}
-                <Button variant="gradient" size="sm" fullWidth className="mb-2">
-                    <span>Buy Now</span>
-                </Button>
-            </MobileNav>
-        </div>
+        </nav>
     );
 };
 
