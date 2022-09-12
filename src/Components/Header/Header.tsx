@@ -8,7 +8,7 @@ const Header = () => {
     const [open, setOpen] = useState(false);
     return (
         <div className="fixed w-full z-10">
-            <div className="hidden lg:block bg-green-600 border-b-4 border-solid border-yellow-400">
+            <div className="hidden lg:block bg-rose-600 border-b-4 border-solid border-yellow-400">
                 <div className="container mx-auto">
                     <div className="flex justify-end px-3 py-4">
                         <div className="">
@@ -46,14 +46,20 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <nav className="bg-white">
+            <nav className="bg-white border-b shadow-md">
                 <div className="flex items-center font-semibold justify-around">
-                    <div className=" p-5 lg:w-auto w-full flex justify-between">
+                    <div className=" p-5 lg:w-auto w-full flex justify-between items-center z-50">
                         <img
                             src={Logo}
                             alt="logo"
-                            className="lg:cursor-pointer h-9"
+                            className="lg:cursor-pointer h-8"
                         />
+                        <button className="border px-5 py-3 rounded-lg shadow-lg text-rose-600 text-xl block lg:hidden z-70">
+                            <span>
+                                <i className="fa fa-phone" />
+                            </span>
+                            <span className="font-bold">1800 6388</span>
+                        </button>
                         <div
                             className="text-3xl lg:hidden z-20"
                             onClick={() => setOpen(!open)}
@@ -116,14 +122,14 @@ const Header = () => {
                         <div>
                             <NavLink
                                 to="/"
-                                className="inline-block font-semibold text-2xl lg:text-lg text-gray-800 hover:text-gray-800"
+                                className="inline-block font-semibold text-2xl lg:text-base text-gray-800 hover:text-gray-800"
                             >
                                 Mua bán xe máy cũ
                             </NavLink>
                         </div>
                     </div>
                     <div className="lg:block hidden">
-                        <button className="border px-5 py-3 rounded-lg shadow-lg text-green-600 text-xl">
+                        <button className="border px-3 py-2 rounded-lg shadow-lg text-rose-600 text-base">
                             <span>
                                 <i className="fa fa-phone" />
                             </span>

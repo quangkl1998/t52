@@ -9,10 +9,10 @@ const NavLinks = () => {
     return (
         <>
             {links.map((link) => (
-                <div>
+                <div key={link.name}>
                     <div className="px-3 text-left lg:cursor-pointer group relative">
                         <div
-                            className=" flex justify-between items-center lg:pr-0 pr-5 group font-semibold text-2xl lg:text-lg cursor-pointer"
+                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-base cursor-pointer"
                             onClick={() => {
                                 heading !== link.name
                                     ? setHeading(link.name)
@@ -58,7 +58,10 @@ const NavLinks = () => {
                             <div>
                                 <div className="absolute top-full hidden group-hover:lg:block hover:lg:block min-w-max rounded-b-md overflow-hidden bg-white px-3 pt-6 pb-3 shadow">
                                     {link.sublinks.map((mysublinks) => (
-                                        <div className="p-3 rounded-md overflow-hidden hover:bg-gray-300 ">
+                                        <div
+                                            key={mysublinks.name}
+                                            className="p-3 rounded-md overflow-hidden hover:bg-gray-300 "
+                                        >
                                             <NavLink
                                                 to={mysublinks.link}
                                                 className="text-black hover:text-green-600 cursor-pointer"
@@ -80,6 +83,7 @@ const NavLinks = () => {
                         {/* sublinks */}
                         {link.sublinks.map((slinks) => (
                             <div
+                                key={slinks.name}
                                 onClick={() =>
                                     subHeading !== slinks.name
                                         ? setSubHeading(slinks.name)
