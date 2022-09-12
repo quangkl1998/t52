@@ -1,6 +1,12 @@
 import React from "react";
 import { Tabs } from "antd";
-
+import check from "Assets/icons/check.png";
+import homeimage1 from "Assets/items/home-image-1.jpg";
+import homeimage2 from "Assets/items/home-image-2.jpg";
+import homeimage3 from "Assets/items/home-image-3.jpg";
+import homeimage4 from "Assets/items/home-image-4.jpg";
+import homeimage5 from "Assets/items/home-image-5.png";
+import homeimage6 from "Assets/items/home-image-6.jpg";
 const OutStandingService = () => {
   const item = [
     {
@@ -8,6 +14,7 @@ const OutStandingService = () => {
         <div>
           <div className="justify-center  flex  ">
             <svg
+              className="h-20"
               xmlns="http://www.w3.org/2000/svg"
               width={56}
               height={38}
@@ -16,7 +23,7 @@ const OutStandingService = () => {
             >
               <path
                 d="M37.1147 26.9264H6.24208C3.34296 26.9264 1 24.5716 1 21.6843V6.24208C1 3.34296 3.35479 1 6.24208 1H37.1147C40.0138 1 42.3568 3.35479 42.3568 6.24208V21.6725C42.3686 24.5834 40.0138 26.9264 37.1147 26.9264Z"
-                stroke="#00833E"
+                stroke="#E11D48"
                 strokeWidth="1.5"
                 strokeMiterlimit={10}
               />
@@ -28,31 +35,31 @@ const OutStandingService = () => {
               />
               <path
                 d="M20.7945 20.5958H19.9442C18.5516 20.5958 17.4238 19.4345 17.4238 18.0024V10.8418C17.4238 9.40966 18.5516 8.24835 19.9442 8.24835H22.0314H24.1186C25.5112 8.24835 26.6389 9.40966 26.6389 10.8418V18.0024C26.6389 19.4345 25.5112 20.5958 24.1186 20.5958H23.2682"
-                stroke="#00833E"
+                stroke="#E11D48"
                 strokeWidth="1.5"
                 strokeMiterlimit={10}
               />
               <path
                 d="M22.0311 8.24836C23.1712 8.24836 24.0954 7.29734 24.0954 6.12418C24.0954 4.95103 23.1712 4 22.0311 4C20.891 4 19.9668 4.95103 19.9668 6.12418C19.9668 7.29734 20.891 8.24836 22.0311 8.24836Z"
-                stroke="#00833E"
+                stroke="#E11D48"
                 strokeWidth="1.5"
                 strokeMiterlimit={10}
               />
               <path
                 d="M22.0308 24C21.348 24 20.7939 23.4299 20.7939 22.7273V19.1311C20.7939 18.4285 21.348 17.8584 22.0308 17.8584C22.7136 17.8584 23.2676 18.4285 23.2676 19.1311V22.7273C23.2676 23.4307 22.7136 24 22.0308 24Z"
-                stroke="#00833E"
+                stroke="#E11D48"
                 strokeWidth="1.5"
                 strokeMiterlimit={10}
               />
               <path
                 d="M28.3399 5.73463H24.0596"
-                stroke="#00833E"
+                stroke="#E11D48"
                 strokeWidth="1.5"
                 strokeMiterlimit={10}
               />
               <path
                 d="M20.0022 5.73463H15.6602"
-                stroke="#00833E"
+                stroke="#E11D48"
                 strokeWidth="1.5"
                 strokeMiterlimit={10}
               />
@@ -62,13 +69,86 @@ const OutStandingService = () => {
         </div>
       ),
       key: "1",
-      children: <p>avs</p>,
+      children: (
+        <div className="md:w-3/4 w-full m-auto p-8 border-b ">
+          <div className="grid lg:grid-cols-10 grid-cols-1">
+            <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
+              <div>
+                <img src={homeimage1} alt="home-image-1" />
+              </div>
+            </div>
+            <div className=" lg:col-span-4 col-span-1 ">
+              <h2 className="font-bold text-xl text-rose-600 mt-2 text-left">
+                GÓI VAY ĐĂNG KÝ XE MÁY
+              </h2>
+              <div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4 ">
+                    Vay bằng đăng ký xe máy, không thế chấp xe, vừa có tiền vừa
+                    có xe đi
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    15 phút có tiền
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Khoản vay lên đến 30 triệu
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Chi phí vay hợp lý
+                  </p>
+                </div>
+              </div>
+              <div className="flex">
+                <button className="rounded-md font-medium text-base cursor-pointer p-2  text-white  bg-rose-600">
+                  Vay ngay
+                </button>
+              </div>
+            </div>
+            <div className=" lg:col-span-6 col-span-1 hidden md:block mt-2 ">
+              <div className="lg:ml-5">
+                <img src={homeimage1} alt="home-image-1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
       label: (
         <div>
           <div className="justify-center  flex  ">
             <svg
+              className="h-20"
               xmlns="http://www.w3.org/2000/svg"
               width={40}
               height={49}
@@ -171,14 +251,87 @@ const OutStandingService = () => {
         </div>
       ),
       key: "2",
-      children: <p>av2s</p>,
+      children: (
+        <div className="md:w-3/4 w-full m-auto p-8 border-b ">
+          <div className="grid lg:grid-cols-10 grid-cols-1">
+            <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
+              <div>
+                <img src={homeimage2} alt="home-image-1" />
+              </div>
+            </div>
+            <div className=" lg:col-span-4 col-span-1 ">
+              <h2 className="font-bold text-xl text-rose-600 mt-2 text-left">
+                GÓI VAY XE MÁY
+              </h2>
+              <div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4 ">
+                    Khoản vay lên đến 80 triệu, chỉ cần xe máy chính chủ
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Định giá tài sản cao
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    15 phút có tiền
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Chi phí vay thấp
+                  </p>
+                </div>
+              </div>
+              <div className="flex">
+                <button className="rounded-md font-medium text-base cursor-pointer p-2  text-white  bg-rose-600">
+                  Vay ngay
+                </button>
+              </div>
+            </div>
+            <div className=" lg:col-span-6 col-span-1 hidden md:block mt-2 ">
+              <div className="lg:ml-5">
+                <img src={homeimage2} alt="home-image-1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
     },
 
     {
       label: (
-        <div>
+        <div className="items-center">
           <div className="justify-center  flex  ">
             <svg
+              className="h-20"
+              style={{ flex: "0 0 40px" }}
               xmlns="http://www.w3.org/2000/svg"
               width={56}
               height={38}
@@ -227,13 +380,85 @@ const OutStandingService = () => {
         </div>
       ),
       key: "3",
-      children: <p>avs</p>,
+      children: (
+        <div className="md:w-3/4 w-full m-auto p-8 border-b ">
+          <div className="grid lg:grid-cols-10 grid-cols-1">
+            <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
+              <div>
+                <img src={homeimage3} alt="home-image-1" />
+              </div>
+            </div>
+            <div className=" lg:col-span-4 col-span-1 ">
+              <h2 className="font-bold text-xl text-rose-600 mt-2 text-left">
+                GÓI VAY ĐĂNG KÝ Ô TÔ
+              </h2>
+              <div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4 ">
+                    Khoản vay lên đến 1 tỷ. Chỉ cần đăng ký xe ô tô
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Vừa có tiền vừa có xe đi
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    15 phút có tiền
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Chi phí vay thấp
+                  </p>
+                </div>
+              </div>
+              <div className="flex">
+                <button className="rounded-md font-medium text-base cursor-pointer p-2  text-white  bg-rose-600">
+                  Vay ngay
+                </button>
+              </div>
+            </div>
+            <div className=" lg:col-span-6 col-span-1 hidden md:block mt-2 ">
+              <div className="lg:ml-5">
+                <img src={homeimage3} alt="home-image-1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
       label: (
-        <div>
+        <div className="items-center">
           <div className="justify-center  flex  ">
             <svg
+              className="h-20"
               xmlns="http://www.w3.org/2000/svg"
               width={45}
               height={37}
@@ -318,13 +543,85 @@ const OutStandingService = () => {
         </div>
       ),
       key: "4",
-      children: <p>avs</p>,
+      children: (
+        <div className="md:w-3/4 w-full m-auto p-8 border-b ">
+          <div className="grid lg:grid-cols-10 grid-cols-1">
+            <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
+              <div>
+                <img src={homeimage4} alt="home-image-4" />
+              </div>
+            </div>
+            <div className=" lg:col-span-4 col-span-1 ">
+              <h2 className="font-bold text-xl text-rose-600 mt-2 text-left">
+                GÓI VAY Ô TÔ
+              </h2>
+              <div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4 ">
+                    Khoản vay lên đến 2 tỷ, chỉ cần xe ô tô chính chủ
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Định giá tài sản cao
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    30 phút có tiền
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Chi phí vay thấp
+                  </p>
+                </div>
+              </div>
+              <div className="flex">
+                <button className="rounded-md font-medium text-base cursor-pointer p-2  text-white  bg-rose-600">
+                  Vay ngay
+                </button>
+              </div>
+            </div>
+            <div className=" lg:col-span-6 col-span-1 hidden md:block mt-2 ">
+              <div className="lg:ml-5">
+                <img src={homeimage4} alt="home-image-4" />
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
       label: (
-        <div>
+        <div className="items-center">
           <div className="justify-center  flex  ">
             <svg
+              className="h-20"
               xmlns="http://www.w3.org/2000/svg"
               width={37}
               height={43}
@@ -401,13 +698,86 @@ const OutStandingService = () => {
         </div>
       ),
       key: "5",
-      children: <p>avs</p>,
+      children: (
+        <div className="md:w-3/4 w-full m-auto p-8 border-b ">
+          <div className="grid lg:grid-cols-10 grid-cols-1">
+            <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
+              <div>
+                <img src={homeimage5} alt="home-image-1" />
+              </div>
+            </div>
+            <div className=" lg:col-span-4 col-span-1 ">
+              <h2 className="font-bold text-xl text-rose-600 mt-2 text-left">
+                VAY ONLINE
+              </h2>
+              <div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4 ">
+                    Ứng dụng hỗ trợ tài chính trực tuyến đầu tiên đối với sản
+                    phẩm cho vay bằng Đăng ký xe máy
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Định danh điện tử
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Dễ dàng, nhanh chóng
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Rõ ràng minh bạch
+                  </p>
+                </div>
+              </div>
+              <div className="flex">
+                <button className="rounded-md font-medium text-base cursor-pointer p-2  text-white  bg-rose-600">
+                  Vay ngay
+                </button>
+              </div>
+            </div>
+            <div className=" lg:col-span-6 col-span-1 hidden md:block mt-2 ">
+              <div className="lg:ml-5">
+                <img src={homeimage5} alt="home-image-1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
       label: (
         <div>
           <div className="justify-center  flex  ">
             <svg
+              className="h-20"
               xmlns="http://www.w3.org/2000/svg"
               width={42}
               height={42}
@@ -432,14 +802,88 @@ const OutStandingService = () => {
         </div>
       ),
       key: "6",
-      children: <p>avs</p>,
+      children: (
+        <div className="md:w-3/4 w-full m-auto p-8 border-b ">
+          <div className="grid lg:grid-cols-10 grid-cols-1">
+            <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
+              <div>
+                <img src={homeimage6} alt="home-image-1" />
+              </div>
+            </div>
+            <div className=" lg:col-span-4 col-span-1">
+              <h2 className="font-bold text-xl text-rose-600 mt-2 text-left">
+                BẢO HIỂM TÀI SẢN, CON NGƯỜI
+              </h2>
+              <div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4 ">
+                    Cung cấp đa dạng các sản phẩm bảo hiểm bình dân, đáp ứng mọi
+                    nhu cầu bảo vệ tài sản, sức khỏe, con người cho mọi khách
+                    hàng
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Trung tâm hỗ trợ thủ tục bồi thường nhanh chóng 24/24
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Hướng dẫn hồ sơ, giải đáp sản phẩm tại tất cả cửa hàng F88
+                    trên toàn quốc
+                  </p>
+                </div>
+                <div className="flex items-center mb-4 ">
+                  <img
+                    src={check}
+                    alt="check"
+                    className="object-cover w-6 h-6"
+                  />
+
+                  <p className="md:text-xl text-left text-sm font-medium leading-5 mb-0 ml-4">
+                    Nhanh chóng, chu đáo, tin cậy
+                  </p>
+                </div>
+              </div>
+              <div className="flex">
+                <button className="rounded-md font-medium text-base cursor-pointer p-2  text-white  bg-rose-600">
+                  Vay ngay
+                </button>
+              </div>
+            </div>
+            <div className=" lg:col-span-6 col-span-1 hidden md:block mt-2 ">
+              <div className="lg:ml-5">
+                <img src={homeimage6} alt="home-image-1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
     },
   ];
 
   return (
     <div className="text-center pt-5 md:pt-10 bg-gray-100">
       <div>
-        <h2 className=" text-green-700 md:text-3xl font-bold text-2xl mb-3 md:leading-6">
+        <h2 className=" text-rose-600 md:text-3xl font-bold text-2xl mb-3 md:leading-6">
           Dịch vụ nổi bật
         </h2>
         <p className=" text-gray-500 font-medium leading-4 md:text-base text-sm py-">
