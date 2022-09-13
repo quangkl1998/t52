@@ -9,7 +9,7 @@ const InfoLoanRegisByMoto = () => {
             <div className="container mx-auto px-16">
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden p-5 border">
                     <div className="border-b pb-3">
-                        <h4 className="uppercase font-bold text-xl text-rose-600 my-3">
+                        <h4 className="uppercase font-bold text-xl text-green-600 my-3">
                             THÔNG TIN
                         </h4>
                     </div>
@@ -18,7 +18,7 @@ const InfoLoanRegisByMoto = () => {
                         tiền nhanh trong ngày cho khách hàng khi sử dụng gói vay
                         tiền này.
                     </h3>
-                    <h3 className="font-bold text-base text-rose-600 uppercase">
+                    <h3 className="font-bold text-base text-green-600 uppercase">
                         GÓI VAY TIỀN CHỈ CẦN ĐỂ LẠI GIẤY TỜ XE
                     </h3>
                     <div className="grid gap-6 mb-6 md:grid-cols-2">
@@ -232,22 +232,28 @@ const InfoLoanRegisByMoto = () => {
                                 <div className="flex items-center">
                                     <i className="fa fa-check" />
                                     <span className="pl-2 text-base font-medium py-2">
-                                        <span>Bước 1:</span>
+                                        <span className="font-bold text-lg">
+                                            Bước 1:{" "}
+                                        </span>
                                         Đăng ký thông tin tư vấn
                                     </span>
                                 </div>
                                 <div className="flex items-center">
                                     <i className="fa fa-check" />
                                     <span className="pl-2 text-base font-medium py-2">
-                                        <span>Bước 2:</span>
+                                        <span className="font-bold text-lg">
+                                            Bước 2:{" "}
+                                        </span>
                                         Tư vấn qua điện thoại trong vòng 15 phút
                                     </span>
                                 </div>
                                 <div className="flex items-center">
                                     <i className="fa fa-check" />
                                     <span className="pl-2 text-base font-medium py-2">
-                                        <span>Bước 3:</span>
-                                        Đến PGD của F88 thẩm định tài sản và
+                                        <span className="font-bold text-lg">
+                                            Bước 3:{" "}
+                                        </span>
+                                        Đến PGD của T52 thẩm định tài sản và
                                         giải ngân nhanh chóng bằng tiền mặt hoặc
                                         chuyển khoản
                                     </span>

@@ -3,11 +3,11 @@ export const links = [
         name: "Cho vay cầm cố",
         submenu: true,
         sublinks: [
-            { name: "Đăng ký xe máy", link: "/" },
-            { name: "Đăng ký ô tô", link: "/" },
-            { name: "Ô tô", link: "/" },
-            { name: "Xe máy", link: "/" },
-            { name: "Tài sản khác", link: "/" },
+            { name: "Đăng ký xe máy", link: "/vay-tien-bang-cavet-xe-may" },
+            { name: "Đăng ký ô tô", link: "/vay-tien-bang-cavet-o-to" },
+            { name: "Ô tô", link: "/vay-tien-bang-o-to" },
+            { name: "Xe máy", link: "/vay-tien-bang-xe-may" },
+            { name: "Tài sản khác", link: "/vay-tien-bang-tai-san-khac" },
         ],
     },
     {

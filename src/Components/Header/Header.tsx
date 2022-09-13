@@ -12,36 +12,36 @@ const Header = () => {
                 <div className="container mx-auto">
                     <div className="flex justify-end px-3 py-4">
                         <div className="">
-                            <a
-                                href=""
+                            <NavLink
+                                to="/about"
                                 className="px-4 border-r font-semibold text-gray-300 hover:text-white duration-100 text-lg"
                             >
                                 Về T52
-                            </a>
-                            <a
-                                href=""
+                            </NavLink>
+                            <NavLink
+                                to="/quan-he-nha-dau-tu"
                                 className="px-4 border-r font-semibold text-gray-300 hover:text-white duration-100 text-lg"
                             >
                                 Quan hệ Nhà đầu tư
-                            </a>
-                            <a
-                                href=""
+                            </NavLink>
+                            <NavLink
+                                to="/tin-tuc"
                                 className="px-4 border-r font-semibold text-gray-300 hover:text-white duration-100 text-lg"
                             >
                                 Tin tức
-                            </a>
-                            <a
-                                href=""
+                            </NavLink>
+                            <NavLink
+                                to="/cua-hang-gan-ban"
                                 className="px-4 border-r font-semibold text-gray-300 hover:text-white duration-100 text-lg"
                             >
                                 Cửa hàng gần bạn
-                            </a>
-                            <a
-                                href=""
+                            </NavLink>
+                            <NavLink
+                                to="/kien-thuc-tai-chinh"
                                 className="px-4 font-semibold text-gray-300 hover:text-white duration-100 text-lg"
                             >
                                 Kiến thức tài chính
-                            </a>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
