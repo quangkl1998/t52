@@ -1,44 +1,48 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Logo from "Assets/Logo.png";
+import Logo from "Assets/T52Logo.png";
 import NavLinks from "./Navlinks";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
     const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(!open);
+    };
     return (
         <div className="fixed w-full z-10">
-            <div className="hidden lg:block bg-amber-800 border-b-4 border-solid border-yellow-400">
+            <div className="hidden lg:block bg-white border-b-4 border-solid border-yellow-500">
                 <div className="container mx-auto">
-                    <div className="flex justify-end px-3 py-4">
+                    <div className="flex justify-end px-3 py-2">
                         <div className="">
                             <NavLink
                                 to="/about"
-                                className="px-4 border-r font-semibold text-gray-300 hover:text-white duration-100 text-lg"
+                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
                             >
                                 Về T52
                             </NavLink>
                             <NavLink
                                 to="/quan-he-nha-dau-tu"
-                                className="px-4 border-r font-semibold text-gray-300 hover:text-white duration-100 text-lg"
+                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
                             >
                                 Quan hệ Nhà đầu tư
                             </NavLink>
                             <NavLink
                                 to="/tin-tuc"
-                                className="px-4 border-r font-semibold text-gray-300 hover:text-white duration-100 text-lg"
+                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
                             >
                                 Tin tức
                             </NavLink>
                             <NavLink
                                 to="/cua-hang-gan-ban"
-                                className="px-4 border-r font-semibold text-gray-300 hover:text-white duration-100 text-lg"
+                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
                             >
                                 Cửa hàng gần bạn
                             </NavLink>
                             <NavLink
                                 to="/kien-thuc-tai-chinh"
-                                className="px-4 font-semibold text-gray-300 hover:text-white duration-100 text-lg"
+                                className="px-4 font-semibold text-black hover:text-white duration-100 text-sm"
                             >
                                 Kiến thức tài chính
                             </NavLink>
@@ -46,15 +50,15 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <nav className="bg-white border-b shadow-md">
-                <div className="flex items-center font-semibold justify-around">
-                    <div className=" p-5 lg:w-auto w-full flex justify-between items-center z-50">
+            <nav className="bg-red-600 border-b shadow-md lg:px-5">
+                <div className="flex items-center font-semibold justify-around ">
+                    <div className="lg:w-auto w-full flex justify-between items-center px-5 lg:px-0 bg-red-600 z-50">
                         <img
                             src={Logo}
                             alt="logo"
-                            className="lg:cursor-pointer h-8"
+                            className="lg:cursor-pointer h-20"
                         />
-                        <button className="border px-5 py-3 rounded-lg shadow-lg text-rose-600 text-xl block lg:hidden z-70">
+                        <button className="border border-amber-700 px-5 py-3 rounded-lg shadow-lg text-amber-700 text-xl block lg:hidden z-70">
                             <span>
                                 <i className="fa fa-phone" />
                             </span>
@@ -118,18 +122,18 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="lg:flex hidden justify-center items-center">
-                        <NavLinks />
+                        <NavLinks open={handleOpen} />
                         <div>
                             <NavLink
                                 to="/"
-                                className="inline-block font-semibold text-2xl lg:text-base text-gray-800 hover:text-gray-800"
+                                className="inline-block font-semibold text-2xl lg:text-xl text-black lg:text-white hover:text-white border-b-4 border-b-transparent hover:border-b-yellow-400 duration-150"
                             >
                                 Mua bán xe máy cũ
                             </NavLink>
                         </div>
                     </div>
                     <div className="lg:block hidden">
-                        <button className="border border-amber-800 hover:bg-amber-100 duration-150 px-3 py-2 rounded-lg shadow-lg text-amber-800 text-base">
+                        <button className="border border-yellow-500 bg-white hover:text-yellow-400 duration-150 px-3 py-2 rounded-lg shadow-lg text-yellow-500 text-lg">
                             <span>
                                 <i className="fa fa-phone" />
                             </span>
@@ -145,6 +149,14 @@ const Header = () => {
                     >
                         <div className="mx-5 border-b">
                             <NavLinks />
+                            <div className="mx-3 lg:pr-0 mb-4 lg:pb-0 border-b-4 border-b-transparent hover:border-b-yellow-400 duration-15">
+                                <NavLink
+                                    to="/"
+                                    className="inline-block font-semibold text-2xl lg:text-xl text-black lg:text-white hover:text-black 0"
+                                >
+                                    Mua bán xe máy cũ
+                                </NavLink>
+                            </div>
                         </div>
                         <div className="container mx-auto">
                             <div className="flex flex-col justify-center px-3 py-4">

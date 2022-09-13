@@ -9,7 +9,7 @@ const LoanByRegisCar = () => {
             <div className="lg:h-36 h-20"></div>
             <div className="bg-gray-100 mt-3">
                 <h1 className="text-center p-5 font-bold text-2xl">
-                    Thông tin đăng ký vay tiền bằng Xe ô tô
+                    Thông tin đăng ký vay tiền bằng xe ô tô
                 </h1>
                 <FormLoan />
                 <div className="container mx-auto px-16 italic text-gray-500 font-semibold text-lg mt-3">

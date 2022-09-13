@@ -9,7 +9,7 @@ const InfoLoanByMoto = () => {
             <div className="container mx-auto px-16">
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden p-5 border">
                     <div className="border-b pb-3">
-                        <h4 className="uppercase font-bold text-xl text-rose-600 my-3">
+                        <h4 className="uppercase font-bold text-xl text-amber-700 my-3">
                             THÔNG TIN
                         </h4>
                     </div>
@@ -18,7 +18,7 @@ const InfoLoanByMoto = () => {
                         tiền nhanh trong ngày cho khách hàng khi sử dụng gói vay
                         tiền này.
                     </h3>
-                    <h3 className="font-bold text-base text-rose-600 uppercase">
+                    <h3 className="font-bold text-base text-amber-600 uppercase">
                         GÓI VAY TIỀN CHỈ CẦN ĐỂ LẠI GIẤY TỜ XE
                     </h3>
                     <div className="grid gap-6 mb-6 md:grid-cols-2">

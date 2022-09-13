@@ -9,7 +9,7 @@ const InfoLoanByCar = () => {
             <div className="container mx-auto px-16">
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden p-5 border">
                     <div className="border-b pb-3">
-                        <h4 className="uppercase font-bold text-xl text-green-600 my-3">
+                        <h4 className="uppercase font-bold text-xl text-amber-700 my-3">
                             THÔNG TIN
                         </h4>
                     </div>
@@ -17,7 +17,7 @@ const InfoLoanByCar = () => {
                         Với gói vay tiền ô tô khách hàng sẽ vay tiền không cần
                         chứng minh thu nhập. Giải ngân nhanh chóng sau 30 phút.
                     </h3>
-                    <h3 className="font-bold text-base text-green-600 uppercase">
+                    <h3 className="font-bold text-base text-amber-600 uppercase">
                         GÓI VAY TIỀN CÓ THẾ CHẤP Ô TÔ, KHÔNG CẦN CHỨNG MINH THU
                         NHẬP
                     </h3>

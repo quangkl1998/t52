@@ -10,13 +10,13 @@ const FormLoan = () => {
                     </h3>
                     <span className="font-bold text-lg">
                         Vừa có tiền vừa có xe đi. Duyệt vay nhanh chóng trong{" "}
-                        <span className="text-rose-600">15 phút</span>
+                        <span className="text-amber-600">15 phút</span>
                     </span>
                 </div>
                 <form>
                     <div className="grid gap-6 mb-6 md:grid-cols-2">
                         <div>
-                            <h4 className="uppercase font-bold text-xl text-rose-600 my-5">
+                            <h4 className="uppercase font-bold text-xl text-amber-700 my-5">
                                 THÔNG TIN CÁ NHÂN
                             </h4>
                             <div className="pb-6">
@@ -73,7 +73,7 @@ const FormLoan = () => {
                             </div>
                         </div>
                         <div>
-                            <h4 className="uppercase font-bold text-xl text-rose-600 my-5">
+                            <h4 className="uppercase font-bold text-xl text-amber-700 my-5">
                                 CHỌN PHÒNG GIAO DỊCH GẦN BẠN
                             </h4>
                             <div className="pb-6">
@@ -142,7 +142,7 @@ const FormLoan = () => {
 
                     <button
                         type="submit"
-                        className="text-white bg-rose-600 hover:bg-rose-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-10 py-2.5 text-center block mx-auto"
+                        className="text-white bg-amber-600 hover:bg-amber-700 duration-150s focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-10 py-2.5 text-center block mx-auto"
                     >
                         Xác nhận
                     </button>
