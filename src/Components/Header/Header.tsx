@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import Logo from "Assets/T52Logo.png";
 import NavLinks from "./Navlinks";
 import { NavLink } from "react-router-dom";
@@ -18,31 +18,31 @@ const Header = () => {
                         <div className="">
                             <NavLink
                                 to="/about"
-                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
+                                className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Về T52
                             </NavLink>
                             <NavLink
                                 to="/quan-he-nha-dau-tu"
-                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
+                                className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Quan hệ Nhà đầu tư
                             </NavLink>
                             <NavLink
                                 to="/tin-tuc"
-                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
+                                className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Tin tức
                             </NavLink>
                             <NavLink
                                 to="/cua-hang-gan-ban"
-                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
+                                className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Cửa hàng gần bạn
                             </NavLink>
                             <NavLink
                                 to="/kien-thuc-tai-chinh"
-                                className="px-4 font-semibold text-black hover:text-white duration-100 text-sm"
+                                className="px-4 font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Kiến thức tài chính
                             </NavLink>
@@ -53,16 +53,18 @@ const Header = () => {
             <nav className="bg-red-600 border-b shadow-md lg:px-5">
                 <div className="flex items-center font-semibold justify-around ">
                     <div className="lg:w-auto w-full flex justify-between items-center px-5 lg:px-0 bg-red-600 z-50">
-                        <img
-                            src={Logo}
-                            alt="logo"
-                            className="lg:cursor-pointer h-20"
-                        />
-                        <button className="border border-amber-700 px-5 py-3 rounded-lg shadow-lg text-amber-700 text-xl block lg:hidden z-70">
+                        <NavLink to="">
+                            <img
+                                src={Logo}
+                                alt="logo"
+                                className="lg:cursor-pointer h-20"
+                            />
+                        </NavLink>
+                        <button className="border border-yellow-400 px-5 py-3 rounded-lg shadow-lg text-yellow-400 hover:bg-white duration-150 text-xl block lg:hidden z-70">
                             <span>
                                 <i className="fa fa-phone" />
                             </span>
-                            <span className="font-bold">1800 6388</span>
+                            <span className="ml-2 font-bold">0775 75 7777</span>
                         </button>
                         <div
                             className="text-3xl lg:hidden z-20"
@@ -78,13 +80,13 @@ const Header = () => {
                                 >
                                     <path
                                         d="M1 1L17 17"
-                                        stroke="#00833E"
+                                        stroke="#FFF"
                                         strokeWidth={2}
                                         strokeLinecap="round"
                                     />
                                     <path
                                         d="M17 1L0.999999 17"
-                                        stroke="#00833E"
+                                        stroke="#FFF"
                                         strokeWidth={2}
                                         strokeLinecap="round"
                                     />
@@ -101,21 +103,21 @@ const Header = () => {
                                         width={22}
                                         height={3}
                                         rx="1.5"
-                                        fill="#00833E"
+                                        fill="#FFF"
                                     />
                                     <rect
                                         y={6}
                                         width={22}
                                         height={3}
                                         rx="1.5"
-                                        fill="#00833E"
+                                        fill="#FFF"
                                     />
                                     <rect
                                         y={12}
                                         width={22}
                                         height={3}
                                         rx="1.5"
-                                        fill="#00833E"
+                                        fill="#FFF"
                                     />
                                 </svg>
                             )}
@@ -137,7 +139,7 @@ const Header = () => {
                             <span>
                                 <i className="fa fa-phone" />
                             </span>
-                            <span className="font-bold">1800 6388</span>
+                            <span className="ml-2 font-bold">0775 75 7777</span>
                         </button>
                     </div>
                     {/* Mobile nav */}

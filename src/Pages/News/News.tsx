@@ -7,6 +7,7 @@ import React from "react";
 const News = () => {
     return (
         <div>
+            <div className="lg:h-32 h-20"></div>
             <Outstanding />
             <Activities />
             <Story />

@@ -329,10 +329,10 @@ const Footer = () => {
                 <div className="container mx-auto">
                     <span className="pr-3">Công ty cổ phần kinh doanh F88</span>
                     <span className="pr-3">
-                        275 Nguyễn Trãi, P. Thanh Xuân Trung, Q. Thanh Xuân, TP
-                        Hà Nội
+                        Copyright 2012 - 2022 | CTY TNHH THƯƠNG MẠI DỊCH VỤ TÀI
+                        CHÍNH THẮNG LỢI
                     </span>
-                    <span>Hotline: 18006388</span>
+                    <span>Hotline: 0775 75 7777</span>
                 </div>
             </div>
         </div>

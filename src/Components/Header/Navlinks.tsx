@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { links } from "./MyLinks";
 
 const NavLinks = ({ handleOpen }: any) => {
@@ -91,7 +90,7 @@ const NavLinks = ({ handleOpen }: any) => {
                                         : setSubHeading("");
                                     handleOpen();
                                 }}
-                                className="pl-7 p-1 ml-2 border-l font-semibold flex justify-between items-center cursor-pointer text-lg"
+                                className="pl-7 p-1 ml-2 border-l font-semibold flex justify-between items-center cursor-pointer text-lg text-black"
                             >
                                 {slinks.name}
                             </NavLink>
