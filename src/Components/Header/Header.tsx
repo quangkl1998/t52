@@ -10,11 +10,26 @@ const Header = () => {
     const handleOpen = () => {
         setOpen(!open);
     };
+
+    useEffect(() => {
+        const onscrollBackTop = () => {
+            if (window.scrollY > 500) {
+                document
+                    .querySelector(".headerTop")!
+                    .classList.add("lg:hidden");
+            } else {
+                document
+                    .querySelector(".headerTop")!
+                    .classList.remove("lg:hidden");
+            }
+        };
+        window.addEventListener("scroll", onscrollBackTop);
+    }, []);
     return (
         <div className="fixed w-full z-10">
-            <div className="hidden lg:block bg-white border-b-4 border-solid border-yellow-500">
+            <div className="hidden lg:block bg-white border-b-4 border-solid border-yellow-500 headerTop duration-200">
                 <div className="container mx-auto">
-                    <div className="flex justify-end px-3 py-2">
+                    <div className="flex justify-end px-3 py-2 ">
                         <div className="">
                             <NavLink
                                 to="/about"

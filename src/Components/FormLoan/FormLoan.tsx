@@ -62,8 +62,9 @@ const FormLoan = () => {
                                 <select
                                     id="asset-filter"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    defaultValue=""
                                 >
-                                    <option selected>Bạn muốn vay bằng</option>
+                                    <option value="">Bạn muốn vay bằng</option>
                                     <option value="US">Đăng ký xe máy</option>
                                     <option value="CA">Đăng ký ô tô</option>
                                     <option value="FR">Ô tô</option>
@@ -87,8 +88,9 @@ const FormLoan = () => {
                                 <select
                                     id="asset-filter"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    defaultValue=""
                                 >
-                                    <option selected>Tỉnh/Thành</option>
+                                    <option value="">Tỉnh/Thành</option>
                                     <option value="US">Hà Nội</option>
                                     <option value="CA">Đà Nẵng</option>
                                     <option value="FR">Bình Dương</option>
@@ -106,8 +108,9 @@ const FormLoan = () => {
                                 <select
                                     id="asset-filter"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    defaultValue=""
                                 >
-                                    <option selected>Quận/Huyện</option>
+                                    <option value="">Quận/Huyện</option>
                                     <option value="US">Hà Nội</option>
                                     <option value="CA">Đà Nẵng</option>
                                     <option value="FR">Bình Dương</option>
@@ -125,8 +128,9 @@ const FormLoan = () => {
                                 <select
                                     id="asset-filter"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    defaultValue=""
                                 >
-                                    <option selected>Cửa hàng</option>
+                                    <option value="">Cửa hàng</option>
                                     <option value="US">Hà Nội</option>
                                     <option value="CA">Đà Nẵng</option>
                                     <option value="FR">Bình Dương</option>
