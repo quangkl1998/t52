@@ -114,7 +114,7 @@ const OutStandingService = () => {
               />
             </svg>
           </div>
-          <div>Xe máy</div>
+          <div>Xe gắn máy</div>
         </div>
       ),
       key: "1",

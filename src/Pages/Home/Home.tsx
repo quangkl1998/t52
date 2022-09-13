@@ -15,10 +15,9 @@ const Home = () => {
       <OutStandingService />
       <FinancialSolution />
       <FeaturedNews />
-      <div className="flex">
-        <ReView />
-        <Prize />
-      </div>
+
+      <ReView />
+
       <Partner />
       <Action />
     </div>
