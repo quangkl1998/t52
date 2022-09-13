@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { links } from "./MyLinks";
 
-const NavLinks = () => {
+const NavLinks = ({ handleOpen }: any) => {
     const [heading, setHeading] = useState("");
     const [subHeading, setSubHeading] = useState("");
     return (
@@ -12,7 +12,7 @@ const NavLinks = () => {
                 <div key={link.name}>
                     <div className="px-3 text-left lg:cursor-pointer group relative">
                         <div
-                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-base cursor-pointer"
+                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-xl cursor-pointer text-black lg:text-white border-b-4 border-b-transparent hover:border-b-yellow-400 duration-150 lg:border-b-transparent"
                             onClick={() => {
                                 heading !== link.name
                                     ? setHeading(link.name)
@@ -27,11 +27,11 @@ const NavLinks = () => {
                                     width={10}
                                     height={6}
                                     viewBox="0 0 10 6"
-                                    fill="none"
+                                    fill="#FFFF00"
                                 >
                                     <path
                                         d="M1 1L5 5L9 1"
-                                        stroke="black"
+                                        stroke="#FFFF00"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                     />
@@ -43,11 +43,11 @@ const NavLinks = () => {
                                     width={10}
                                     height={6}
                                     viewBox="0 0 10 6"
-                                    fill="none"
+                                    fill="#FFFF00"
                                 >
                                     <path
                                         d="M1 1L5 5L9 1"
-                                        stroke="black"
+                                        stroke="#FFFF00"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                     />
@@ -64,7 +64,7 @@ const NavLinks = () => {
                                         >
                                             <NavLink
                                                 to={mysublinks.link}
-                                                className="block p-3 text-black hover:text-green-600 cursor-pointer"
+                                                className="block p-3 text-black hover:text-yellow-600 cursor-pointer"
                                             >
                                                 {mysublinks.name}
                                             </NavLink>
@@ -82,17 +82,19 @@ const NavLinks = () => {
                     >
                         {/* sublinks */}
                         {link.sublinks.map((slinks) => (
-                            <div
+                            <NavLink
+                                to={slinks.link}
                                 key={slinks.name}
-                                onClick={() =>
+                                onClick={() => {
                                     subHeading !== slinks.name
                                         ? setSubHeading(slinks.name)
-                                        : setSubHeading("")
-                                }
+                                        : setSubHeading("");
+                                    handleOpen();
+                                }}
                                 className="pl-7 p-1 ml-2 border-l font-semibold flex justify-between items-center cursor-pointer text-lg"
                             >
                                 {slinks.name}
-                            </div>
+                            </NavLink>
                         ))}
                     </div>
                 </div>
