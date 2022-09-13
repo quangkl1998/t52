@@ -23,6 +23,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="" element={<HomeTemplate />}>
+                    <Route path="" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route
                         path="/quan-he-nha-dau-tu"
