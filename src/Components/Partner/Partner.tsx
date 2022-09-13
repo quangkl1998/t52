@@ -12,7 +12,7 @@ import MB from "Assets/items/MB.jpg";
 const Partner = () => {
   return (
     <div className="text-center  p-10">
-      <h2 className="text-rose-600 md:text-3xl font-bold text-2xl mb-3 md:leading-6 pb-3">
+      <h2 className="text-red-600 md:text-3xl font-bold text-2xl mb-3 md:leading-6 pb-3">
         Đối tác chiến lược
       </h2>
       <div className="container mx-auto">
