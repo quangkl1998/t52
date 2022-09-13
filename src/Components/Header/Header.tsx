@@ -8,7 +8,7 @@ const Header = () => {
     const [open, setOpen] = useState(false);
     return (
         <div className="fixed w-full z-10">
-            <div className="hidden lg:block bg-rose-600 border-b-4 border-solid border-yellow-400">
+            <div className="hidden lg:block bg-amber-800 border-b-4 border-solid border-yellow-400">
                 <div className="container mx-auto">
                     <div className="flex justify-end px-3 py-4">
                         <div className="">
@@ -129,7 +129,7 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="lg:block hidden">
-                        <button className="border px-3 py-2 rounded-lg shadow-lg text-rose-600 text-base">
+                        <button className="border border-amber-800 hover:bg-amber-100 duration-150 px-3 py-2 rounded-lg shadow-lg text-amber-800 text-base">
                             <span>
                                 <i className="fa fa-phone" />
                             </span>
