@@ -12,13 +12,31 @@ import LoanByRegisCar from "Pages/LoanByRegisCar/LoanByRegisCar";
 import LoanByOther from "Pages/LoanByOther/LoanByOther";
 
 import "antd/dist/antd.css";
+import About from "Pages/About/About";
+import InvestorRelations from "Pages/InvestorRelations/InvestorRelations";
+import News from "Pages/News/News";
+import StoresNearYou from "Pages/StoresNearYou/StoresNearYou";
+import FinancialKnowledge from "Pages/FinancialKnowledge/FinancialKnowledge";
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="" element={<HomeTemplate />}>
-                    <Route path="" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route
+                        path="/quan-he-nha-dau-tu"
+                        element={<InvestorRelations />}
+                    />
+                    <Route path="/tin-tuc" element={<News />} />
+                    <Route
+                        path="/cua-hang-gan-ban"
+                        element={<StoresNearYou />}
+                    />
+                    <Route
+                        path="/kien-thuc-tai-chinh"
+                        element={<FinancialKnowledge />}
+                    />
                     <Route path="" element={<MortgageLoanTemplate />}>
                         <Route
                             path="/vay-tien-bang-cavet-xe-may"

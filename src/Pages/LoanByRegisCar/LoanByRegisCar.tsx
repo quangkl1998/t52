@@ -2,16 +2,31 @@ import FormLoan from "Components/FormLoan/FormLoan";
 import InfoLoanRegisByCar from "Components/InfoLoanRegisByCar/InfoLoanRegisByCar";
 import Questions from "Components/Questions/Questions";
 import WhyChoose from "Components/WhyChoose/WhyChoose";
-import React from "react";
 
 const LoanByRegisCar = () => {
     return (
         <div>
-            <h1>Thông tin đăng ký vay tiền bằng Xe ô tô</h1>
-            <FormLoan />
-            <InfoLoanRegisByCar />
-            <WhyChoose />
-            <Questions />
+            <div className="lg:h-36 h-20"></div>
+            <div className="bg-gray-100 mt-3">
+                <h1 className="text-center p-5 font-bold text-2xl">
+                    Thông tin đăng ký vay tiền bằng Xe ô tô
+                </h1>
+                <FormLoan />
+                <div className="container mx-auto px-16 italic text-gray-500 font-semibold text-lg mt-3">
+                    <p>
+                        Thời hạn khoản vay tối thiểu 3 tháng và tối đa 12 tháng.
+                    </p>
+                    <p>Lãi suất vay trong hạn hàng năm tối đa 13,2%/năm</p>
+                    <p>
+                        Ví dụ: Khách hàng vay bằng đăng ký ô tô 50.000.000đ
+                        trong 12 tháng với lãi suất vay là 1.1%/ tháng (chưa bao
+                        gồm các phí khác)
+                    </p>
+                </div>
+                <InfoLoanRegisByCar />
+                <WhyChoose />
+                <Questions />
+            </div>
         </div>
     );
 };

@@ -60,11 +60,11 @@ const NavLinks = () => {
                                     {link.sublinks.map((mysublinks) => (
                                         <div
                                             key={mysublinks.name}
-                                            className="p-3 rounded-md overflow-hidden hover:bg-gray-300 "
+                                            className="rounded-md overflow-hidden hover:bg-gray-300 "
                                         >
                                             <NavLink
                                                 to={mysublinks.link}
-                                                className="text-black hover:text-green-600 cursor-pointer"
+                                                className="block p-3 text-black hover:text-green-600 cursor-pointer"
                                             >
                                                 {mysublinks.name}
                                             </NavLink>
