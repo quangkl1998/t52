@@ -8,21 +8,21 @@ import Prize from "Components/Prize/Prize";
 import ReView from "Components/ReView/ReView";
 
 const Home = () => {
-    return (
-        <div>
-            <div className="lg:h-36 h-20"></div>
-            <Banner />
-            <OutStandingService />
-            <FinancialSolution />
-            <FeaturedNews />
-            <div className="flex">
-                <ReView />
-                <Prize />
-            </div>
-            <Partner />
-            <Action />
-        </div>
-    );
+  return (
+    <div>
+      <div className="lg:h-36 h-20"></div>
+      <Banner />
+      <OutStandingService />
+      <FinancialSolution />
+      <FeaturedNews />
+      <div className="flex">
+        <ReView />
+        <Prize />
+      </div>
+      <Partner />
+      <Action />
+    </div>
+  );
 };
 
 export default Home;

@@ -7,13 +7,14 @@
   margin-top: -16px;
 }
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #e11d48 !important;
+  color: rgb(220 38 38) !important;
 }
 .ant-tabs-tab-btn {
   color: #686868 !important;
 }
 .ant-tabs-tab-btn:hover {
-  color: #e11d48 !important;
+  color: rgb(220 38 38) !important;
+  transition: all 0.5s;
 }
 .ant-tabs-nav-operations {
   display: none !important;
