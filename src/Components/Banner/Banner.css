@@ -6,7 +6,6 @@
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -23,7 +22,7 @@
   align-items: center;
 }
 .swiper-pagination-bullet-active {
-  background: #fff !important;
+  background: rgb(220 38 38) !important;
 }
 .swiper-pagination-bullet {
   font-size: 0;
@@ -36,7 +35,7 @@
   border: 0;
   outline: 0;
   background: 0 0;
-  border: 2px solid #fff;
+  border: 2px solid rgb(220 38 38);
   opacity: 1;
 }
 
