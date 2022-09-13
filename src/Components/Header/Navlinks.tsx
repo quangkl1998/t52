@@ -90,7 +90,7 @@ const NavLinks = ({ handleOpen }: any) => {
                                         : setSubHeading("");
                                     handleOpen();
                                 }}
-                                className="pl-7 p-1 ml-2 border-l font-semibold flex justify-between items-center cursor-pointer text-lg"
+                                className="pl-7 p-1 ml-2 border-l font-semibold flex justify-between items-center cursor-pointer text-lg text-black"
                             >
                                 {slinks.name}
                             </NavLink>

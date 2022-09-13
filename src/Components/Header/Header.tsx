@@ -60,7 +60,7 @@ const Header = () => {
                                 className="lg:cursor-pointer h-20"
                             />
                         </NavLink>
-                        <button className="border border-amber-700 px-5 py-3 rounded-lg shadow-lg text-amber-700 text-xl block lg:hidden z-70">
+                        <button className="border border-yellow-400 px-5 py-3 rounded-lg shadow-lg text-yellow-400 hover:bg-white duration-150 text-xl block lg:hidden z-70">
                             <span>
                                 <i className="fa fa-phone" />
                             </span>
