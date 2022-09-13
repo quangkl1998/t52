@@ -119,7 +119,7 @@ const OutStandingService = () => {
       ),
       key: "1",
       children: (
-        <div className="md:w-3/4 w-full m-auto p-8 border-b ">
+        <div className="md:w-3/4 w-full m-auto pb-4 border-b ">
           <div className="grid lg:grid-cols-10 grid-cols-1">
             <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
               <div>
@@ -244,7 +244,7 @@ const OutStandingService = () => {
       ),
       key: "2",
       children: (
-        <div className="md:w-3/4 w-full m-auto p-8 border-b ">
+        <div className="md:w-3/4 w-full m-auto pb-4 border-b ">
           <div className="grid lg:grid-cols-10 grid-cols-1">
             <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
               <div>
@@ -407,7 +407,7 @@ const OutStandingService = () => {
       ),
       key: "3",
       children: (
-        <div className="md:w-3/4 w-full m-auto p-8 border-b ">
+        <div className="md:w-3/4 w-full m-auto pb-4 border-b ">
           <div className="grid lg:grid-cols-10 grid-cols-1">
             <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
               <div>
@@ -562,7 +562,7 @@ const OutStandingService = () => {
       ),
       key: "4",
       children: (
-        <div className="md:w-3/4 w-full m-auto p-8 border-b ">
+        <div className="md:w-3/4 w-full m-auto pb-4 border-b ">
           <div className="grid lg:grid-cols-10 grid-cols-1">
             <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
               <div>
@@ -686,7 +686,7 @@ const OutStandingService = () => {
       ),
       key: "5",
       children: (
-        <div className="md:w-3/4 w-full m-auto p-8 border-b ">
+        <div className="md:w-3/4 w-full m-auto pb-4 border-b ">
           <div className="grid lg:grid-cols-10 grid-cols-1">
             <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
               <div>
@@ -763,7 +763,7 @@ const OutStandingService = () => {
   return (
     <div className="text-center pt-5 md:pt-10 bg-gray-100">
       <div>
-        <h2 className=" text-red-600 md:text-3xl font-bold text-2xl mb-3 md:leading-6">
+        <h2 className=" text-red-600 md:text-3xl font-bold text-2xl mb-0 md:mb-3 md:leading-6">
           Dịch vụ nổi bật
         </h2>
         <p className=" text-gray-500 font-medium leading-4 md:text-base text-sm py-3">

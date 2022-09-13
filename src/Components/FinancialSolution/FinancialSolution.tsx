@@ -12,7 +12,7 @@ const FinancialSolution = () => {
           nhanh chóng và chuyên nghiệp
         </p>
 
-        <div className="grid md:grid-cols-4 grid-cols-2 gap-10 px-2 md:px-20 ">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-2 md:gap-10 px-5 md:px-20 ">
           <div className="flex flex-col items-center border shadow-lg p-5 md:p-10 rounded-3xl text-center bg-white">
             <div>
               <svg
