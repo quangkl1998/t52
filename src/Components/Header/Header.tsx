@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import Logo from "Assets/T52Logo.png";
 import NavLinks from "./Navlinks";
 import { NavLink } from "react-router-dom";
@@ -18,31 +18,31 @@ const Header = () => {
                         <div className="">
                             <NavLink
                                 to="/about"
-                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
+                                className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Về T52
                             </NavLink>
                             <NavLink
                                 to="/quan-he-nha-dau-tu"
-                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
+                                className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Quan hệ Nhà đầu tư
                             </NavLink>
                             <NavLink
                                 to="/tin-tuc"
-                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
+                                className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Tin tức
                             </NavLink>
                             <NavLink
                                 to="/cua-hang-gan-ban"
-                                className="px-4 border-r font-semibold text-black hover:text-white duration-100 text-sm"
+                                className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Cửa hàng gần bạn
                             </NavLink>
                             <NavLink
                                 to="/kien-thuc-tai-chinh"
-                                className="px-4 font-semibold text-black hover:text-white duration-100 text-sm"
+                                className="px-4 font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Kiến thức tài chính
                             </NavLink>
@@ -53,11 +53,13 @@ const Header = () => {
             <nav className="bg-red-600 border-b shadow-md lg:px-5">
                 <div className="flex items-center font-semibold justify-around ">
                     <div className="lg:w-auto w-full flex justify-between items-center px-5 lg:px-0 bg-red-600 z-50">
-                        <img
-                            src={Logo}
-                            alt="logo"
-                            className="lg:cursor-pointer h-20"
-                        />
+                        <NavLink to="">
+                            <img
+                                src={Logo}
+                                alt="logo"
+                                className="lg:cursor-pointer h-20"
+                            />
+                        </NavLink>
                         <button className="border border-amber-700 px-5 py-3 rounded-lg shadow-lg text-amber-700 text-xl block lg:hidden z-70">
                             <span>
                                 <i className="fa fa-phone" />
