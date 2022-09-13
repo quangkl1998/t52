@@ -9,7 +9,7 @@ import ReView from "Components/ReView/ReView";
 const Home = () => {
     return (
         <div>
-            <div className="lg:h-36 h-20"></div>
+            <div className="lg:h-30 h-20"></div>
             <Banner />
             <OutStandingService />
             <FinancialSolution />

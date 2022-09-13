@@ -64,7 +64,7 @@ const Header = () => {
                             <span>
                                 <i className="fa fa-phone" />
                             </span>
-                            <span className="font-bold">1800 6388</span>
+                            <span className="ml-2 font-bold">0775 75 7777</span>
                         </button>
                         <div
                             className="text-3xl lg:hidden z-20"
@@ -80,13 +80,13 @@ const Header = () => {
                                 >
                                     <path
                                         d="M1 1L17 17"
-                                        stroke="#00833E"
+                                        stroke="#FFF"
                                         strokeWidth={2}
                                         strokeLinecap="round"
                                     />
                                     <path
                                         d="M17 1L0.999999 17"
-                                        stroke="#00833E"
+                                        stroke="#FFF"
                                         strokeWidth={2}
                                         strokeLinecap="round"
                                     />
@@ -103,21 +103,21 @@ const Header = () => {
                                         width={22}
                                         height={3}
                                         rx="1.5"
-                                        fill="#00833E"
+                                        fill="#FFF"
                                     />
                                     <rect
                                         y={6}
                                         width={22}
                                         height={3}
                                         rx="1.5"
-                                        fill="#00833E"
+                                        fill="#FFF"
                                     />
                                     <rect
                                         y={12}
                                         width={22}
                                         height={3}
                                         rx="1.5"
-                                        fill="#00833E"
+                                        fill="#FFF"
                                     />
                                 </svg>
                             )}
@@ -139,7 +139,7 @@ const Header = () => {
                             <span>
                                 <i className="fa fa-phone" />
                             </span>
-                            <span className="font-bold">1800 6388</span>
+                            <span className="ml-2 font-bold">0775 75 7777</span>
                         </button>
                     </div>
                     {/* Mobile nav */}
