@@ -123,7 +123,11 @@ const OutStandingService = () => {
           <div className="grid lg:grid-cols-10 grid-cols-1">
             <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
               <div>
-                <img src={homeimage1} alt="home-image-1" />
+                <img
+                  src={homeimage1}
+                  alt="home-image-1"
+                  className="rounded-lg"
+                />
               </div>
             </div>
             <div className=" lg:col-span-4 col-span-1 ">
@@ -184,7 +188,11 @@ const OutStandingService = () => {
             </div>
             <div className=" lg:col-span-6 col-span-1 hidden md:block mt-2 ">
               <div className="lg:ml-5">
-                <img src={homeimage1} alt="home-image-1" />
+                <img
+                  src={homeimage1}
+                  alt="home-image-1"
+                  className="rounded-lg"
+                />
               </div>
             </div>
           </div>
@@ -248,7 +256,11 @@ const OutStandingService = () => {
           <div className="grid lg:grid-cols-10 grid-cols-1">
             <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
               <div>
-                <img src={homeimage2} alt="home-image-1" />
+                <img
+                  src={homeimage2}
+                  alt="home-image-1"
+                  className="rounded-lg"
+                />
               </div>
             </div>
             <div className=" lg:col-span-4 col-span-1 ">
@@ -309,7 +321,11 @@ const OutStandingService = () => {
             </div>
             <div className=" lg:col-span-6 col-span-1 hidden md:block mt-2 ">
               <div className="lg:ml-5">
-                <img src={homeimage2} alt="home-image-1" />
+                <img
+                  src={homeimage2}
+                  alt="home-image-1"
+                  className="rounded-lg"
+                />
               </div>
             </div>
           </div>
@@ -411,7 +427,11 @@ const OutStandingService = () => {
           <div className="grid lg:grid-cols-10 grid-cols-1">
             <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
               <div>
-                <img src={homeimage3} alt="home-image-4" />
+                <img
+                  src={homeimage3}
+                  alt="home-image-4"
+                  className="rounded-lg"
+                />
               </div>
             </div>
             <div className=" lg:col-span-4 col-span-1 ">
@@ -472,7 +492,11 @@ const OutStandingService = () => {
             </div>
             <div className=" lg:col-span-6 col-span-1 hidden md:block mt-2 ">
               <div className="lg:ml-5">
-                <img src={homeimage3} alt="home-image-4" />
+                <img
+                  src={homeimage3}
+                  alt="home-image-4"
+                  className="rounded-lg"
+                />
               </div>
             </div>
           </div>
@@ -566,7 +590,11 @@ const OutStandingService = () => {
           <div className="grid lg:grid-cols-10 grid-cols-1">
             <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
               <div>
-                <img src={homeimage4} alt="home-image-1" />
+                <img
+                  src={homeimage4}
+                  alt="home-image-1"
+                  className="rounded-lg"
+                />
               </div>
             </div>
             <div className=" lg:col-span-4 col-span-1 ">
@@ -627,7 +655,11 @@ const OutStandingService = () => {
             </div>
             <div className=" lg:col-span-6 col-span-1 hidden md:block mt-2 ">
               <div className="lg:ml-5">
-                <img src={homeimage4} alt="home-image-1" />
+                <img
+                  src={homeimage4}
+                  alt="home-image-1"
+                  className="rounded-lg"
+                />
               </div>
             </div>
           </div>
@@ -690,7 +722,11 @@ const OutStandingService = () => {
           <div className="grid lg:grid-cols-10 grid-cols-1">
             <div className="block md:hidden lg:col-span-6 col-span-1 mt-2">
               <div>
-                <img src={homeimage6} alt="home-image-1" />
+                <img
+                  src={homeimage6}
+                  alt="home-image-1"
+                  className="rounded-lg"
+                />
               </div>
             </div>
             <div className=" lg:col-span-4 col-span-1">
@@ -751,7 +787,11 @@ const OutStandingService = () => {
             </div>
             <div className=" lg:col-span-6 col-span-1 hidden md:block mt-2 ">
               <div className="lg:ml-5">
-                <img src={homeimage6} alt="home-image-1" />
+                <img
+                  src={homeimage6}
+                  alt="home-image-1"
+                  className="rounded-lg"
+                />
               </div>
             </div>
           </div>
@@ -761,17 +801,21 @@ const OutStandingService = () => {
   ];
 
   return (
-    <div className="text-center pt-5 md:pt-10 bg-gray-100">
-      <div>
-        <h2 className=" text-red-600 md:text-3xl font-bold text-2xl mb-0 md:mb-3 md:leading-6">
-          Dịch vụ nổi bật
-        </h2>
-        <p className=" text-gray-500 font-medium leading-4 md:text-base text-sm py-3">
-          Khám phá các sản phẩm vay và bảo hiểm sức khỏe đang được nhiều khách
-          hàng sử dụng tại F88
-        </p>
-        <div className="card-container">
-          <Tabs centered type="card" items={item} />
+    <div className="bg-gray-100">
+      <div className="container mx-auto ">
+        <div className="text-center pt-5 md:pt-10 ">
+          <div className="lg:px-16 px-0">
+            <h2 className=" text-red-600 md:text-3xl font-bold text-2xl mb-0 md:mb-3 md:leading-6">
+              Dịch vụ nổi bật
+            </h2>
+            <p className=" text-gray-500 font-medium leading-4 md:text-base text-sm py-3">
+              Khám phá các sản phẩm vay và bảo hiểm sức khỏe đang được nhiều
+              khách hàng sử dụng tại F88
+            </p>
+            <div className="card-container">
+              <Tabs centered type="card" items={item} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
