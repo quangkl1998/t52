@@ -17,7 +17,7 @@ const ReView = () => {
         <h2 className="text-center text-red-600 md:text-3xl font-bold text-2xl mb-7 md:leading-6  ">
           T52 Thấu hiểu nỗi lo tài chính của bạn
         </h2>
-        <div className="px-20  rounded-lg">
+        <div className="md:px-20 px-5 rounded-lg">
           <>
             <Swiper
               centeredSlides={true}
@@ -83,7 +83,7 @@ const ReView = () => {
                 </span>
               </SwiperSlide>
               <SwiperSlide className="flex-col  relative ">
-                <h1>Bà Mai Hương</h1>
+                <h1 className="text-xl font-bold">Bà Mai Hương</h1>
                 <div className="md:flex-shrink-0 absolute top-0 left-0 md:left-24">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +99,7 @@ const ReView = () => {
                     />
                   </svg>
                 </div>
-                <p className="text-center pb-6 ">
+                <p className="text-center pb-6 md:px-10 text-gray-500">
                   Cần tầm 5, 10 triệu để buôn bán mà chẳng biết lấy đâu ra tiền!
                   Ngân hàng thì ai cho vay! Có mỗi cái xe wave làm chân để đi
                   chợ búa mua hàng. Đến tiệm cầm đồ thì sợ giữ lại xe coi như
@@ -123,10 +123,12 @@ const ReView = () => {
                   </svg>
                 </div>
                 <Avatar size={180} src={ba_mai_huong} />
-                <span className="pb-8">Kinh doanh tạp hoá</span>
+                <span className="pb-8 italic text-gray-500 pt-2">
+                  Kinh doanh tạp hoá
+                </span>
               </SwiperSlide>
               <SwiperSlide className="flex-col  relative ">
-                <h1>Trần Trọng Phú</h1>
+                <h1 className="text-xl font-bold">Trần Trọng Phú</h1>
                 <div className="md:flex-shrink-0 absolute top-0 left-0 md:left-24">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +144,7 @@ const ReView = () => {
                     />
                   </svg>
                 </div>
-                <p className="text-center pb-6 ">
+                <p className="text-center pb-6 md:px-10 text-gray-500">
                   Cái khó bó cái khôn! Suýt tí lại phải đi vay tín dụng đen với
                   lãi suất cao rồi! May có thằng bạn giới thiệu đến Hệ thống T52
                   được tư vấn và giải quyết ngay tức thì, xem như nhẹ cả người,
@@ -166,11 +168,13 @@ const ReView = () => {
                 </div>
                 <Avatar size={180} src={tran_trong_phu} />
 
-                <span className="pb-8">Công nhân</span>
+                <span className="pb-8 italic text-gray-500 pt-2">
+                  Công nhân
+                </span>
               </SwiperSlide>
 
               <SwiperSlide className="flex-col  relative">
-                <h1>Chị Trang</h1>
+                <h1 className="text-xl font-bold">Chị Trang</h1>
                 <div className="md:flex-shrink-0 absolute top-0 left-0 md:left-24">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +190,7 @@ const ReView = () => {
                     />
                   </svg>
                 </div>
-                <p className="text-center pb-6 ">
+                <p className="text-center pb-6 md:px-10 text-gray-500">
                   Tôi đang là tài xế công nghệ và đang thuê nhà ở quận Gò Vấp.
                   Tháng 6 trời ngoài Bắc quá nắng nóng nên tôi muốn gửi tiền về
                   cho gia đình lắp máy lạnh. Bạn cùng phòng có giới thiệu tôi
@@ -211,10 +215,12 @@ const ReView = () => {
                   </svg>
                 </div>
                 <Avatar size={180} src={chi_trang} />
-                <span className="pb-8">lái xe công nghệ</span>
+                <span className="pb-8 italic text-gray-500 pt-2">
+                  lái xe công nghệ
+                </span>
               </SwiperSlide>
               <SwiperSlide className="flex-col  relative">
-                <h1>Vợ chồng anh Hùng</h1>
+                <h1 className="text-xl font-bold">Vợ chồng anh Hùng</h1>
                 <div className="md:flex-shrink-0 absolute top-0 left-0 md:left-24">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -230,7 +236,7 @@ const ReView = () => {
                     />
                   </svg>
                 </div>
-                <p className="text-center pb-6 ">
+                <p className="text-center pb-6 md:px-10 text-gray-500">
                   Hai vợ chồng mới cưới. Tài sản duy nhất là chiếc xe AB để đi
                   làm và chở vợ đi bán. Dịch covid ập đến, cả hai đều thất
                   nghiệp. Lúc đó Hệ thống T52 đã mua lại xe của tôi với giá cao
@@ -254,7 +260,9 @@ const ReView = () => {
                   </svg>
                 </div>
                 <Avatar size={180} src={anh_hung} />
-                <span className="pb-8">Công nhân</span>
+                <span className="pb-8 italic text-gray-500 pt-2">
+                  Công nhân
+                </span>
               </SwiperSlide>
             </Swiper>
           </>
