@@ -24,7 +24,7 @@ const Activities = () => {
                         return (
                             <div
                                 key={tt.id}
-                                className="rounded-lg bg-white shadow overflow-hidden"
+                                className="rounded-lg bg-white shadow overflow-hidden hover:shadow-xl duration-150"
                             >
                                 <img
                                     className="w-full"
