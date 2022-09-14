@@ -23,7 +23,7 @@ const Outstanding = () => {
                                         dispatch(setNewsDetail(news))
                                     }
                                     to={`/tin-tuc-chi-tiet/${news.id}`}
-                                    className="w-full bg-white rounded-xl overflow-hidden hover:text-amber-500 hover:shadow-md duration-150 cursor-pointer"
+                                    className="w-full bg-white rounded-xl overflow-hidden text-gray-700 hover:text-amber-500 hover:shadow-md duration-150 cursor-pointer"
                                 >
                                     <img
                                         className="w-full"
@@ -52,7 +52,7 @@ const Outstanding = () => {
                                             dispatch(setNewsDetail(news))
                                         }
                                         to={`/tin-tuc-chi-tiet/${news.id}`}
-                                        className="flex mb-5 rounded-xl bg-white overflow-hidden hover:text-amber-500 hover:shadow-md duration-150 cursor-pointer"
+                                        className="flex mb-5 rounded-xl bg-white overflow-hidden text-gray-700 hover:text-amber-500 hover:shadow-md duration-150 cursor-pointer"
                                     >
                                         <img
                                             className="w-1/2 md:w-5/12"
@@ -60,7 +60,7 @@ const Outstanding = () => {
                                             alt=""
                                         />
                                         <div>
-                                            <div className="p-5 font-bold text-base md:text-xl">
+                                            <div className="p-5 font-bold text-base md:text-xl ">
                                                 {news.name}
                                             </div>
                                             <div className="px-5 pb-5 text-gray-500">
