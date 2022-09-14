@@ -7,20 +7,20 @@ import Partner from "Components/Partner/Partner";
 import ReView from "Components/ReView/ReView";
 
 const Home = () => {
-    return (
-        <div>
-            <div className="lg:h-30 h-20"></div>
-            <Banner />
-            <OutStandingService />
-            <FinancialSolution />
-            <Outstanding />
+  return (
+    <div>
+      <div className="lg:h-30 h-20"></div>
+      <Banner />
+      <OutStandingService />
+      <FinancialSolution />
 
-            <ReView />
+      <ReView />
+      <Outstanding />
 
-            <Partner />
-            <Action />
-        </div>
-    );
+      <Partner />
+      <Action />
+    </div>
+  );
 };
 
 export default Home;
