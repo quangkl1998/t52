@@ -327,7 +327,7 @@ const Footer = () => {
             </div>
             <div className="bg-gray-100 text-center p-3 text-gray-800 font-semibold">
                 <div className="container mx-auto">
-                    <span className="pr-3">Công ty cổ phần kinh doanh F88</span>
+                    <span className="pr-3">Công ty cổ phần kinh doanh T52</span>
                     <span className="pr-3">
                         Copyright 2012 - 2022 | CTY TNHH THƯƠNG MẠI DỊCH VỤ TÀI
                         CHÍNH THẮNG LỢI

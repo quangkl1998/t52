@@ -1,5 +1,6 @@
 export const data = [
     {
+        id: "100",
         name: "Hệ thống Tiền Nhanh T52 đạt Thương hiệu Uy tín Quốc gia",
         avatar: "https://t52tiennhanh.com/wp-content/uploads/2022/08/6a-chien-luoc-phat-trien-WEB-320x202.jpg",
         createDay: "06-08-2022",
@@ -8,17 +9,12 @@ export const data = [
         contents: [
             {
                 content:
-                    "Sáng nay thứ bảy ngày 06 tháng 8 năm 2022, tại Cung Tri Thức TP. Hà Nội, số 1 Tôn Thất Thuyết, Cầu Giấy, Hà Nội đã long trọng diễn ra Lễ Khai mạc Diễn đàn, Triển lãm và Lễ Công bố Thương hiệu – Nhãn hiệu uy tín Hội nhập kinh tế quốc tế do Hội Nghiên cứu khoa học về Đông Nam Á – Việt Nam phối hợp với Hiệp hội Chống hàng giả và Bảo vệ thương hiệu Việt Nam tổ chức thực hiện dưới sự bảo trợ truyền thông của VTV6 HD. <br/> Trong khuôn khổ Chương trình, các hoạt động lần lượt diễn ra sẽ là Diễn đàn bảo vệ thương hiệu, chuyển đổi số; Triển lãm thành tựu đạt được của những doanh nghiệp trong những năm gần đây… Và đặc biệt là phần công bố và trao quyết định, giấy chứng nhận Thương hiệu – Nhãn hiệu uy tín Hội nhập kinh tế quốc tế cho các Doanh nghiệp được bình chọn.",
-                img: "https://t52tiennhanh.com/wp-content/uploads/2022/08/giai-thuong-thuong-hieu-1-841x1024.jpg",
-            },
-            {
-                content:
-                    "Hệ thống Tiền Nhanh T52 cùng với Vườn lan Var Thắng Béo của Doanh nhân Nguyễn Văn Thắng (Tịnh Thắng) đã rất vinh dự là một trong những doanh nghiệp tại Huế được bình chọn trao tặng danh hiệu quý giá này. <br/> Hệ thống Tiền Nhanh T52 tuy chỉ mới đi vào hoạt động nhưng đã sớm được người dân tại Huế đón nhận bởi đáp ứng được nhu cầu cấp thiết của họ đó chính là Giải pháp tài chính cá nhân an toàn. Thật vậy, trong bối cảnh vàng thau lẫn lộn của thị trường tín dụng tiêu dùng cá nhân khá phức tạp, thì sự ra đời của Hệ thống Tiền Nhanh T52 chuyên nghiệp, chỉnh chu, an toàn… đã thực sự tạo nên uy tín cho Thương hiệu đúng như tiêu chí của Ban tổ chức cuộc bình chọn này. <br/> Đây sẽ là bước ngoặt và là tạo đà để cho Hệ thống Tiền Nhanh T52 vững bước trong sứ mệnh đồng hành cùng người lao động trong thời gian tới.",
-                img: "https://t52tiennhanh.com/wp-content/uploads/2022/08/giai-thuong-thuong-hieu-942x1024.jpg",
+                    "Sáng nay thứ bảy ngày 06 tháng 8 năm 2022, tại Cung Tri Thức TP. Hà Nội, số 1 Tôn Thất Thuyết, Cầu Giấy, Hà Nội đã long trọng diễn ra Lễ Khai mạc Diễn đàn, Triển lãm và Lễ Công bố Thương hiệu – Nhãn hiệu uy tín Hội nhập kinh tế quốc tế do Hội Nghiên cứu khoa học về Đông Nam Á – Việt Nam phối hợp với Hiệp hội Chống hàng giả và Bảo vệ thương hiệu Việt Nam tổ chức thực hiện dưới sự bảo trợ truyền thông của VTV6 HD. <br /> <br /> <img src='https://t52tiennhanh.com/wp-content/uploads/2022/08/giai-thuong-thuong-hieu-1-841x1024.jpg' /> <br /> Trong khuôn khổ Chương trình, các hoạt động lần lượt diễn ra sẽ là Diễn đàn bảo vệ thương hiệu, chuyển đổi số; Triển lãm thành tựu đạt được của những doanh nghiệp trong những năm gần đây… Và đặc biệt là phần công bố và trao quyết định, giấy chứng nhận Thương hiệu – Nhãn hiệu uy tín Hội nhập kinh tế quốc tế cho các Doanh nghiệp được bình chọn. <br/> <br/> <strong>Hệ thống Tiền Nhanh T52 </strong> cùng với Vườn lan Var Thắng Béo của Doanh nhân <strong>Nguyễn Văn Thắng (Tịnh Thắng)</strong> đã rất vinh dự là một trong những doanh nghiệp tại Huế được bình chọn trao tặng danh hiệu quý giá này. <br/><br/> <img src='https://t52tiennhanh.com/wp-content/uploads/2022/08/giai-thuong-thuong-hieu-942x1024.jpg' /> <br/> Hệ thống Tiền Nhanh T52 tuy chỉ mới đi vào hoạt động nhưng đã sớm được người dân tại Huế đón nhận bởi đáp ứng được nhu cầu cấp thiết của họ đó chính là Giải pháp tài chính cá nhân an toàn. Thật vậy, trong bối cảnh vàng thau lẫn lộn của thị trường tín dụng tiêu dùng cá nhân khá phức tạp, thì sự ra đời của Hệ thống Tiền Nhanh T52 chuyên nghiệp, chỉnh chu, an toàn… đã thực sự tạo nên uy tín cho Thương hiệu đúng như tiêu chí của Ban tổ chức cuộc bình chọn này. <br/><br/> Đây sẽ là bước ngoặt và là tạo đà để cho <strong>Hệ thống Tiền Nhanh T52 </strong> vững bước trong sứ mệnh đồng hành cùng người lao động trong thời gian tới. <br/><br/> ———–",
             },
         ],
     },
     {
+        id: "101",
         name: "Hệ thống T52 Tiền nhanh kinh doanh sản phẩm gì?",
         avatar: "https://t52tiennhanh.com/wp-content/uploads/2022/06/giai-ngan-cavet-xe-gan-may-320x202.jpg",
         createDay: "22-06-2022",
@@ -34,6 +30,7 @@ export const data = [
         ],
     },
     {
+        id: "102",
         name: "Hệ thống T52 luôn chú trọng công tác huấn luyện, đào tạo nhân viên",
         avatar: "https://t52tiennhanh.com/wp-content/uploads/2022/06/IMG_4883-320x202.jpg",
         createDay: "19-06-2022",
@@ -49,6 +46,7 @@ export const data = [
         ],
     },
     {
+        id: "103",
         name: "Tưng bừng khai trương Hệ thống TIỀN NHANH T52",
         avatar: "https://t52tiennhanh.com/wp-content/uploads/2022/05/NAMA0881-320x202.jpg",
         createDay: "18-05-2022",
