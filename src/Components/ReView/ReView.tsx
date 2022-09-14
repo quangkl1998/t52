@@ -24,19 +24,19 @@ const ReView = () => {
               spaceBetween={30}
               mousewheel={true}
               height={53}
-              autoplay={{
+              /*    autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,
                 waitForTransition: true,
-              }}
+              }} */
               pagination={{
                 clickable: true,
               }}
-              modules={[Autoplay, Pagination]}
+              modules={[/* Autoplay, */ Pagination]}
               className="mySwipe"
             >
               <SwiperSlide className="flex-col  relative ">
-                <h1>Chị Hoài Thương</h1>
+                <h1 className="text-xl font-bold">Chị Hoài Thương</h1>
 
                 <div className="md:flex-shrink-0 absolute top-0 left-0 md:left-24">
                   <svg
@@ -53,7 +53,7 @@ const ReView = () => {
                     />
                   </svg>
                 </div>
-                <p className="text-center pb-6 ">
+                <p className="text-center pb-6 md:px-10 text-gray-500">
                   Tôi đã vay 10 triệu bằng đăng ký xe máy để đóng học phí đầu
                   năm cho con sau khi được chị đồng nghiệp giới thiệu về T52.
                   Tôi cảm thấy các bước vay tại hệ thống T52 rất dễ dàng và
@@ -78,7 +78,9 @@ const ReView = () => {
                 </div>
                 <Avatar size={180} src={chihoaithuong} />
 
-                <span className="pb-8">Tiểu thương</span>
+                <span className="pb-8 italic text-gray-500 pt-2">
+                  Tiểu thương
+                </span>
               </SwiperSlide>
               <SwiperSlide className="flex-col  relative ">
                 <h1>Bà Mai Hương</h1>

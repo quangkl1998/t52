@@ -2,17 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 ul {
@@ -21,4 +19,7 @@ ul {
 
 p {
   margin-bottom: 0 !important;
+}
+a {
+  color: #ffffff;
 }

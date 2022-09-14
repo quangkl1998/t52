@@ -42,7 +42,7 @@ const Partner = () => {
                 <img
                   src={vietcombank}
                   alt="vietcombank"
-                  className="object-cover lg:px-20"
+                  className="object-cover  lg:px-20"
                 />
               </SwiperSlide>
 
@@ -66,7 +66,7 @@ const Partner = () => {
                 <img
                   src={MB}
                   alt="sacombank"
-                  className="object-cover md:lg-20"
+                  className="object-cover lg:px-20"
                 />
               </SwiperSlide>
             </Swiper>
