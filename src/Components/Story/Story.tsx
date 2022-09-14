@@ -24,7 +24,7 @@ const Story = () => {
                         return (
                             <div
                                 key={index}
-                                className="rounded-lg bg-white shadow overflow-hidden hover:shadow-xl duration-150"
+                                className="rounded-lg bg-white shadow overflow-hidden hover:shadow-xl hover:text-amber-500 cursor-pointer duration-150"
                             >
                                 <video
                                     controls
