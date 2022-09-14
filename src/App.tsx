@@ -17,6 +17,7 @@ import InvestorRelations from "Pages/InvestorRelations/InvestorRelations";
 import News from "Pages/News/News";
 import StoresNearYou from "Pages/StoresNearYou/StoresNearYou";
 import FinancialKnowledge from "Pages/FinancialKnowledge/FinancialKnowledge";
+import NewsDetail from "Pages/NewsDetail/NewsDetail";
 
 function App() {
     return (
@@ -30,6 +31,10 @@ function App() {
                         element={<InvestorRelations />}
                     />
                     <Route path="/tin-tuc" element={<News />} />
+                    <Route
+                        path="/tin-tuc-chi-tiet/:id"
+                        element={<NewsDetail />}
+                    />
                     <Route
                         path="/cua-hang-gan-ban"
                         element={<StoresNearYou />}
