@@ -9,7 +9,7 @@ const Outstanding = () => {
 
     return (
         <div className="bg-gray-100 py-5">
-            <div className="container mx-auto px-5 lg:px-10">
+            <div className="container mx-auto px-5 lg:px-16">
                 <h1 className="text-center p-5 font-bold text-2xl md:text-3xl text-red-600">
                     Tin tức nổi bật
                 </h1>
