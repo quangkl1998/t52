@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import Logo from "Assets/T52Logo.png";
+import Logo from "Assets/logt52.png";
 import NavLinks from "./Navlinks";
 import { NavLink } from "react-router-dom";
 
@@ -65,14 +65,14 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <nav className="bg-red-600 border-b shadow-md lg:px-5">
+            <nav className="bg-red-600 border-b shadow-md lg:px-5 py-3">
                 <div className="flex items-center font-semibold justify-around ">
                     <div className="lg:w-auto w-full flex justify-between items-center px-5 lg:px-0 bg-red-600 z-50">
                         <NavLink to="">
                             <img
                                 src={Logo}
                                 alt="logo"
-                                className="lg:cursor-pointer h-20"
+                                className="lg:cursor-pointer h-10"
                             />
                         </NavLink>
                         <button className="border border-yellow-400 px-5 py-3 rounded-lg shadow-lg text-yellow-400 hover:bg-white duration-150 text-xl block lg:hidden z-70">
