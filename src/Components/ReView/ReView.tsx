@@ -24,15 +24,15 @@ const ReView = () => {
               spaceBetween={30}
               mousewheel={true}
               height={53}
-              /*    autoplay={{
+              autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,
                 waitForTransition: true,
-              }} */
+              }}
               pagination={{
                 clickable: true,
               }}
-              modules={[/* Autoplay, */ Pagination]}
+              modules={[Autoplay, Pagination]}
               className="mySwipe"
             >
               <SwiperSlide className="flex-col  relative ">
