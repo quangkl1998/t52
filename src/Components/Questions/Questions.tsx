@@ -8,7 +8,7 @@ const Questions = () => {
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden p-5 border">
                     <div className="border-b pb-3 mb-3">
                         <h4 className="uppercase font-bold text-xl text-amber-700 my-3">
-                            THÔNG TIN
+                            Câu hỏi thường gặp
                         </h4>
                     </div>
                     <div className="lg:px-5">

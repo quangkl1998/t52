@@ -165,7 +165,7 @@ const Header = () => {
         `}
                     >
                         <div className="mx-5 border-b">
-                            <NavLinks />
+                            <NavLinks open={handleOpen} />
                             <div className="mx-3 lg:pr-0 mb-4 lg:pb-0 border-b-4 border-b-transparent hover:border-b-yellow-400 duration-15">
                                 <NavLink
                                     to="/"
@@ -179,30 +179,35 @@ const Header = () => {
                             <div className="flex flex-col justify-center px-3 py-4">
                                 <NavLink
                                     to="/about"
+                                    onClick={() => setOpen(!open)}
                                     className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
                                 >
                                     Về T52
                                 </NavLink>
                                 <NavLink
                                     to="/quan-he-nha-dau-tu"
+                                    onClick={() => setOpen(!open)}
                                     className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
                                 >
                                     Quan hệ Nhà đầu tư
                                 </NavLink>
                                 <NavLink
                                     to="/tin-tuc"
+                                    onClick={() => setOpen(!open)}
                                     className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
                                 >
                                     Tin tức
                                 </NavLink>
                                 <NavLink
                                     to="/cua-hang-gan-ban"
+                                    onClick={() => setOpen(!open)}
                                     className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
                                 >
                                     Hệ thống cửa hàng T52
                                 </NavLink>
                                 <NavLink
                                     to="/kien-thuc-tai-chinh"
+                                    onClick={() => setOpen(!open)}
                                     className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
                                 >
                                     Kiến thức tài chính
