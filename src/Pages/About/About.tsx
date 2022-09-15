@@ -11,9 +11,8 @@ const About = () => {
       <div className="lg:h-36 h-20"></div>
       <AboutT52 />
       <CoreValues />
-      <Advantage />
+
       <Future />
-      <FinancialService />
     </div>
   );
 };

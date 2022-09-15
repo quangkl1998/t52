@@ -163,7 +163,7 @@ const Action = () => {
                     </defs>
                   </svg>
 
-                  <div className="text-white text-2xl pl-6">
+                  <div className="text-white text-xl md:text-2xl pl-6">
                     Trở thành đối tác của T52
                   </div>
                 </div>
@@ -217,7 +217,7 @@ const Action = () => {
                     />
                   </svg>
 
-                  <div className="text-white text-2xl pl-6">
+                  <div className="text-white text-xl md:text-2xl pl-6">
                     Tìm kiếm cửa hàng gần bạn
                   </div>
                 </div>
