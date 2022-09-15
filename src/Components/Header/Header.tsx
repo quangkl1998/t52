@@ -53,7 +53,7 @@ const Header = () => {
                                 to="/cua-hang-gan-ban"
                                 className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
-                                Cửa hàng gần bạn
+                                Hệ thống cửa hàng T52
                             </NavLink>
                             <NavLink
                                 to="/kien-thuc-tai-chinh"
@@ -160,7 +160,7 @@ const Header = () => {
                     {/* Mobile nav */}
                     <ul
                         className={`
-        lg:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 z-10 pl-4
+        lg:hidden bg-white fixed w-full top-20 overflow-y-auto bottom-0 pt-10 pb-24 z-10 pl-4
         duration-500 ${open ? "left-0" : "left-[-100%]"}
         `}
                     >
@@ -199,7 +199,7 @@ const Header = () => {
                                     to="/cua-hang-gan-ban"
                                     className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
                                 >
-                                    Cửa hàng gần bạn
+                                    Hệ thống cửa hàng T52
                                 </NavLink>
                                 <NavLink
                                     to="/kien-thuc-tai-chinh"

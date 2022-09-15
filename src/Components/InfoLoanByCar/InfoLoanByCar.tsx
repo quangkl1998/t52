@@ -6,7 +6,7 @@ const InfoLoanByCar = () => {
             <h1 className="text-center p-5 font-bold text-2xl">
                 Vay tiền bằng xe ô tô
             </h1>
-            <div className="container mx-auto px-16">
+            <div className="container mx-auto px-5 lg:px-16">
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden p-5 border">
                     <div className="border-b pb-3">
                         <h4 className="uppercase font-bold text-xl text-amber-700 my-3">

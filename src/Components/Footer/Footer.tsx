@@ -315,7 +315,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="bg-amber-800 text-center p-3 text-white font-semibold">
+            <div className="bg-red-600 text-center p-3 text-white font-semibold">
                 <div className="container mx-auto">
                     <span className="pr-2">
                         Đăng ký nhận ưu đãi mới nhất từ T52

@@ -3,7 +3,7 @@ import { data } from "Utill/VideoData";
 
 const Story = () => {
     return (
-        <div className="bg-gray-100 pb-5">
+        <div className="bg-gray-100 pb-10">
             <div className="container mx-auto px-5 lg:px-16">
                 <div className="flex justify-between items-end border-b-2 border-b-red-500 mb-5">
                     <NavLink

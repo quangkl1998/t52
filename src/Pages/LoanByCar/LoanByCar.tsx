@@ -6,7 +6,7 @@ import WhyChoose from "Components/WhyChoose/WhyChoose";
 const LoanByCar = () => {
     return (
         <div>
-            <div className="lg:h-36 h-20"></div>
+            <div className="lg:h-28 h-20"></div>
             <div className="bg-gray-100 mt-3">
                 <h1 className="text-center p-5 font-bold text-2xl">
                     Thông tin đăng ký vay tiền bằng ô tô
