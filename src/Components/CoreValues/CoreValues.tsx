@@ -1,5 +1,5 @@
 import React from "react";
-import { ShareAltOutlined } from "@ant-design/icons";
+
 const CoreValues = () => {
   return (
     <div>
@@ -46,7 +46,7 @@ const CoreValues = () => {
               </div>
 
               <h1 className="my-5 font-bold">THẤU HIỂU</h1>
-              <p className="my-5 text-gray-500">
+              <p className="my-5 text-gray-500 leading-relaxed tracking-wide">
                 Hiểu rõ nhu cầu và nỗi trăn trỡ của khách hàng
               </p>
             </div>
@@ -108,7 +108,7 @@ const CoreValues = () => {
               </div>
 
               <h1 className="my-5 font-bold">CHIA SẺ</h1>
-              <p className="my-5 text-gray-500">
+              <p className="my-5 text-gray-500 leading-relaxed tracking-wide">
                 Cung cấp giải pháp phù hợp với từng khách hàng
               </p>
             </div>
@@ -161,7 +161,7 @@ const CoreValues = () => {
               </div>
 
               <h1 className="my-5 font-bold">PHỤC VỤ</h1>
-              <p className="my-5 text-gray-500">
+              <p className="my-5 text-gray-500 leading-relaxed tracking-wide">
                 Khách hàng được phục vụ nhanh chóng tận tâm với dịch vụ tốt nhất
               </p>
             </div>
