@@ -9,7 +9,7 @@ const AboutT52 = () => {
           <h2 className=" text-red-600 md:text-3xl font-bold text-2xl mb-0 md:mb-3 md:leading-6 text-center">
             Về T52
           </h2>
-          <h2 className=" text-red-600 md:text-3xl font-bold text-2xl mb-0 md:mb-3 md:leading-6">
+          <h2 className=" text-red-600 md:text-3xl font-bold text-2xl mb-3 md:leading-6">
             Giới thiệu về T52
           </h2>
           <div className="bg-white rounded-lg  text-left p-5">
