@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 
 const Action = () => {
   return (
-    <div className="bg-red-600">
+    <div className="bg-red-600  border-yellow-500  border-b-4 border-solid">
       <div className="container mx-auto">
-        <div className="  shadow-md lg:px-5 border-b-4 border-solid border-yellow-500">
+        <div className="   lg:px-5">
           <div className="grid md:grid-cols-2 grid-cols-1 px-5 md:px-10 lg:px-16 py-5  text-white">
             <NavLink to={"/"}>
               <div className="flex  items-center justify-between md:px-5 mb-2 md:mb-0">
