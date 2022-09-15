@@ -16,10 +16,10 @@ const AboutT52 = () => {
             <img
               src={T52lagi}
               alt="T52lagi"
-              className="lg:hidden block mt-2 rounded-lg"
+              className="md:hidden block mt-2 rounded-lg"
             />
 
-            <div className="px-5 mt-2 text-base font-medium leading-snug ">
+            <div className="px-5 mt-2 text-sm md:text-base font-medium leading-snug ">
               <p className="mt-2">
                 Kính thưa quý vị kính mến, lời đầu tiên cho tôi xin gửi đến quý
                 vị lời chúc sức khỏe và lời chào trân trọng nhất!
@@ -53,7 +53,7 @@ const AboutT52 = () => {
             <img
               src={T52lagiweb}
               alt="T52lagi"
-              className="lg:block hidden mt-2 rounded-lg"
+              className="md:block hidden mt-2 rounded-lg"
             />
           </div>
           <div>a</div>
