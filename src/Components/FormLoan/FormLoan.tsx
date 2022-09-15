@@ -2,7 +2,7 @@ import React from "react";
 
 const FormLoan = () => {
     return (
-        <div className="container mx-auto px-16">
+        <div className="container mx-auto px-5 lg:px-16">
             <div className="bg-white shadow-lg rounded-lg overflow-hidden p-5 border">
                 <div className="border-b pb-3">
                     <h3 className="text-lg text-gray-600">

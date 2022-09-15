@@ -6,15 +6,16 @@ import Future from "Components/Future/Future";
 import React from "react";
 
 const About = () => {
-  return (
-    <div className="bg-gray-100">
-      <div className="lg:h-36 h-20"></div>
-      <AboutT52 />
-      <CoreValues />
-
-      <Future />
-    </div>
-  );
+    return (
+        <div className="bg-gray-100">
+            <div className="lg:h-36 h-20"></div>
+            <AboutT52 />
+            <CoreValues />
+            <Advantage />
+            <Future />
+            <FinancialService />
+        </div>
+    );
 };
 
 export default About;
