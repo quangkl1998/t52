@@ -37,12 +37,12 @@ const Header = () => {
                             >
                                 Về T52
                             </NavLink>
-                            <NavLink
+                            {/* <NavLink
                                 to="/quan-he-nha-dau-tu"
                                 className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Quan hệ Nhà đầu tư
-                            </NavLink>
+                            </NavLink> */}
                             <NavLink
                                 to="/tin-tuc"
                                 className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
@@ -184,13 +184,13 @@ const Header = () => {
                                 >
                                     Về T52
                                 </NavLink>
-                                <NavLink
+                                {/* <NavLink
                                     to="/quan-he-nha-dau-tu"
                                     onClick={() => setOpen(!open)}
                                     className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
                                 >
                                     Quan hệ Nhà đầu tư
-                                </NavLink>
+                                </NavLink> */}
                                 <NavLink
                                     to="/tin-tuc"
                                     onClick={() => setOpen(!open)}
