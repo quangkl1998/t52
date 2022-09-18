@@ -18,7 +18,7 @@ const Footer = () => {
       <div
         className={
           backTop
-            ? "fixed bottom-25 right-6 z-50 cursor-pointer hover:shadow-md overflow-hidden rounded-full"
+            ? "fixed bottom-24 right-6 z-50 cursor-pointer hover:shadow-md overflow-hidden rounded-full"
             : "hidden"
         }
         onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}
