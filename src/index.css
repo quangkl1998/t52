@@ -23,3 +23,55 @@ p {
 a {
   color: #ffffff;
 }
+.st0 {
+  fill: none !important;
+  stroke: #000000 !important;
+  stroke-width: 2 !important;
+  stroke-miterlimit: 10 !important;
+}
+.st1 {
+  fill: rgb(220 38 38) !important;
+  stroke: #000000 !important;
+  stroke-width: 2 !important;
+  stroke-miterlimit: 10 !important;
+}
+.st2 {
+  fill: rgb(220 38 38) !important;
+  stroke: #000000 !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  stroke-miterlimit: 10 !important;
+}
+.st3 {
+  fill: #f2f2f2 !important;
+  stroke: #000000 !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  stroke-miterlimit: 10 !important;
+}
+.st4 {
+  fill: rgb(220 38 38) !important;
+  stroke: #000000 !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  stroke-miterlimit: 10 !important;
+}
+.st5 {
+  fill: #ffffff !important;
+  stroke: #000000 !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  stroke-miterlimit: 10 !important;
+}
+.st6 {
+  fill: #ffc200 !important;
+  stroke: #000000 !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  stroke-miterlimit: 10 !important;
+}

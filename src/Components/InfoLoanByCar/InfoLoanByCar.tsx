@@ -75,7 +75,7 @@ const InfoLoanByCar = () => {
                         </g>
                         <g>
                           <path
-                            className="st1"
+                            className="st0"
                             d="M63.3,5L59,9.1c0,0-22.2-0.5-39.8,0.1C1.7,9.7,1,16.2,1,17.5S1,25,1,25h5"
                           />
                           <path
@@ -94,7 +94,7 @@ const InfoLoanByCar = () => {
                             y2={25}
                           />
                           <path
-                            className="st1"
+                            className="st0"
                             d="M69.5,25c0,0,3.4-0.3,6.4-2c1.4-0.8,2-1.1,2-4.4s0-9.5,0-9.5l-9.3-1.4c0,0-1.9-1.3-5.2-2.7     c-4.4-1.9-11.3-4.1-20-3.9c-15.3,0.3-24,8.1-24,8.1"
                           />
                         </g>
@@ -146,25 +146,15 @@ const InfoLoanByCar = () => {
                       type="text/css"
                       dangerouslySetInnerHTML={{
                         __html:
-                          "\n\t.st2{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n\t.st3{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n",
+                          "\n\t.st0{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}\n\t.st1{fill:#00833E;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}\n\t.st2{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n\t.st3{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n",
                       }}
                     />
                     <g>
                       <path
-                        className="st1"
+                        className="st0"
                         d="M48.1,18.8v37.6c0,3.3-2.7,6-6,6H7c-3.3,0-6-2.7-6-6V7c0-3.3,2.7-6,6-6h22.4c2,0,3.9,0.7,5.4,2.1l10.7,9.8   C47.2,14.4,48.1,16.6,48.1,18.8z"
                       />
-                      <circle
-                        fill="rgb(220 38 38)"
-                        stroke="#000000"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                        cx="48.1"
-                        cy={58}
-                        r="15.4"
-                      />
+                      <circle className="st1" cx="48.1" cy={58} r="15.4" />
                       <line
                         className="st2"
                         x1="7.7"

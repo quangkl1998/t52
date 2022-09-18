@@ -32,32 +32,22 @@ const InfoLoanByOther = () => {
                     x="0px"
                     y="0px"
                     viewBox="0 0 64.5 74.4"
-                    className="h-12"
                     xmlSpace="preserve"
+                    className="h-12"
                   >
                     <style
                       type="text/css"
                       dangerouslySetInnerHTML={{
                         __html:
-                          "\n\t.st2{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n\t.st3{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n",
+                          "\n\t.st0{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}\n\t.st1{fill:#00833E;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}\n\t.st2{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n\t.st3{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n",
                       }}
                     />
                     <g>
                       <path
-                        className="st1"
+                        className="st0"
                         d="M48.1,18.8v37.6c0,3.3-2.7,6-6,6H7c-3.3,0-6-2.7-6-6V7c0-3.3,2.7-6,6-6h22.4c2,0,3.9,0.7,5.4,2.1l10.7,9.8   C47.2,14.4,48.1,16.6,48.1,18.8z"
                       />
-                      <circle
-                        fill="rgb(220 38 38)"
-                        stroke="#000000"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                        cx="48.1"
-                        cy={58}
-                        r="15.4"
-                      />
+                      <circle className="st1" cx="48.1" cy={58} r="15.4" />
                       <line
                         className="st2"
                         x1="7.7"
@@ -152,16 +142,11 @@ const InfoLoanByOther = () => {
                     />
                     <g>
                       <path
-                        fill="rgb(220 38 38)"
-                        stroke="#000000"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
+                        className="st0"
                         d="M47.5,1h14.1c0,0,4.3,8.1,11,8c0,16.1,2.9,30.5-18.1,38.8c-16.7-6.2-20.4-19.3-18-39.5C43.8,7.7,47.5,1,47.5,1   z"
                       />
                       <polyline
-                        className="st1"
+                        className="st0"
                         points="46.3,24.4 51.9,29.2 61.8,18.9  "
                       />
                       <g>
