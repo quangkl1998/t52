@@ -810,7 +810,7 @@ const OutStandingService = () => {
                         </h2>
                         <p className=" text-gray-500 font-medium leading-4 md:text-base text-sm py-3">
                             Khám phá các sản phẩm vay và bảo hiểm sức khỏe đang
-                            được nhiều khách hàng sử dụng tại F88
+                            được nhiều khách hàng sử dụng tại T52
                         </p>
                         <div className="card-container">
                             <Tabs centered type="card" items={item} />
