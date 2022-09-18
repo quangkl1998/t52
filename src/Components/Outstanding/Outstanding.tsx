@@ -2,7 +2,7 @@ import { AppDispatch } from "configStore";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { setNewsDetail } from "Slices/news";
-import { data } from "./NewData";
+import { data } from "Utill/NewsData";
 
 const Outstanding = () => {
     const dispatch = useDispatch<AppDispatch>();

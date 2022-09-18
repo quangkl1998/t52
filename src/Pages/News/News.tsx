@@ -2,6 +2,7 @@ import Action from "Components/Action/Action";
 import Activities from "Components/Activities/Activities";
 import Outstanding from "Components/Outstanding/Outstanding";
 import Story from "Components/Story/Story";
+import { useEffect } from "react";
 
 const News = () => {
     return (

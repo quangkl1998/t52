@@ -10,7 +10,7 @@ const DetailNew = () => {
     return (
         <div>
             {newsDetail ? (
-                <div>
+                <div className="mt-10">
                     <h1 className="text-3xl mb-4">
                         {newsDetail.name ? newsDetail.name : ""}
                     </h1>

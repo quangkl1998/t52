@@ -1,21 +1,23 @@
 import { AppDispatch } from "configStore";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { setNewsDetail } from "Slices/news";
 import { data } from "Utill/NewsData";
 
-const Activities = () => {
+const NewRelated = () => {
     const dispatch = useDispatch<AppDispatch>();
+    const { id } = useParams();
 
     return (
-        <div className="bg-gray-100 pb-5">
+        <div className="bg-gray-100 mt-5 py-5">
             <div className="container mx-auto px-5 lg:px-16">
                 <div className="flex justify-between items-end border-b-2 border-b-red-500 mb-5">
                     <NavLink
                         to=""
                         className="block bg-red-500 p-3 text-white hover:text-yellow-400 duration-150 font-semibold text-lg rounded-t-xl"
                     >
-                        TIN TỨC & HOẠT ĐỘNG T52
+                        Tin tức liên quan
                     </NavLink>
                     <NavLink
                         to=""
@@ -46,28 +48,32 @@ const Activities = () => {
                         );
                     })} */}
                     {data.map((news, index) => {
-                        return (
-                            <NavLink
-                                key={index}
-                                onClick={() => dispatch(setNewsDetail(news))}
-                                to={`/tin-tuc-chi-tiet/${news.id}`}
-                                className=" mb-5 rounded-xl bg-white overflow-hidden text-gray-700 hover:text-amber-500 hover:shadow-md duration-150 cursor-pointer"
-                            >
-                                <img
-                                    className="w-full"
-                                    src={news.avatar}
-                                    alt=""
-                                />
-                                <div>
-                                    <div className="p-5 font-bold text-base md:text-xl ">
-                                        {news.name}
+                        if (news.id !== id) {
+                            return (
+                                <NavLink
+                                    key={index}
+                                    onClick={() =>
+                                        dispatch(setNewsDetail(news))
+                                    }
+                                    to={`/tin-tuc-chi-tiet/${news.id}`}
+                                    className=" mb-5 rounded-xl bg-white overflow-hidden text-gray-700 hover:text-amber-500 hover:shadow-md duration-150 cursor-pointer"
+                                >
+                                    <img
+                                        className="w-full"
+                                        src={news.avatar}
+                                        alt=""
+                                    />
+                                    <div>
+                                        <div className="p-5 font-bold text-base md:text-xl ">
+                                            {news.name}
+                                        </div>
+                                        <div className="px-5 pb-5 text-gray-500">
+                                            {news.createDay}
+                                        </div>
                                     </div>
-                                    <div className="px-5 pb-5 text-gray-500">
-                                        {news.createDay}
-                                    </div>
-                                </div>
-                            </NavLink>
-                        );
+                                </NavLink>
+                            );
+                        }
                     })}
                 </div>
             </div>
@@ -75,4 +81,4 @@ const Activities = () => {
     );
 };
 
-export default Activities;
+export default NewRelated;

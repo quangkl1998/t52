@@ -11,7 +11,7 @@ const NavLinks = ({ handleOpen }: any) => {
                 <div key={link.name}>
                     <div className="px-3 text-left lg:cursor-pointer group relative">
                         <div
-                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-xl cursor-pointer text-black lg:text-white border-b-4 border-b-transparent hover:border-b-yellow-400 duration-150 lg:border-b-transparent"
+                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-black lg:text-white border-b-4 border-b-transparent hover:border-b-yellow-400 duration-150 lg:border-b-transparent"
                             onClick={() => {
                                 heading !== link.name
                                     ? setHeading(link.name)
