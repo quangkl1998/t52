@@ -9,7 +9,7 @@ const Future = () => {
                         Trong tương lai
                     </h2>
                     <div className="grid grid-cols-1 lg:grid-cols-2  mt-5">
-                        <div className="p-8 text-gray-500 leading-relaxed tracking-wide">
+                        <div className="p-8 text-gray-500 leading-loose tracking-wide">
                             <ul>
                                 <li>
                                     <span className="text-red-600 font-bold text-xl">

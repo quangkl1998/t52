@@ -11,24 +11,9 @@ const DetailNew = () => {
         <div>
             {newsDetail ? (
                 <div className="mt-10">
-                    <h1 className="text-3xl mb-4">
-                        {newsDetail.name ? newsDetail.name : ""}
-                    </h1>
-                    {newsDetail.description === "" ? (
-                        ""
-                    ) : (
-                        <div>{newsDetail.description}</div>
-                    )}
-                    {newsDetail.contents.map((ct: any, index: any) => {
-                        return (
-                            <div
-                                key={index}
-                                className="text-sm tracking-wide pr-10 indent-6 pb-5"
-                            >
-                                {parse(ct.content)}
-                            </div>
-                        );
-                    })}
+                    <h1 className="text-3xl mb-4">{newsDetail?.name}</h1>
+                    {newsDetail?.descript}
+                    {parse(newsDetail?.content)}
                 </div>
             ) : (
                 <div></div>

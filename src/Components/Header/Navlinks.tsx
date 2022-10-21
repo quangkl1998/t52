@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { links } from "./MyLinks";
 
 const NavLinks = ({ handleOpen }: any) => {
     const [heading, setHeading] = useState("");
     const [subHeading, setSubHeading] = useState("");
+    const navigate = useNavigate();
     return (
         <>
             {links.map((link) => (
@@ -17,6 +18,7 @@ const NavLinks = ({ handleOpen }: any) => {
                                     ? setHeading(link.name)
                                     : setHeading("");
                                 setSubHeading("");
+                                if (!link.submenu) navigate(`${link.link}`);
                             }}
                         >
                             {link.name}
@@ -36,27 +38,29 @@ const NavLinks = ({ handleOpen }: any) => {
                                     />
                                 </svg>
                             </span>
-                            <span className="text-xl lg:ml-2  lg:block hidden group-hover:rotate-180 ">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width={10}
-                                    height={6}
-                                    viewBox="0 0 10 6"
-                                    fill="#FFFF00"
-                                >
-                                    <path
-                                        d="M1 1L5 5L9 1"
-                                        stroke="#FFFF00"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </span>
+                            {link.submenu && (
+                                <span className="text-xl lg:ml-2  lg:block hidden group-hover:rotate-180 ">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={10}
+                                        height={6}
+                                        viewBox="0 0 10 6"
+                                        fill="#FFFF00"
+                                    >
+                                        <path
+                                            d="M1 1L5 5L9 1"
+                                            stroke="#FFFF00"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </span>
+                            )}
                         </div>
                         {link.submenu && (
                             <div>
                                 <div className="absolute top-full hidden group-hover:lg:block hover:lg:block min-w-max rounded-b-md overflow-hidden bg-white px-3 pt-6 pb-3 shadow">
-                                    {link.sublinks.map((mysublinks) => (
+                                    {link?.sublinks?.map((mysublinks) => (
                                         <div
                                             key={mysublinks.name}
                                             className="rounded-md overflow-hidden hover:bg-gray-300 "
@@ -80,7 +84,7 @@ const NavLinks = ({ handleOpen }: any) => {
           `}
                     >
                         {/* sublinks */}
-                        {link.sublinks.map((slinks) => (
+                        {link?.sublinks?.map((slinks) => (
                             <NavLink
                                 to={slinks.link}
                                 key={slinks.name}

@@ -1,6 +1,46 @@
 import React from "react";
+import { FieldErrors, useForm } from "react-hook-form";
 
 const FormLoan = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }, //liệt kê các input đang lỗi
+    } = useForm({
+        //defaultValues khai báo giá trị mặc định cho các input trong form
+        defaultValues: {
+            name: "",
+            phone: "",
+            type: "",
+            password: "",
+            birthday: new Date(),
+            gender: true,
+            address: "",
+        },
+        //mode: cacash validation đc trigger (defaute là submit)
+        mode: "onTouched",
+    });
+    // const onSubmit = (values: any) => {
+    //     console.log(values);
+    //     dispatch(registerUser(values))
+    //         .unwrap()
+    //         .then((result) => {
+    //             if (result._id) {
+    //                 Swal.fire({
+    //                     title: "Đăng ký thành công",
+    //                 });
+    //                 navigate("/login?from-register");
+    //             } else {
+    //                 Swal.fire({
+    //                     title: "Đăng ký thất bại",
+    //                 });
+    //             }
+    //         });
+    // };
+    // const onError = (values: FieldErrors<any>) => {
+    //     console.log(values);
+    // };
+
     return (
         <div className="container mx-auto px-5 lg:px-16">
             <div className="bg-white shadow-lg rounded-lg overflow-hidden p-5 border">
@@ -28,6 +68,7 @@ const FormLoan = () => {
                                     <span className="text-red-600">*</span>
                                 </label>
                                 <input
+                                    {...register("name")}
                                     type="text"
                                     id="name"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -44,6 +85,7 @@ const FormLoan = () => {
                                     <span className="text-red-600">*</span>
                                 </label>
                                 <input
+                                    {...register("phone")}
                                     type="text"
                                     id="phone"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -60,16 +102,23 @@ const FormLoan = () => {
                                     <span className="text-red-600">*</span>
                                 </label>
                                 <select
+                                    {...register("type")}
                                     id="asset-filter"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     defaultValue=""
                                 >
                                     <option value="">Bạn muốn vay bằng</option>
-                                    <option value="US">Đăng ký xe máy</option>
-                                    <option value="CA">Đăng ký ô tô</option>
-                                    <option value="FR">Ô tô</option>
-                                    <option value="DE">Xe máy</option>
-                                    <option value="DE">Tài sản khác</option>
+                                    <option value="Đăng ký xe máy">
+                                        Đăng ký xe máy
+                                    </option>
+                                    <option value="Đăng ký ô tô">
+                                        Đăng ký ô tô
+                                    </option>
+                                    <option value="Ô tô">Ô tô</option>
+                                    <option value="Xe máy">Xe máy</option>
+                                    <option value="Tài sản khác">
+                                        Tài sản khác
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -86,15 +135,20 @@ const FormLoan = () => {
                                     <span className="text-red-600">*</span>
                                 </label>
                                 <select
+                                    {...register("address")}
                                     id="asset-filter"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     defaultValue=""
                                 >
                                     <option value="">Tỉnh/Thành</option>
-                                    <option value="US">Hà Nội</option>
-                                    <option value="CA">Đà Nẵng</option>
-                                    <option value="FR">Bình Dương</option>
-                                    <option value="DE">Tp. Hồ Chí Minh</option>
+                                    <option value="Hà Nội">Hà Nội</option>
+                                    <option value="Đà Nẵng">Đà Nẵng</option>
+                                    <option value="Bình Dương">
+                                        Bình Dương
+                                    </option>
+                                    <option value="Tp. Hồ Chí Minh">
+                                        Tp. Hồ Chí Minh
+                                    </option>
                                 </select>
                             </div>
                             <div className="pb-6">

@@ -7,6 +7,7 @@ import HomeTemplate from "Templates/HomeTemplate";
 import MortgageLoanTemplate from "Templates/MortgageLoanTemplate";
 
 import loading from "Assets/loading.gif";
+import ActivityNews from "Pages/ActivityNews/ActivityNews";
 
 const Login = lazy(() => import("Pages/Login/Login"));
 const Register = lazy(() => import("Pages/Register/Register"));
@@ -50,9 +51,9 @@ function App() {
                             path="/quan-he-nha-dau-tu"
                             element={<InvestorRelations />}
                         />
-                        <Route path="/tin-tuc" element={<News />} />
+                        <Route path="/tin-tuc-noi-bat" element={<News />} />
                         <Route
-                            path="/tin-tuc-chi-tiet/:id"
+                            path="/tin-tuc-chi-tiet/:name"
                             element={<NewsDetail />}
                         />
                         <Route
@@ -85,6 +86,10 @@ function App() {
                                 element={<LoanByOther />}
                             />
                         </Route>
+                        <Route
+                            path="/tin-tuc-hoat-dong"
+                            element={<ActivityNews />}
+                        />
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />

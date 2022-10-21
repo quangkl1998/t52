@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import auth from "./Slices/auth";
 import news from "./Slices/news";
+import banner from "./Slices/banner";
+import stores from "./Slices/store";
+import partner from "./Slices/partner";
 
 const store = configureStore({
-    reducer: { auth, news },
+    reducer: { auth, news, banner, stores, partner },
 });
 
 // type cho hàm dispatch

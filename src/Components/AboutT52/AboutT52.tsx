@@ -17,7 +17,7 @@ const AboutT52 = () => {
                                 className="md:hidden block mt-2 rounded-lg"
                             />
 
-                            <div className="px-5 mt-2 text-gray-500 leading-relaxed tracking-wide">
+                            <div className="px-5 mt-2 text-gray-500 leading-loose tracking-wide">
                                 <p className="mt-2">
                                     Kính thưa quý vị kính mến, lời đầu tiên cho
                                     tôi xin gửi đến quý vị lời chúc sức khỏe và

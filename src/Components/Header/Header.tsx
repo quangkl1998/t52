@@ -37,14 +37,8 @@ const Header = () => {
                             >
                                 Về T52
                             </NavLink>
-                            {/* <NavLink
-                                to="/quan-he-nha-dau-tu"
-                                className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
-                            >
-                                Quan hệ Nhà đầu tư
-                            </NavLink> */}
                             <NavLink
-                                to="/tin-tuc"
+                                to="/tin-tuc-noi-bat"
                                 className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Tin tức
@@ -66,7 +60,7 @@ const Header = () => {
                 </div>
             </div>
             <nav className="bg-red-600 border-b shadow-md lg:px-5 py-3">
-                <div className="flex items-center font-semibold justify-around ">
+                <div className="lg:container mx-auto flex items-center font-semibold justify-between lg:px-16">
                     <div className="lg:w-auto w-full flex justify-between items-center px-5 lg:px-0 bg-red-600 z-50">
                         <NavLink to="">
                             <img
@@ -79,7 +73,12 @@ const Header = () => {
                             <span>
                                 <i className="fa fa-phone" />
                             </span>
-                            <span className="ml-2 font-bold">0775 75 7777</span>
+                            <a
+                                href="tel:0775757777"
+                                className="ml-2 font-bold text-yellow-500 hover:text-yellow-400"
+                            >
+                                0775 75 7777
+                            </a>
                         </button>
                         <div
                             className="text-3xl lg:hidden z-20"
@@ -154,7 +153,12 @@ const Header = () => {
                             <span>
                                 <i className="fa fa-phone" />
                             </span>
-                            <span className="ml-2 font-bold">0775 75 7777</span>
+                            <a
+                                href="tel:0775757777"
+                                className="ml-2 font-bold text-yellow-500 hover:text-yellow-400"
+                            >
+                                0775 75 7777
+                            </a>
                         </button>
                     </div>
                     {/* Mobile nav */}
@@ -192,7 +196,7 @@ const Header = () => {
                                     Quan hệ Nhà đầu tư
                                 </NavLink> */}
                                 <NavLink
-                                    to="/tin-tuc"
+                                    to="/tin-tuc-noi-bat"
                                     onClick={() => setOpen(!open)}
                                     className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
                                 >

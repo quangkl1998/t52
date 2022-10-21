@@ -41,4 +41,9 @@ export const links = [
             { name: "Gửi hàng lazada", link: "/" },
         ],
     },
+    {
+        name: "Tin tức hoạt động",
+        submenu: false,
+        link: "/tin-tuc-hoat-dong",
+    },
 ];

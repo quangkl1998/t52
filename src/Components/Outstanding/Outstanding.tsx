@@ -1,11 +1,20 @@
-import { AppDispatch } from "configStore";
-import { useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "configStore";
+import moment from "moment";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { setNewsDetail } from "Slices/news";
+import { getNewDetail, getNews, setNewsDetail } from "Slices/news";
 import { data } from "Utill/NewsData";
 
 const Outstanding = () => {
+    const { listNew, isLoading, error } = useSelector(
+        (state: RootState) => state.news,
+    );
+    useEffect(() => {
+        dispatch(getNews());
+    }, []);
     const dispatch = useDispatch<AppDispatch>();
+    console.log(listNew);
 
     return (
         <div className="bg-gray-100 py-5">
@@ -14,61 +23,67 @@ const Outstanding = () => {
                     Tin tức nổi bật
                 </h1>
                 <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16 gap-8">
-                    {data.map((news, index) => {
+                    {listNew.map((news: any, index: number) => {
                         if (index === 0) {
                             return (
                                 <NavLink
                                     key={index}
-                                    onClick={() =>
-                                        dispatch(setNewsDetail(news))
-                                    }
-                                    to={`/tin-tuc-chi-tiet/${news.id}`}
+                                    onClick={() => {
+                                        dispatch(getNewDetail(news._id));
+                                    }}
+                                    to={`/tin-tuc-chi-tiet/${news.name}`}
                                     className="w-full bg-white rounded-xl overflow-hidden text-gray-700 hover:text-amber-500 hover:shadow-md duration-150 cursor-pointer"
                                 >
                                     <img
                                         className="w-full"
-                                        src={news.avatar}
+                                        src={news.img}
                                         alt=""
                                     />
                                     <div className="p-5 font-bold text-xl ">
                                         {news.name}
                                     </div>
                                     <div className="px-5 pb-5 text-gray-500">
-                                        {news.createDay}
+                                        {moment(news.createdAt)
+                                            .format("DD-MM-YYYY")
+                                            .toString()}
                                     </div>
                                 </NavLink>
                             );
                         }
                     })}
                     <div className="flex flex-col">
-                        {data.map((news, index) => {
+                        {listNew.map((news: any, index: number) => {
                             if (index === 0) {
                                 return;
                             } else {
-                                return (
-                                    <NavLink
-                                        key={index}
-                                        onClick={() =>
-                                            dispatch(setNewsDetail(news))
-                                        }
-                                        to={`/tin-tuc-chi-tiet/${news.id}`}
-                                        className="flex mb-5 rounded-xl bg-white overflow-hidden text-gray-700 hover:text-amber-500 hover:shadow-md duration-150 cursor-pointer"
-                                    >
-                                        <img
-                                            className="w-1/2 md:w-5/12"
-                                            src={news.avatar}
-                                            alt=""
-                                        />
-                                        <div>
-                                            <div className="p-5 font-bold text-base md:text-xl ">
-                                                {news.name}
+                                if (index < 4) {
+                                    return (
+                                        <NavLink
+                                            key={index}
+                                            onClick={() =>
+                                                dispatch(getNewDetail(news._id))
+                                            }
+                                            to={`/tin-tuc-chi-tiet/${news.name}`}
+                                            className="flex mb-5 rounded-xl bg-white overflow-hidden text-gray-700 hover:text-amber-500 hover:shadow-md duration-150 cursor-pointer"
+                                        >
+                                            <img
+                                                className="w-1/2 md:w-5/12"
+                                                src={news.img}
+                                                alt=""
+                                            />
+                                            <div>
+                                                <div className="p-5 font-bold text-base md:text-xl ">
+                                                    {news.name}
+                                                </div>
+                                                <div className="px-5 pb-5 text-gray-500">
+                                                    {moment(news.createdAt)
+                                                        .format("DD-MM-YYYY")
+                                                        .toString()}
+                                                </div>
                                             </div>
-                                            <div className="px-5 pb-5 text-gray-500">
-                                                {news.createDay}
-                                            </div>
-                                        </div>
-                                    </NavLink>
-                                );
+                                        </NavLink>
+                                    );
+                                }
                             }
                         })}
                     </div>
