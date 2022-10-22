@@ -1,9 +1,9 @@
 import axiosClient from "./axiosClient";
 
 const partnerAPI = {
-    getAllPartner: () => {
-        return axiosClient.get<any>("t52/partner");
-    },
+  getAllPartner: () => {
+    return axiosClient.get<any>("partner");
+  },
 };
 
 export default partnerAPI;

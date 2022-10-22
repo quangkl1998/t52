@@ -1,9 +1,9 @@
 import axiosClient from "./axiosClient";
 
 const bannerAPI = {
-    getBanner: () => {
-        return axiosClient.get<any>("t52/banners");
-    },
+  getBanner: () => {
+    return axiosClient.get<any>("banner");
+  },
 };
 
 export default bannerAPI;

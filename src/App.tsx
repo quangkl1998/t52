@@ -8,96 +8,108 @@ import MortgageLoanTemplate from "Templates/MortgageLoanTemplate";
 
 import loading from "Assets/loading.gif";
 import ActivityNews from "Pages/ActivityNews/ActivityNews";
+import AdminTemplate from "Pages/Admin/Templates/AdminTemplate";
+import AdminPage from "Pages/Admin/Pages/Admin/AdminPage";
+import PartnerList from "Pages/Admin/Components/Partner/PartnerList";
+import StoreDetail from "Pages/Admin/Components/Store/StoreDetail/StoreDetail";
+import AddStore from "Pages/Admin/Components/Store/AddStore/AddStore";
+import ClientList from "Pages/Admin/Components/Client/ClientList";
+import AddClient from "Pages/Admin/Components/Client/AddClient/AddClient";
+import StoreList from "Pages/Admin/Components/Store/StoreList";
+import NewsAdmin from "Pages/Admin/Components/News/News";
+import AddNews from "Pages/Admin/Components/News/AddNews/AddNews";
+import Login from "Pages/Admin/Pages/Login/Login";
 
-const Login = lazy(() => import("Pages/Login/Login"));
 const Register = lazy(() => import("Pages/Register/Register"));
 const LoanByMoto = lazy(() => import("Pages/LoanByMoto/LoanByMoto"));
 const Home = lazy(() => import("Pages/Home/Home"));
 const LoanByCar = lazy(() => import("Pages/LoanByCar/LoanByCar"));
 const LoanByRegisMoto = lazy(
-    () => import("Pages/LoanByRegisMoto/LoanByRegisMoto"),
+  () => import("Pages/LoanByRegisMoto/LoanByRegisMoto"),
 );
 const LoanByRegisCar = lazy(
-    () => import("Pages/LoanByRegisCar/LoanByRegisCar"),
+  () => import("Pages/LoanByRegisCar/LoanByRegisCar"),
 );
 const LoanByOther = lazy(() => import("Pages/LoanByOther/LoanByOther"));
 
 const About = lazy(() => import("Pages/About/About"));
 const InvestorRelations = lazy(
-    () => import("Pages/InvestorRelations/InvestorRelations"),
+  () => import("Pages/InvestorRelations/InvestorRelations"),
 );
 const News = lazy(() => import("Pages/News/News"));
 const StoresNearYou = lazy(() => import("Pages/StoresNearYou/StoresNearYou"));
 const FinancialKnowledge = lazy(
-    () => import("Pages/FinancialKnowledge/FinancialKnowledge"),
+  () => import("Pages/FinancialKnowledge/FinancialKnowledge"),
 );
 const NewsDetail = lazy(() => import("Pages/NewsDetail/NewsDetail"));
 
 function App() {
-    return (
-        <Suspense
-            fallback={
-                <div className="w-full h-screen flex justify-center items-center">
-                    <img src={loading} alt={loading} />
-                </div>
-            }
-        >
-            <BrowserRouter>
-                <Routes>
-                    <Route path="" element={<HomeTemplate />}>
-                        <Route path="" element={<Home />} />
-                        <Route path="/about" element={<About />} />
-                        <Route
-                            path="/quan-he-nha-dau-tu"
-                            element={<InvestorRelations />}
-                        />
-                        <Route path="/tin-tuc-noi-bat" element={<News />} />
-                        <Route
-                            path="/tin-tuc-chi-tiet/:name"
-                            element={<NewsDetail />}
-                        />
-                        <Route
-                            path="/cua-hang-gan-ban"
-                            element={<StoresNearYou />}
-                        />
-                        <Route
-                            path="/kien-thuc-tai-chinh"
-                            element={<FinancialKnowledge />}
-                        />
-                        <Route path="" element={<MortgageLoanTemplate />}>
-                            <Route
-                                path="/vay-tien-bang-cavet-xe-may"
-                                element={<LoanByRegisMoto />}
-                            />
-                            <Route
-                                path="/vay-tien-bang-cavet-o-to"
-                                element={<LoanByRegisCar />}
-                            />
-                            <Route
-                                path="/vay-tien-bang-xe-may"
-                                element={<LoanByMoto />}
-                            />
-                            <Route
-                                path="/vay-tien-bang-o-to"
-                                element={<LoanByCar />}
-                            />
-                            <Route
-                                path="/vay-tien-bang-tai-san-khac"
-                                element={<LoanByOther />}
-                            />
-                        </Route>
-                        <Route
-                            path="/tin-tuc-hoat-dong"
-                            element={<ActivityNews />}
-                        />
-                    </Route>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="*" element={<Navigate to={""} />} />
-                </Routes>
-            </BrowserRouter>
-        </Suspense>
-    );
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full h-screen flex justify-center items-center">
+          <img src={loading} alt={loading} />
+        </div>
+      }
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="login" element={<Login />}></Route>
+
+          <Route path="dashboard" element={<AdminTemplate />}>
+            <Route path="" element={<AdminPage />}>
+              <Route path="partner" element={<PartnerList />}></Route>
+              <Route
+                path="store/storeDetail/:idStore"
+                element={<StoreDetail />}
+              ></Route>
+              <Route path="store/addStore" element={<AddStore />}></Route>
+              <Route path="client" element={<ClientList />}></Route>
+              <Route path="client/addClient" element={<AddClient />}></Route>
+
+              <Route path="store" element={<StoreList />}></Route>
+
+              <Route path="newsList" element={<NewsAdmin />}></Route>
+              <Route path="newsList/addNews" element={<AddNews />}></Route>
+            </Route>
+          </Route>
+          {/* aaaaaaaaaa */}
+          <Route path="" element={<HomeTemplate />}>
+            <Route path="" element={<Home />} />
+
+            <Route path="/about" element={<About />} />
+            <Route path="/quan-he-nha-dau-tu" element={<InvestorRelations />} />
+            <Route path="/tin-tuc-noi-bat" element={<News />} />
+            <Route path="/tin-tuc-chi-tiet/:name" element={<NewsDetail />} />
+            <Route path="/cua-hang-gan-ban" element={<StoresNearYou />} />
+            <Route
+              path="/kien-thuc-tai-chinh"
+              element={<FinancialKnowledge />}
+            />
+            <Route path="" element={<MortgageLoanTemplate />}>
+              <Route
+                path="/vay-tien-bang-cavet-xe-may"
+                element={<LoanByRegisMoto />}
+              />
+              <Route
+                path="/vay-tien-bang-cavet-o-to"
+                element={<LoanByRegisCar />}
+              />
+              <Route path="/vay-tien-bang-xe-may" element={<LoanByMoto />} />
+              <Route path="/vay-tien-bang-o-to" element={<LoanByCar />} />
+              <Route
+                path="/vay-tien-bang-tai-san-khac"
+                element={<LoanByOther />}
+              />
+            </Route>
+            <Route path="/tin-tuc-hoat-dong" element={<ActivityNews />} />
+          </Route>
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<Navigate to={""} />} />
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
+  );
 }
 
 export default App;
