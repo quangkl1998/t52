@@ -14,7 +14,7 @@ const StoreAPI = {
     return axiosClient.get<any[]>(`store/detail/${id}`);
   },
   updateStore: (data: any) => {
-    return axiosClient.put<any[]>(`store/${data.id}`);
+    return axiosClient.put<any[]>(`store/${data.id}`, data);
   },
 };
 

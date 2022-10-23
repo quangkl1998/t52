@@ -3,9 +3,10 @@ import { ColumnsType, TableProps } from "antd/es/table";
 import { AppDispatch, RootState } from "configStore";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getNewsList } from "Slices/NewsAdmin";
+import { deleteNews, getNewsList, updateNews } from "Slices/NewsAdmin";
 
 import JoditEditor from "jodit-react";
+import Swal from "sweetalert2";
 
 const { Search } = Input;
 
@@ -36,6 +37,23 @@ const News = () => {
 
   const { newsList } = useSelector((state: RootState) => state.newsAdmin);
 
+  const DeleteNews = (id: string) => {
+    dispatch(deleteNews(id))
+      .unwrap()
+      .then((result) => {
+        if (result === "Delete successfully") {
+          Swal.fire({
+            title: `Xóa thành công`,
+          });
+          dispatch(getNewsList());
+        } else {
+          Swal.fire({
+            title: `Xóa thất bại`,
+          });
+        }
+      });
+  };
+
   const columns: ColumnsType<any> = [
     {
       title: "Tiêu đề",
@@ -44,7 +62,7 @@ const News = () => {
 
     {
       title: "Hình Ảnh",
-      dataIndex: "avatar",
+      dataIndex: "img",
       width: 200,
       render: (value, record, index) => (
         <img
@@ -61,9 +79,10 @@ const News = () => {
     },
 
     {
-      title: "Người đăng",
-      dataIndex: "personPost",
-      render: (value, record, index) => <div>{value?.name}</div>,
+      title: "Mô tả",
+      dataIndex: "descript",
+      ellipsis: true,
+      render: (value, record, index) => <div>{value}</div>,
     },
 
     { title: "Loại tin", dataIndex: "newsType" },
@@ -83,7 +102,24 @@ const News = () => {
           >
             Chi tiết
           </Button>
-          <Button block danger>
+          <Button
+            block
+            danger
+            onClick={() =>
+              Swal.fire({
+                title: `Bạn muốn xóa`,
+                text: value.name,
+                showCancelButton: true,
+                confirmButtonColor: "#fb4226",
+                cancelButtonColor: "rgb(167 167 167)",
+                confirmButtonText: "OK",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  DeleteNews(record?.id);
+                }
+              })
+            }
+          >
             Xóa
           </Button>
         </div>
@@ -116,10 +152,9 @@ const News = () => {
       form.setFieldsValue({
         name: editFormValue?.name,
         descript: editFormValue?.descript,
+        content: editFormValue?.content,
         id: editFormValue?.id,
-        avatar: editFormValue?.avatar,
-        personPost: editFormValue?.personPost?.name,
-        newsType: editFormValue?.newsType,
+        type: editFormValue?.type,
       });
     }
     return (
@@ -148,6 +183,18 @@ const News = () => {
           initialValues={{ modifier: "public" }}
         >
           <Form.Item
+            name="id"
+            label="id"
+            rules={[
+              {
+                required: true,
+                message: "Please input the title of collection!",
+              },
+            ]}
+          >
+            <Input disabled />
+          </Form.Item>
+          <Form.Item
             name="name"
             label="Tiêu đề"
             rules={[
@@ -159,7 +206,7 @@ const News = () => {
           >
             <Input />
           </Form.Item>
-          <Form.Item name="descript" label="Nội dung">
+          <Form.Item name="content" label="Nội dung">
             <JoditEditor
               ref={editor}
               value={content}
@@ -167,10 +214,10 @@ const News = () => {
               onBlur={(e) => SetContent(e)}
             />
           </Form.Item>
-          <Form.Item name="personPost" label="Người đăng">
-            <Input disabled />
+          <Form.Item name="descript" label="Mô tả">
+            <Input />
           </Form.Item>
-          <Form.Item name="newsType" label="Loại tin">
+          <Form.Item name="type" label="Loại tin">
             <Input />
           </Form.Item>
         </Form>
@@ -182,6 +229,7 @@ const News = () => {
     console.log("Received values of form: ", values);
     setOpen(false);
     SetEditFormValue(undefined);
+    dispatch(updateNews(values));
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {

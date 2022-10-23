@@ -5,20 +5,32 @@ import "antd/dist/antd.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import HomeTemplate from "Templates/HomeTemplate";
 import MortgageLoanTemplate from "Templates/MortgageLoanTemplate";
-
-import loading from "Assets/loading.gif";
-import ActivityNews from "Pages/ActivityNews/ActivityNews";
 import AdminTemplate from "Pages/Admin/Templates/AdminTemplate";
-import AdminPage from "Pages/Admin/Pages/Admin/AdminPage";
-import PartnerList from "Pages/Admin/Components/Partner/PartnerList";
-import StoreDetail from "Pages/Admin/Components/Store/StoreDetail/StoreDetail";
-import AddStore from "Pages/Admin/Components/Store/AddStore/AddStore";
-import ClientList from "Pages/Admin/Components/Client/ClientList";
-import AddClient from "Pages/Admin/Components/Client/AddClient/AddClient";
-import StoreList from "Pages/Admin/Components/Store/StoreList";
-import NewsAdmin from "Pages/Admin/Components/News/News";
-import AddNews from "Pages/Admin/Components/News/AddNews/AddNews";
-import Login from "Pages/Admin/Pages/Login/Login";
+import ActivityNews from "Pages/ActivityNews/ActivityNews";
+import loading from "Assets/loading.gif";
+
+const AdminPage = lazy(() => import("Pages/Admin/Pages/Admin/AdminPage"));
+const PartnerList = lazy(
+  () => import("Pages/Admin/Components/Partner/PartnerList"),
+);
+const StoreDetail = lazy(
+  () => import("Pages/Admin/Components/Store/StoreDetail/StoreDetail"),
+);
+const AddStore = lazy(
+  () => import("Pages/Admin/Components/Store/AddStore/AddStore"),
+);
+const ClientList = lazy(
+  () => import("Pages/Admin/Components/Client/ClientList"),
+);
+const AddClient = lazy(
+  () => import("Pages/Admin/Components/Client/AddClient/AddClient"),
+);
+const StoreList = lazy(() => import("Pages/Admin/Components/Store/StoreList"));
+const NewsAdmin = lazy(() => import("Pages/Admin/Components/News/News"));
+const AddNews = lazy(
+  () => import("Pages/Admin/Components/News/AddNews/AddNews"),
+);
+const Login = lazy(() => import("Pages/Admin/Pages/Login/Login"));
 
 const Register = lazy(() => import("Pages/Register/Register"));
 const LoanByMoto = lazy(() => import("Pages/LoanByMoto/LoanByMoto"));

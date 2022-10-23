@@ -29,7 +29,7 @@ const AddClient = () => {
           Swal.fire({
             title: `Thêm thành công`,
           });
-          navigate("/admin/client", { replace: true });
+          navigate("/dashboard/client", { replace: true });
         } else {
           Swal.fire({
             title: `Thêm thất bại`,
@@ -55,6 +55,20 @@ const AddClient = () => {
             rules={[{ required: true, message: "Không được bỏ trống mục này" }]}
           >
             <Input></Input>
+          </Form.Item>
+          <Form.Item
+            name={"address"}
+            label="Địa chỉ"
+            rules={[{ required: true, message: "Không được bỏ trống mục này" }]}
+          >
+            <Input></Input>
+          </Form.Item>
+          <Form.Item
+            name={"email"}
+            label="Email"
+            rules={[{ required: true, message: "Không được bỏ trống mục này" }]}
+          >
+            <Input type="email"></Input>
           </Form.Item>
           <Form.Item
             name={"phone"}

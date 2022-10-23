@@ -41,8 +41,6 @@ const ClientList = () => {
 
   const [dataForm, SetDataForm] = useState<any>();
 
-  console.log(dataForm);
-
   const fSearch = (rows: any[]) => {
     return rows.filter((row) => row?.name?.toLowerCase().indexOf(q) > -1);
   };
@@ -79,7 +77,7 @@ const ClientList = () => {
     },
     {
       title: "Cửa hàng",
-      dataIndex: "store",
+      dataIndex: "Store",
       render: (value) => <div>{value?.name}</div>,
     },
     {
@@ -137,17 +135,19 @@ const ClientList = () => {
     if (dataForm) {
       form.setFieldsValue({
         name: dataForm?.name,
+        email: dataForm?.email,
+        address: dataForm?.address,
         loanType: dataForm?.loanType,
         phone: dataForm?.phone,
         isLoan: dataForm?.isLoan,
-        store: dataForm?.store?.id,
-        storeName: dataForm?.store.address,
+        store: dataForm?.Store?.id,
+        storeName: dataForm?.Store.street,
       });
     }
     return (
       <Modal
         open={open}
-        title="Chi tiết Client"
+        title="Chi tiết khách hàng"
         okText="Sửa"
         cancelText="Đóng"
         onCancel={onCancel}
@@ -172,6 +172,20 @@ const ClientList = () => {
           <Form.Item
             name={"name"}
             label="Tên Khách hàng"
+            rules={[{ required: true, message: "Không được bỏ trống mục này" }]}
+          >
+            <Input></Input>
+          </Form.Item>
+          <Form.Item
+            name={"email"}
+            label="Email"
+            rules={[{ required: true, message: "Không được bỏ trống mục này" }]}
+          >
+            <Input type="email"></Input>
+          </Form.Item>
+          <Form.Item
+            name={"address"}
+            label="Address"
             rules={[{ required: true, message: "Không được bỏ trống mục này" }]}
           >
             <Input></Input>

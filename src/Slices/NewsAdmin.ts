@@ -32,6 +32,31 @@ export const addNews = createAsyncThunk("news/addNews", async (data: any) => {
   }
 });
 
+export const deleteNews = createAsyncThunk(
+  "news/deleteNews",
+  async (id: string) => {
+    try {
+      const result = await NewsAPI.deleteNews(id);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+);
+
+export const updateNews = createAsyncThunk(
+  "news/updateNews",
+  async (data: any) => {
+    try {
+      console.log(data, "5");
+      const result = await NewsAPI.updateNews(data);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+);
+
 export const uploadImage = createAsyncThunk(
   "news/uploadImage",
   async (data: any) => {

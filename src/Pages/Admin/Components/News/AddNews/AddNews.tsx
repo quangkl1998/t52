@@ -6,6 +6,7 @@ import { AppDispatch } from "configStore";
 import { useDispatch } from "react-redux";
 import { addNews, uploadImage } from "Slices/NewsAdmin";
 import Swal from "sweetalert2";
+import FormItem from "antd/es/form/FormItem";
 
 const { Option } = Select;
 
@@ -21,10 +22,9 @@ const AddNews = () => {
   const onCreate = (data: any) => {
     const newsData = {
       ...data,
-      descript: content,
       content: content,
     };
-    console.log(321);
+    console.log(newsData);
     dispatch(addNews(newsData));
   };
 
@@ -151,7 +151,29 @@ const AddNews = () => {
           >
             <Input></Input>
           </Form.Item>
-          <Form.Item></Form.Item>
+          <Form.Item
+            name={"descript"}
+            label="Mô tả"
+            rules={[{ required: true, message: "Không được bỏ trống mục này" }]}
+          >
+            <Input></Input>
+          </Form.Item>
+          <Form.Item
+            name="img"
+            label="Banner"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+            rules={[
+              {
+                required: true,
+                message: "Không được bỏ trống",
+              },
+            ]}
+          >
+            <Upload {...props} listType="picture">
+              <Button>Upload ảnh</Button>
+            </Upload>
+          </Form.Item>
           <Form.Item
             name="type"
             label="Loại Tin"
@@ -163,9 +185,12 @@ const AddNews = () => {
               <Option value="TinNong">Tin nóng</Option>
             </Select>
           </Form.Item>
-          <Button className="mb-2" onClick={() => SetOpen(true)}>
-            Thêm
-          </Button>
+
+          <FormItem>
+            <Button className="mb-2" onClick={() => SetOpen(true)}>
+              Thêm ảnh
+            </Button>
+          </FormItem>
         </div>
         <JoditEditor
           ref={editor}
