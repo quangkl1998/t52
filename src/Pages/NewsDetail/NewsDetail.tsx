@@ -2,26 +2,30 @@ import DetailNew from "Components/DetailNew/DetailNew";
 import FormServices from "Components/FormServices/FormServices";
 import NewRelated from "Components/NewRelated/NewRelated";
 import Questions from "Components/Questions/Questions";
-import { RootState } from "configStore";
+import { AppDispatch, RootState } from "configStore";
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
+import { getNewDetail } from "Slices/news";
 
 const NewsDetail = () => {
-    // const { newsDetail, isLoading, error } = useSelector(
-    //     (state: RootState) => state.news,
-    // );
+    const { name } = useParams();
 
-    const { id } = useParams();
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        dispatch(getNewDetail(name || ""));
+    }, []);
+
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    }, [id]);
+    });
 
     return (
         <div className="">
             <div className="lg:h-36 h-20"></div>
             <div className="container mx-auto px-10">
-                <div className="flex">
+                <div className="flex gap-10">
                     <div className="w-full lg:w-3/4">
                         <DetailNew />
                     </div>

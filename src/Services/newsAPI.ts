@@ -2,10 +2,25 @@ import axiosClient from "./axiosClient";
 
 const newsAPI = {
     getNews: () => {
-        return axiosClient.get<any>("t52/news");
+        return axiosClient.get<any>("news");
     },
-    getNewDetail: (id: string) => {
-        return axiosClient.get<any>(`t52/news/detail/${id}`);
+    getNewsLimit: (limit: any) => {
+        return axiosClient.get<any>("news/limit", {
+            params: {
+                limit,
+            },
+        });
+    },
+    getNewDetail: (slug: string) => {
+        return axiosClient.get<any>(`news/search-slug/${slug}`);
+    },
+    getNewPagination: (para: any) => {
+        return axiosClient.get<any>("news/pagination", {
+            params: {
+                size: para?.size,
+                page: para?.page,
+            },
+        });
     },
 };
 

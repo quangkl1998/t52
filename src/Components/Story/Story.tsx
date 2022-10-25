@@ -1,7 +1,18 @@
+import { AppDispatch, RootState } from "configStore";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { getMedia } from "Slices/media";
 import { data } from "Utill/VideoData";
 
 const Story = () => {
+    const { listMedia, isLoading, error } = useSelector(
+        (state: RootState) => state.media,
+    );
+    const dispatch = useDispatch<AppDispatch>();
+    useEffect(() => {
+        dispatch(getMedia());
+    }, []);
     return (
         <div className="bg-gray-100 pb-10">
             <div className="container mx-auto px-5 lg:px-16">
@@ -13,34 +24,45 @@ const Story = () => {
                         CÂU CHUYỆN T52
                     </NavLink>
                     <NavLink
-                        to=""
+                        to="/tin-tuc-hoat-dong"
                         className="uppercase text-gray-600 hover:text-yellow-600 duration-150 mr-2"
                     >
                         xem thêm <i className="fa fa-angle-right" />
                     </NavLink>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {data.map((tt, index) => {
-                        return (
-                            <div
-                                key={index}
-                                className="rounded-lg bg-white shadow overflow-hidden hover:shadow-xl hover:text-amber-500 cursor-pointer duration-150"
-                            >
-                                <video
+                    {listMedia.map((item: any, index: number) => {
+                        if (index < 4)
+                            return (
+                                <div
+                                    key={index}
+                                    className="rounded-lg bg-white shadow overflow-hidden border border-transparent hover:border-gray-100 hover:text-amber-500 cursor-pointer duration-150"
+                                >
+                                    {/* <video
                                     controls
                                     poster={tt.poster}
                                     className="h-52 object-cover w-full"
                                 >
                                     <source src={tt.video} />
-                                </video>
-                                <div className="p-3 font-bold text-lg h-16 overflow-hidden text-ellipsis mb-2">
-                                    {tt.name}
+                                </video> */}
+                                    <iframe
+                                        width={270}
+                                        height={208}
+                                        src={item.urlVideo}
+                                        title="FADED LOVE REMIX - CHÀO MỪNG ĐẾN BÌNH NGUYÊN VÔ TẬN REMIX - HEY HEY HEY REMIX HOT TIKTOK"
+                                        frameBorder={0}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    />
+
+                                    <div className="p-3 font-bold text-lg h-16 overflow-hidden text-ellipsis mb-2">
+                                        {item.name}
+                                    </div>
+                                    <div className="px-5 pb-5 text-gray-500">
+                                        {item.createDay}
+                                    </div>
                                 </div>
-                                <div className="px-5 pb-5 text-gray-500">
-                                    {tt.createDay}
-                                </div>
-                            </div>
-                        );
+                            );
                     })}
                 </div>
             </div>

@@ -2,7 +2,7 @@ import axiosClient from "./axiosClient";
 
 const clientAPI = {
     postClient: (values: any) => {
-        return axiosClient.post<any>("t52/client", values);
+        return axiosClient.post<any>("client", values);
     },
 };
 
