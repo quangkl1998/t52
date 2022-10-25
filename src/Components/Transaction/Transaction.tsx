@@ -8,21 +8,22 @@ const Transaction = () => {
     const { listStore, isLoading, error } = useSelector(
         (state: RootState) => state.stores,
     );
+    console.log(listStore);
     let items = [];
 
     if (listStore) {
-        items = listStore.map((store: any, index: number) => {
-            console.log(store?.idMap);
+        items = listStore?.map((store: any, index: number) => {
+            // console.log(store?.idMap);
             // const addressMap = parse(store?.idMap);
             return {
                 key: index,
                 label: (
                     <div className="whitespace-normal text-left font-semibold text-base border-b p-2">
-                        <div className="mb-2">{store?.address?.name}</div>
+                        <div className="mb-2">{store?.name}</div>
                         <div>
                             <i className="fa fa-map-marker-alt mr-2" />
-                            {store?.address?.name} , {store?.address?.district}{" "}
-                            , {store?.address?.province}
+                            {store?.street} , {store?.district} ,{" "}
+                            {store?.province}
                         </div>
                         <div>
                             <i className="fa fa-phone mr-2" />0{store?.phone}
@@ -41,7 +42,7 @@ const Transaction = () => {
             };
         });
     }
-    console.log(items);
+    // console.log(items);
 
     // const items = [
     //     {

@@ -1,7 +1,34 @@
-import React from "react";
+import axios from "axios";
+import { AppDispatch, RootState } from "configStore";
+import React, { useEffect, useState } from "react";
 import { FieldErrors, useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { getStores } from "Slices/store";
 
 const FormLoan = () => {
+    const { listStore, isLoading, error } = useSelector(
+        (state: RootState) => state.stores,
+    );
+    const dispatch = useDispatch<AppDispatch>();
+    useEffect(() => {
+        dispatch(getStores());
+    }, []);
+
+    let listProvince: any = [];
+    listStore.map((item: any) => {
+        if (!listProvince.includes(item.province)) {
+            listProvince.push(item.province);
+        }
+    });
+    let listDistrict: any = [];
+
+    let listStoreName: any = [];
+    listStore.map((item: any) => {
+        if (!listStoreName.includes(item.name)) {
+            listStoreName.push(item.name);
+        }
+    });
+
     const {
         register,
         handleSubmit,
@@ -40,6 +67,23 @@ const FormLoan = () => {
     // const onError = (values: FieldErrors<any>) => {
     //     console.log(values);
     // };
+
+    const [province, setProvince] = useState([]);
+    const [districts, setDistricts] = useState([]);
+
+    const handleClickProvince = (e: any) => {
+        axios
+            .get(`https://provinces.open-api.vn/api/p/${e}?depth=2`)
+            .then((res) => {
+                setDistricts(res.data);
+            });
+    };
+    useEffect(() => {
+        axios.get("https://provinces.open-api.vn/api/").then((res) => {
+            setProvince(res.data);
+        });
+    }, []);
+    console.log(districts);
 
     return (
         <div className="container mx-auto px-5 lg:px-16">
@@ -122,6 +166,7 @@ const FormLoan = () => {
                                 </select>
                             </div>
                         </div>
+
                         <div>
                             <h4 className="uppercase font-bold text-xl text-amber-700 my-5">
                                 CHỌN PHÒNG GIAO DỊCH GẦN BẠN
@@ -139,16 +184,32 @@ const FormLoan = () => {
                                     id="asset-filter"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     defaultValue=""
+                                    placeholder="Tỉnh/Thành"
                                 >
                                     <option value="">Tỉnh/Thành</option>
-                                    <option value="Hà Nội">Hà Nội</option>
+                                    {province?.map((item: any) => {
+                                        return (
+                                            <option value={item.name}>
+                                                <div
+                                                    onClick={() => {
+                                                        handleClickProvince(
+                                                            item.code,
+                                                        );
+                                                    }}
+                                                >
+                                                    {item.name}
+                                                </div>
+                                            </option>
+                                        );
+                                    })}
+                                    {/* <option value="Hà Nội">Hà Nội</option>
                                     <option value="Đà Nẵng">Đà Nẵng</option>
                                     <option value="Bình Dương">
                                         Bình Dương
                                     </option>
                                     <option value="Tp. Hồ Chí Minh">
                                         Tp. Hồ Chí Minh
-                                    </option>
+                                    </option> */}
                                 </select>
                             </div>
                             <div className="pb-6">
@@ -162,13 +223,17 @@ const FormLoan = () => {
                                 <select
                                     id="asset-filter"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    defaultValue=""
+                                    // defaultValue=""
+                                    placeholder="Tỉnh/Thành"
                                 >
-                                    <option value="">Quận/Huyện</option>
-                                    <option value="US">Hà Nội</option>
-                                    <option value="CA">Đà Nẵng</option>
-                                    <option value="FR">Bình Dương</option>
-                                    <option value="DE">Tp. Hồ Chí Minh</option>
+                                    <option value="Hà Nội"> Quận/Huyện</option>
+                                    {districts?.map((item: any) => {
+                                        return (
+                                            <option value={item.name}>
+                                                {item?.name}
+                                            </option>
+                                        );
+                                    })}
                                 </select>
                             </div>
                             <div className="pb-6">
