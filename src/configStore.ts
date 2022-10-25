@@ -10,6 +10,8 @@ import login from "./Slices/Login";
 import newsAdmin from "./Slices/NewsAdmin";
 import storeAdmin from "./Slices/StoreAdmin";
 import partnerAdmin from "./Slices/PartnerAdmin";
+import tagNewsAdmin from "Slices/TagNewsAdmin";
+import mediaAdmin from "Slices/mediaAdmin";
 
 const store = configureStore({
   reducer: {
@@ -23,6 +25,8 @@ const store = configureStore({
     newsAdmin,
     storeAdmin,
     partnerAdmin,
+    tagNewsAdmin,
+    mediaAdmin,
   },
 });
 

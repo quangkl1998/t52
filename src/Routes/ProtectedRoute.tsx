@@ -3,19 +3,19 @@ import { Navigate } from "react-router-dom";
 import { RootState } from "../configStore";
 
 interface Props {
-    children: JSX.Element;
+  children: JSX.Element;
 }
 
 const ProtectedRoute = ({ children }: Props) => {
-    const { user } = useSelector((state: RootState) => state.auth);
+  const { loginresult } = useSelector((state: RootState) => state.login);
 
-    if (!user) {
-        // Chưa đăng nhập
-        return <Navigate to="/login" />;
-    }
+  if (!loginresult) {
+    // Chưa đăng nhập
+    return <Navigate to="/login" />;
+  }
 
-    // đã đăng nhập
-    return children;
+  // đã đăng nhập
+  return children;
 };
 
 export default ProtectedRoute;

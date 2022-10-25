@@ -48,7 +48,6 @@ export const updateNews = createAsyncThunk(
   "news/updateNews",
   async (data: any) => {
     try {
-      console.log(data, "5");
       const result = await NewsAPI.updateNews(data);
       return result;
     } catch (error) {
@@ -85,7 +84,7 @@ const newsSlice = createSlice({
 
     builder.addCase(getNewsList.fulfilled, (state, { payload }) => {
       state.isloading = false;
-      state.newsList = payload.rows;
+      state.newsList = payload?.rows;
     });
 
     builder.addCase(getNewsList.rejected, (state, { error }) => {

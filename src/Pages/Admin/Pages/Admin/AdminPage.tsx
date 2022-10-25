@@ -15,7 +15,7 @@ const AdminPage = () => {
         minHeight: 360,
       }}
     >
-      {/*  <Breadcrumb style={{ margin: "16px 0" }}>
+      <Breadcrumb style={{ margin: "16px 0" }}>
         {path.map((paths, index) => {
           const route = `/${path.slice(0, index + 1).join("/")}`;
           const chan = index % 2 === 0 && index > 1;
@@ -30,7 +30,7 @@ const AdminPage = () => {
             </Breadcrumb.Item>
           );
         })}
-      </Breadcrumb> */}
+      </Breadcrumb>
       <Outlet></Outlet>
     </Content>
   );

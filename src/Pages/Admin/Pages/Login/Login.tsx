@@ -60,7 +60,6 @@ const Login = () => {
 
   const user: any = JSON.parse(localStorage.getItem("user") as string);
   useEffect(() => {
-    console.log(user?.account, "55");
     if (user && user?.account) {
       navigate("/dashboard", { replace: true });
     }

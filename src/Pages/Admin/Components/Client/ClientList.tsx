@@ -57,10 +57,12 @@ const ClientList = () => {
     {
       title: "Tên người thuê",
       dataIndex: "name",
+      width: 200,
     },
     {
       title: "Type",
       dataIndex: "isLoan",
+      width: 100,
       render: (value, record, index) => {
         if (value === true) return <div>Đã vay</div>;
         else return <div>Chưa vay</div>;
@@ -69,19 +71,23 @@ const ClientList = () => {
     {
       title: "Hình thức",
       dataIndex: "loanType",
+      width: 150,
     },
     {
       title: "Số điện thoại",
       dataIndex: "phone",
+      width: 150,
       render: (value) => <div>0{value}</div>,
     },
     {
       title: "Cửa hàng",
       dataIndex: "Store",
+      width: 150,
       render: (value) => <div>{value?.name}</div>,
     },
     {
-      title: "",
+      title: "ACTION",
+      width: 150,
       render: (value, record, index) => (
         <>
           <Button
@@ -291,7 +297,7 @@ const ClientList = () => {
   return (
     <div>
       <h1 className="text-center font-bold text-4xl text-red-500">
-        Danh Sách Tin Tức
+        Danh Sách Người Vay
       </h1>
       <Row>
         <Col lg={{ span: 6 }} md={{ span: 8 }} className="mb-2">
@@ -312,7 +318,7 @@ const ClientList = () => {
         columns={columns}
         dataSource={fSearch(clientList)}
         onChange={onChange}
-        scroll={{ x: 800, y: 500 }}
+        scroll={{ x: 800 }}
         bordered
       />
       <CollectionCreateForm

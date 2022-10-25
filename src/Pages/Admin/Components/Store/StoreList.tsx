@@ -41,38 +41,38 @@ const StoreList = () => {
     {
       title: "Tên Cửa Hàng",
       dataIndex: "name",
-      width: 200,
+      width: 150,
     },
     {
       title: "Email",
       dataIndex: "email",
-      width: 200,
+      width: 150,
     },
     {
       title: "Số điện thoại",
       dataIndex: "phone",
-      width: 200,
+      width: 150,
       render: (value) => <div>0{value}</div>,
     },
     {
       title: "Địa Chỉ",
-      dataIndex: "address",
+      dataIndex: "street",
       render: (value, record, index) => {
-        return <div>{value?.name}</div>;
+        return <div>{value}</div>;
       },
     },
     {
-      title: "Tỉnh",
-      dataIndex: "address",
+      title: "Quận",
+      dataIndex: "district",
       render: (value, record, index) => {
-        return <div>{value?.district}</div>;
+        return <div>{value}</div>;
       },
     },
     {
-      title: "Tp",
-      dataIndex: "address",
+      title: "Tỉnh/Thành phố",
+      dataIndex: "province",
       render: (value, record, index) => {
-        return <div>{value?.province}</div>;
+        return <div>{value}</div>;
       },
     },
     {

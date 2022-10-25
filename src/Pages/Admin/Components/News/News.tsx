@@ -1,14 +1,21 @@
-import { Button, Table, Form, Input, Modal, Row, Col } from "antd";
-import { ColumnsType, TableProps } from "antd/es/table";
-import { AppDispatch, RootState } from "configStore";
 import React, { useEffect, useRef, useState } from "react";
+
+import { Button, Table, Form, Input, Modal, Row, Col, Select } from "antd";
+import { ColumnsType, TableProps } from "antd/es/table";
+import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
+
+import { AppDispatch, RootState } from "configStore";
 import { useDispatch, useSelector } from "react-redux";
+
 import { deleteNews, getNewsList, updateNews } from "Slices/NewsAdmin";
 
 import JoditEditor from "jodit-react";
 import Swal from "sweetalert2";
+import { getTagNewsList } from "Slices/TagNewsAdmin";
 
 const { Search } = Input;
+
+const { Option } = Select;
 
 const News = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -19,6 +26,9 @@ const News = () => {
 
   const config: any = {
     readonly: false,
+    editor: {
+      height: 500,
+    },
   };
 
   const editor = useRef(null);
@@ -27,15 +37,17 @@ const News = () => {
 
   const [open, setOpen] = useState(false);
 
+  const { newsList } = useSelector((state: RootState) => state.newsAdmin);
+  const { tag } = useSelector((state: RootState) => state.tagNewsAdmin);
+
   const fSearch = (rows: any[]) => {
     return rows?.filter((row) => row?.name?.toLowerCase().indexOf(q) > -1);
   };
 
   useEffect(() => {
     dispatch(getNewsList());
+    dispatch(getTagNewsList());
   }, [dispatch]);
-
-  const { newsList } = useSelector((state: RootState) => state.newsAdmin);
 
   const DeleteNews = (id: string) => {
     dispatch(deleteNews(id))
@@ -54,16 +66,37 @@ const News = () => {
       });
   };
 
+  const onCreate = (values: any) => {
+    setOpen(false);
+    SetEditFormValue(undefined);
+    dispatch(updateNews(values));
+  };
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQ(e.target.value?.toLowerCase());
+  };
+
+  const IsHot = (values: any, ishot: any) => {
+    let ishotData = {
+      ...values,
+      isHot: ishot,
+    };
+    dispatch(updateNews(ishotData));
+  };
+
   const columns: ColumnsType<any> = [
     {
       title: "Tiêu đề",
       dataIndex: "name",
+      width: 300,
     },
 
     {
-      title: "Hình Ảnh",
+      title: "Banner",
+      align: "center",
+
       dataIndex: "img",
-      width: 200,
+      width: 300,
       render: (value, record, index) => (
         <img
           className="mb-2"
@@ -79,16 +112,34 @@ const News = () => {
     },
 
     {
-      title: "Mô tả",
-      dataIndex: "descript",
-      ellipsis: true,
-      render: (value, record, index) => <div>{value}</div>,
+      title: "Hot",
+      dataIndex: "isHot",
+      width: 100,
+      align: "center",
+      render: (value, record, index) => {
+        if (value === true) {
+          return (
+            <div /* onClick={() => IsHot(record, false)} */>
+              <LikeOutlined
+                style={{ fontSize: "16px", color: "rgb(255,255,255)" }}
+              />
+            </div>
+          );
+        } else {
+          return (
+            <div /* onClick={() => IsHot(record, true)} */>
+              <DislikeOutlined style={{ fontSize: "25px", color: "red" }} />
+            </div>
+          );
+        }
+      },
     },
 
-    { title: "Loại tin", dataIndex: "newsType" },
+    { title: "Loại tin", dataIndex: "type", width: 150 },
 
     {
       title: "ACTION",
+      width: 150,
       render: (value, record, index) => (
         <div>
           <Button
@@ -96,7 +147,7 @@ const News = () => {
             onClick={() => {
               setOpen(true);
               SetEditFormValue(record);
-              SetContent(value.descript);
+              SetContent(record?.content);
             }}
             className="mb-2"
           >
@@ -152,13 +203,14 @@ const News = () => {
       form.setFieldsValue({
         name: editFormValue?.name,
         descript: editFormValue?.descript,
-        content: editFormValue?.content,
+        content: content,
         id: editFormValue?.id,
         type: editFormValue?.type,
       });
     }
     return (
       <Modal
+        width={800}
         open={open}
         title="Chi tiết tin"
         okText="Sửa"
@@ -218,22 +270,19 @@ const News = () => {
             <Input />
           </Form.Item>
           <Form.Item name="type" label="Loại tin">
-            <Input />
+            <Select>
+              {tag.map((e) => {
+                return (
+                  <Option key={e.id} value={e.name}>
+                    {e.name}
+                  </Option>
+                );
+              })}
+            </Select>
           </Form.Item>
         </Form>
       </Modal>
     );
-  };
-
-  const onCreate = (values: any) => {
-    console.log("Received values of form: ", values);
-    setOpen(false);
-    SetEditFormValue(undefined);
-    dispatch(updateNews(values));
-  };
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQ(e.target.value?.toLowerCase());
   };
 
   return (

@@ -1,17 +1,21 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import JoditEditor from "jodit-react";
 import { Button, Form, Input, Modal, Select, Upload, UploadProps } from "antd";
-import { AppDispatch } from "configStore";
-import { useDispatch } from "react-redux";
+import { FileImageOutlined } from "@ant-design/icons";
+import { AppDispatch, RootState } from "configStore";
+import { useDispatch, useSelector } from "react-redux";
 import { addNews, uploadImage } from "Slices/NewsAdmin";
 import Swal from "sweetalert2";
-import FormItem from "antd/es/form/FormItem";
+import { useNavigate } from "react-router-dom";
+import { getTagNewsList } from "Slices/TagNewsAdmin";
 
 const { Option } = Select;
 
 const AddNews = () => {
   const dispatch = useDispatch<AppDispatch>();
+
+  let navigate = useNavigate();
 
   const editor = useRef(null);
 
@@ -19,17 +23,36 @@ const AddNews = () => {
 
   const [open, SetOpen] = useState(false);
 
+  const { tag } = useSelector((state: RootState) => state.tagNewsAdmin);
+
+  useEffect(() => {
+    dispatch(getTagNewsList());
+  }, [dispatch]);
+
   const onCreate = (data: any) => {
     const newsData = {
       ...data,
       content: content,
     };
-    console.log(newsData);
-    dispatch(addNews(newsData));
+    dispatch(addNews(newsData))
+      .unwrap()
+      .then((result) => {
+        if (result?.id) {
+          Swal.fire({
+            title: `Thêm Thành công`,
+          });
+          navigate("/dashboard/newslist", { replace: true });
+        } else {
+          Swal.fire({
+            title: `Thêm thất bại`,
+          });
+        }
+      });
   };
 
   const config: any = {
     readonly: false,
+    removeButtons: ["subscript", "superscript", "file", "video"],
   };
 
   const handleSubmit = (values: any) => {
@@ -140,7 +163,7 @@ const AddNews = () => {
     console.log(e);
   };
   return (
-    <div>
+    <div className="w-full">
       <h1 className="text-center text-4xl text-red-500 ">Thêm Tin Tức</h1>
       <Form {...layout} form={form} onFinish={onCreate}>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
@@ -181,24 +204,31 @@ const AddNews = () => {
             rules={[{ required: true, message: "Không được bỏ trống mục này" }]}
           >
             <Select>
-              <Option value="TinHot">Tin hot</Option>
-              <Option value="TinNong">Tin nóng</Option>
+              {tag.map((e) => {
+                return (
+                  <Option key={e.id} value={e.name}>
+                    {e.name}
+                  </Option>
+                );
+              })}
             </Select>
           </Form.Item>
-
-          <FormItem>
-            <Button className="mb-2" onClick={() => SetOpen(true)}>
-              Thêm ảnh
-            </Button>
-          </FormItem>
         </div>
-        <JoditEditor
-          ref={editor}
-          value={content}
-          config={config}
-          onBlur={(e) => SetContent(e)}
-          onChange={handleChange}
-        />
+        <div className="relative">
+          <JoditEditor
+            ref={editor}
+            value={content}
+            config={config}
+            onBlur={(e) => SetContent(e)}
+            onChange={handleChange}
+          />
+          <div
+            className="mb-2 absolute md:top-[5px] top-[40px] right-[50px] md:right-[150px]  xl:right-[50px] cursor-pointer"
+            onClick={() => SetOpen(true)}
+          >
+            <FileImageOutlined />
+          </div>
+        </div>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" danger htmlType="submit">
             Thêm

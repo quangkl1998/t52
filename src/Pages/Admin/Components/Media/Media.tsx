@@ -1,56 +1,61 @@
+import { useEffect, useState } from "react";
+
+import { Button, Form, Input, Modal, Table } from "antd";
+import { ColumnsType, TableProps } from "antd/es/table";
+
 import { AppDispatch, RootState } from "configStore";
-import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
-  addPartner,
-  deletePartner,
-  getPartnerList,
-  updatePartner,
-} from "Slices/PartnerAdmin";
-import type { ColumnsType, TableProps } from "antd/es/table";
-import { Button, Form, Input, Modal, Table, Upload, UploadProps } from "antd";
+  addMediaAdmin,
+  deleteMediaAdmin,
+  getMediaAdminList,
+  updateMediaAdmin,
+} from "Slices/mediaAdmin";
+
 import Swal from "sweetalert2";
-const PartnerList = () => {
+
+const Media = () => {
   const dispatch = useDispatch<AppDispatch>();
+
+  const { media } = useSelector((state: RootState) => state.mediaAdmin);
 
   const [visible, setVisible] = useState(false);
 
+  const [idMedia, SetIdMedia] = useState("");
+
   const [showEdit, SetShowEdit] = useState(false);
 
-  const [idPartner, SetIdPartner] = useState("");
-
-  const { partners } = useSelector((state: RootState) => state.partnerAdmin);
-
-  const props: UploadProps = {
-    beforeUpload: (file) => {
-      return false;
-    },
-  };
-
-  const normFile = (e: UploadProps) => {
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
-  };
-
   useEffect(() => {
-    dispatch(getPartnerList());
+    dispatch(getMediaAdminList());
   }, [dispatch]);
 
+  const onDelete = (id: string) => {
+    dispatch(deleteMediaAdmin(id))
+      .unwrap()
+      .then((result) => {
+        if (result === "Delete successfully") {
+          Swal.fire({
+            title: `Xóa thành công`,
+          });
+          dispatch(getMediaAdminList());
+        } else {
+          Swal.fire({
+            title: `Xóa thất bại`,
+          });
+        }
+      });
+  };
+
   const onCreate = (values: any) => {
-    const data = {
-      ...values,
-    };
-    console.log(2);
-    dispatch(addPartner(data))
+    dispatch(addMediaAdmin(values))
       .unwrap()
       .then((result) => {
         if (result.id) {
           Swal.fire({
             title: `Thêm Thành công`,
           });
-          dispatch(getPartnerList());
+          dispatch(getMediaAdminList());
           setVisible(false);
         } else {
           Swal.fire({
@@ -60,38 +65,20 @@ const PartnerList = () => {
       });
   };
 
-  const onDelete = (id: string) => {
-    dispatch(deletePartner(id))
-      .unwrap()
-      .then((result) => {
-        if ((result = "Delete successfuly")) {
-          Swal.fire({
-            title: `Xóa thành công`,
-          });
-          dispatch(getPartnerList());
-          setVisible(false);
-        } else {
-          Swal.fire({
-            title: `Xóa thất bại`,
-          });
-        }
-      });
-  };
-
   const onEdit = (values: any) => {
     let dataEdit = {
       ...values,
-      id: idPartner,
+      id: idMedia,
     };
-    dispatch(updatePartner(dataEdit))
+    dispatch(updateMediaAdmin(dataEdit))
       .unwrap()
       .then((result) => {
-        if (result === "Update successfuly") {
+        if (result) {
           Swal.fire({
             title: `Sửa Thành công`,
           });
+          dispatch(getMediaAdminList());
           SetShowEdit(false);
-          dispatch(getPartnerList());
         } else {
           Swal.fire({
             title: `Sửa thất bại`,
@@ -102,47 +89,34 @@ const PartnerList = () => {
 
   const columns: ColumnsType<any> = [
     {
-      title: "name",
       dataIndex: "name",
+      title: "Tên Video",
     },
     {
-      title: "Hình Ảnh",
-      dataIndex: "img",
-      render: (value, record, index) => (
-        <img
-          className="mb-2"
-          style={{
-            width: "100px",
-            height: "100px",
-            borderRadius: "10px",
-          }}
-          src={value}
-          alt={`hình ${index}`}
-        />
-      ),
+      dataIndex: "urlVideo",
+      title: "ID Video Youtube",
     },
     {
       title: "ACTION",
+      align: "center",
       width: 200,
       render: (value, record, index) => (
         <div>
           <Button
-            block
-            className="mb-2"
+            className="mr-2"
             onClick={() => {
               SetShowEdit(true);
-              SetIdPartner(record?.id);
+              SetIdMedia(record?.id);
             }}
           >
             Sửa
           </Button>
           <Button
-            block
             danger
             onClick={() => {
               Swal.fire({
-                title: `Bạn muốn xóa đối tác`,
-                text: value?.name,
+                title: `Bạn muốn xóa Tag`,
+                text: value.name,
                 showCancelButton: true,
                 confirmButtonColor: "#fb4226",
                 cancelButtonColor: "rgb(167 167 167)",
@@ -186,7 +160,7 @@ const PartnerList = () => {
     return (
       <Modal
         open={visible}
-        title="Thêm Đối Tác"
+        title="Thêm Media"
         okText="Thêm"
         cancelText="Hủy"
         onCancel={onCancel}
@@ -210,7 +184,7 @@ const PartnerList = () => {
         >
           <Form.Item
             name="name"
-            label="Tên đối tác"
+            label="Tên Video"
             rules={[
               {
                 required: true,
@@ -221,10 +195,8 @@ const PartnerList = () => {
             <Input />
           </Form.Item>
           <Form.Item
-            name="img"
-            label="Hình ảnh"
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
+            name="urlVideo"
+            label="id Video"
             rules={[
               {
                 required: true,
@@ -232,9 +204,7 @@ const PartnerList = () => {
               },
             ]}
           >
-            <Upload {...props} listType="picture">
-              <Button>Upload ảnh</Button>
-            </Upload>
+            <Input />
           </Form.Item>
         </Form>
       </Modal>
@@ -257,7 +227,7 @@ const PartnerList = () => {
     return (
       <Modal
         open={showEdit}
-        title="Sửa Partner"
+        title="Sửa Video"
         okText="Sửa"
         cancelText="Hủy"
         onCancel={onCancelEdit}
@@ -281,7 +251,7 @@ const PartnerList = () => {
         >
           <Form.Item
             name="name"
-            label="Tên đối tác"
+            label="Tên Video"
             rules={[
               {
                 required: true,
@@ -292,14 +262,16 @@ const PartnerList = () => {
             <Input />
           </Form.Item>
           <Form.Item
-            name="img"
-            label="Hình ảnh"
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
+            name="urlVideo"
+            label="ID Video"
+            rules={[
+              {
+                required: true,
+                message: "Không được bỏ trống",
+              },
+            ]}
           >
-            <Upload {...props} listType="picture">
-              <Button>Upload ảnh</Button>
-            </Upload>
+            <Input />
           </Form.Item>
         </Form>
       </Modal>
@@ -308,17 +280,14 @@ const PartnerList = () => {
 
   return (
     <div>
-      <h1 className="text-center font-bold text-4xl text-red-500">
-        Danh Sách Partner
-      </h1>
       <Button className="mb-2" onClick={() => setVisible(true)}>
         Thêm
       </Button>
       <Table
         rowKey={(record) => record?.id}
         columns={columns}
-        dataSource={partners}
         onChange={onChange}
+        dataSource={media}
         bordered
       />
       <CollectionCreateForm
@@ -328,7 +297,6 @@ const PartnerList = () => {
           setVisible(false);
         }}
       />
-
       <EditFrom
         showEdit={showEdit}
         onEdit={onEdit}
@@ -340,4 +308,4 @@ const PartnerList = () => {
   );
 };
 
-export default PartnerList;
+export default Media;

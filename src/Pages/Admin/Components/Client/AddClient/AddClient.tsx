@@ -104,7 +104,7 @@ const AddClient = () => {
             </Select>
           </Form.Item>
           <Form.Item
-            name="store"
+            name="StoreId"
             label="Cửa hàng"
             hasFeedback
             rules={[{ required: true, message: "Không được bỏ trống mục này" }]}

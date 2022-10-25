@@ -29,8 +29,19 @@ export const addPartner = createAsyncThunk(
   "partner/addPartnerList",
   async (data: any) => {
     try {
-      console.log(data, "s");
       const result = await PartnerAPI.addPartner(data);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+);
+
+export const updatePartner = createAsyncThunk(
+  "partner/updatePartner",
+  async (data: any) => {
+    try {
+      const result = await PartnerAPI.updatePartner(data);
       return result;
     } catch (error) {
       throw error;

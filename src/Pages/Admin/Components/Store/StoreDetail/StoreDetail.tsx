@@ -19,6 +19,9 @@ const StoreDetail = () => {
 
   const { storesDetail } = useSelector((state: RootState) => state.storeAdmin);
 
+  const [DataStoreDetail, SetStoreDetail] = useState<any>(undefined);
+  console.log(DataStoreDetail, "5");
+
   interface CollectionCreateFormProps {
     visible: boolean;
     onCreate: (values: any) => void;
@@ -31,17 +34,18 @@ const StoreDetail = () => {
     onCancel,
   }) => {
     const [form] = Form.useForm();
-
-    form.setFieldsValue({
-      id: idStore,
-      name: storesDetail?.name,
-      street: storesDetail?.street,
-      district: storesDetail?.district,
-      province: storesDetail?.province,
-      email: storesDetail?.email,
-      phone: storesDetail?.phone,
-      idMap: storesDetail?.idMap,
-    });
+    if (DataStoreDetail) {
+      form.setFieldsValue({
+        id: idStore,
+        name: DataStoreDetail?.name,
+        street: DataStoreDetail?.street,
+        district: DataStoreDetail?.district,
+        province: DataStoreDetail?.province,
+        email: DataStoreDetail?.email,
+        phone: DataStoreDetail?.phone,
+        idMap: DataStoreDetail?.idMap,
+      });
+    }
 
     return (
       <Modal
@@ -167,6 +171,7 @@ const StoreDetail = () => {
           });
           dispatch(getDetailStore(idStore!));
           setVisible(false);
+          SetStoreDetail(undefined);
         } else {
           Swal.fire({
             title: `Sửa thất bại`,
@@ -185,18 +190,29 @@ const StoreDetail = () => {
         type="primary"
         onClick={() => {
           setVisible(true);
+          SetStoreDetail(storesDetail);
         }}
       >
         Sửa
       </Button>
       <div className="container mx-auto p-5">
-        <div className="grid md:grid-cols-2 grid-cols-1">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
           <div>
-            <p>Địa chỉ: {storesDetail?.street}</p>
-            <p>Quận: {storesDetail?.district}</p>
-            <p>TỈnh/Thành Phố: {storesDetail?.province}</p>
-            <p>Email: {storesDetail?.email}</p>
-            <p>Số điện thoại: {storesDetail?.phone}</p>
+            <div className=" border-b py-5">
+              <p>Địa chỉ: {storesDetail?.street}</p>
+            </div>
+            <div className=" border-b py-5">
+              <p>Quận: {storesDetail?.district}</p>
+            </div>
+            <div className=" border-b py-5">
+              <p>TỈnh/Thành Phố: {storesDetail?.province}</p>
+            </div>
+            <div className=" border-b py-5">
+              <p>Email: {storesDetail?.email}</p>
+            </div>
+            <div className=" border-b py-5">
+              <p>Số điện thoại: {storesDetail?.phone}</p>
+            </div>
           </div>
           <div>
             <iframe
@@ -212,6 +228,7 @@ const StoreDetail = () => {
         onCreate={onCreate}
         onCancel={() => {
           setVisible(false);
+          SetStoreDetail(undefined);
         }}
       />
     </div>
