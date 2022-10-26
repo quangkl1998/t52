@@ -31,8 +31,8 @@ const Banner = () => {
       >
         {listBanner?.map((banner: any) => {
           return (
-            <SwiperSlide>
-              <img src={banner.img} alt="Vay bằn ô tô" />
+            <SwiperSlide key={banner?.id}>
+              <img src={banner?.img} alt="Vay bằn ô tô" />
             </SwiperSlide>
           );
         })}

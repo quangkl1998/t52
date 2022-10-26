@@ -20,7 +20,6 @@ const StoreDetail = () => {
   const { storesDetail } = useSelector((state: RootState) => state.storeAdmin);
 
   const [DataStoreDetail, SetStoreDetail] = useState<any>(undefined);
-  console.log(DataStoreDetail, "5");
 
   interface CollectionCreateFormProps {
     visible: boolean;

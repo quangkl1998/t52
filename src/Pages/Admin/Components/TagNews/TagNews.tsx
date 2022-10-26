@@ -30,7 +30,6 @@ const Tagnews = () => {
   }, [dispatch]);
 
   const onDelete = (id: string) => {
-    console.log(id);
     dispatch(deleteTagNews(id))
       .unwrap()
       .then((result) => {

@@ -271,7 +271,6 @@ const ClientList = () => {
   };
 
   const onCreate = (values: any) => {
-    console.log("Received values of form: ", values);
     const data = {
       ...values,
       id: dataForm.id,

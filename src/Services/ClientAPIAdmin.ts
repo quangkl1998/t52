@@ -10,7 +10,6 @@ const ClientAPI = {
     return axiosClient.delete(`client/${id}`);
   },
   updateClient: (data: any) => {
-    console.log(data, "321");
     return axiosClient.put(`client/${data?.id}`, data);
   },
 };

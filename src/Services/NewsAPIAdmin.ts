@@ -12,7 +12,7 @@ const NewsAPI = {
     formData.append("type", data?.type);
     formData.append("slug", data?.slug);
     formData.append("descript", data?.descript);
-    console.log(formData, "698");
+
     return axiosClient.post(`news`, formData);
   },
   deleteNews: (id: string) => {

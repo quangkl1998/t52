@@ -9,7 +9,7 @@ const PartnerAPI = {
 
     formData.append("img", data.img[0].originFileObj);
     formData.append("name", data.name);
-    console.log(formData, 2);
+
     return axiosClient.post(`partner`, formData);
   },
   updatePartner: (data: any) => {
@@ -18,7 +18,7 @@ const PartnerAPI = {
       formData.append("img", data.img[0].originFileObj);
     }
     formData.append("name", data.name);
-    console.log(formData, 2);
+
     return axiosClient.put(`partner/${data?.id}`, formData);
   },
   deletePartner: (id: string) => {

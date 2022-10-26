@@ -38,6 +38,7 @@ const News = () => {
   const [open, setOpen] = useState(false);
 
   const { newsList } = useSelector((state: RootState) => state.newsAdmin);
+  console.log(newsList, "55");
   const { tag } = useSelector((state: RootState) => state.tagNewsAdmin);
 
   const fSearch = (rows: any[]) => {
