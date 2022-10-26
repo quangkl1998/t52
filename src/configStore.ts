@@ -21,6 +21,7 @@ const store = configureStore({
     banner,
     stores,
     partner,
+    media,
     clientAdmin,
     login,
     newsAdmin,
