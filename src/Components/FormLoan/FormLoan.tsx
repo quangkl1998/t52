@@ -7,12 +7,16 @@ import { getStores } from "Slices/store";
 
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
+import { addClient } from "Slices/ClientAdmin";
+import { useNavigate } from "react-router-dom";
 
 const FormLoan = () => {
     const { listStore, isLoading, error } = useSelector(
         (state: RootState) => state.stores,
     );
     const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
+
     useEffect(() => {
         dispatch(getStores());
     }, []);
@@ -59,26 +63,42 @@ const FormLoan = () => {
             ...values,
             province: provinceName?.name,
         };
-        emailjs
-            .send(
-                "service_uyfrx3a",
-                "template_yleob6f",
-                data,
-                "6bxE6T77g2MSso4FN",
-            )
-            .then(
-                (result) => {
+        dispatch(
+            addClient({
+                ...data,
+                email: "t52tiennhanh@gmail.com",
+                isLoan: false,
+            }),
+        )
+            .unwrap()
+            .then((result) => {
+                if (result.id) {
+                    emailjs
+                        .send(
+                            "service_uyfrx3a",
+                            "template_yleob6f",
+                            data,
+                            "6bxE6T77g2MSso4FN",
+                        )
+                        .then(
+                            (result) => {
+                                Swal.fire({
+                                    title: "Đăng ký thành công",
+                                });
+                                reset();
+                            },
+                            (error) => {
+                                Swal.fire({
+                                    title: "Đăng ký thất bại",
+                                });
+                            },
+                        );
+                } else {
                     Swal.fire({
-                        title: "Đăng ký thành công",
+                        title: `Thêm thất bại`,
                     });
-                    reset();
-                },
-                (error) => {
-                    Swal.fire({
-                        title: "Đăng ký thất bại",
-                    });
-                },
-            );
+                }
+            });
     };
     const onError = (values: FieldErrors<any>) => {
         console.log(values);

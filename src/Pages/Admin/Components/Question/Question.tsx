@@ -83,7 +83,7 @@ const Question = () => {
         {
             title: "Nội Dung",
             dataIndex: "content",
-
+            ellipsis: true,
             // render: (value, record, index) => <div>a</div>,
         },
         {

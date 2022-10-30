@@ -168,7 +168,7 @@ const ActivityNews = () => {
                                     <iframe
                                         width={270}
                                         height={208}
-                                        src={item.urlVideo}
+                                        src={`https://www.youtube.com/embed/${item.urlVideo}`}
                                         title="FADED LOVE REMIX - CHÀO MỪNG ĐẾN BÌNH NGUYÊN VÔ TẬN REMIX - HEY HEY HEY REMIX HOT TIKTOK"
                                         frameBorder={0}
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
