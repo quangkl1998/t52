@@ -43,7 +43,7 @@ const ActivityNews = () => {
                                         className="w-full bg-white rounded-xl overflow-hidden text-gray-700 hover:text-amber-500 border border-transparent hover:border-gray-100 duration-300 cursor-pointer"
                                     >
                                         <img
-                                            className="w-full"
+                                            className="w-full object-cover h-auto md:h-80"
                                             src={item?.img}
                                             alt="aaaa"
                                         />
@@ -62,7 +62,7 @@ const ActivityNews = () => {
                                 );
                         },
                     )}
-                    <div className="flex flex-col">
+                    <div className="grid grid-rows-3 gap-5">
                         {listNewPagination?.content?.map(
                             (item: any, index: number) => {
                                 if (index === 0) {
@@ -76,14 +76,14 @@ const ActivityNews = () => {
                                                 //     dispatch(getNewDetail(news.id))
                                                 // }
                                                 to={`/tin-tuc-chi-tiet/${item?.slug}`}
-                                                className="flex mb-5 rounded-xl bg-white overflow-hidden text-gray-700 hover:text-amber-500 border border-transparent hover:border-gray-100 duration-300 cursor-pointer"
+                                                className="flex w-full h-36 mb-5 rounded-xl bg-white overflow-hidden text-gray-700 hover:text-amber-500 border border-transparent hover:border-gray-100 duration-300 cursor-pointer"
                                             >
                                                 <img
-                                                    className="w-1/2 md:w-5/12 object-cover"
+                                                    className="w-1/2 h-full md:w-5/12 object-cover"
                                                     src={item?.img}
                                                     alt=""
                                                 />
-                                                <div>
+                                                <div className="w-1/2">
                                                     <div className="p-5 font-bold text-base md:text-xl ">
                                                         {item?.name}
                                                     </div>
@@ -104,7 +104,7 @@ const ActivityNews = () => {
                     </div>
                 </div>
                 <div className="h-6"></div>
-                <div className="grid grid-cols-2 lg:grid-cols-4 lg:gap-16 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:gap-16 gap-8">
                     {listNewPagination?.content?.map(
                         (item: any, index: number) => {
                             if (index >= 4) {
@@ -114,7 +114,7 @@ const ActivityNews = () => {
                                         className="w-full bg-white rounded-xl overflow-hidden text-gray-700 hover:text-amber-500 border border-transparent hover:border-gray-100 duration-300 cursor-pointer"
                                     >
                                         <img
-                                            className="w-full object-cover"
+                                            className="w-full h-56 lg:h-40 object-cover"
                                             src={item?.img}
                                             alt="aaaa"
                                         />
