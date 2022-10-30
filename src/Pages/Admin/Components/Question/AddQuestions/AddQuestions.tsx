@@ -55,7 +55,7 @@ const AddQuestion = () => {
         wrapperCol: { span: 16 },
     };
     const handleChange = (e: any) => {
-        console.log(e);
+        // console.log(e);
     };
     return (
         <div className="w-full">
