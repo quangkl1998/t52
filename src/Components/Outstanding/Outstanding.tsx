@@ -26,7 +26,7 @@ const Outstanding = () => {
                 <h1 className="text-center p-5 font-bold text-2xl md:text-3xl text-red-600">
                     Tin tức nổi bật
                 </h1>
-                <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16 gap-8 ">
                     {listNew?.map((news: any, index: number) => {
                         if (index === 0) {
                             return (
@@ -39,7 +39,7 @@ const Outstanding = () => {
                                     className="w-full bg-white rounded-xl overflow-hidden text-gray-700 hover:text-amber-500 border border-transparent hover:border-gray-100 duration-150 cursor-pointer"
                                 >
                                     <img
-                                        className="w-full object-cover"
+                                        className="w-full object-cover h-auto md:h-80"
                                         src={news?.img}
                                         alt=""
                                     />
@@ -58,7 +58,7 @@ const Outstanding = () => {
                             );
                         }
                     })}
-                    <div className="flex flex-col">
+                    <div className="grid grid-rows-3 gap-5">
                         {listNew?.map((news: any, index: number) => {
                             if (index === 0) {
                                 return;
@@ -71,14 +71,14 @@ const Outstanding = () => {
                                             //     dispatch(getNewDetail(news.id))
                                             // }
                                             to={`/tin-tuc-chi-tiet/${news?.slug}`}
-                                            className="flex mb-5 rounded-xl bg-white overflow-hidden text-gray-700 hover:text-amber-500 border border-transparent hover:border-gray-100 duration-150 cursor-pointer"
+                                            className="flex w-full h-36 rounded-xl bg-white overflow-hidden text-gray-700 hover:text-amber-500 border border-transparent hover:border-gray-100 duration-150 cursor-pointer"
                                         >
                                             <img
-                                                className="w-1/2 md:w-5/12 object-cover"
+                                                className="w-1/2 h-full md:w-5/12 object-cover"
                                                 src={news?.img}
                                                 alt=""
                                             />
-                                            <div>
+                                            <div className="w-1/2">
                                                 <div className="p-5 font-bold text-base md:text-xl ">
                                                     {news?.name}
                                                 </div>

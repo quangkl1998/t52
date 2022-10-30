@@ -13,23 +13,25 @@ import storeAdmin from "./Slices/StoreAdmin";
 import partnerAdmin from "./Slices/PartnerAdmin";
 import tagNewsAdmin from "./Slices/TagNewsAdmin";
 import mediaAdmin from "./Slices/mediaAdmin";
+import question from "./Slices/questionAdmin";
 
 const store = configureStore({
-  reducer: {
-    auth,
-    news,
-    banner,
-    stores,
-    partner,
-    media,
-    clientAdmin,
-    login,
-    newsAdmin,
-    storeAdmin,
-    partnerAdmin,
-    tagNewsAdmin,
-    mediaAdmin,
-  },
+    reducer: {
+        auth,
+        news,
+        banner,
+        stores,
+        partner,
+        media,
+        clientAdmin,
+        login,
+        newsAdmin,
+        storeAdmin,
+        partnerAdmin,
+        tagNewsAdmin,
+        mediaAdmin,
+        question,
+    },
 });
 
 // type cho hàm dispatch
