@@ -126,7 +126,7 @@ const AdminTemplate = () => {
           collapsible
           collapsed={collapsed}
           theme="light"
-          className="hidden lg:block"
+          className="hidden md:block"
         >
           <div className="flex  justify-center bg-red-500 rounded-sm shadow-lg  ">
             <img src={logo} alt="logo" className="w-16 h-16  " />
@@ -193,6 +193,13 @@ const AdminTemplate = () => {
         <div className="container mx-auto">
           <div className="flex flex-col justify-center px-3 py-4">
             <NavLink
+              to="/dashboard"
+              onClick={() => setOpen(!open)}
+              className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+            >
+              Dashboard
+            </NavLink>
+            <NavLink
               to="/dashboard/store"
               onClick={() => setOpen(!open)}
               className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
@@ -213,6 +220,20 @@ const AdminTemplate = () => {
               className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
             >
               Partner
+            </NavLink>
+            <NavLink
+              to="/dashboard/tagnews"
+              onClick={() => setOpen(!open)}
+              className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+            >
+              TagNews
+            </NavLink>
+            <NavLink
+              to="/dashboard/media"
+              onClick={() => setOpen(!open)}
+              className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+            >
+              Media
             </NavLink>
             <div
               onClick={() => SetShow(!show)}
@@ -257,6 +278,7 @@ const AdminTemplate = () => {
                 </NavLink>
               </div>
             </div>
+
             <HeaderAdmin />
           </div>
         </div>

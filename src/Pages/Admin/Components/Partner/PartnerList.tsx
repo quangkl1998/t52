@@ -108,12 +108,13 @@ const PartnerList = () => {
     {
       title: "Hình Ảnh",
       dataIndex: "img",
+      width: 300,
       render: (value, record, index) => (
         <img
           className="mb-2"
           style={{
-            width: "100px",
-            height: "100px",
+            width: "100%",
+            height: "100%",
             borderRadius: "10px",
           }}
           src={value}
@@ -123,6 +124,7 @@ const PartnerList = () => {
     },
     {
       title: "ACTION",
+      align: "center",
       width: 200,
       render: (value, record, index) => (
         <div>

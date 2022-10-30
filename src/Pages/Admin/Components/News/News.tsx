@@ -99,16 +99,18 @@ const News = () => {
       dataIndex: "img",
       width: 300,
       render: (value, record, index) => (
-        <img
-          className="mb-2"
-          style={{
-            width: "100px",
-            height: "100px",
-            borderRadius: "10px",
-          }}
-          src={value}
-          alt={`hình ${index}`}
-        />
+        <div className="w-full flex justify-center">
+          <img
+            className="mb-2"
+            style={{
+              width: "100px",
+              height: "100px",
+              borderRadius: "10px",
+            }}
+            src={value}
+            alt={`hình ${index}`}
+          />
+        </div>
       ),
     },
 
@@ -121,9 +123,7 @@ const News = () => {
         if (value === true) {
           return (
             <div /* onClick={() => IsHot(record, false)} */>
-              <LikeOutlined
-                style={{ fontSize: "16px", color: "rgb(255,255,255)" }}
-              />
+              <LikeOutlined style={{ fontSize: "25px", color: "blue" }} />
             </div>
           );
         } else {
