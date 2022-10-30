@@ -42,7 +42,7 @@ const Activities = () => {
                                     className=" mb-5 rounded-xl bg-white overflow-hidden text-gray-700 hover:text-amber-500 border border-transparent hover:border-gray-100 duration-150 cursor-pointer"
                                 >
                                     <img
-                                        className="w-full"
+                                        className="w-full h-48 object-cover"
                                         src={news.img}
                                         alt=""
                                     />
