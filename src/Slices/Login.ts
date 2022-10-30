@@ -3,12 +3,14 @@ import LoginAPI from "Services/LoginAPI";
 interface State {
   loginresult: any;
   managers: any;
+  dashboard: any;
   isloading: boolean;
   error?: string;
 }
 const initialState: State = {
   loginresult: null || JSON.parse(localStorage.getItem("user") as string),
   managers: [],
+  dashboard: {},
   isloading: false,
   error: undefined,
 };
@@ -33,6 +35,15 @@ export const getManagerList = createAsyncThunk(
     }
   },
 );
+
+export const getDashBoard = createAsyncThunk("auth/getDashBoard", async () => {
+  try {
+    const data = await LoginAPI.getDashBoard();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+});
 
 export const addManagerAdmin = createAsyncThunk(
   "auth/addManagerAdmin",
@@ -102,6 +113,20 @@ const LoginSlice = createSlice({
       state.error = error.message;
     });
     // End Manager
+
+    //  getDashBoard
+    builder.addCase(getDashBoard.pending, (state) => {
+      state.isloading = true;
+    });
+    builder.addCase(getDashBoard.fulfilled, (state, { payload }) => {
+      state.isloading = false;
+      state.dashboard = payload;
+    });
+    builder.addCase(getDashBoard.rejected, (state, { error }) => {
+      state.isloading = true;
+      state.error = error.message;
+    });
+    // End getDashBoard
   },
 });
 export default LoginSlice.reducer;

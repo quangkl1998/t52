@@ -16,5 +16,8 @@ const LoginAPI = {
   updateManagerAdmin: (data: any) => {
     return axiosClient.put<any>(`manager/${data.id}`, data);
   },
+  getDashBoard: () => {
+    return axiosClient.get<any>(`manager/info`);
+  },
 };
 export default LoginAPI;
