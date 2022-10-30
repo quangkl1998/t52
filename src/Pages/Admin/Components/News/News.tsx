@@ -70,19 +70,24 @@ const News = () => {
   const onCreate = (values: any) => {
     setOpen(false);
     SetEditFormValue(undefined);
-    dispatch(updateNews(values));
+    dispatch(updateNews(values))
+      .unwrap()
+      .then((result) => {
+        if (result === "Update successfuly") {
+          Swal.fire({
+            title: `Sửa thành công`,
+          });
+          dispatch(getNewsList());
+        } else {
+          Swal.fire({
+            title: `Sửa thất bại`,
+          });
+        }
+      });
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQ(e.target.value?.toLowerCase());
-  };
-
-  const IsHot = (values: any, ishot: any) => {
-    let ishotData = {
-      ...values,
-      isHot: ishot,
-    };
-    dispatch(updateNews(ishotData));
   };
 
   const columns: ColumnsType<any> = [
@@ -112,28 +117,6 @@ const News = () => {
           />
         </div>
       ),
-    },
-
-    {
-      title: "Hot",
-      dataIndex: "isHot",
-      width: 100,
-      align: "center",
-      render: (value, record, index) => {
-        if (value === true) {
-          return (
-            <div /* onClick={() => IsHot(record, false)} */>
-              <LikeOutlined style={{ fontSize: "25px", color: "blue" }} />
-            </div>
-          );
-        } else {
-          return (
-            <div /* onClick={() => IsHot(record, true)} */>
-              <DislikeOutlined style={{ fontSize: "25px", color: "red" }} />
-            </div>
-          );
-        }
-      },
     },
 
     { title: "Loại tin", dataIndex: "type", width: 150 },
@@ -237,6 +220,7 @@ const News = () => {
         >
           <Form.Item
             name="id"
+            className="hidden"
             label="id"
             rules={[
               {
