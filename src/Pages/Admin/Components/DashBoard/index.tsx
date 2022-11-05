@@ -13,8 +13,8 @@ const Dashboard = () => {
     dispatch(getDashBoard());
   }, [dispatch]);
   return (
-    <div className="flex justify-center items-center gap-16 flex-wrap mt-20">
-      <div className="w-64 px-5 py-12 shadow-md rounded-3xl text-center bg-blue-100">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-16 flex-wrap mt-20">
+      <div className="w-full h-full px-5 py-8 flex shadow-md flex-col justify-between h rounded-3xl text-center bg-blue-100">
         <h3 className="font-bold text-xl text-yellow-500 uppercase ">
           Tổng số người đăng ký vay
         </h3>
@@ -22,28 +22,28 @@ const Dashboard = () => {
           {dashboard?.countClient}
         </p>
       </div>
-      <div className="w-64 px-5 py-12 shadow-md rounded-3xl text-center bg-red-100">
+      <div className="w-full h-full px-5 py-8 flex shadow-md flex-col justify-between h rounded-3xl text-center bg-red-100">
         <h3 className="font-bold text-xl text-yellow-500 uppercase">
-          Tổng số người đăng ký vay
+          Tổng số tin tức
         </h3>
         <p className="font-bold text-4xl text-red-500">
-          {dashboard?.countClient}
+          {dashboard?.countNews}
         </p>
       </div>
-      <div className="w-64 px-5 py-12 shadow-md rounded-3xl text-center bg-purple-100">
+      <div className="w-full h-full px-5 py-8 flex shadow-md flex-col justify-between h rounded-3xl text-center bg-purple-100">
         <h3 className="font-bold text-xl text-yellow-500 uppercase">
-          Tổng số người đăng ký vay
+          Tổng số đối tác
         </h3>
         <p className="font-bold text-4xl text-red-500">
-          {dashboard?.countClient}
+          {dashboard?.countPartner}
         </p>
       </div>
-      <div className="w-64 px-5 py-12 shadow-md rounded-3xl text-center bg-yellow-100">
+      <div className="w-full h-full px-5 py-8 flex shadow-md flex-col justify-between h rounded-3xl text-center bg-yellow-100">
         <h3 className="font-bold text-xl text-yellow-500 uppercase">
-          Tổng số người đăng ký vay
+          Tổng số cửa hàng
         </h3>
         <p className="font-bold text-4xl text-red-500">
-          {dashboard?.countClient}
+          {dashboard?.countStore}
         </p>
       </div>
     </div>

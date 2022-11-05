@@ -74,7 +74,7 @@ const ManagerList = () => {
     dispatch(updateManagerAdmin(dataEdit))
       .unwrap()
       .then((result) => {
-        if (result === "Update successfuly") {
+        if (result === "Update successfully") {
           Swal.fire({
             title: `Sửa Thành công`,
           });
@@ -243,7 +243,7 @@ const ManagerList = () => {
               },
             ]}
           >
-            <Input />
+            <Input type="password" />
           </Form.Item>
           <Form.Item
             name="phone"
@@ -353,7 +353,7 @@ const ManagerList = () => {
               },
             ]}
           >
-            <Input />
+            <Input type="password" />
           </Form.Item>
           <Form.Item
             name="phone"
