@@ -26,29 +26,29 @@ const PartnerList = lazy(
 const FutureList = lazy(() => import("Pages/Admin/Components/Future/index"));
 const BannerList = lazy(() => import("Pages/Admin/Components/Banner/index"));
 const ProvinceList = lazy(
-  () => import("Pages/Admin/Components/Province/index"),
+    () => import("Pages/Admin/Components/Province/index"),
 );
 const DistrictList = lazy(
-  () => import("Pages/Admin/Components/District/index"),
+    () => import("Pages/Admin/Components/District/index"),
 );
 const ServiceList = lazy(
-  () => import("Pages/Admin/Components/Service/Service"),
+    () => import("Pages/Admin/Components/Service/Service"),
 );
 const AddServiceList = lazy(
-  () => import("Pages/Admin/Components/Service/addService/index"),
+    () => import("Pages/Admin/Components/Service/addService/index"),
 );
 const DetailService = lazy(
-  () => import("Pages/Admin/Components/Service/detailService/index"),
+    () => import("Pages/Admin/Components/Service/detailService/index"),
 );
 const MenuList = lazy(() => import("Pages/Admin/Components/Menu/index"));
 const CoreValueList = lazy(
-  () => import("Pages/Admin/Components/CodeValue/index"),
+    () => import("Pages/Admin/Components/CodeValue/index"),
 );
 const StoreDetail = lazy(
     () => import("Pages/Admin/Components/Store/StoreDetail/StoreDetail"),
 );
 const Introduce = lazy(
-  () => import("Pages/Admin/Components/Introduce/introduce"),
+    () => import("Pages/Admin/Components/Introduce/introduce"),
 );
 const AddStore = lazy(
     () => import("Pages/Admin/Components/Store/AddStore/AddStore"),
@@ -90,46 +90,73 @@ const FinancialKnowledge = lazy(
 const NewsDetail = lazy(() => import("Pages/NewsDetail/NewsDetail"));
 
 function App() {
-  return (
-    <ErrorBoundary>
-      <Suspense
-        fallback={
-          <div className="w-full h-screen flex justify-center items-center">
-            <img src={loading} alt={loading} />
-          </div>
-        }
-      >
-        <BrowserRouter>
-          <Routes>
-            <Route path="login" element={<Login />}></Route>
-
-            <Route
-              path="dashboard"
-              element={
-                <ProtectedRoute>
-                  <AdminTemplate />
-                </ProtectedRoute>
-              }
+    return (
+        <ErrorBoundary>
+            <Suspense
+                fallback={
+                    <div className="w-full h-screen flex justify-center items-center">
+                        <img src={loading} alt={loading} />
+                    </div>
+                }
             >
-              <Route path="" element={<AdminPage />}>
-                <Route path="" element={<DashBoard />}></Route>
-                <Route path="partner" element={<PartnerList />}></Route>
-                <Route path="manager" element={<ManagerList />}></Route>
-                <Route path="service" element={<ServiceList />}></Route>
-                <Route
-                  path="service/addservice"
-                  element={<AddServiceList />}
-                ></Route>
-                <Route path="menu" element={<MenuList />}></Route>
-                <Route path="future" element={<FutureList />}></Route>
-                <Route path="corevalue" element={<CoreValueList />}></Route>
-                <Route
-                  path="store/storeDetail/:idStore"
-                  element={<StoreDetail />}
-                ></Route>
-                <Route path="store/addStore" element={<AddStore />}></Route>
-                <Route path="client" element={<ClientList />}></Route>
-                <Route path="client/addClient" element={<AddClient />}></Route>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="login" element={<Login />}></Route>
+
+                        <Route
+                            path="dashboard"
+                            element={
+                                <ProtectedRoute>
+                                    <AdminTemplate />
+                                </ProtectedRoute>
+                            }
+                        >
+                            <Route path="" element={<AdminPage />}>
+                                <Route path="" element={<DashBoard />}></Route>
+                                <Route
+                                    path="partner"
+                                    element={<PartnerList />}
+                                ></Route>
+                                <Route
+                                    path="manager"
+                                    element={<ManagerList />}
+                                ></Route>
+                                <Route
+                                    path="service"
+                                    element={<ServiceList />}
+                                ></Route>
+                                <Route
+                                    path="service/addservice"
+                                    element={<AddServiceList />}
+                                ></Route>
+                                <Route
+                                    path="menu"
+                                    element={<MenuList />}
+                                ></Route>
+                                <Route
+                                    path="future"
+                                    element={<FutureList />}
+                                ></Route>
+                                <Route
+                                    path="corevalue"
+                                    element={<CoreValueList />}
+                                ></Route>
+                                <Route
+                                    path="store/storeDetail/:idStore"
+                                    element={<StoreDetail />}
+                                ></Route>
+                                <Route
+                                    path="store/addStore"
+                                    element={<AddStore />}
+                                ></Route>
+                                <Route
+                                    path="client"
+                                    element={<ClientList />}
+                                ></Route>
+                                <Route
+                                    path="client/addClient"
+                                    element={<AddClient />}
+                                ></Route>
 
                                 <Route
                                     path="store"
@@ -159,7 +186,6 @@ function App() {
                                 ></Route>
                             </Route>
                         </Route>
->>>>>>> Stashed changes
 
                         {/* aaaaaaaaaa */}
                         <Route path="" element={<HomeTemplate />}>
