@@ -10,10 +10,6 @@ import { getList } from "Slices/service";
 const Service = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const [editFormValue, SetEditFormValue] = useState<any>();
-
-  const [showEdit, SetShowEdit] = useState(false);
-
   const { list } = useSelector((state: RootState) => state.service);
 
   useEffect(() => {
@@ -42,7 +38,13 @@ const Service = () => {
       width: 150,
       render: (value, record, index) => (
         <div>
-          <Button block onClick={() => {}} className="mb-2">
+          <Button
+            block
+            onClick={() => {
+              //  navigate
+            }}
+            className="mb-2"
+          >
             Chi tiết
           </Button>
           <Button
@@ -78,48 +80,6 @@ const Service = () => {
     /* console.log("params", pagination, filters, sorter, extra); */
   };
 
-  interface EditFromProps {
-    showEdit: boolean;
-    onEdit: (values: any) => void;
-    onCancelEdit: () => void;
-  }
-
-  const EditFrom: React.FC<EditFromProps> = ({
-    showEdit,
-    onEdit,
-    onCancelEdit,
-  }) => {
-    const [form] = Form.useForm();
-
-    return (
-      <Modal
-        open={showEdit}
-        title="Sửa Câu Hỏi"
-        okText="Sửa"
-        cancelText="Hủy"
-        onCancel={onCancelEdit}
-        onOk={() => {
-          form
-            .validateFields()
-            .then((values) => {
-              form.resetFields();
-              onEdit(values);
-            })
-            .catch((info) => {
-              console.log("Validate Failed:", info);
-            });
-        }}
-      >
-        <Form
-          form={form}
-          layout="vertical"
-          name="form_in_modal"
-          initialValues={{ modifier: "public" }}
-        ></Form>
-      </Modal>
-    );
-  };
-
   const navigate = useNavigate();
 
   return (
@@ -140,14 +100,6 @@ const Service = () => {
         onChange={onChange}
         bordered
         scroll={{ x: 800 }}
-      />
-
-      <EditFrom
-        showEdit={showEdit}
-        onEdit={onEdit}
-        onCancelEdit={() => {
-          SetShowEdit(false);
-        }}
       />
     </div>
   );
