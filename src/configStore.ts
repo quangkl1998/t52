@@ -14,6 +14,13 @@ import partnerAdmin from "./Slices/PartnerAdmin";
 import tagNewsAdmin from "./Slices/TagNewsAdmin";
 import mediaAdmin from "./Slices/mediaAdmin";
 import question from "./Slices/questionAdmin";
+import corevalue from "./Slices/corevalue";
+import feedback from "./Slices/feedback";
+import future from "./Slices/future";
+import introduce from "./Slices/introduce";
+import menu from "./Slices/menu";
+import service from "./Slices/service";
+import submenu from "./Slices/submenu";
 
 const store = configureStore({
     reducer: {
@@ -31,6 +38,13 @@ const store = configureStore({
         tagNewsAdmin,
         mediaAdmin,
         question,
+        corevalue,
+        feedback,
+        future,
+        introduce,
+        menu,
+        service,
+        submenu,
     },
 });
 

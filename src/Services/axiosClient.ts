@@ -3,7 +3,7 @@ import axios from "axios";
 const axiosClient = axios.create({
     // baseURL: "https://t52-loan-nodejs.herokuapp.com/t52",
     // http://t52tiennhanh.net:8080
-    baseURL: "http://t52tiennhanh.net:8080",
+    baseURL: "http://localhost:8080/",
     headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",

@@ -3,18 +3,13 @@ import moment from "moment";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import {
-    getNewDetail,
-    getNews,
-    getNewsLimit,
-    setNewsDetail,
-} from "Slices/news";
-import { data } from "Utill/NewsData";
+import { getNewsLimit } from "Slices/news";
 
 const Outstanding = () => {
     const { listNew, isLoading, error } = useSelector(
         (state: RootState) => state.news,
     );
+    console.log(listNew);
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(getNewsLimit(4));
@@ -27,7 +22,7 @@ const Outstanding = () => {
                     Tin tức nổi bật
                 </h1>
                 <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16 gap-8 ">
-                    {listNew?.map((news: any, index: number) => {
+                    {listNew?.rows?.map((news: any, index: number) => {
                         if (index === 0) {
                             return (
                                 <NavLink
@@ -59,7 +54,7 @@ const Outstanding = () => {
                         }
                     })}
                     <div className="grid grid-rows-3 gap-5">
-                        {listNew?.map((news: any, index: number) => {
+                        {listNew?.rows?.map((news: any, index: number) => {
                             if (index === 0) {
                                 return;
                             } else {

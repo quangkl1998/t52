@@ -190,6 +190,19 @@ const Transaction = () => {
     //         ),
     //     },
     // ];
+
+    console.log(listStore);
+
+    // const arrProvince = listStore?.map((item: any) => {
+    //     return item.province;
+    // });
+    let group: any = [];
+    listStore?.filter((item: any) => {
+        if (!group.includes(item.province)) {
+            group.push(item.province);
+        }
+    });
+    console.log(group);
     return (
         <div className="bg-gray-100 pt-10">
             <div className="container mx-auto px-5 lg:px-16 pb-10">
@@ -200,6 +213,27 @@ const Transaction = () => {
                     <h3 className="font-bold text-lg text-yellow-600">
                         GIẢI PHÁP TÀI CHÍNH CÁ NHÂN
                     </h3>
+                </div>
+
+                <div className="pb-6 w-48">
+                    <label
+                        htmlFor="asset-filter"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                        Bạn muốn vay bằng{" "}
+                        <span className="text-red-600">*</span>
+                    </label>
+                    <select
+                        id="asset-filter"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        defaultValue=""
+                    >
+                        <option value="Đăng ký xe máy">Đăng ký xe máy</option>
+                        <option value="Đăng ký ô tô">Đăng ký ô tô</option>
+                        <option value="Ô tô">Ô tô</option>
+                        <option value="Xe máy">Xe máy</option>
+                        <option value="Tài sản khác">Tài sản khác</option>
+                    </select>
                 </div>
                 <div className="lg:p-5 p-2 bg-white rounded-xl">
                     <Tabs
