@@ -7,7 +7,6 @@ const Dashboard = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const { dashboard } = useSelector((state: RootState) => state.login);
-  console.log(dashboard);
 
   useEffect(() => {
     dispatch(getDashBoard());

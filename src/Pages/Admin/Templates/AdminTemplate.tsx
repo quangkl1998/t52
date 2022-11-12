@@ -45,95 +45,130 @@ function getItem(
 const items: MenuItem[] = [
   getItem(
     "Dashboard",
-    "9",
+    "Dashboard",
     <NavLink to="/dashboard">
       <FundOutlined />
     </NavLink>,
   ),
-  getItem("Store", "sub1", <ShopOutlined />, [
+  getItem("Store", "Store", <ShopOutlined />, [
     getItem(
       "StoreList",
-      "1",
+      "StoreList",
       <div>
         <NavLink to="store"></NavLink>
       </div>,
     ),
   ]),
-  getItem("Client", "sub2", <UserOutlined />, [
+  getItem("Client", "Client", <UserOutlined />, [
     getItem(
       "ClientList",
-      "2",
+      "ClientList",
       <div>
         <NavLink to="client" />
       </div>,
     ),
   ]),
-  getItem("Partner", "sub3", <ApartmentOutlined />, [
+  getItem("Partner", "Partner", <ApartmentOutlined />, [
     getItem(
       "PartnerList",
-      "3",
+      "PartnerList",
       <div>
         <NavLink to="partner"></NavLink>
       </div>,
     ),
   ]),
-  getItem("TagNews", "sub5", <TagOutlined />, [
+  getItem("TagNews", "TagNews", <TagOutlined />, [
     getItem(
       "TagNewsList",
-      "7",
+      "TagNewsList",
       <div>
         <NavLink to="tagnews"></NavLink>
       </div>,
     ),
   ]),
-  getItem("News", "sub4", <AliwangwangOutlined />, [
+  getItem("News", "News", <AliwangwangOutlined />, [
     getItem(
       "NewsList",
-      "5",
+      "NewsList",
       <div>
         <NavLink to="newslist"></NavLink>
       </div>,
     ),
     getItem(
       "AddNews",
-      "6",
+      "AddNews",
       <div>
         <NavLink to="newslist/addnews"></NavLink>
       </div>,
     ),
   ]),
-  getItem("Media", "sub7", <VideoCameraOutlined />, [
+  getItem("Media", "Media", <VideoCameraOutlined />, [
     getItem(
       "MediaList",
-      "8",
+      "MediaList",
       <div>
         <NavLink to="media"></NavLink>
       </div>,
     ),
   ]),
-  getItem("Question", "sub8", <QuestionOutlined />, [
+  getItem("Question", "Question", <QuestionOutlined />, [
     getItem(
       "QuestionList",
-      "10",
+      "QuestionList",
       <div>
         <NavLink to="question"></NavLink>
       </div>,
     ),
     getItem(
       "AddQuestion",
-      "11",
+      "AddQuestion",
       <div>
         <NavLink to="addquestion"></NavLink>
       </div>,
     ),
   ]),
-  getItem("Manager", "sub9", <SketchOutlined />, [
+  getItem("Manager", "Manager", <SketchOutlined />, [
     getItem(
       "ManagerList",
-      "12",
+      "ManagerList",
       <div>
         <NavLink to="manager"></NavLink>
       </div>,
+    ),
+  ]),
+  getItem("Introduce", "Introduce", <SketchOutlined />, [
+    getItem(
+      "IntroduceList",
+      "IntroduceList",
+      <div>{/* <NavLink to="manager"></NavLink> */}</div>,
+    ),
+  ]),
+  getItem("Menu", "Menu", <SketchOutlined />, [
+    getItem(
+      "MenuList",
+      "MenuList",
+      <div>{/* <NavLink to="manager"></NavLink> */}</div>,
+    ),
+  ]),
+  getItem("Service", "Service", <SketchOutlined />, [
+    getItem(
+      "ServiceList",
+      "ServiceList",
+      <div>{/* <NavLink to="manager"></NavLink> */}</div>,
+    ),
+  ]),
+  getItem("Future", "Future", <SketchOutlined />, [
+    getItem(
+      "FutureList",
+      "FutureList",
+      <div>{/* <NavLink to="manager"></NavLink> */}</div>,
+    ),
+  ]),
+  getItem("CoreValue", "CoreValue", <SketchOutlined />, [
+    getItem(
+      "CoreValueList",
+      "CoreValueList",
+      <div>{/* <NavLink to="manager"></NavLink> */}</div>,
     ),
   ]),
 ];

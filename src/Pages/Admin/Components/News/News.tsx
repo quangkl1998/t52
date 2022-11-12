@@ -38,7 +38,7 @@ const News = () => {
   const [open, setOpen] = useState(false);
 
   const { newsList } = useSelector((state: RootState) => state.newsAdmin);
-  console.log(newsList, "55");
+
   const { tag } = useSelector((state: RootState) => state.tagNewsAdmin);
 
   const fSearch = (rows: any[]) => {
@@ -119,7 +119,7 @@ const News = () => {
       ),
     },
 
-    { title: "Loại tin", dataIndex: "type", width: 150 },
+    { title: "Loại tin", dataIndex: "typenewId", width: 150 },
 
     {
       title: "ACTION",

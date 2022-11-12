@@ -84,7 +84,7 @@ const newsSlice = createSlice({
 
     builder.addCase(getNewsList.fulfilled, (state, { payload }) => {
       state.isloading = false;
-      state.newsList = payload;
+      state.newsList = payload?.rows;
     });
 
     builder.addCase(getNewsList.rejected, (state, { error }) => {
