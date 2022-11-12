@@ -22,8 +22,22 @@ const AdminPage = lazy(() => import("Pages/Admin/Pages/Admin/AdminPage"));
 const PartnerList = lazy(
   () => import("Pages/Admin/Components/Partner/PartnerList"),
 );
+const FutureList = lazy(() => import("Pages/Admin/Components/Future/index"));
+const ServiceList = lazy(
+  () => import("Pages/Admin/Components/Service/Service"),
+);
+const AddServiceList = lazy(
+  () => import("Pages/Admin/Components/Service/addService/index"),
+);
+const MenuList = lazy(() => import("Pages/Admin/Components/Menu/index"));
+const CoreValueList = lazy(
+  () => import("Pages/Admin/Components/CodeValue/index"),
+);
 const StoreDetail = lazy(
   () => import("Pages/Admin/Components/Store/StoreDetail/StoreDetail"),
+);
+const Introduce = lazy(
+  () => import("Pages/Admin/Components/Introduce/introduce"),
 );
 const AddStore = lazy(
   () => import("Pages/Admin/Components/Store/AddStore/AddStore"),
@@ -90,6 +104,14 @@ function App() {
                 <Route path="" element={<DashBoard />}></Route>
                 <Route path="partner" element={<PartnerList />}></Route>
                 <Route path="manager" element={<ManagerList />}></Route>
+                <Route path="service" element={<ServiceList />}></Route>
+                <Route
+                  path="service/addservice"
+                  element={<AddServiceList />}
+                ></Route>
+                <Route path="menu" element={<MenuList />}></Route>
+                <Route path="future" element={<FutureList />}></Route>
+                <Route path="corevalue" element={<CoreValueList />}></Route>
                 <Route
                   path="store/storeDetail/:idStore"
                   element={<StoreDetail />}
@@ -99,6 +121,7 @@ function App() {
                 <Route path="client/addClient" element={<AddClient />}></Route>
 
                 <Route path="store" element={<StoreList />}></Route>
+                <Route path="introduce" element={<Introduce />}></Route>
 
                 <Route path="newsList" element={<NewsAdmin />}></Route>
                 <Route path="media" element={<Media />}></Route>

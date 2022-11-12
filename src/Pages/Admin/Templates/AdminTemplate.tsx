@@ -140,35 +140,43 @@ const items: MenuItem[] = [
     getItem(
       "IntroduceList",
       "IntroduceList",
-      <div>{/* <NavLink to="manager"></NavLink> */}</div>,
+      <div>
+        <NavLink to="introduce"></NavLink>
+      </div>,
     ),
   ]),
   getItem("Menu", "Menu", <SketchOutlined />, [
     getItem(
       "MenuList",
       "MenuList",
-      <div>{/* <NavLink to="manager"></NavLink> */}</div>,
+      <div>
+        <NavLink to="menu"></NavLink>
+      </div>,
     ),
   ]),
   getItem("Service", "Service", <SketchOutlined />, [
     getItem(
       "ServiceList",
       "ServiceList",
-      <div>{/* <NavLink to="manager"></NavLink> */}</div>,
+      <div>{<NavLink to="service"></NavLink>}</div>,
     ),
   ]),
   getItem("Future", "Future", <SketchOutlined />, [
     getItem(
       "FutureList",
       "FutureList",
-      <div>{/* <NavLink to="manager"></NavLink> */}</div>,
+      <div>
+        <NavLink to="future"></NavLink>
+      </div>,
     ),
   ]),
   getItem("CoreValue", "CoreValue", <SketchOutlined />, [
     getItem(
       "CoreValueList",
       "CoreValueList",
-      <div>{/* <NavLink to="manager"></NavLink> */}</div>,
+      <div>
+        <NavLink to="corevalue"></NavLink>
+      </div>,
     ),
   ]),
 ];
