@@ -78,14 +78,8 @@ const Question = () => {
     {
       title: "Tiêu Đề",
       dataIndex: "title",
-      width: 300,
     },
-    {
-      title: "Nội Dung",
-      dataIndex: "content",
-      ellipsis: true,
-      // render: (value, record, index) => <div>a</div>,
-    },
+
     {
       title: "ACTION",
       align: "center",

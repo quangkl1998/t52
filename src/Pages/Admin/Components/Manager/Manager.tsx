@@ -343,16 +343,7 @@ const ManagerList = () => {
           >
             <Input />
           </Form.Item>
-          <Form.Item
-            name="password"
-            label="Mật Khẩu"
-            rules={[
-              {
-                required: true,
-                message: "Không được bỏ trống",
-              },
-            ]}
-          >
+          <Form.Item name="password" label="Mật Khẩu">
             <Input type="password" />
           </Form.Item>
           <Form.Item
