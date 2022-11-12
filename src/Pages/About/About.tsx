@@ -4,7 +4,6 @@ import CoreValues from "Components/CoreValues/CoreValues";
 
 import Future from "Components/Future/Future";
 import Questions from "Components/Questions/Questions";
-import React from "react";
 
 const About = () => {
     return (

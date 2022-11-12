@@ -1,7 +1,23 @@
-import React from "react";
 import T52lagi from "Assets/img/T52/1a_T52_la_gi.png";
 import T52lagiweb from "Assets/img/T52/1a_T52_la_gi_(ZALO).png";
+
+import { AppDispatch, RootState } from "configStore";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getList } from "Slices/introduce";
+
 const AboutT52 = () => {
+    const { list: listIntroduce } = useSelector(
+        (state: RootState) => state.introduce,
+    );
+    console.log(listIntroduce);
+
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        dispatch(getList());
+    }, []);
+
     return (
         <div className="mb-8">
             <div className="container mx-auto px-5 lg:px-16">
