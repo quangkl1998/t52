@@ -14,9 +14,7 @@ const initialState: State = {
 };
 
 export const getList = createAsyncThunk("service/getList", async () => {
-  console.log(11111);
   try {
-    console.log(1);
     const data = await serviceAPI.getList();
     return data;
   } catch (error) {

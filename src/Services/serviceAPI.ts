@@ -1,7 +1,6 @@
 import axiosClient from "./axiosClient";
 const serviceAPI = {
   getList: () => {
-    console.log(2);
     return axiosClient.get<any[]>(`service`);
   },
   add: (data: any) => {

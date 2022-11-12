@@ -59,6 +59,33 @@ const items: MenuItem[] = [
       </div>,
     ),
   ]),
+  getItem("Banner", "Banner", <ShopOutlined />, [
+    getItem(
+      "BannerList",
+      "BannerList",
+      <div>
+        <NavLink to="banner"></NavLink>
+      </div>,
+    ),
+  ]),
+  getItem("Province", "Province", <ShopOutlined />, [
+    getItem(
+      "ProvinceList",
+      "ProvinceList",
+      <div>
+        <NavLink to="province"></NavLink>
+      </div>,
+    ),
+  ]),
+  getItem("District", "District", <ShopOutlined />, [
+    getItem(
+      "DistrictList",
+      "DistrictList",
+      <div>
+        <NavLink to="district"></NavLink>
+      </div>,
+    ),
+  ]),
   getItem("Client", "Client", <UserOutlined />, [
     getItem(
       "ClientList",

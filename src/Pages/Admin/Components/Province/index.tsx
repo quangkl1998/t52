@@ -7,13 +7,13 @@ import Swal from "sweetalert2";
 
 import { useNavigate } from "react-router-dom";
 import { deleteItem, getList } from "Slices/service";
-const Service = () => {
+const Province = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const { list } = useSelector((state: RootState) => state.service);
 
   useEffect(() => {
-    dispatch(getList());
+    // dispatch(getList());
   }, [dispatch]);
 
   const onDelete = (id: string) => {
@@ -37,17 +37,10 @@ const Service = () => {
 
   const columns: ColumnsType<any> = [
     {
-      title: "Tiêu đề",
-      dataIndex: "title",
-    },
-    {
-      title: "Tên dịch vụ",
+      title: "Tên Tỉnh/Thành Phố",
       dataIndex: "name",
     },
-    {
-      title: "Hình ảnh",
-      dataIndex: "img",
-    },
+
     {
       title: "ACTION",
       width: 150,
@@ -121,4 +114,4 @@ const Service = () => {
   );
 };
 
-export default Service;
+export default Province;

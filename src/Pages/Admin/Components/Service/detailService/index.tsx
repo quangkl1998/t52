@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FileImageOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "configStore";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Input, Modal, Select, Upload, UploadProps } from "antd";
@@ -10,7 +10,11 @@ import { Tag, Tooltip } from "antd";
 import { add } from "Slices/service";
 import Swal from "sweetalert2";
 const { Option } = Select;
-const AddService = () => {
+const DetailService = () => {
+  const { id } = useParams();
+
+  useEffect(() => {}, []);
+
   const dispatch = useDispatch<AppDispatch>();
 
   let navigate = useNavigate();
@@ -232,4 +236,4 @@ const AddService = () => {
   );
 };
 
-export default AddService;
+export default DetailService;
