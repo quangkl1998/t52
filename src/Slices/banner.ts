@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { UserValues } from "Interface/auth";
 import bannerAPI from "Services/bannerAPI";
-import newsAPI from "Services/newsAPI";
 
 interface State {
   listBanner: any;
@@ -22,6 +20,36 @@ export const getBanner = createAsyncThunk("banner/getBanner", async () => {
     throw error;
   }
 });
+
+export const add = createAsyncThunk("banner/add", async (data: any) => {
+  try {
+    const result = await bannerAPI.add(data);
+    return result;
+  } catch (error) {
+    throw error;
+  }
+});
+
+export const update = createAsyncThunk("banner/update", async (data: any) => {
+  try {
+    const result = await bannerAPI.update(data);
+    return result;
+  } catch (error) {
+    throw error;
+  }
+});
+
+export const deleteList = createAsyncThunk(
+  "banner/deleteList",
+  async (id: string) => {
+    try {
+      const result = await bannerAPI.delete(id);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+);
 
 const bannerSlice = createSlice({
   name: "banner",

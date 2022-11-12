@@ -24,11 +24,21 @@ const PartnerList = lazy(
     () => import("Pages/Admin/Components/Partner/PartnerList"),
 );
 const FutureList = lazy(() => import("Pages/Admin/Components/Future/index"));
+const BannerList = lazy(() => import("Pages/Admin/Components/Banner/index"));
+const ProvinceList = lazy(
+  () => import("Pages/Admin/Components/Province/index"),
+);
+const DistrictList = lazy(
+  () => import("Pages/Admin/Components/District/index"),
+);
 const ServiceList = lazy(
   () => import("Pages/Admin/Components/Service/Service"),
 );
 const AddServiceList = lazy(
   () => import("Pages/Admin/Components/Service/addService/index"),
+);
+const DetailService = lazy(
+  () => import("Pages/Admin/Components/Service/detailService/index"),
 );
 const MenuList = lazy(() => import("Pages/Admin/Components/Menu/index"));
 const CoreValueList = lazy(
@@ -93,40 +103,33 @@ function App() {
           <Routes>
             <Route path="login" element={<Login />}></Route>
 
-                        <Route
-                            path="dashboard"
-                            element={
-                                <ProtectedRoute>
-                                    <AdminTemplate />
-                                </ProtectedRoute>
-                            }
-                        >
-                            <Route path="" element={<AdminPage />}>
-                                <Route path="" element={<DashBoard />}></Route>
-                                <Route
-                                    path="partner"
-                                    element={<PartnerList />}
-                                ></Route>
-                                <Route
-                                    path="manager"
-                                    element={<ManagerList />}
-                                ></Route>
-                                <Route
-                                    path="store/storeDetail/:idStore"
-                                    element={<StoreDetail />}
-                                ></Route>
-                                <Route
-                                    path="store/addStore"
-                                    element={<AddStore />}
-                                ></Route>
-                                <Route
-                                    path="client"
-                                    element={<ClientList />}
-                                ></Route>
-                                <Route
-                                    path="client/addClient"
-                                    element={<AddClient />}
-                                ></Route>
+            <Route
+              path="dashboard"
+              element={
+                <ProtectedRoute>
+                  <AdminTemplate />
+                </ProtectedRoute>
+              }
+            >
+              <Route path="" element={<AdminPage />}>
+                <Route path="" element={<DashBoard />}></Route>
+                <Route path="partner" element={<PartnerList />}></Route>
+                <Route path="manager" element={<ManagerList />}></Route>
+                <Route path="service" element={<ServiceList />}></Route>
+                <Route
+                  path="service/addservice"
+                  element={<AddServiceList />}
+                ></Route>
+                <Route path="menu" element={<MenuList />}></Route>
+                <Route path="future" element={<FutureList />}></Route>
+                <Route path="corevalue" element={<CoreValueList />}></Route>
+                <Route
+                  path="store/storeDetail/:idStore"
+                  element={<StoreDetail />}
+                ></Route>
+                <Route path="store/addStore" element={<AddStore />}></Route>
+                <Route path="client" element={<ClientList />}></Route>
+                <Route path="client/addClient" element={<AddClient />}></Route>
 
                                 <Route
                                     path="store"

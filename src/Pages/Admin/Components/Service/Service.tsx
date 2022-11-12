@@ -6,7 +6,7 @@ import { Button, Form, Input, Modal, Table } from "antd";
 import Swal from "sweetalert2";
 
 import { useNavigate } from "react-router-dom";
-import { getList } from "Slices/service";
+import { deleteItem, getList } from "Slices/service";
 const Service = () => {
   const dispatch = useDispatch<AppDispatch>();
 
@@ -16,7 +16,22 @@ const Service = () => {
     dispatch(getList());
   }, [dispatch]);
 
-  const onDelete = (id: string) => {};
+  const onDelete = (id: string) => {
+    dispatch(deleteItem(id))
+      .unwrap()
+      .then((result) => {
+        if (result === "Delete successfully") {
+          Swal.fire({
+            title: `Xóa thành công`,
+          });
+          dispatch(getList());
+        } else {
+          Swal.fire({
+            title: `Xóa thất bại`,
+          });
+        }
+      });
+  };
 
   const onEdit = (values: any) => {};
 
@@ -41,7 +56,7 @@ const Service = () => {
           <Button
             block
             onClick={() => {
-              //  navigate
+              navigate(`/dashboard/service/detail/${record?.id}`);
             }}
             className="mb-2"
           >
@@ -60,6 +75,7 @@ const Service = () => {
                 confirmButtonText: "OK",
               }).then((result) => {
                 if (result.isConfirmed) {
+                  onDelete(record?.id);
                 }
               })
             }
@@ -85,7 +101,7 @@ const Service = () => {
   return (
     <div>
       <h1 className="text-center font-bold text-4xl text-red-500">
-        Danh Sách Câu Hỏi
+        Danh Sách Dịch Vụ
       </h1>
       <Button
         className="mb-2"
