@@ -9,7 +9,7 @@ const Outstanding = () => {
     const { listNew, isLoading, error } = useSelector(
         (state: RootState) => state.news,
     );
-    console.log(listNew);
+    // console.log(listNew);
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(getNewsLimit(4));

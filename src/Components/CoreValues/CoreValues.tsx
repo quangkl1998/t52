@@ -1,6 +1,20 @@
-import React from "react";
+import { AppDispatch, RootState } from "configStore";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCoreValueList } from "Slices/corevalue";
 
 const CoreValues = () => {
+    const { list: listCorevalue } = useSelector(
+        (state: RootState) => state.corevalue,
+    );
+    console.log(listCorevalue);
+
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        dispatch(getCoreValueList());
+    }, []);
+
     return (
         <div>
             <div className="container mx-auto px-5 lg:px-16">

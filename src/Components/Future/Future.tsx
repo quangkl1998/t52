@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import chienluocimg from "Assets/img/T52/6a_chien_luoc_phat_trien_(ZALO).png";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "configStore";
+import { getFutureList } from "Slices/future";
 const Future = () => {
+    const { list: listFuture } = useSelector(
+        (state: RootState) => state.corevalue,
+    );
+    console.log(listFuture);
+
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        dispatch(getFutureList());
+    }, []);
+
     return (
         <div className="mt-8">
             <div className="container mx-auto  px-5 lg:px-16">
