@@ -13,7 +13,6 @@ import ProtectedRoute from "Routes/ProtectedRoute";
 import Question from "Pages/Admin/Components/Question/Question";
 import AddQuestion from "Pages/Admin/Components/Question/AddQuestions/AddQuestions";
 import ManagerList from "Pages/Admin/Components/Manager/Manager";
-import Loan from "Pages/Loan/Loan";
 
 const Media = lazy(() => import("Pages/Admin/Components/Media/Media"));
 
@@ -61,6 +60,7 @@ const AddClient = lazy(
 );
 const StoreList = lazy(() => import("Pages/Admin/Components/Store/StoreList"));
 const NewsAdmin = lazy(() => import("Pages/Admin/Components/News/News"));
+
 const AddNews = lazy(
     () => import("Pages/Admin/Components/News/AddNews/AddNews"),
 );
@@ -118,6 +118,18 @@ function App() {
                                     element={<PartnerList />}
                                 ></Route>
                                 <Route
+                                    path="banner"
+                                    element={<BannerList />}
+                                ></Route>
+                                <Route
+                                    path="district"
+                                    element={<DistrictList />}
+                                ></Route>
+                                <Route
+                                    path="province"
+                                    element={<ProvinceList />}
+                                ></Route>
+                                <Route
                                     path="manager"
                                     element={<ManagerList />}
                                 ></Route>
@@ -128,6 +140,10 @@ function App() {
                                 <Route
                                     path="service/addservice"
                                     element={<AddServiceList />}
+                                ></Route>
+                                <Route
+                                    path="service/detail/:id"
+                                    element={<DetailService />}
                                 ></Route>
                                 <Route
                                     path="menu"
@@ -162,6 +178,10 @@ function App() {
                                     path="store"
                                     element={<StoreList />}
                                 ></Route>
+                                <Route
+                                    path="introduce"
+                                    element={<Introduce />}
+                                ></Route>
 
                                 <Route
                                     path="newsList"
@@ -181,7 +201,7 @@ function App() {
                                     element={<AddQuestion />}
                                 ></Route>
                                 <Route
-                                    path="newsList/addNews"
+                                    path="newslist/addNews"
                                     element={<AddNews />}
                                 ></Route>
                             </Route>
@@ -210,8 +230,6 @@ function App() {
                                 element={<FinancialKnowledge />}
                             />
                             <Route path="" element={<MortgageLoanTemplate />}>
-                                <Route path="/vay/:name" element={<Loan />} />
-
                                 <Route
                                     path="/vay-tien-bang-cavet-xe-may"
                                     element={<LoanByRegisMoto />}
