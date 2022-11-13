@@ -1,39 +1,128 @@
 import { AppDispatch, RootState } from "configStore";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import type { ColumnsType, TableProps } from "antd/es/table";
-import { Button, Form, Input, Modal, Table } from "antd";
-import Swal from "sweetalert2";
 
-import { useNavigate } from "react-router-dom";
+import type { ColumnsType, TableProps } from "antd/es/table";
+import { Button, Form, Input, Modal, Switch, Table } from "antd";
+import Swal from "sweetalert2";
+import { add, deleteItem, getList, update } from "Slices/menu";
+
 const Menu = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const [editFormValue, SetEditFormValue] = useState<any>();
+  const [visible, setVisible] = useState(false);
 
   const [showEdit, SetShowEdit] = useState(false);
 
-  const { list } = useSelector((state: RootState) => state.service);
+  const [MenuDetail, setMenuDetail] = useState<any>();
+
+  const { list } = useSelector((state: RootState) => state.menu);
+
   useEffect(() => {
-    // dispatch(getList());
+    dispatch(getList());
   }, [dispatch]);
 
-  const onDelete = (id: string) => {};
+  const onCreate = (values: any) => {
+    const data = {
+      ...values,
+    };
+    dispatch(add(data))
+      .unwrap()
+      .then((result) => {
+        if (result?.id) {
+          Swal.fire({
+            title: `Thêm Thành công`,
+          });
+          dispatch(getList());
+          setVisible(false);
+        } else {
+          Swal.fire({
+            title: `Thêm thất bại`,
+          });
+        }
+      });
+  };
 
-  const onEdit = (values: any) => {};
+  const onDelete = (id: string) => {
+    dispatch(deleteItem(id))
+      .unwrap()
+      .then((result) => {
+        if (result === "Delete successfully") {
+          Swal.fire({
+            title: `Xóa thành công`,
+          });
+          dispatch(getList());
+          setVisible(false);
+        } else {
+          Swal.fire({
+            title: `Xóa thất bại`,
+          });
+        }
+      });
+  };
+
+  const onEdit = (values: any) => {
+    let dataEdit = {
+      ...values,
+      id: MenuDetail?.id,
+    };
+    dispatch(update(dataEdit))
+      .unwrap()
+      .then((result) => {
+        if (result === "Update successfully") {
+          Swal.fire({
+            title: `Sửa Thành công`,
+          });
+          SetShowEdit(false);
+          setMenuDetail(undefined);
+          dispatch(getList());
+        } else {
+          Swal.fire({
+            title: `Sửa thất bại`,
+          });
+        }
+      });
+  };
+  const OnActive = (data: any) => {
+    let dataEdit = {
+      ...data,
+      isActive: !data.isActive,
+    };
+    dispatch(update(dataEdit))
+      .unwrap()
+      .then((result) => {
+        if (result === "Update successfully") {
+          Swal.fire({
+            title: `Sửa Thành công`,
+          });
+          SetShowEdit(false);
+          dispatch(getList());
+        } else {
+          Swal.fire({
+            title: `Sửa thất bại`,
+          });
+        }
+      });
+  };
 
   const columns: ColumnsType<any> = [
     {
-      title: "Tiêu đề",
-      dataIndex: "title",
-    },
-    {
-      title: "Tên dịch vụ",
+      title: "name",
       dataIndex: "name",
     },
     {
-      title: "Hình ảnh",
-      dataIndex: "img",
+      title: "Active",
+      dataIndex: "isActive",
+      align: "center",
+      width: 300,
+      render: (value, record, index) => (
+        <Switch
+          checked={value}
+          onClick={() => {
+            OnActive(record);
+          }}
+        />
+      ),
     },
     {
       title: "ACTION",
@@ -46,8 +135,7 @@ const Menu = () => {
             className="mb-2"
             onClick={() => {
               SetShowEdit(true);
-
-              SetEditFormValue(record);
+              setMenuDetail(record);
             }}
           >
             Sửa
@@ -55,9 +143,10 @@ const Menu = () => {
           <Button
             block
             danger
+            className="mb-2"
             onClick={() => {
               Swal.fire({
-                title: `Bạn muốn xóa câu hỏi`,
+                title: `Bạn muốn xóa Menu`,
                 text: value?.name,
                 showCancelButton: true,
                 confirmButtonColor: "#fb4226",
@@ -72,6 +161,7 @@ const Menu = () => {
           >
             Xóa
           </Button>
+          <Button block>Chi tiết</Button>
         </div>
       ),
     },
@@ -86,6 +176,64 @@ const Menu = () => {
     /* console.log("params", pagination, filters, sorter, extra); */
   };
 
+  interface CollectionCreateFormProps {
+    visible: boolean;
+    onCreate: (values: any) => void;
+    onCancel: () => void;
+  }
+
+  const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
+    visible,
+    onCreate,
+    onCancel,
+  }) => {
+    const [form] = Form.useForm();
+
+    return (
+      <Modal
+        open={visible}
+        title="Thêm Menu"
+        okText="Thêm"
+        cancelText="Hủy"
+        onCancel={onCancel}
+        onOk={() => {
+          form
+            .validateFields()
+            .then((values) => {
+              form.resetFields();
+              onCreate(values);
+            })
+            .catch((info) => {
+              console.log("Validate Failed:", info);
+            });
+        }}
+      >
+        <Form
+          form={form}
+          layout="vertical"
+          name="form_in_modal"
+          initialValues={{ modifier: "public" }}
+        >
+          <Form.Item
+            name="name"
+            label="Menu Name"
+            rules={[
+              {
+                required: true,
+                message: "Không được bỏ trống",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item name="isActive" label="Active" valuePropName="checked">
+            <Switch />
+          </Form.Item>
+        </Form>
+      </Modal>
+    );
+  };
+
   interface EditFromProps {
     showEdit: boolean;
     onEdit: (values: any) => void;
@@ -98,11 +246,16 @@ const Menu = () => {
     onCancelEdit,
   }) => {
     const [form] = Form.useForm();
-
+    if (MenuDetail) {
+      form.setFieldsValue({
+        name: MenuDetail?.name,
+        isActive: MenuDetail?.isActive,
+      });
+    }
     return (
       <Modal
         open={showEdit}
-        title="Sửa Câu Hỏi"
+        title="Sửa Menu"
         okText="Sửa"
         cancelText="Hủy"
         onCancel={onCancelEdit}
@@ -123,22 +276,33 @@ const Menu = () => {
           layout="vertical"
           name="form_in_modal"
           initialValues={{ modifier: "public" }}
-        ></Form>
+        >
+          <Form.Item
+            name="name"
+            label="Tên Menu"
+            rules={[
+              {
+                required: true,
+                message: "Không được bỏ trống",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item name="isActive" label="isActive" valuePropName="checked">
+            <Switch />
+          </Form.Item>
+        </Form>
       </Modal>
     );
   };
 
-  const navigate = useNavigate();
-
   return (
     <div>
       <h1 className="text-center font-bold text-4xl text-red-500">
-        Danh Sách Câu Hỏi
+        Danh Sách Menu
       </h1>
-      <Button
-        className="mb-2"
-        onClick={() => navigate("/dashboard/addquestion")}
-      >
+      <Button className="mb-2" onClick={() => setVisible(true)}>
         Thêm
       </Button>
       <Table
@@ -147,7 +311,13 @@ const Menu = () => {
         dataSource={list}
         onChange={onChange}
         bordered
-        scroll={{ x: 800 }}
+      />
+      <CollectionCreateForm
+        visible={visible}
+        onCreate={onCreate}
+        onCancel={() => {
+          setVisible(false);
+        }}
       />
 
       <EditFrom
@@ -155,6 +325,7 @@ const Menu = () => {
         onEdit={onEdit}
         onCancelEdit={() => {
           SetShowEdit(false);
+          setMenuDetail(undefined);
         }}
       />
     </div>

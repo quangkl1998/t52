@@ -1,15 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { FileImageOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import { AppDispatch, RootState } from "configStore";
-import { useDispatch, useSelector } from "react-redux";
-import { Button, Form, Input, Modal, Select, Upload, UploadProps } from "antd";
+import { AppDispatch } from "configStore";
+import { useDispatch } from "react-redux";
+import { Button, Form, Input, Upload, UploadProps } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import type { InputRef } from "antd";
 import { Tag, Tooltip } from "antd";
 import { add } from "Slices/service";
 import Swal from "sweetalert2";
-const { Option } = Select;
 const AddService = () => {
   const dispatch = useDispatch<AppDispatch>();
 
@@ -177,7 +175,7 @@ const AddService = () => {
                 <Tag
                   className="edit-tag"
                   key={tag}
-                  closable={index !== 0}
+                  closable={index !== -1}
                   onClose={() => handleClose(tag)}
                 >
                   <span
