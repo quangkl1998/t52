@@ -18,7 +18,7 @@ const FormLoan = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(getStores());
+        dispatch(getStores(null));
     }, []);
 
     let listProvince: any = [];

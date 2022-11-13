@@ -1,13 +1,49 @@
 import { Radio, Tabs } from "antd";
 import "Components/Transaction/Location.css";
-import { RootState } from "configStore";
-import { useSelector } from "react-redux";
+import { AppDispatch, RootState } from "configStore";
+import { useDispatch, useSelector } from "react-redux";
 import parse from "html-react-parser";
+import { useEffect, useState } from "react";
+import { findByName, getDistrict, getProvince, getStores } from "Slices/store";
+import { FieldErrors, useForm } from "react-hook-form";
 
 const Transaction = () => {
-    const { listStore, isLoading, error } = useSelector(
-        (state: RootState) => state.stores,
-    );
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }, //liệt kê các input đang lỗi
+    } = useForm({
+        //defaultValues khai báo giá trị mặc định cho các input trong form
+        defaultValues: {
+            name: "",
+            provinceId: "",
+            districtId: "",
+        },
+        //mode: cacash validation đc trigger (defaute là submit)
+        mode: "onTouched",
+    });
+    const onSubmit = (values: any) => {
+        console.log(values);
+        dispatch(findByName(values.name));
+        //
+    };
+    const onError = (values: FieldErrors<any>) => {
+        console.log(values);
+    };
+
+    const { listStore, listProvince, listDistrict, isLoading, error } =
+        useSelector((state: RootState) => state.stores);
+
+    const [provinceId, setProvinceId] = useState<any>("");
+    const [districtId, setDistrictId] = useState<any>("");
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        dispatch(getStores({ provinceId: null, districtId: null }));
+        dispatch(getProvince(null));
+    }, []);
+
     let items = [];
 
     if (listStore) {
@@ -21,8 +57,8 @@ const Transaction = () => {
                         <div className="mb-2">{store?.name}</div>
                         <div>
                             <i className="fa fa-map-marker-alt mr-2" />
-                            {store?.street} , {store?.district} ,{" "}
-                            {store?.province}
+                            {store?.street} , {store?.district?.name} ,{" "}
+                            {store?.district?.province?.name}
                         </div>
                         <div>
                             <i className="fa fa-phone mr-2" />0{store?.phone}
@@ -41,168 +77,7 @@ const Transaction = () => {
             };
         });
     }
-    // console.log(items);
 
-    // const items = [
-    //     {
-    //         label: (
-    //             <div className="whitespace-normal	text-left font-semibold text-base">
-    //                 <div>160 Phan Bội Châu</div>
-    //                 <div>
-    //                     <i className="fa fa-map-marker-alt" />
-    //                     160 Phan Bội Châu, Trường An, Thành phố Huế, Thừa Thiên
-    //                     Huế 49016
-    //                 </div>
-    //                 <div>
-    //                     <i className="fa fa-phone" />
-    //                     0775757777
-    //                 </div>
-    //             </div>
-    //         ),
-    //         key: "1",
-
-    //         children: (
-    //             <iframe
-    //                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5411.499766942797!2d107.58170088366934!3d16.449786134838813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x766948a0d907fb3c!2zSOG7hiBUSOG7kE5HIFQ1Mg!5e0!3m2!1svi!2s!4v1663219227155!5m2!1svi!2s"
-    //                 width="100%"
-    //                 height="380px"
-    //                 style={{ border: 0 }}
-    //                 allowFullScreen
-    //                 loading="lazy"
-    //                 referrerPolicy="no-referrer-when-downgrade"
-    //             />
-    //         ),
-    //     },
-    //     {
-    //         label: (
-    //             <div className="whitespace-normal	text-left font-semibold text-base">
-    //                 <div>28 Cách Mạng Tháng Tám</div>
-    //                 <div>
-    //                     <i className="fa fa-map-marker-alt" />
-    //                     28 Cách Mạng Tháng Tám, Tứ Hạ, Hương Trà, Thừa Thiên Huế
-    //                     49016
-    //                 </div>
-    //                 <div>
-    //                     <i className="fa fa-phone" />
-    //                     0358679752
-    //                 </div>
-    //             </div>
-    //         ),
-    //         key: "2",
-
-    //         children: (
-    //             <iframe
-    //                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.070212773046!2d107.4793555!3d16.522552599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb365bedbba9082eb!2zSOG7hiBUSOG7kE5HIFQ1Mg!5e0!3m2!1svi!2s!4v1663219314938!5m2!1svi!2s"
-    //                 width="100%"
-    //                 height="380px"
-    //                 style={{ border: 0 }}
-    //                 allowFullScreen
-    //                 loading="lazy"
-    //                 referrerPolicy="no-referrer-when-downgrade"
-    //             />
-    //         ),
-    //     },
-    //     {
-    //         label: (
-    //             <div className="whitespace-normal	text-left font-semibold text-base">
-    //                 <div>1191 Nguyễn Tất Thành</div>
-    //                 <div>
-    //                     <i className="fa fa-map-marker-alt" />
-    //                     1191 Nguyễn Tất Thành, TT. Phú Bài, Hương Thủy, Thừa
-    //                     Thiên Huế 49016
-    //                 </div>
-    //                 <div>
-    //                     <i className="fa fa-phone" />
-    //                     0935931317
-    //                 </div>
-    //             </div>
-    //         ),
-    //         key: "3",
-
-    //         children: (
-    //             <iframe
-    //                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3827.2973737405555!2d107.6751664!3d16.4097168!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe897275bc358c187!2zSOG7hiBUSOG7kE5HIFQ1Mg!5e0!3m2!1svi!2s!4v1663219370988!5m2!1svi!2s"
-    //                 width="100%"
-    //                 height="380px"
-    //                 style={{ border: 0 }}
-    //                 allowFullScreen
-    //                 loading="lazy"
-    //                 referrerPolicy="no-referrer-when-downgrade"
-    //             />
-    //         ),
-    //     },
-    //     {
-    //         label: (
-    //             <div className="whitespace-normal	text-left font-semibold text-base">
-    //                 <div>111 Nguyễn Tất Thành</div>
-    //                 <div>
-    //                     <i className="fa fa-map-marker-alt" />
-    //                     111 Nguyễn Tất Thành, Phường, Hương Thủy, Thừa Thiên Huế
-    //                     49016
-    //                 </div>
-    //                 <div>
-    //                     <i className="fa fa-phone" />
-    //                     0775757777
-    //                 </div>
-    //             </div>
-    //         ),
-    //         key: "4",
-
-    //         children: (
-    //             <iframe
-    //                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.608093439696!2d107.6144841!3d16.444718599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd3f06626796356ad!2zSOG7hiBUSOG7kE5HIFQ1Mg!5e0!3m2!1svi!2s!4v1663219421907!5m2!1svi!2s"
-    //                 width="100%"
-    //                 height="380px"
-    //                 style={{ border: 0 }}
-    //                 allowFullScreen
-    //                 loading="lazy"
-    //                 referrerPolicy="no-referrer-when-downgrade"
-    //             />
-    //         ),
-    //     },
-    //     {
-    //         label: (
-    //             <div className="whitespace-normal	text-left font-semibold text-base">
-    //                 <div>235 Huỳnh Thúc Kháng</div>
-    //                 <div>
-    //                     <i className="fa fa-map-marker-alt" />
-    //                     235 Huỳnh Thúc Kháng, Phú Bình, Thành phố Huế, Thừa
-    //                     Thiên Huế
-    //                 </div>
-    //                 <div>
-    //                     <i className="fa fa-phone" />
-    //                     0775757777
-    //                 </div>
-    //             </div>
-    //         ),
-    //         key: "5",
-
-    //         children: (
-    //             <iframe
-    //                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.925108757686!2d107.58444190000002!3d16.4793294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3141a1285e36fc7d%3A0xab9e0f0c37284a87!2zMjM1IEh14buzbmggVGjDumMgS2jDoW5nLCBQaMO6IELDrG5oLCBUaMOgbmggcGjhu5EgSHXhur8sIFRo4burYSBUaGnDqm4gSHXhur8!5e0!3m2!1svi!2s!4v1663219474328!5m2!1svi!2s"
-    //                 width="100%"
-    //                 height="380px"
-    //                 style={{ border: 0 }}
-    //                 allowFullScreen
-    //                 loading="lazy"
-    //                 referrerPolicy="no-referrer-when-downgrade"
-    //             />
-    //         ),
-    //     },
-    // ];
-
-    console.log(listStore);
-
-    // const arrProvince = listStore?.map((item: any) => {
-    //     return item.province;
-    // });
-    let group: any = [];
-    listStore?.filter((item: any) => {
-        if (!group.includes(item.province)) {
-            group.push(item.province);
-        }
-    });
-    console.log(group);
     return (
         <div className="bg-gray-100 pt-10">
             <div className="container mx-auto px-5 lg:px-16 pb-10">
@@ -215,26 +90,84 @@ const Transaction = () => {
                     </h3>
                 </div>
 
-                <div className="pb-6 w-48">
-                    <label
-                        htmlFor="asset-filter"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >
-                        Bạn muốn vay bằng{" "}
-                        <span className="text-red-600">*</span>
-                    </label>
-                    <select
-                        id="asset-filter"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        defaultValue=""
-                    >
-                        <option value="Đăng ký xe máy">Đăng ký xe máy</option>
-                        <option value="Đăng ký ô tô">Đăng ký ô tô</option>
-                        <option value="Ô tô">Ô tô</option>
-                        <option value="Xe máy">Xe máy</option>
-                        <option value="Tài sản khác">Tài sản khác</option>
-                    </select>
-                </div>
+                <form
+                    className="pb-6 flex flex-row flex-wrap mx-auto justify-center"
+                    onSubmit={handleSubmit(onSubmit)}
+                >
+                    <div className="min-w-64 w-1/4 pr-2">
+                        <select
+                            {...register("provinceId")}
+                            id="asset-filter"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            defaultValue=""
+                            onChange={(e) => {
+                                setProvinceId(e.target.value);
+                                dispatch(
+                                    getStores({
+                                        provinceId: e.target.value,
+                                    }),
+                                );
+                                dispatch(
+                                    getDistrict({
+                                        provinceId: e.target.value,
+                                    }),
+                                );
+                            }}
+                        >
+                            <option value="">Tỉnh/Thành</option>
+                            {listProvince?.map((item: any) => {
+                                return (
+                                    <option value={item?.id} key={item?.id}>
+                                        {item?.name}
+                                    </option>
+                                );
+                            })}
+                        </select>
+                    </div>
+                    <div className="min-w-64 w-1/4 pr-2">
+                        <select
+                            {...register("districtId")}
+                            id="asset-filter"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            defaultValue=""
+                            onChange={(e) => {
+                                dispatch(
+                                    getStores({
+                                        districtId: e.target.value,
+                                        provinceId,
+                                    }),
+                                );
+                            }}
+                        >
+                            <option value="">Chọn Quận/Huyện</option>
+                            {listDistrict?.map((item: any) => {
+                                return (
+                                    <option value={item?.id} key={item?.id}>
+                                        {item?.name}
+                                    </option>
+                                );
+                            })}
+                        </select>
+                    </div>
+                    <div className="min-w-64 w-1/4 pr-2">
+                        <input
+                            {...register("name")}
+                            type="text"
+                            id="name"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Nhập địa chỉ cần tìm kiếm"
+                        />
+                    </div>
+                    <div className="min-w-64 w-1/4 pl-2">
+                        <button
+                            type="submit"
+                            className="text-white bg-amber-600 hover:bg-amber-700 duration-150s focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-10 py-2.5 text-center block mx-auto"
+                        >
+                            Tìm kiếm
+                        </button>
+                    </div>
+                </form>
+
                 <div className="lg:p-5 p-2 bg-white rounded-xl">
                     <Tabs
                         className="myLocation flex lg:flex-row flex-col lg:h-96 h-auto"
