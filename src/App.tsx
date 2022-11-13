@@ -27,6 +27,11 @@ const PartnerList = lazy(
   () => import("Pages/Admin/Components/Partner/PartnerList"),
 );
 const FutureList = lazy(() => import("Pages/Admin/Components/Future/index"));
+const FutureDetail = lazy(
+  () => import("Pages/Admin/Components/Future/Detail/index"),
+);
+const AddFuture = lazy(() => import("Pages/Admin/Components/Future/Add/index"));
+
 const BannerList = lazy(() => import("Pages/Admin/Components/Banner/index"));
 const ProvinceList = lazy(
   () => import("Pages/Admin/Components/Province/index"),
@@ -147,6 +152,11 @@ function App() {
                 ></Route>
                 <Route path="menu" element={<MenuList />}></Route>
                 <Route path="future" element={<FutureList />}></Route>
+                <Route path="future/addfuture" element={<AddFuture />}></Route>
+                <Route
+                  path="future/detail/:id"
+                  element={<FutureDetail />}
+                ></Route>
                 <Route path="corevalue" element={<CoreValueList />}></Route>
                 <Route
                   path="corevalue/addcorevalue"

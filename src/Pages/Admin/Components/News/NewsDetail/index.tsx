@@ -1,16 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import JoditEditor from "jodit-react";
-import {
-  Button,
-  Form,
-  Image,
-  Input,
-  Modal,
-  Select,
-  Upload,
-  UploadProps,
-} from "antd";
+import { Button, Form, Input, Modal, Select, Upload, UploadProps } from "antd";
 import { FileImageOutlined } from "@ant-design/icons";
 import { AppDispatch, RootState } from "configStore";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,7 +33,7 @@ const NewsDetail = () => {
     if (newsDetail) {
       SetContent(newsDetail?.content);
     }
-  }, []);
+  }, [newsDetail]);
   useEffect(() => {
     dispatch(getNewDetail(slug!));
     dispatch(getTagNewsList());
@@ -180,9 +171,7 @@ const NewsDetail = () => {
   const [form] = Form.useForm();
   if (newsDetail) {
     const types: any[] = [];
-    newsDetail?.typenews?.map((e: any) => {
-      types.push(e?.name);
-    });
+    newsDetail?.typenews?.map((e: any) => types.push(e?.name));
     form.setFieldsValue({
       name: newsDetail?.name,
       descript: newsDetail?.descript,
@@ -227,9 +216,7 @@ const NewsDetail = () => {
           >
             <Input></Input>
           </Form.Item>
-          <Form.Item label="Banner">
-            <img src={newsDetail?.img} alt={newsDetail?.img} />
-          </Form.Item>
+
           <Form.Item
             name="img"
             label="New Banner"
@@ -260,6 +247,9 @@ const NewsDetail = () => {
                 );
               })}
             </Select>
+          </Form.Item>
+          <Form.Item label="Banner">
+            <img src={newsDetail?.img} alt={newsDetail?.img} />
           </Form.Item>
         </div>
         <div className="relative">

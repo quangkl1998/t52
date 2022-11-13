@@ -20,24 +20,29 @@ const NewsAPI = {
     return axiosClient.delete(`news/${id}`);
   },
   uploadImage: (data: any) => {
-    const formData = new FormData();
+    const form = new FormData();
+    Object.keys(data).forEach((key) => {
+      if (key === "img") {
+        if (data[key]) {
+          form.append("img", data?.img[0]?.originFileObj);
+        }
+      } else form.append(key, data[key]);
+    });
 
-    formData.append("img", data?.img[0].originFileObj);
-    formData.append("name", data?.name);
-
-    return axiosClient.post(`upload-images`, formData);
+    return axiosClient.post(`upload-images`, form);
   },
 
   updateNews: (data: any) => {
-    const formData = new FormData();
-    // formData.append("img", data?.img[0].originFileObj);
-    formData.append("name", data?.name);
-    formData.append("content", data?.content);
-    formData.append("type", data?.type);
-    formData.append("descript", data?.descript);
-    formData.append("isHot", data?.isHot);
+    const form = new FormData();
+    Object.keys(data).forEach((key) => {
+      if (key === "img") {
+        if (data[key]) {
+          form.append("img", data?.img[0]?.originFileObj);
+        }
+      } else form.append(key, data[key]);
+    });
 
-    return axiosClient.put(`news/${data?.id}`, formData);
+    return axiosClient.put(`news/${data?.id}`, form);
   },
 };
 

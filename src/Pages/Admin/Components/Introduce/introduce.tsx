@@ -79,7 +79,7 @@ const Introduce = () => {
             danger
             onClick={() => {
               Swal.fire({
-                title: `Bạn muốn xóa giá trị cốt lõi`,
+                title: `Bạn muốn xóa Introduce`,
                 text: value?.title,
                 showCancelButton: true,
                 confirmButtonColor: "#fb4226",
@@ -113,7 +113,7 @@ const Introduce = () => {
   return (
     <div>
       <h1 className="text-center font-bold text-4xl text-red-500">
-        Danh Sách Giá Trị Cốt Lõi
+        Danh Sách Giới Thiệu
       </h1>
       <Button
         className="mb-2"

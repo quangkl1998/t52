@@ -8,10 +8,11 @@ const introduceAPI = {
   },
   add: (data: any) => {
     const form = new FormData();
-
     Object.keys(data).forEach((key) => {
       if (key === "img") {
-        form.append("img", data?.img[0].originFileObj);
+        if (data[key]) {
+          form.append("img", data?.img[0]?.originFileObj);
+        }
       } else form.append(key, data[key]);
     });
     return axiosClient.post(`introduce`, form);
@@ -21,10 +22,11 @@ const introduceAPI = {
   },
   update: (data: any) => {
     const form = new FormData();
-
     Object.keys(data).forEach((key) => {
       if (key === "img") {
-        form.append("img", data?.img[0].originFileObj);
+        if (data[key]) {
+          form.append("img", data?.img[0]?.originFileObj);
+        }
       } else form.append(key, data[key]);
     });
     return axiosClient.put(`introduce/${data?.id}`, form);
