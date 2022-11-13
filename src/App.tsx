@@ -10,11 +10,15 @@ import ActivityNews from "Pages/ActivityNews/ActivityNews";
 import loading from "Assets/loading.gif";
 import ErrorBoundary from "Pages/Admin/Components/ErrorBoundary";
 import ProtectedRoute from "Routes/ProtectedRoute";
-import Question from "Pages/Admin/Components/Question/Question";
-import AddQuestion from "Pages/Admin/Components/Question/AddQuestions/AddQuestions";
-import ManagerList from "Pages/Admin/Components/Manager/Manager";
 
+const ManagerList = lazy(
+  () => import("Pages/Admin/Components/Manager/Manager"),
+);
 const Media = lazy(() => import("Pages/Admin/Components/Media/Media"));
+const Question = lazy(() => import("Pages/Admin/Components/Question/Question"));
+const AddQuestion = lazy(
+  () => import("Pages/Admin/Components/Question/AddQuestions/AddQuestions"),
+);
 
 const Tagnews = lazy(() => import("Pages/Admin/Components/TagNews/TagNews"));
 
@@ -54,6 +58,12 @@ const StoreDetail = lazy(
 );
 const Introduce = lazy(
   () => import("Pages/Admin/Components/Introduce/introduce"),
+);
+const AddIntroduce = lazy(
+  () => import("Pages/Admin/Components/Introduce/Add/index"),
+);
+const IntroduceDetail = lazy(
+  () => import("Pages/Admin/Components/Introduce/Detail/index"),
 );
 const AddStore = lazy(
   () => import("Pages/Admin/Components/Store/AddStore/AddStore"),
@@ -156,6 +166,14 @@ function App() {
 
                 <Route path="store" element={<StoreList />}></Route>
                 <Route path="introduce" element={<Introduce />}></Route>
+                <Route
+                  path="introduce/detail/:id"
+                  element={<IntroduceDetail />}
+                ></Route>
+                <Route
+                  path="introduce/addintroduce"
+                  element={<AddIntroduce />}
+                ></Route>
 
                 <Route path="newsList" element={<NewsAdmin />}></Route>
                 <Route path="media" element={<Media />}></Route>
