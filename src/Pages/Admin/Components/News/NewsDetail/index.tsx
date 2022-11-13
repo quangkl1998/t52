@@ -1,18 +1,29 @@
 import { useEffect, useRef, useState } from "react";
 
 import JoditEditor from "jodit-react";
-import { Button, Form, Input, Modal, Select, Upload, UploadProps } from "antd";
+import {
+  Button,
+  Form,
+  Image,
+  Input,
+  Modal,
+  Select,
+  Upload,
+  UploadProps,
+} from "antd";
 import { FileImageOutlined } from "@ant-design/icons";
 import { AppDispatch, RootState } from "configStore";
 import { useDispatch, useSelector } from "react-redux";
-import { addNews, uploadImage } from "Slices/NewsAdmin";
+import { updateNews, uploadImage } from "Slices/NewsAdmin";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getTagNewsList } from "Slices/TagNewsAdmin";
+import { getNewDetail } from "Slices/news";
 
 const { Option } = Select;
 
-const AddNews = () => {
+const NewsDetail = () => {
+  const { slug } = useParams();
   const dispatch = useDispatch<AppDispatch>();
 
   let navigate = useNavigate();
@@ -25,28 +36,36 @@ const AddNews = () => {
   const [imgContent, SetImgContent] = useState<any>([]);
 
   const { tag } = useSelector((state: RootState) => state.tagNewsAdmin);
+  const { newsDetail } = useSelector((state: RootState) => state.news);
 
   useEffect(() => {
+    if (newsDetail) {
+      SetContent(newsDetail?.content);
+    }
+  }, []);
+  useEffect(() => {
+    dispatch(getNewDetail(slug!));
     dispatch(getTagNewsList());
-  }, [dispatch]);
+  }, [dispatch, slug]);
 
   const onCreate = (data: any) => {
     const newsData = {
       ...data,
       content: content,
       contentImg: imgContent,
+      id: newsDetail?.id,
     };
-    dispatch(addNews(newsData))
+    dispatch(updateNews(newsData))
       .unwrap()
       .then((result) => {
-        if (result?.id) {
+        if (result === "Update successfuly") {
           Swal.fire({
-            title: `Thêm Thành công`,
+            title: `Sửa Thành công`,
           });
           navigate("/dashboard/newslist", { replace: true });
         } else {
           Swal.fire({
-            title: `Thêm thất bại`,
+            title: `Sửa thất bại`,
           });
         }
       });
@@ -159,7 +178,19 @@ const AddNews = () => {
   //endForm Upload
 
   const [form] = Form.useForm();
-
+  if (newsDetail) {
+    const types: any[] = [];
+    newsDetail?.typenews?.map((e: any) => {
+      types.push(e?.name);
+    });
+    form.setFieldsValue({
+      name: newsDetail?.name,
+      descript: newsDetail?.descript,
+      content: content,
+      id: newsDetail?.id,
+      type: types,
+    });
+  }
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
@@ -169,7 +200,7 @@ const AddNews = () => {
   };
   return (
     <div className="w-full">
-      <h1 className="text-center text-4xl text-red-500 ">Thêm Tin Tức</h1>
+      <h1 className="text-center text-4xl text-red-500 ">Chi tiết Tin Tức</h1>
       <Form {...layout} form={form} onFinish={onCreate}>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
           <Form.Item
@@ -196,17 +227,14 @@ const AddNews = () => {
           >
             <Input></Input>
           </Form.Item>
+          <Form.Item label="Banner">
+            <img src={newsDetail?.img} alt={newsDetail?.img} />
+          </Form.Item>
           <Form.Item
             name="img"
-            label="Banner"
+            label="New Banner"
             valuePropName="fileList"
             getValueFromEvent={normFile}
-            rules={[
-              {
-                required: true,
-                message: "Không được bỏ trống",
-              },
-            ]}
           >
             <Upload {...props} listType="picture">
               <Button>Upload ảnh</Button>
@@ -251,7 +279,7 @@ const AddNews = () => {
         </div>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" danger htmlType="submit">
-            Thêm
+            Sửa
           </Button>
         </Form.Item>
       </Form>
@@ -266,4 +294,4 @@ const AddNews = () => {
   );
 };
 
-export default AddNews;
+export default NewsDetail;

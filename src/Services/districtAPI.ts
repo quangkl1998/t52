@@ -1,19 +1,19 @@
 import axiosClient from "./axiosClient";
 const districtAPI = {
   getList: () => {
-    return axiosClient.get<any[]>(`province`);
+    return axiosClient.get<any[]>(`district`);
   },
   getById: (id: string) => {
-    return axiosClient.get<any[]>(`province/${id}`);
+    return axiosClient.get<any[]>(`district/detail/${id}`);
   },
   add: (data: any) => {
-    return axiosClient.post(`province`, data);
+    return axiosClient.post(`district`, data);
   },
   deleteItem: (id: string) => {
-    return axiosClient.delete(`province/${id}`);
+    return axiosClient.delete(`district/${id}`);
   },
   update: (data: any) => {
-    return axiosClient.put(`province/${data?.id}`, data);
+    return axiosClient.put(`district/${data?.id}`, data);
   },
 };
 

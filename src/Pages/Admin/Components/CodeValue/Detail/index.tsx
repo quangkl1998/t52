@@ -1,15 +1,15 @@
-import { useRef, useState } from "react";
-
-import JoditEditor from "jodit-react";
-import { Button, Form, Input } from "antd";
-import { AppDispatch } from "configStore";
-import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { AppDispatch, RootState } from "configStore";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import { getById, updateCoreValue } from "Slices/corevalue";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
-import { addQuestion } from "Slices/questionAdmin";
-
-const AddQuestion = () => {
+import { Button, Form, Input } from "antd";
+import JoditEditor from "jodit-react";
+const Detail = () => {
+  const { id } = useParams();
   const dispatch = useDispatch<AppDispatch>();
+  const { detail } = useSelector((state: RootState) => state.corevalue);
 
   let navigate = useNavigate();
 
@@ -17,22 +17,34 @@ const AddQuestion = () => {
 
   const [content, SetContent] = useState("");
 
+  useEffect(() => {
+    if (detail) {
+      SetContent(detail?.content);
+    }
+  }, [detail]);
+
+  useEffect(() => {
+    dispatch(getById(id!));
+  }, [dispatch, id]);
+
   const onCreate = (data: any) => {
     const newsData = {
       ...data,
       content: content,
+      id: detail?.id,
     };
-    dispatch(addQuestion(newsData))
+
+    dispatch(updateCoreValue(newsData))
       .unwrap()
       .then((result) => {
-        if (result?.id) {
+        if (result === "Update successfully") {
           Swal.fire({
-            title: `Thêm Thành công`,
+            title: `Sửa Thành công`,
           });
-          navigate("/dashboard/question", { replace: true });
+          navigate("/dashboard/corevalue", { replace: true });
         } else {
           Swal.fire({
-            title: `Thêm thất bại`,
+            title: `Sửa thất bại`,
           });
         }
       });
@@ -44,7 +56,12 @@ const AddQuestion = () => {
   };
 
   const [form] = Form.useForm();
-
+  if (detail) {
+    form.setFieldsValue({
+      title: detail?.title,
+      content: content,
+    });
+  }
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
@@ -54,11 +71,13 @@ const AddQuestion = () => {
   };
   return (
     <div className="w-full">
-      <h1 className="text-center text-4xl text-red-500 ">Thêm Câu Hỏi</h1>
+      <h1 className="text-center text-4xl text-red-500 ">
+        Thêm Giá Trị Cốt Lõi
+      </h1>
       <Form {...layout} form={form} onFinish={onCreate}>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
           <Form.Item
-            name={"title"}
+            name="title"
             label="Tiêu đề"
             rules={[
               {
@@ -80,8 +99,8 @@ const AddQuestion = () => {
           />
         </div>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" danger htmlType="submit">
-            Thêm
+          <Button type="primary" className="mt-2" danger htmlType="submit">
+            Sửa
           </Button>
         </Form.Item>
       </Form>
@@ -89,4 +108,4 @@ const AddQuestion = () => {
   );
 };
 
-export default AddQuestion;
+export default Detail;

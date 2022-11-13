@@ -6,9 +6,9 @@ import { AppDispatch } from "configStore";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { addQuestion } from "Slices/questionAdmin";
+import { addCoreValue } from "Slices/corevalue";
 
-const AddQuestion = () => {
+const AddCoreValue = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   let navigate = useNavigate();
@@ -22,14 +22,14 @@ const AddQuestion = () => {
       ...data,
       content: content,
     };
-    dispatch(addQuestion(newsData))
+    dispatch(addCoreValue(newsData))
       .unwrap()
       .then((result) => {
         if (result?.id) {
           Swal.fire({
             title: `Thêm Thành công`,
           });
-          navigate("/dashboard/question", { replace: true });
+          navigate("/dashboard/corevalue", { replace: true });
         } else {
           Swal.fire({
             title: `Thêm thất bại`,
@@ -54,7 +54,9 @@ const AddQuestion = () => {
   };
   return (
     <div className="w-full">
-      <h1 className="text-center text-4xl text-red-500 ">Thêm Câu Hỏi</h1>
+      <h1 className="text-center text-4xl text-red-500 ">
+        Thêm Giá Trị Cốt Lõi
+      </h1>
       <Form {...layout} form={form} onFinish={onCreate}>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
           <Form.Item
@@ -89,4 +91,4 @@ const AddQuestion = () => {
   );
 };
 
-export default AddQuestion;
+export default AddCoreValue;

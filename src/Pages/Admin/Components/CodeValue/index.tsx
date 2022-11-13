@@ -1,39 +1,41 @@
 import { AppDispatch, RootState } from "configStore";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { ColumnsType, TableProps } from "antd/es/table";
-import { Button, Form, Input, Modal, Table } from "antd";
+import { Button, Table } from "antd";
 import Swal from "sweetalert2";
 
 import { useNavigate } from "react-router-dom";
+import { deleteCoreValue, getCoreValueList } from "Slices/corevalue";
 const CoreValue = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const [editFormValue, SetEditFormValue] = useState<any>();
-
-  const [showEdit, SetShowEdit] = useState(false);
-
-  const { list } = useSelector((state: RootState) => state.service);
+  const { list } = useSelector((state: RootState) => state.corevalue);
   useEffect(() => {
-    // dispatch(getList());
+    dispatch(getCoreValueList());
   }, [dispatch]);
 
-  const onDelete = (id: string) => {};
-
-  const onEdit = (values: any) => {};
+  const onDelete = (id: string) => {
+    dispatch(deleteCoreValue(id))
+      .unwrap()
+      .then((result) => {
+        if ((result = "Delete successfuly")) {
+          Swal.fire({
+            title: `Xóa thành công`,
+          });
+          dispatch(getCoreValueList());
+        } else {
+          Swal.fire({
+            title: `Xóa thất bại`,
+          });
+        }
+      });
+  };
 
   const columns: ColumnsType<any> = [
     {
       title: "Tiêu đề",
       dataIndex: "title",
-    },
-    {
-      title: "Tên dịch vụ",
-      dataIndex: "name",
-    },
-    {
-      title: "Hình ảnh",
-      dataIndex: "img",
     },
     {
       title: "ACTION",
@@ -45,20 +47,20 @@ const CoreValue = () => {
             block
             className="mb-2"
             onClick={() => {
-              SetShowEdit(true);
-
-              SetEditFormValue(record);
+              navigate(`/dashboard/corevalue/detail/${record?.id}`, {
+                replace: true,
+              });
             }}
           >
-            Sửa
+            Chi tiết
           </Button>
           <Button
             block
             danger
             onClick={() => {
               Swal.fire({
-                title: `Bạn muốn xóa câu hỏi`,
-                text: value?.name,
+                title: `Bạn muốn xóa giá trị cốt lõi`,
+                text: value?.title,
                 showCancelButton: true,
                 confirmButtonColor: "#fb4226",
                 cancelButtonColor: "rgb(167 167 167)",
@@ -86,58 +88,16 @@ const CoreValue = () => {
     /* console.log("params", pagination, filters, sorter, extra); */
   };
 
-  interface EditFromProps {
-    showEdit: boolean;
-    onEdit: (values: any) => void;
-    onCancelEdit: () => void;
-  }
-
-  const EditFrom: React.FC<EditFromProps> = ({
-    showEdit,
-    onEdit,
-    onCancelEdit,
-  }) => {
-    const [form] = Form.useForm();
-
-    return (
-      <Modal
-        open={showEdit}
-        title="Sửa Câu Hỏi"
-        okText="Sửa"
-        cancelText="Hủy"
-        onCancel={onCancelEdit}
-        onOk={() => {
-          form
-            .validateFields()
-            .then((values) => {
-              form.resetFields();
-              onEdit(values);
-            })
-            .catch((info) => {
-              console.log("Validate Failed:", info);
-            });
-        }}
-      >
-        <Form
-          form={form}
-          layout="vertical"
-          name="form_in_modal"
-          initialValues={{ modifier: "public" }}
-        ></Form>
-      </Modal>
-    );
-  };
-
   const navigate = useNavigate();
 
   return (
     <div>
       <h1 className="text-center font-bold text-4xl text-red-500">
-        Danh Sách Câu Hỏi
+        Danh Sách Giá Trị Cốt Lõi
       </h1>
       <Button
         className="mb-2"
-        onClick={() => navigate("/dashboard/addquestion")}
+        onClick={() => navigate("/dashboard/corevalue/addcorevalue")}
       >
         Thêm
       </Button>
@@ -148,14 +108,6 @@ const CoreValue = () => {
         onChange={onChange}
         bordered
         scroll={{ x: 800 }}
-      />
-
-      <EditFrom
-        showEdit={showEdit}
-        onEdit={onEdit}
-        onCancelEdit={() => {
-          SetShowEdit(false);
-        }}
       />
     </div>
   );

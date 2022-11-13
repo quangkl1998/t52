@@ -1,5 +1,5 @@
 import { AppDispatch, RootState } from "configStore";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import { Button, Form, Input, Modal, Table } from "antd";
@@ -22,6 +22,8 @@ const Question = () => {
 
   const [content, SetContent] = useState("");
 
+  let contentnew = "";
+
   const editor = useRef(null);
 
   const { questions } = useSelector((state: RootState) => state.question);
@@ -34,6 +36,10 @@ const Question = () => {
   useEffect(() => {
     dispatch(getQuestionList());
   }, [dispatch]);
+
+  useEffect(() => {
+    console.log(contentnew, "pp");
+  });
 
   const onDelete = (id: string) => {
     dispatch(deleteQuestion(id))
@@ -94,6 +100,8 @@ const Question = () => {
               SetContent(record?.content);
               SetIdQuestion(record?.id);
               SetEditFormValue(record);
+              contentnew = record?.content;
+              console.log(contentnew, "ll");
             }}
           >
             Sửa
@@ -206,7 +214,10 @@ const Question = () => {
               ref={editor}
               value={content}
               config={config}
-              onBlur={(e) => SetContent(e)}
+              onBlur={(e) => {
+                SetContent(e);
+                contentnew = e;
+              }}
             />
           </Form.Item>
         </Form>

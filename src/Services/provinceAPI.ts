@@ -4,7 +4,7 @@ const proviceAPI = {
     return axiosClient.get<any[]>(`province`);
   },
   getById: (id: string) => {
-    return axiosClient.get<any[]>(`province/${id}`);
+    return axiosClient.get<any[]>(`province/detail/${id}`);
   },
   add: (data: any) => {
     return axiosClient.post(`province`, data);

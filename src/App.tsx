@@ -43,6 +43,12 @@ const MenuList = lazy(() => import("Pages/Admin/Components/Menu/index"));
 const CoreValueList = lazy(
   () => import("Pages/Admin/Components/CodeValue/index"),
 );
+const AddCoreValue = lazy(
+  () => import("Pages/Admin/Components/CodeValue/AddCoreValue/index"),
+);
+const CoreValueDetail = lazy(
+  () => import("Pages/Admin/Components/CodeValue/Detail/index"),
+);
 const StoreDetail = lazy(
   () => import("Pages/Admin/Components/Store/StoreDetail/StoreDetail"),
 );
@@ -60,6 +66,9 @@ const AddClient = lazy(
 );
 const StoreList = lazy(() => import("Pages/Admin/Components/Store/StoreList"));
 const NewsAdmin = lazy(() => import("Pages/Admin/Components/News/News"));
+const AdminNewsDetail = lazy(
+  () => import("Pages/Admin/Components/News/NewsDetail/index"),
+);
 const AddNews = lazy(
   () => import("Pages/Admin/Components/News/AddNews/AddNews"),
 );
@@ -130,6 +139,14 @@ function App() {
                 <Route path="future" element={<FutureList />}></Route>
                 <Route path="corevalue" element={<CoreValueList />}></Route>
                 <Route
+                  path="corevalue/addcorevalue"
+                  element={<AddCoreValue />}
+                ></Route>
+                <Route
+                  path="corevalue/detail/:id"
+                  element={<CoreValueDetail />}
+                ></Route>
+                <Route
                   path="store/storeDetail/:idStore"
                   element={<StoreDetail />}
                 ></Route>
@@ -145,7 +162,11 @@ function App() {
                 <Route path="tagnews" element={<Tagnews />}></Route>
                 <Route path="question" element={<Question />}></Route>
                 <Route path="addquestion" element={<AddQuestion />}></Route>
-                <Route path="newsList/addNews" element={<AddNews />}></Route>
+                <Route path="newslist/addNews" element={<AddNews />}></Route>
+                <Route
+                  path="newslist/newdetail/:slug"
+                  element={<AdminNewsDetail />}
+                ></Route>
               </Route>
             </Route>
 

@@ -1,45 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Button, Table, Form, Input, Modal, Row, Col, Select } from "antd";
+import { Button, Table, Input, Row, Col } from "antd";
 import { ColumnsType, TableProps } from "antd/es/table";
-import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
 
 import { AppDispatch, RootState } from "configStore";
 import { useDispatch, useSelector } from "react-redux";
 
-import { deleteNews, getNewsList, updateNews } from "Slices/NewsAdmin";
+import { deleteNews, getNewsList } from "Slices/NewsAdmin";
 
-import JoditEditor from "jodit-react";
 import Swal from "sweetalert2";
 import { getTagNewsList } from "Slices/TagNewsAdmin";
+import { useNavigate } from "react-router-dom";
 
 const { Search } = Input;
-
-const { Option } = Select;
 
 const News = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const [q, setQ] = useState("");
 
-  const [content, SetContent] = useState("");
-
-  const config: any = {
-    readonly: false,
-    editor: {
-      height: 500,
-    },
-  };
-
-  const editor = useRef(null);
-
-  const [editFormValue, SetEditFormValue] = useState<any>();
-
-  const [open, setOpen] = useState(false);
+  let navigate = useNavigate();
 
   const { newsList } = useSelector((state: RootState) => state.newsAdmin);
-
-  const { tag } = useSelector((state: RootState) => state.tagNewsAdmin);
 
   const fSearch = (rows: any[]) => {
     return rows?.filter((row) => row?.name?.toLowerCase().indexOf(q) > -1);
@@ -62,25 +44,6 @@ const News = () => {
         } else {
           Swal.fire({
             title: `Xóa thất bại`,
-          });
-        }
-      });
-  };
-
-  const onCreate = (values: any) => {
-    setOpen(false);
-    SetEditFormValue(undefined);
-    dispatch(updateNews(values))
-      .unwrap()
-      .then((result) => {
-        if (result === "Update successfuly") {
-          Swal.fire({
-            title: `Sửa thành công`,
-          });
-          dispatch(getNewsList());
-        } else {
-          Swal.fire({
-            title: `Sửa thất bại`,
           });
         }
       });
@@ -129,9 +92,9 @@ const News = () => {
           <Button
             block
             onClick={() => {
-              setOpen(true);
-              SetEditFormValue(record);
-              SetContent(record?.content);
+              navigate(`/dashboard/newslist/newdetail/${record?.slug}`, {
+                replace: true,
+              });
             }}
             className="mb-2"
           >
@@ -171,105 +134,6 @@ const News = () => {
     /* console.log("params", pagination, filters, sorter, extra); */
   };
 
-  interface CollectionCreateFormProps {
-    open: boolean;
-    onCreate: (values: any) => void;
-    onCancel: () => void;
-  }
-
-  const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
-    open,
-    onCreate,
-    onCancel,
-  }) => {
-    const [form] = Form.useForm();
-    if (editFormValue) {
-      form.setFieldsValue({
-        name: editFormValue?.name,
-        descript: editFormValue?.descript,
-        content: content,
-        id: editFormValue?.id,
-        type: editFormValue?.type,
-      });
-    }
-    return (
-      <Modal
-        width={800}
-        open={open}
-        title="Chi tiết tin"
-        okText="Sửa"
-        cancelText="Đóng"
-        onCancel={onCancel}
-        onOk={() => {
-          form
-            .validateFields()
-            .then((values) => {
-              form.resetFields();
-              onCreate(values);
-            })
-            .catch((info) => {
-              console.log("Validate Failed:", info);
-            });
-        }}
-      >
-        <Form
-          form={form}
-          layout="vertical"
-          name="form_in_modal"
-          initialValues={{ modifier: "public" }}
-        >
-          <Form.Item
-            name="id"
-            className="hidden"
-            label="id"
-            rules={[
-              {
-                required: true,
-                message: "Please input the title of collection!",
-              },
-            ]}
-          >
-            <Input disabled />
-          </Form.Item>
-          <Form.Item
-            name="name"
-            label="Tiêu đề"
-            rules={[
-              {
-                required: true,
-                message: "Please input the title of collection!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item name="content" label="Nội dung">
-            <JoditEditor
-              ref={editor}
-              value={content}
-              config={config}
-              onBlur={(e) => SetContent(e)}
-            />
-          </Form.Item>
-          <Form.Item name="descript" label="Mô tả">
-            <Input />
-          </Form.Item>
-          <Form.Item name="type" label="Loại tin">
-            <Select>
-              {tag.map((e) => {
-                return (
-                  <Option key={e.id} value={e.name}>
-                    {e.name}
-                  </Option>
-                );
-              })}
-            </Select>
-          </Form.Item>
-        </Form>
-      </Modal>
-    );
-  };
-
   return (
     <div>
       <h1 className="text-center font-bold text-4xl text-red-500">
@@ -291,14 +155,6 @@ const News = () => {
         onChange={onChange}
         scroll={{ x: 800 }}
         bordered
-      />
-      <CollectionCreateForm
-        open={open}
-        onCreate={onCreate}
-        onCancel={() => {
-          setOpen(false);
-          SetEditFormValue(undefined);
-        }}
       />
     </div>
   );
