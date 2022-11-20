@@ -209,7 +209,9 @@ const AdminTemplate = () => {
           className="hidden md:block"
         >
           <div className="flex  justify-center bg-red-500 rounded-sm shadow-lg  ">
-            <img src={logo} alt="logo" className="w-16 h-16  " />
+            <NavLink to="/">
+              <img src={logo} alt="logo" className="w-16 h-16  " />
+            </NavLink>
           </div>
           <Menu
             mode="inline"

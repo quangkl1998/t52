@@ -13,6 +13,8 @@ const NewsAPI = {
     formData.append("slug", data?.slug);
     formData.append("descript", data?.descript);
     formData.append("contentImg", data?.contentImg);
+    formData.append("menuId", data?.menuId);
+    formData.append("submenuId", data?.submenuId);
 
     return axiosClient.post(`news`, formData);
   },

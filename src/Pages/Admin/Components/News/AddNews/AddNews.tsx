@@ -25,7 +25,10 @@ const AddNews = () => {
   const [open, SetOpen] = useState(false);
   const [imgContent, SetImgContent] = useState<any>([]);
 
-  const [subMenuList, setSubMenuList] = useState([]);
+  const [subMenuList, setSubMenuList] = useState<any>([]);
+  useEffect(() => {
+    console.log(subMenuList, 1);
+  }, [subMenuList]);
 
   const { tag } = useSelector((state: RootState) => state.tagNewsAdmin);
   const { list } = useSelector((state: RootState) => state.menu);
@@ -34,6 +37,14 @@ const AddNews = () => {
     dispatch(getTagNewsList());
     dispatch(getMenuList());
   }, [dispatch]);
+
+  const onChangeMenu = (e: any) => {
+    const submenu = list.find((item) => item?.id === e);
+    setSubMenuList(submenu?.submenus);
+    form.setFieldsValue({
+      submenuId: "",
+    });
+  };
 
   const onCreate = (data: any) => {
     const newsData = {
@@ -211,8 +222,28 @@ const AddNews = () => {
               },
             ]}
           >
-            <Select>
+            <Select onChange={(e) => onChangeMenu(e)}>
               {list.map((e) => {
+                return (
+                  <Option key={e.id} value={e.id}>
+                    {e.name}
+                  </Option>
+                );
+              })}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            name={"submenuId"}
+            label="Mục"
+            rules={[
+              {
+                required: true,
+                message: "Không được bỏ trống mục này",
+              },
+            ]}
+          >
+            <Select>
+              {subMenuList?.map((e: any) => {
                 return (
                   <Option key={e.id} value={e.id}>
                     {e.name}
