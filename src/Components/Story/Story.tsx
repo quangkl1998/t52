@@ -38,7 +38,7 @@ const Story = () => {
                             return (
                                 <div
                                     key={index}
-                                    className="rounded-lg bg-white shadow overflow-hidden border border-transparent hover:border-gray-100 hover:text-amber-500 cursor-pointer duration-150"
+                                    className="rounded-lg bg-white shadow overflow-hidden border border-transparent hover:border-gray-100 hover:text-amber-500 cursor-pointer duration-150 flex flex-col justify-between"
                                 >
                                     {/* <video
                                     controls
@@ -47,25 +47,25 @@ const Story = () => {
                                 >
                                     <source src={tt.video} />
                                 </video> */}
-                                    <iframe
-                                        width={270}
-                                        height={208}
-                                        src={`https://www.youtube.com/embed/${item.urlVideo}?start=1`}
-                                        title="video"
-                                        frameBorder={0}
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    />
+                                    <div>
+                                        <iframe
+                                            width={270}
+                                            height={208}
+                                            src={`https://www.youtube.com/embed/${item.urlVideo}?start=1`}
+                                            title="video"
+                                            frameBorder={0}
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        />
 
-                                    <div className="flex justify-between flex-col ">
                                         <div className="m-3 font-bold text-lg line-clamp-2 overflow-hidden text-ellipsis">
                                             {item?.name}
                                         </div>
-                                        <div className="px-5 pb-5 text-gray-500">
-                                            {moment(item?.createdAt)
-                                                .format("DD-MM-YYYY")
-                                                .toString()}
-                                        </div>
+                                    </div>
+                                    <div className="px-5 pb-5 text-gray-500">
+                                        {moment(item?.createdAt)
+                                            .format("DD-MM-YYYY")
+                                            .toString()}
                                     </div>
                                 </div>
                             );
