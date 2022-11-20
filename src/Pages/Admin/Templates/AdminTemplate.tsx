@@ -44,13 +44,13 @@ function getItem(
 
 const items: MenuItem[] = [
   getItem(
-    "Dashboard",
+    "Tổng quan",
     "Dashboard",
     <NavLink to="/dashboard">
       <FundOutlined />
     </NavLink>,
   ),
-  getItem("Cửa Hàng", "Store", <ShopOutlined />, [
+  getItem("Cửa hàng", "Store", <ShopOutlined />, [
     getItem(
       "Tỉnh/Thành",
       "ProvinceList",
@@ -82,7 +82,7 @@ const items: MenuItem[] = [
   ]),
   getItem("Banner", "Banner", <ShopOutlined />, [
     getItem(
-      "BannerList",
+      "Danh sách",
       "BannerList",
       <div>
         <NavLink to="banner"></NavLink>
@@ -90,115 +90,94 @@ const items: MenuItem[] = [
     ),
   ]),
 
-  getItem("Partner", "Partner", <ApartmentOutlined />, [
+  getItem("Đối tác", "Partner", <ApartmentOutlined />, [
     getItem(
-      "PartnerList",
+      "Danh sách",
       "PartnerList",
       <div>
         <NavLink to="partner"></NavLink>
       </div>,
     ),
   ]),
-  getItem("TagNews", "TagNews", <TagOutlined />, [
+  getItem("Tin tức", "News", <AliwangwangOutlined />, [
     getItem(
-      "TagNewsList",
-      "TagNewsList",
-      <div>
-        <NavLink to="tagnews"></NavLink>
-      </div>,
-    ),
-  ]),
-  getItem("News", "News", <AliwangwangOutlined />, [
-    getItem(
-      "NewsList",
+      "Tin",
       "NewsList",
       <div>
         <NavLink to="newslist"></NavLink>
       </div>,
     ),
     getItem(
-      "AddNews",
-      "AddNews",
+      "Loại tin",
+      "TagNewsList",
       <div>
-        <NavLink to="newslist/addnews"></NavLink>
+        <NavLink to="tagnews"></NavLink>
       </div>,
     ),
   ]),
-  getItem("Media", "Media", <VideoCameraOutlined />, [
+  getItem("Video", "Media", <VideoCameraOutlined />, [
     getItem(
-      "MediaList",
+      "Danh sách",
       "MediaList",
       <div>
         <NavLink to="media"></NavLink>
       </div>,
     ),
   ]),
-  getItem("Question", "Question", <QuestionOutlined />, [
+
+  getItem("Tài khoản", "Manager", <SketchOutlined />, [
     getItem(
-      "QuestionList",
-      "QuestionList",
-      <div>
-        <NavLink to="question"></NavLink>
-      </div>,
-    ),
-    getItem(
-      "AddQuestion",
-      "AddQuestion",
-      <div>
-        <NavLink to="addquestion"></NavLink>
-      </div>,
-    ),
-  ]),
-  getItem("Manager", "Manager", <SketchOutlined />, [
-    getItem(
-      "ManagerList",
+      "Danh sách",
       "ManagerList",
       <div>
         <NavLink to="manager"></NavLink>
       </div>,
     ),
   ]),
-  getItem("Introduce", "Introduce", <SketchOutlined />, [
+  getItem("Về T52", "Introduce", <SketchOutlined />, [
     getItem(
-      "IntroduceList",
+      "Giới thiệu",
       "IntroduceList",
       <div>
         <NavLink to="introduce"></NavLink>
       </div>,
     ),
+    getItem(
+      "Giá trị cốt lõi",
+      "CoreValueList",
+      <div>
+        <NavLink to="corevalue"></NavLink>
+      </div>,
+    ),
+    getItem(
+      "Tương lai",
+      "FutureList",
+      <div>
+        <NavLink to="future"></NavLink>
+      </div>,
+    ),
+    getItem(
+      "Câu hỏi",
+      "QuestionList",
+      <div>
+        <NavLink to="question"></NavLink>
+      </div>,
+    ),
   ]),
   getItem("Menu", "Menu", <SketchOutlined />, [
     getItem(
-      "MenuList",
+      "Danh sách",
       "MenuList",
       <div>
         <NavLink to="menu"></NavLink>
       </div>,
     ),
   ]),
-  getItem("Service", "Service", <SketchOutlined />, [
+  getItem("Dịch vụ", "Service", <SketchOutlined />, [
     getItem(
-      "ServiceList",
+      "Danh sách",
       "ServiceList",
       <div>{<NavLink to="service"></NavLink>}</div>,
-    ),
-  ]),
-  getItem("Future", "Future", <SketchOutlined />, [
-    getItem(
-      "FutureList",
-      "FutureList",
-      <div>
-        <NavLink to="future"></NavLink>
-      </div>,
-    ),
-  ]),
-  getItem("CoreValue", "CoreValue", <SketchOutlined />, [
-    getItem(
-      "CoreValueList",
-      "CoreValueList",
-      <div>
-        <NavLink to="corevalue"></NavLink>
-      </div>,
     ),
   ]),
 ];

@@ -11,6 +11,7 @@ import { deleteNews, getNewsList } from "Slices/NewsAdmin";
 import Swal from "sweetalert2";
 import { getTagNewsList } from "Slices/TagNewsAdmin";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const { Search } = Input;
 
@@ -139,13 +140,19 @@ const News = () => {
       <h1 className="text-center font-bold text-4xl text-red-500">
         Danh Sách Tin Tức
       </h1>
+
       <Row>
-        <Col lg={{ span: 6 }} md={{ span: 8 }}>
-          <Search
-            className="mb-2 text-red"
-            placeholder="Tìm theo tiêu đề"
-            onChange={handleSearch}
-          />
+        <Col lg={{ span: 6 }} md={{ span: 8 }} className="mb-2">
+          <div className="flex-row md:flex">
+            <Search
+              className="mb-2 text-red"
+              placeholder="Tìm theo tiêu đề"
+              onChange={handleSearch}
+            />
+            <Button>
+              <NavLink to={"addnews"}>Thêm</NavLink>
+            </Button>
+          </div>
         </Col>
       </Row>
       <Table

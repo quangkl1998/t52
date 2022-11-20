@@ -3,9 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import type { ColumnsType, TableProps } from "antd/es/table";
-import { Button, Form, Input, Modal, Switch, Table } from "antd";
+import { Button, Form, Input, Modal, Select, Switch, Table } from "antd";
 import Swal from "sweetalert2";
 import { add, deleteItem, getList, update } from "Slices/menu";
+import { useNavigate } from "react-router-dom";
+
+const { Option } = Select;
 
 const Menu = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -17,6 +20,8 @@ const Menu = () => {
   const [MenuDetail, setMenuDetail] = useState<any>();
 
   const { list } = useSelector((state: RootState) => state.menu);
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getList());
@@ -161,7 +166,14 @@ const Menu = () => {
           >
             Xóa
           </Button>
-          <Button block>Chi tiết</Button>
+          <Button
+            block
+            onClick={() =>
+              navigate("/dashboard/menu/addmenu", { replace: true })
+            }
+          >
+            Chi tiết
+          </Button>
         </div>
       ),
     },
@@ -226,6 +238,22 @@ const Menu = () => {
           >
             <Input />
           </Form.Item>
+          <Form.Item
+            name="type"
+            label="Loại Menu"
+            rules={[
+              {
+                required: true,
+                message: "Không được bỏ trống",
+              },
+            ]}
+          >
+            <Select>
+              <Option value={"link"}>{"Link"}</Option>
+              <Option value={"trang"}>{"Trang"}</Option>
+              <Option value={"thong-bao"}>{"Thông báo"}</Option>
+            </Select>
+          </Form.Item>
           <Form.Item name="isActive" label="Active" valuePropName="checked">
             <Switch />
           </Form.Item>
@@ -250,6 +278,7 @@ const Menu = () => {
       form.setFieldsValue({
         name: MenuDetail?.name,
         isActive: MenuDetail?.isActive,
+        type: MenuDetail?.type,
       });
     }
     return (
@@ -289,6 +318,22 @@ const Menu = () => {
           >
             <Input />
           </Form.Item>
+          <Form.Item
+            name="type"
+            label="Loại Menu"
+            rules={[
+              {
+                required: true,
+                message: "Không được bỏ trống",
+              },
+            ]}
+          >
+            <Select>
+              <Option value={"link"}>{"Link"}</Option>
+              <Option value={"trang"}>{"Trang"}</Option>
+              <Option value={"thong-bao"}>{"Thông báo"}</Option>
+            </Select>
+          </Form.Item>
           <Form.Item name="isActive" label="isActive" valuePropName="checked">
             <Switch />
           </Form.Item>
@@ -302,7 +347,14 @@ const Menu = () => {
       <h1 className="text-center font-bold text-4xl text-red-500">
         Danh Sách Menu
       </h1>
-      <Button className="mb-2" onClick={() => setVisible(true)}>
+      <Button
+        className="mb-2"
+        onClick={() =>
+          /* navigate("/dashboard/menu/addmenu", {
+              replace: true,
+            }) */ setVisible(true)
+        }
+      >
         Thêm
       </Button>
       <Table
