@@ -291,7 +291,7 @@ function App() {
                                 path="/quan-he-nha-dau-tu"
                                 element={<InvestorRelations />}
                             />
-                            <Route path="/tin-tuc" element={<News />} />
+                            <Route path="/tin-tuc" element={<ActivityNews />} />
                             <Route
                                 path="/tin-tuc-chi-tiet/:name"
                                 element={<NewsDetail />}
