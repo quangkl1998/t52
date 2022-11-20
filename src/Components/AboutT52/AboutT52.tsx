@@ -10,7 +10,7 @@ const AboutT52 = () => {
     const { list: listIntroduce } = useSelector(
         (state: RootState) => state.introduce,
     );
-    console.log(listIntroduce);
+    // console.log(listIntroduce);
 
     const dispatch = useDispatch<AppDispatch>();
 
