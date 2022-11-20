@@ -9,7 +9,7 @@ const LoanByCar = () => {
             <div className="lg:h-28 h-20"></div>
             <div className="bg-gray-100 mt-3">
                 <h1 className="text-center p-5 font-bold text-2xl">
-                    Thông tin đăng ký vay tiền bằng ô tô
+                    Thông tin đăng ký vay tiền
                 </h1>
                 <FormLoan />
                 <div className="container mx-auto px-16 italic text-gray-500 font-semibold text-lg mt-3">
@@ -23,7 +23,6 @@ const LoanByCar = () => {
                         gồm các phí khác)
                     </p>
                 </div>
-                <InfoLoanByCar />
                 <WhyChoose />
                 <Questions />
             </div>

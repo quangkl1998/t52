@@ -67,7 +67,7 @@ const OutStandingService = () => {
                             </div>
                             <div className="flex">
                                 <NavLink
-                                    to={service?.slug}
+                                    to="/vay-ngay"
                                     className="rounded-md font-medium text-base cursor-pointer p-2  text-white  bg-red-600"
                                 >
                                     Vay ngay

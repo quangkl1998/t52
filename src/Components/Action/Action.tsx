@@ -7,7 +7,7 @@ const Action = () => {
             <div className="container mx-auto">
                 <div className="   lg:px-5">
                     <div className="grid md:grid-cols-2 grid-cols-1 px-5 md:px-10 lg:px-16 py-5  text-white">
-                        <NavLink to={"/about"}>
+                        <NavLink to={"/ve-t52"}>
                             <div className="flex  items-center justify-between md:px-5 mb-2 md:mb-0">
                                 <div className="flex items-center">
                                     <svg

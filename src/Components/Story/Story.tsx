@@ -1,4 +1,5 @@
 import { AppDispatch, RootState } from "configStore";
+import moment from "moment";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -9,6 +10,7 @@ const Story = () => {
     const { listMedia, isLoading, error } = useSelector(
         (state: RootState) => state.media,
     );
+    console.log(listMedia);
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(getMedia());
@@ -31,7 +33,7 @@ const Story = () => {
                     </NavLink>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {listMedia.map((item: any, index: number) => {
+                    {listMedia?.map((item: any, index: number) => {
                         if (index < 4)
                             return (
                                 <div
@@ -48,18 +50,22 @@ const Story = () => {
                                     <iframe
                                         width={270}
                                         height={208}
-                                        src={item.urlVideo}
-                                        title="FADED LOVE REMIX - CHÀO MỪNG ĐẾN BÌNH NGUYÊN VÔ TẬN REMIX - HEY HEY HEY REMIX HOT TIKTOK"
+                                        src={`https://www.youtube.com/embed/${item.urlVideo}?start=1`}
+                                        title="video"
                                         frameBorder={0}
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
                                     />
 
-                                    <div className="p-3 font-bold text-lg h-16 overflow-hidden text-ellipsis mb-2">
-                                        {item.name}
-                                    </div>
-                                    <div className="px-5 pb-5 text-gray-500">
-                                        {item.createDay}
+                                    <div className="flex justify-between flex-col ">
+                                        <div className="m-3 font-bold text-lg line-clamp-2 overflow-hidden text-ellipsis">
+                                            {item?.name}
+                                        </div>
+                                        <div className="px-5 pb-5 text-gray-500">
+                                            {moment(item?.createdAt)
+                                                .format("DD-MM-YYYY")
+                                                .toString()}
+                                        </div>
                                     </div>
                                 </div>
                             );

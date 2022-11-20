@@ -13,6 +13,7 @@ import ProtectedRoute from "Routes/ProtectedRoute";
 import HomeSlug from "Pages/HomeSlug/HomeSlug";
 import ThongBao from "Pages/ThongBao/ThongBao";
 import Loan from "Pages/Loan/Loan";
+import LoanByCar from "Pages/LoanByCar/LoanByCar";
 
 const ManagerList = lazy(
     () => import("Pages/Admin/Components/Manager/Manager"),
@@ -285,12 +286,12 @@ function App() {
                                 element={<ThongBao />}
                             />
 
-                            <Route path="/about" element={<About />} />
+                            <Route path="/ve-t52" element={<About />} />
                             <Route
                                 path="/quan-he-nha-dau-tu"
                                 element={<InvestorRelations />}
                             />
-                            <Route path="/tin-tuc-noi-bat" element={<News />} />
+                            <Route path="/tin-tuc" element={<News />} />
                             <Route
                                 path="/tin-tuc-chi-tiet/:name"
                                 element={<NewsDetail />}
@@ -307,6 +308,10 @@ function App() {
                                 <Route
                                     path="/vay-bang/:slug"
                                     element={<Loan />}
+                                />
+                                <Route
+                                    path="/vay-ngay"
+                                    element={<LoanByCar />}
                                 />
                             </Route>
                             <Route

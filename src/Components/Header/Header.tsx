@@ -32,13 +32,13 @@ const Header = () => {
                     <div className="flex justify-end px-3 py-2 ">
                         <div className="">
                             <NavLink
-                                to="/about"
+                                to="/ve-t52"
                                 className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Về T52
                             </NavLink>
                             <NavLink
-                                to="/tin-tuc-noi-bat"
+                                to="/tin-tuc"
                                 className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
                                 Tin tức
@@ -182,7 +182,7 @@ const Header = () => {
                         <div className="container mx-auto">
                             <div className="flex flex-col justify-center px-3 py-4">
                                 <NavLink
-                                    to="/about"
+                                    to="/ve-t52"
                                     onClick={() => setOpen(!open)}
                                     className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
                                 >
@@ -196,7 +196,7 @@ const Header = () => {
                                     Quan hệ Nhà đầu tư
                                 </NavLink> */}
                                 <NavLink
-                                    to="/tin-tuc-noi-bat"
+                                    to="/tin-tuc"
                                     onClick={() => setOpen(!open)}
                                     className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
                                 >

@@ -16,15 +16,19 @@ const Loan = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
-        if (slug) dispatch(getDetailMenu({ slugMenu: slug }));
+        if (slug) dispatch(getDetailMenu({ slugSubMenu: slug }));
     }, [slug]);
 
     return (
         <div>
             <div className="lg:h-28 h-20"></div>
             <div className="bg-gray-100 mt-3">
-                <h1 className="text-center p-5 font-bold text-2xl">
-                    Thông tin đăng ký vay tiền bằng ô tô
+                <h1 className="text-center uppercase p-5 font-bold text-2xl">
+                    {detail ? (
+                        <>Thông tin đăng ký vay tiền bằng {detail[0]?.name}</>
+                    ) : (
+                        <>Thông tin đăng ký vay tiền</>
+                    )}
                 </h1>
                 <FormLoan />
                 <div className="container mx-auto px-16 italic text-gray-500 font-semibold text-lg mt-3">
@@ -38,7 +42,7 @@ const Loan = () => {
                         gồm các phí khác)
                     </p>
                 </div>
-                <InfoLoanByCar />
+                <InfoLoanByCar detail={detail} />
                 <WhyChoose />
                 <Questions />
             </div>
