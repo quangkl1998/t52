@@ -50,7 +50,11 @@ const DetailService = lazy(
   () => import("Pages/Admin/Components/Service/detailService/index"),
 );
 const MenuList = lazy(() => import("Pages/Admin/Components/Menu/index"));
-const AddMenu = lazy(() => import("Pages/Admin/Components/Menu/addMenu"));
+const SubMenu = lazy(() => import("Pages/Admin/Components/subMenu"));
+const MenuDetail = lazy(() => import("Pages/Admin/Components/Menu/Detail"));
+const SubMenuDetail = lazy(
+  () => import("Pages/Admin/Components/subMenu/detail"),
+);
 const CoreValueList = lazy(
   () => import("Pages/Admin/Components/CodeValue/index"),
 );
@@ -153,8 +157,13 @@ function App() {
                   path="service/detail/:id"
                   element={<DetailService />}
                 ></Route>
+                <Route path="submenu" element={<SubMenu />}></Route>
+                <Route
+                  path="submenu/detail/:id"
+                  element={<SubMenuDetail />}
+                ></Route>
                 <Route path="menu" element={<MenuList />}></Route>
-                <Route path="menu/addmenu" element={<AddMenu />}></Route>
+                <Route path="menu/detail/:id" element={<MenuDetail />}></Route>
                 <Route path="future" element={<FutureList />}></Route>
                 <Route path="future/addfuture" element={<AddFuture />}></Route>
                 <Route

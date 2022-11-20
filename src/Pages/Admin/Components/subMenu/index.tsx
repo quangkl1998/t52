@@ -3,25 +3,29 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import type { ColumnsType, TableProps } from "antd/es/table";
-import { Button, Form, Input, Modal, Select, Switch, Table } from "antd";
+import { Button, Form, Input, Modal, Select, Table } from "antd";
 import Swal from "sweetalert2";
-import { add, deleteItem, getList, update } from "Slices/menu";
+import { add, deleteItem, getList as getsubMenu } from "Slices/submenu";
 import { useNavigate } from "react-router-dom";
+import { getList as getMenu } from "Slices/menu";
 
 const { Option } = Select;
 
-const Menu = () => {
+const SubMenu = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const [visible, setVisible] = useState(false);
 
-  const { list } = useSelector((state: RootState) => state.menu);
+  const { list } = useSelector((state: RootState) => state.submenu);
+  const menuList = useSelector((state: RootState) => state.menu.list);
+  console.log(menuList);
 
   let navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getList());
-  }, []);
+    dispatch(getsubMenu());
+    dispatch(getMenu());
+  }, [dispatch]);
 
   const onCreate = (values: any) => {
     const data = {
@@ -34,8 +38,8 @@ const Menu = () => {
           Swal.fire({
             title: `Thêm Thành công`,
           });
-          dispatch(getList());
           setVisible(false);
+          dispatch(getsubMenu());
         } else {
           Swal.fire({
             title: `Thêm thất bại`,
@@ -52,32 +56,12 @@ const Menu = () => {
           Swal.fire({
             title: `Xóa thành công`,
           });
-          dispatch(getList());
+          dispatch(getsubMenu());
+
           setVisible(false);
         } else {
           Swal.fire({
             title: `Xóa thất bại`,
-          });
-        }
-      });
-  };
-
-  const OnActive = (data: any) => {
-    let dataEdit = {
-      ...data,
-      isActive: !data.isActive,
-    };
-    dispatch(update(dataEdit))
-      .unwrap()
-      .then((result) => {
-        if (result === "Update successfully") {
-          Swal.fire({
-            title: `Sửa Thành công`,
-          });
-          dispatch(getList());
-        } else {
-          Swal.fire({
-            title: `Sửa thất bại`,
           });
         }
       });
@@ -88,22 +72,9 @@ const Menu = () => {
       title: "name",
       dataIndex: "name",
     },
+
     {
-      title: "Active",
-      dataIndex: "isActive",
-      align: "center",
-      width: 300,
-      render: (value, record, index) => (
-        <Switch
-          checked={value}
-          onClick={() => {
-            OnActive(record);
-          }}
-        />
-      ),
-    },
-    {
-      title: "ACTION",
+      title: "Hành động",
       align: "center",
       width: 200,
       render: (value, record, index) => (
@@ -132,7 +103,7 @@ const Menu = () => {
           <Button
             block
             onClick={() =>
-              navigate(`/dashboard/menu/detail/${record?.id}`, {
+              navigate(`/dashboard/submenu/detail/${record?.id}`, {
                 replace: true,
               })
             }
@@ -169,7 +140,7 @@ const Menu = () => {
     return (
       <Modal
         open={visible}
-        title="Thêm Menu"
+        title="Thêm Mục"
         okText="Thêm"
         cancelText="Hủy"
         onCancel={onCancel}
@@ -193,7 +164,7 @@ const Menu = () => {
         >
           <Form.Item
             name="name"
-            label="Menu Name"
+            label="Tên Mục"
             rules={[
               {
                 required: true,
@@ -205,7 +176,7 @@ const Menu = () => {
           </Form.Item>
           <Form.Item
             name="type"
-            label="Loại Menu"
+            label="Loại Mục"
             rules={[
               {
                 required: true,
@@ -219,8 +190,25 @@ const Menu = () => {
               <Option value={"thong-bao"}>{"Thông báo"}</Option>
             </Select>
           </Form.Item>
-          <Form.Item name="isActive" label="Active" valuePropName="checked">
-            <Switch />
+          <Form.Item
+            name="menuId"
+            label="Menu"
+            rules={[
+              {
+                required: true,
+                message: "Không được bỏ trống",
+              },
+            ]}
+          >
+            <Select>
+              {menuList.map((e: any) => {
+                return (
+                  <Option key={e.id} value={e.id}>
+                    {e.name}
+                  </Option>
+                );
+              })}
+            </Select>
           </Form.Item>
         </Form>
       </Modal>
@@ -230,7 +218,7 @@ const Menu = () => {
   return (
     <div>
       <h1 className="text-center font-bold text-4xl text-red-500">
-        Danh Sách Menu
+        Danh Sách Mục
       </h1>
       <Button
         className="mb-2"
@@ -242,6 +230,7 @@ const Menu = () => {
       >
         Thêm
       </Button>
+
       <Table
         rowKey={(record) => record?.id}
         columns={columns}
@@ -249,6 +238,7 @@ const Menu = () => {
         onChange={onChange}
         bordered
       />
+
       <CollectionCreateForm
         visible={visible}
         onCreate={onCreate}
@@ -260,4 +250,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default SubMenu;

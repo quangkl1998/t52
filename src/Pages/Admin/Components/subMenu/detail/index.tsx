@@ -1,15 +1,17 @@
-import { Button, Form, Input, Select, Switch } from "antd";
-import { AppDispatch } from "configStore";
-import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { add } from "Slices/menu";
+import { Button, Form, Input, Select } from "antd";
+import { AppDispatch, RootState } from "configStore";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getById, update } from "Slices/submenu";
 import Swal from "sweetalert2";
 
 import JoditEditor from "jodit-react";
+import { useParams } from "react-router-dom";
 
 const { Option } = Select;
 
-const AddMenu = () => {
+const SubMenuDetail = () => {
+  const { id } = useParams();
   const dispatch = useDispatch<AppDispatch>();
 
   const editor = useRef(null);
@@ -18,30 +20,58 @@ const AddMenu = () => {
 
   const [menutype, setMenutype] = useState("");
 
+  const { detail } = useSelector((state: RootState) => state.submenu);
+
+  useEffect(() => {
+    if (detail) {
+      SetContent(detail?.content);
+      setMenutype(detail?.type);
+    }
+  }, [detail]);
+
+  useEffect(() => {
+    dispatch(getById(id!));
+  }, [dispatch, id]);
+
   const onCreate = (values: any) => {
     const data = {
       ...values,
+      content: content,
+      id: id,
     };
-    dispatch(add(data))
+    dispatch(update(data))
       .unwrap()
       .then((result) => {
-        if (result?.id) {
+        if (result === "Update successfully") {
           Swal.fire({
-            title: `Thêm Thành công`,
+            title: `Cập nhật thành công`,
           });
+          dispatch(getById(id!));
         } else {
           Swal.fire({
-            title: `Thêm thất bại`,
+            title: `Cập nhật thất bại`,
           });
         }
       });
   };
 
   const onTypeChange = (e: any) => {
+    console.log(e, "e");
     setMenutype(e);
   };
 
   const [form] = Form.useForm();
+  useEffect(() => {
+    if (detail) {
+      form.setFieldsValue({
+        name: detail?.name,
+        content: content,
+        id: detail?.id,
+        type: menutype,
+        url: detail?.url,
+      });
+    }
+  }, [content, form, detail, menutype]);
 
   const layout = {
     labelCol: { span: 8 },
@@ -59,11 +89,14 @@ const AddMenu = () => {
 
   return (
     <div>
+      <h1 className="text-center font-bold text-4xl text-red-500">
+        Thông Tin Mục
+      </h1>
       <Form {...layout} form={form} onFinish={onCreate}>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
           <Form.Item
             name="name"
-            label="Menu Name"
+            label="Tên mục"
             rules={[
               {
                 required: true,
@@ -73,12 +106,10 @@ const AddMenu = () => {
           >
             <Input />
           </Form.Item>
-          <Form.Item name="isActive" label="Hiển thị" valuePropName="checked">
-            <Switch />
-          </Form.Item>
+
           <Form.Item
             name="type"
-            label="Loại Menu"
+            label="Loại mục"
             rules={[
               {
                 required: true,
@@ -122,6 +153,7 @@ const AddMenu = () => {
         ) : (
           ""
         )}
+
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" danger htmlType="submit" className="mt-2">
             Sửa
@@ -132,4 +164,4 @@ const AddMenu = () => {
   );
 };
 
-export default AddMenu;
+export default SubMenuDetail;

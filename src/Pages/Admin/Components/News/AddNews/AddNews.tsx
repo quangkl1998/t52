@@ -9,6 +9,7 @@ import { addNews, uploadImage } from "Slices/NewsAdmin";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { getTagNewsList } from "Slices/TagNewsAdmin";
+import { getList as getMenuList } from "Slices/menu";
 
 const { Option } = Select;
 
@@ -24,10 +25,14 @@ const AddNews = () => {
   const [open, SetOpen] = useState(false);
   const [imgContent, SetImgContent] = useState<any>([]);
 
+  const [subMenuList, setSubMenuList] = useState([]);
+
   const { tag } = useSelector((state: RootState) => state.tagNewsAdmin);
+  const { list } = useSelector((state: RootState) => state.menu);
 
   useEffect(() => {
     dispatch(getTagNewsList());
+    dispatch(getMenuList());
   }, [dispatch]);
 
   const onCreate = (data: any) => {
@@ -195,6 +200,26 @@ const AddNews = () => {
             ]}
           >
             <Input></Input>
+          </Form.Item>
+          <Form.Item
+            name={"menuId"}
+            label="Menu"
+            rules={[
+              {
+                required: true,
+                message: "Không được bỏ trống mục này",
+              },
+            ]}
+          >
+            <Select>
+              {list.map((e) => {
+                return (
+                  <Option key={e.id} value={e.id}>
+                    {e.name}
+                  </Option>
+                );
+              })}
+            </Select>
           </Form.Item>
           <Form.Item
             name="img"

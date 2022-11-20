@@ -172,6 +172,13 @@ const items: MenuItem[] = [
         <NavLink to="menu"></NavLink>
       </div>,
     ),
+    getItem(
+      "Mục",
+      "subMenuList",
+      <div>
+        <NavLink to="submenu"></NavLink>
+      </div>,
+    ),
   ]),
   getItem("Dịch vụ", "Service", <SketchOutlined />, [
     getItem(
