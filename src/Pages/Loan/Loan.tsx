@@ -2,11 +2,22 @@ import FormLoan from "Components/FormLoan/FormLoan";
 import InfoLoanByCar from "Components/InfoLoanByCar/InfoLoanByCar";
 import Questions from "Components/Questions/Questions";
 import WhyChoose from "Components/WhyChoose/WhyChoose";
+import { AppDispatch, RootState } from "configStore";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getDetailMenu } from "Slices/menu";
 
 const Loan = () => {
-    const { name } = useParams();
-    console.log(name);
+    const { slug } = useParams();
+    const { detail } = useSelector((state: RootState) => state.menu);
+    console.log(detail);
+
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        if (slug) dispatch(getDetailMenu({ slugMenu: slug }));
+    }, [slug]);
 
     return (
         <div>

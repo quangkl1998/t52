@@ -137,7 +137,7 @@ const Header = () => {
                             )}
                         </div>
                     </div>
-                    <div className="lg:flex hidden justify-center items-center">
+                    <div className="lg:flex hidden justify-around items-center">
                         <NavLinks open={handleOpen} />
                         {/* <div>
                             <NavLink
