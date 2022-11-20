@@ -1,22 +1,42 @@
 import { useEffect, useRef, useState } from "react";
-import { FileImageOutlined } from "@ant-design/icons";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "configStore";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Form, Input, Modal, Select, Upload, UploadProps } from "antd";
+import { Button, Form, Input, Upload, UploadProps } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import type { InputRef } from "antd";
 import { Tag, Tooltip } from "antd";
-import { add } from "Slices/service";
+import { getById, update } from "Slices/service";
 import Swal from "sweetalert2";
-const { Option } = Select;
+
 const DetailService = () => {
   const { id } = useParams();
 
-  useEffect(() => {}, []);
-
+  const [form] = Form.useForm();
   const dispatch = useDispatch<AppDispatch>();
+  const [tags, setTags] = useState<string[]>([]);
+  const [inputVisible, setInputVisible] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [editInputIndex, setEditInputIndex] = useState(-1);
+  const [editInputValue, setEditInputValue] = useState("");
+  const inputRef = useRef<InputRef>(null);
+  const editInputRef = useRef<InputRef>(null);
 
+  useEffect(() => {
+    dispatch(getById(id!));
+  }, [dispatch, id]);
+  const { detail } = useSelector((state: RootState) => state.service);
+  useEffect(() => {
+    if (detail) {
+      let tag: any[] = [];
+      detail?.listservices.map((e: any) => tag.push(e?.title));
+      setTags(tag);
+      form.setFieldsValue({
+        name: detail?.name,
+        title: detail?.title,
+      });
+    }
+  }, [detail, form]);
   let navigate = useNavigate();
 
   const props: UploadProps = {
@@ -36,40 +56,28 @@ const DetailService = () => {
     let data = {
       ...values,
       content: tags,
+      id: id,
     };
-    console.log(data, "data");
-    dispatch(add(data))
+    dispatch(update(data))
       .unwrap()
       .then((result) => {
-        if (result?.id) {
+        if (result === "Update successfully") {
           Swal.fire({
-            title: `Thêm Thành công`,
+            title: `Sửa Thành công`,
           });
           navigate("/dashboard/service", { replace: true });
         } else {
           Swal.fire({
-            title: `Thêm thất bại`,
+            title: `Sửa thất bại`,
           });
         }
       });
   };
-  const [form] = Form.useForm();
 
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
   };
-  const handleChange = (e: any) => {
-    // console.log(e);
-  };
-
-  const [tags, setTags] = useState<string[]>([]);
-  const [inputVisible, setInputVisible] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const [editInputIndex, setEditInputIndex] = useState(-1);
-  const [editInputValue, setEditInputValue] = useState("");
-  const inputRef = useRef<InputRef>(null);
-  const editInputRef = useRef<InputRef>(null);
 
   useEffect(() => {
     if (inputVisible) {
@@ -115,11 +123,11 @@ const DetailService = () => {
   };
   return (
     <div className="w-full">
-      <h1 className="text-center text-4xl text-red-500 ">Thêm Dịch Vụ</h1>
+      <h1 className="text-center text-4xl text-red-500 ">Chi Tiết Dịch Vụ</h1>
       <Form {...layout} form={form} onFinish={onCreate}>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
           <Form.Item
-            name={"name"}
+            name="name"
             label="Tên dịch vụ"
             rules={[
               {
@@ -131,7 +139,7 @@ const DetailService = () => {
             <Input></Input>
           </Form.Item>
           <Form.Item
-            name={"title"}
+            name="title"
             label="Tiêu đề"
             rules={[
               {
@@ -144,15 +152,9 @@ const DetailService = () => {
           </Form.Item>
           <Form.Item
             name="img"
-            label="Hình ảnh"
+            label="Hình ảnh mới"
             valuePropName="fileList"
             getValueFromEvent={normFile}
-            rules={[
-              {
-                required: true,
-                message: "Không được bỏ trống",
-              },
-            ]}
           >
             <Upload {...props} listType="picture">
               <Button>Upload ảnh</Button>
@@ -181,7 +183,7 @@ const DetailService = () => {
                 <Tag
                   className="edit-tag"
                   key={tag}
-                  closable={index !== 0}
+                  closable={index !== -1}
                   onClose={() => handleClose(tag)}
                 >
                   <span
@@ -223,11 +225,14 @@ const DetailService = () => {
               </Tag>
             )}
           </Form.Item>
+          <Form.Item label="Hình ảnh">
+            <img src={detail?.img} alt={detail?.img} />
+          </Form.Item>
         </div>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" danger htmlType="submit">
-            Thêm
+            Sửa
           </Button>
         </Form.Item>
       </Form>

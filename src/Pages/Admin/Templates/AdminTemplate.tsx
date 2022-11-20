@@ -50,12 +50,33 @@ const items: MenuItem[] = [
       <FundOutlined />
     </NavLink>,
   ),
-  getItem("Store", "Store", <ShopOutlined />, [
+  getItem("Cửa Hàng", "Store", <ShopOutlined />, [
     getItem(
-      "StoreList",
+      "Tỉnh/Thành",
+      "ProvinceList",
+      <div>
+        <NavLink to="province"></NavLink>
+      </div>,
+    ),
+    getItem(
+      "Quận/Huyện",
+      "DistrictList",
+      <div>
+        <NavLink to="district"></NavLink>
+      </div>,
+    ),
+    getItem(
+      "Cửa Hàng",
       "StoreList",
       <div>
         <NavLink to="store"></NavLink>
+      </div>,
+    ),
+    getItem(
+      "Người Vay",
+      "ClientList",
+      <div>
+        <NavLink to="client" />
       </div>,
     ),
   ]),
@@ -68,33 +89,7 @@ const items: MenuItem[] = [
       </div>,
     ),
   ]),
-  getItem("Province", "Province", <ShopOutlined />, [
-    getItem(
-      "ProvinceList",
-      "ProvinceList",
-      <div>
-        <NavLink to="province"></NavLink>
-      </div>,
-    ),
-  ]),
-  getItem("District", "District", <ShopOutlined />, [
-    getItem(
-      "DistrictList",
-      "DistrictList",
-      <div>
-        <NavLink to="district"></NavLink>
-      </div>,
-    ),
-  ]),
-  getItem("Client", "Client", <UserOutlined />, [
-    getItem(
-      "ClientList",
-      "ClientList",
-      <div>
-        <NavLink to="client" />
-      </div>,
-    ),
-  ]),
+
   getItem("Partner", "Partner", <ApartmentOutlined />, [
     getItem(
       "PartnerList",

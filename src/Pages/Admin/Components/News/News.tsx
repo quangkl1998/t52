@@ -69,7 +69,7 @@ const News = () => {
       render: (value, record, index) => (
         <div className="w-full flex justify-center">
           <img
-            className="mb-2"
+            className="mb-2 object-contain"
             style={{
               width: "100px",
               height: "100px",

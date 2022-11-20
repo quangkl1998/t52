@@ -36,6 +36,7 @@ const BannerList = lazy(() => import("Pages/Admin/Components/Banner/index"));
 const ProvinceList = lazy(
   () => import("Pages/Admin/Components/Province/index"),
 );
+
 const DistrictList = lazy(
   () => import("Pages/Admin/Components/District/index"),
 );
@@ -140,6 +141,7 @@ function App() {
                 <Route path="banner" element={<BannerList />}></Route>
                 <Route path="district" element={<DistrictList />}></Route>
                 <Route path="province" element={<ProvinceList />}></Route>
+
                 <Route path="manager" element={<ManagerList />}></Route>
                 <Route path="service" element={<ServiceList />}></Route>
                 <Route

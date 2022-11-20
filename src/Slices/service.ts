@@ -3,12 +3,14 @@ import serviceAPI from "Services/serviceAPI";
 
 interface State {
   list: any[];
+  detail: any;
   isloading: boolean;
   error?: string | null;
 }
 
 const initialState: State = {
   list: [],
+  detail: null,
   isloading: false,
   error: null,
 };
@@ -31,6 +33,17 @@ export const add = createAsyncThunk("service/add", async (data: any) => {
   }
 });
 
+export const getById = createAsyncThunk(
+  "service/getById",
+  async (id: string) => {
+    try {
+      const result = await serviceAPI.getById(id);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+);
 export const deleteItem = createAsyncThunk(
   "service/deleteItem",
   async (id: string) => {
@@ -69,6 +82,23 @@ const serviceSlice = createSlice({
     });
 
     builder.addCase(getList.rejected, (state, { error }) => {
+      state.isloading = true;
+      state.error = error.message;
+    });
+
+    //end get list
+    // get list
+
+    builder.addCase(getById.pending, (state) => {
+      state.isloading = true;
+    });
+
+    builder.addCase(getById.fulfilled, (state, { payload }) => {
+      state.isloading = false;
+      state.detail = payload;
+    });
+
+    builder.addCase(getById.rejected, (state, { error }) => {
       state.isloading = true;
       state.error = error.message;
     });

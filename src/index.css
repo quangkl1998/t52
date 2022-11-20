@@ -75,3 +75,9 @@ a {
   stroke-linejoin: round !important;
   stroke-miterlimit: 10 !important;
 }
+.ant-layout.ant-layout-has-sider {
+  overflow: hidden;
+}
+.anticon {
+  transform: translateY(-4px) !important;
+}

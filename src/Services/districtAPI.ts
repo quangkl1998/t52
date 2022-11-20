@@ -3,6 +3,9 @@ const districtAPI = {
   getList: () => {
     return axiosClient.get<any[]>(`district`);
   },
+  getByIdProvince: (id: String) => {
+    return axiosClient.get<any[]>(`district/?provinceId=${id}`);
+  },
   getById: (id: string) => {
     return axiosClient.get<any[]>(`district/detail/${id}`);
   },

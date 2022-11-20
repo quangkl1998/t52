@@ -65,14 +65,14 @@ const StoreList = () => {
       title: "Quận",
       dataIndex: "district",
       render: (value, record, index) => {
-        return <div>{value}</div>;
+        return <div>{value?.name}</div>;
       },
     },
     {
       title: "Tỉnh/Thành phố",
-      dataIndex: "province",
+      dataIndex: "district",
       render: (value, record, index) => {
-        return <div>{value}</div>;
+        return <div>{value?.province?.name}</div>;
       },
     },
     {

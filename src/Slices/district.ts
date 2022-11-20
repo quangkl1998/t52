@@ -33,6 +33,18 @@ export const getById = createAsyncThunk(
   },
 );
 
+export const getByIdProvince = createAsyncThunk(
+  "district/getByIdProvince",
+  async (id: string) => {
+    try {
+      const data = await districtAPI.getByIdProvince(id);
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  },
+);
+
 export const add = createAsyncThunk("district/add", async (data: any) => {
   try {
     const result = await districtAPI.add(data);
@@ -85,6 +97,23 @@ const districtSlice = createSlice({
     });
 
     //end get list
+    //getByIdProvince
+
+    builder.addCase(getByIdProvince.pending, (state) => {
+      state.isloading = true;
+    });
+
+    builder.addCase(getByIdProvince.fulfilled, (state, { payload }) => {
+      state.isloading = false;
+      state.list = payload;
+    });
+
+    builder.addCase(getByIdProvince.rejected, (state, { error }) => {
+      state.isloading = true;
+      state.error = error.message;
+    });
+
+    //end getByIdProvince
     // getById
 
     builder.addCase(getById.pending, (state) => {

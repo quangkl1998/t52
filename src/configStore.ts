@@ -21,31 +21,35 @@ import introduce from "./Slices/introduce";
 import menu from "./Slices/menu";
 import service from "./Slices/service";
 import submenu from "./Slices/submenu";
+import province from "./Slices/province";
+import district from "./Slices/district";
 
 const store = configureStore({
-    reducer: {
-        auth,
-        news,
-        banner,
-        stores,
-        partner,
-        media,
-        clientAdmin,
-        login,
-        newsAdmin,
-        storeAdmin,
-        partnerAdmin,
-        tagNewsAdmin,
-        mediaAdmin,
-        question,
-        corevalue,
-        feedback,
-        future,
-        introduce,
-        menu,
-        service,
-        submenu,
-    },
+  reducer: {
+    auth,
+    news,
+    banner,
+    stores,
+    partner,
+    media,
+    clientAdmin,
+    login,
+    newsAdmin,
+    storeAdmin,
+    partnerAdmin,
+    tagNewsAdmin,
+    mediaAdmin,
+    question,
+    corevalue,
+    feedback,
+    future,
+    introduce,
+    menu,
+    service,
+    submenu,
+    province,
+    district,
+  },
 });
 
 // type cho hàm dispatch

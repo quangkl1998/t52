@@ -1,8 +1,8 @@
 import { AppDispatch, RootState } from "configStore";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { ColumnsType, TableProps } from "antd/es/table";
-import { Button, Form, Input, Modal, Table } from "antd";
+import { Button, Table } from "antd";
 import Swal from "sweetalert2";
 
 import { useNavigate } from "react-router-dom";
@@ -46,7 +46,23 @@ const Service = () => {
     },
     {
       title: "Hình ảnh",
+      align: "center",
       dataIndex: "img",
+      width: 300,
+      render: (value, record, index) => (
+        <div className="w-full flex justify-center">
+          <img
+            className="mb-2 object-contain"
+            style={{
+              width: "100px",
+              height: "100px",
+              borderRadius: "10px",
+            }}
+            src={value}
+            alt={`hình ${index}`}
+          />
+        </div>
+      ),
     },
     {
       title: "ACTION",

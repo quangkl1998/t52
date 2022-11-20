@@ -1,63 +1,39 @@
-import { useEffect, useState } from "react";
-
-import { Button, Form, Input, Modal, Table } from "antd";
-import { ColumnsType, TableProps } from "antd/es/table";
-
 import { AppDispatch, RootState } from "configStore";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  addMediaAdmin,
-  deleteMediaAdmin,
-  getMediaAdminList,
-  updateMediaAdmin,
-} from "Slices/mediaAdmin";
-
+import type { ColumnsType, TableProps } from "antd/es/table";
+import { Button, Form, Input, Modal, Switch, Table } from "antd";
 import Swal from "sweetalert2";
+import { add, deleteItem, getList, update } from "Slices/province";
 
-const Media = () => {
+const Province = () => {
   const dispatch = useDispatch<AppDispatch>();
-
-  const { media } = useSelector((state: RootState) => state.mediaAdmin);
 
   const [visible, setVisible] = useState(false);
 
-  const [dataMedia, SetDataMedia] = useState<any>();
-
-  const [idMedia, SetIdMedia] = useState("");
-
   const [showEdit, SetShowEdit] = useState(false);
 
+  const [ProvinceDetail, setProvinceDetail] = useState<any>();
+
+  const { list } = useSelector((state: RootState) => state.province);
+
   useEffect(() => {
-    dispatch(getMediaAdminList());
+    dispatch(getList());
   }, [dispatch]);
 
-  const onDelete = (id: string) => {
-    dispatch(deleteMediaAdmin(id))
-      .unwrap()
-      .then((result) => {
-        if (result === "Delete successfully") {
-          Swal.fire({
-            title: `Xóa thành công`,
-          });
-          dispatch(getMediaAdminList());
-        } else {
-          Swal.fire({
-            title: `Xóa thất bại`,
-          });
-        }
-      });
-  };
-
   const onCreate = (values: any) => {
-    dispatch(addMediaAdmin(values))
+    const data = {
+      ...values,
+    };
+    dispatch(add(data))
       .unwrap()
       .then((result) => {
-        if (result.id) {
+        if (result?.id) {
           Swal.fire({
             title: `Thêm Thành công`,
           });
-          dispatch(getMediaAdminList());
+          dispatch(getList());
           setVisible(false);
         } else {
           Swal.fire({
@@ -67,21 +43,39 @@ const Media = () => {
       });
   };
 
+  const onDelete = (id: string) => {
+    dispatch(deleteItem(id))
+      .unwrap()
+      .then((result) => {
+        if (result === "Delete successfully") {
+          Swal.fire({
+            title: `Xóa thành công`,
+          });
+          dispatch(getList());
+          setVisible(false);
+        } else {
+          Swal.fire({
+            title: `Xóa thất bại`,
+          });
+        }
+      });
+  };
+
   const onEdit = (values: any) => {
     let dataEdit = {
       ...values,
-      id: idMedia,
+      id: ProvinceDetail?.id,
     };
-    dispatch(updateMediaAdmin(dataEdit))
+    dispatch(update(dataEdit))
       .unwrap()
       .then((result) => {
-        if (result) {
+        if (result === "Update successfully") {
           Swal.fire({
             title: `Sửa Thành công`,
           });
-          dispatch(getMediaAdminList());
           SetShowEdit(false);
-          SetDataMedia(undefined);
+          setProvinceDetail(undefined);
+          dispatch(getList());
         } else {
           Swal.fire({
             title: `Sửa thất bại`,
@@ -92,12 +86,8 @@ const Media = () => {
 
   const columns: ColumnsType<any> = [
     {
+      title: "name",
       dataIndex: "name",
-      title: "Tên Video",
-    },
-    {
-      dataIndex: "urlVideo",
-      title: "ID Video Youtube",
     },
     {
       title: "ACTION",
@@ -106,22 +96,23 @@ const Media = () => {
       render: (value, record, index) => (
         <div>
           <Button
-            className="mr-2"
+            block
+            className="mb-2"
             onClick={() => {
               SetShowEdit(true);
-              SetIdMedia(record?.id);
-              SetDataMedia(record);
-              // console.log(dataMedia, "s");
+              setProvinceDetail(record);
             }}
           >
             Sửa
           </Button>
           <Button
+            block
             danger
+            className="mb-2"
             onClick={() => {
               Swal.fire({
-                title: `Bạn muốn xóa Tag`,
-                text: value.name,
+                title: `Bạn có chắc muốn xóa`,
+                text: value?.name,
                 showCancelButton: true,
                 confirmButtonColor: "#fb4226",
                 cancelButtonColor: "rgb(167 167 167)",
@@ -165,7 +156,7 @@ const Media = () => {
     return (
       <Modal
         open={visible}
-        title="Thêm Media"
+        title="Thêm Tỉnh Thành"
         okText="Thêm"
         cancelText="Hủy"
         onCancel={onCancel}
@@ -189,19 +180,7 @@ const Media = () => {
         >
           <Form.Item
             name="name"
-            label="Tên Video"
-            rules={[
-              {
-                required: true,
-                message: "Không được bỏ trống",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name="urlVideo"
-            label="id Video"
+            label="Tên Tỉnh Thành"
             rules={[
               {
                 required: true,
@@ -228,16 +207,15 @@ const Media = () => {
     onCancelEdit,
   }) => {
     const [form] = Form.useForm();
-    if (dataMedia) {
+    if (ProvinceDetail) {
       form.setFieldsValue({
-        name: dataMedia?.name,
-        urlVideo: dataMedia?.urlVideo,
+        name: ProvinceDetail?.name,
       });
     }
     return (
       <Modal
         open={showEdit}
-        title="Sửa Video"
+        title="Sửa Tỉnh Thành"
         okText="Sửa"
         cancelText="Hủy"
         onCancel={onCancelEdit}
@@ -261,19 +239,7 @@ const Media = () => {
         >
           <Form.Item
             name="name"
-            label="Tên Video"
-            rules={[
-              {
-                required: true,
-                message: "Không được bỏ trống",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name="urlVideo"
-            label="ID Video"
+            label="Tên Tỉnh Thành"
             rules={[
               {
                 required: true,
@@ -290,14 +256,17 @@ const Media = () => {
 
   return (
     <div>
+      <h1 className="text-center font-bold text-4xl text-red-500">
+        Danh Sách Tỉnh Thành
+      </h1>
       <Button className="mb-2" onClick={() => setVisible(true)}>
         Thêm
       </Button>
       <Table
         rowKey={(record) => record?.id}
         columns={columns}
+        dataSource={list}
         onChange={onChange}
-        dataSource={media}
         bordered
       />
       <CollectionCreateForm
@@ -307,16 +276,17 @@ const Media = () => {
           setVisible(false);
         }}
       />
+
       <EditFrom
         showEdit={showEdit}
         onEdit={onEdit}
         onCancelEdit={() => {
           SetShowEdit(false);
-          SetDataMedia(undefined);
+          setProvinceDetail(undefined);
         }}
       />
     </div>
   );
 };
 
-export default Media;
+export default Province;
