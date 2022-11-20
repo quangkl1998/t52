@@ -100,16 +100,7 @@ const AddNews = lazy(
 const Login = lazy(() => import("Pages/Admin/Pages/Login/Login"));
 const DashBoard = lazy(() => import("Pages/Admin/Components/DashBoard"));
 const Register = lazy(() => import("Pages/Register/Register"));
-const LoanByMoto = lazy(() => import("Pages/LoanByMoto/LoanByMoto"));
 const Home = lazy(() => import("Pages/Home/Home"));
-const LoanByCar = lazy(() => import("Pages/LoanByCar/LoanByCar"));
-const LoanByRegisMoto = lazy(
-    () => import("Pages/LoanByRegisMoto/LoanByRegisMoto"),
-);
-const LoanByRegisCar = lazy(
-    () => import("Pages/LoanByRegisCar/LoanByRegisCar"),
-);
-const LoanByOther = lazy(() => import("Pages/LoanByOther/LoanByOther"));
 
 const About = lazy(() => import("Pages/About/About"));
 const InvestorRelations = lazy(
@@ -190,6 +181,10 @@ function App() {
                                 <Route
                                     path="menu"
                                     element={<MenuList />}
+                                ></Route>
+                                <Route
+                                    path="menu/detail/:id"
+                                    element={<MenuDetail />}
                                 ></Route>
                                 <Route
                                     path="menu/addmenu"
