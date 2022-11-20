@@ -62,9 +62,15 @@ const CoreValues = () => {
                                 </svg>
                             </div>
 
-                            <h1 className="my-5 font-bold">THẤU HIỂU</h1>
+                            <h1 className="my-5 font-bold">
+                                {listCorevalue[0]?.title}
+                            </h1>
                             <p className="my-5 text-gray-500 leading-relaxed tracking-wide">
-                                Hiểu rõ nhu cầu và nỗi trăn trỡ của khách hàng
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: listCorevalue[0]?.content,
+                                    }}
+                                />
                             </p>
                         </div>
                         <div className="bg-white rounded-lg flex-row text-center mb-3 py-10 px-6 text">
@@ -127,9 +133,15 @@ const CoreValues = () => {
                                 </svg>
                             </div>
 
-                            <h1 className="my-5 font-bold">CHIA SẺ</h1>
+                            <h1 className="my-5 font-bold">
+                                {listCorevalue[1]?.title}
+                            </h1>
                             <p className="my-5 text-gray-500 leading-relaxed tracking-wide">
-                                Cung cấp giải pháp phù hợp với từng khách hàng
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: listCorevalue[1]?.content,
+                                    }}
+                                />
                             </p>
                         </div>
                         <div className="bg-white rounded-lg flex-row text-center mb-3 py-10 px-6 text">
@@ -180,10 +192,15 @@ const CoreValues = () => {
                                 </svg>
                             </div>
 
-                            <h1 className="my-5 font-bold">PHỤC VỤ</h1>
+                            <h1 className="my-5 font-bold">
+                                {listCorevalue[2]?.title}
+                            </h1>
                             <p className="my-5 text-gray-500 leading-relaxed tracking-wide">
-                                Khách hàng được phục vụ nhanh chóng tận tâm với
-                                dịch vụ tốt nhất
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: listCorevalue[2]?.content,
+                                    }}
+                                />
                             </p>
                         </div>
                     </div>

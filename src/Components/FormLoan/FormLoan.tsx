@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from "configStore";
 import React, { useEffect, useState } from "react";
 import { FieldErrors, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { getStores } from "Slices/store";
+import { getDistrict, getProvince, getStores } from "Slices/store";
 
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
@@ -11,30 +11,16 @@ import { addClient } from "Slices/ClientAdmin";
 import { useNavigate } from "react-router-dom";
 
 const FormLoan = () => {
-    const { listStore, isLoading, error } = useSelector(
-        (state: RootState) => state.stores,
-    );
+    const { listStore, listProvince, listDistrict, isLoading, error } =
+        useSelector((state: RootState) => state.stores);
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
+    const [provinceId, setProvinceId] = useState<any>("");
+    const [districtId, setDistrictId] = useState<any>("");
 
     useEffect(() => {
-        dispatch(getStores(null));
+        dispatch(getProvince(null));
     }, []);
-
-    let listProvince: any = [];
-    listStore.map((item: any) => {
-        if (!listProvince.includes(item.province)) {
-            listProvince.push(item.province);
-        }
-    });
-    let listDistrict: any = [];
-
-    let listStoreName: any = [];
-    listStore.map((item: any) => {
-        if (!listStoreName.includes(item.name)) {
-            listStoreName.push(item.name);
-        }
-    });
 
     const {
         register,
@@ -49,24 +35,25 @@ const FormLoan = () => {
             loanType: "",
             province: "",
             districts: "",
-            address: "",
+            storeId: "",
         },
         //mode: cacash validation đc trigger (defaute là submit)
         mode: "onTouched",
     });
     const onSubmit = (values: any) => {
-        const provinceName: any = province.find(
-            (e: any) => e?.code == values?.province,
-        );
+        console.log(values);
+        const store = listStore.find((item: any) => item.id == values.storeId);
+        console.log(store);
+        const nameStore = `${store.name}, ${store.district.name}, ${store.district.province.name}`;
 
         const data = {
             ...values,
-            province: provinceName?.name,
+            nameStore,
         };
+        console.log(data);
         dispatch(
             addClient({
-                ...data,
-                email: "t52tiennhanh@gmail.com",
+                ...values,
                 isLoan: false,
             }),
         )
@@ -103,22 +90,6 @@ const FormLoan = () => {
     const onError = (values: FieldErrors<any>) => {
         console.log(values);
     };
-
-    const [province, setProvince] = useState([]);
-    const [districts, setDistricts] = useState([]);
-
-    const handleClickProvince = (e: any) => {
-        axios
-            .get(`https://provinces.open-api.vn/api/p/${e}?depth=2`)
-            .then((res) => {
-                setDistricts(res.data?.districts);
-            });
-    };
-    useEffect(() => {
-        axios.get("https://provinces.open-api.vn/api/").then((res) => {
-            setProvince(res.data);
-        });
-    }, []);
 
     return (
         <div className="container mx-auto px-5 lg:px-16">
@@ -204,7 +175,7 @@ const FormLoan = () => {
 
                         <div>
                             <h4 className="uppercase font-bold text-xl text-amber-700 my-5">
-                                ĐỊA CHỈ CỦA BẠN
+                                Cửa hàng gần bạn
                             </h4>
                             <div className="pb-6">
                                 <label
@@ -219,21 +190,28 @@ const FormLoan = () => {
                                     id="asset-filter"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Tỉnh/Thành"
-                                    onChange={(e) =>
-                                        handleClickProvince(e.target.value)
-                                    }
+                                    onChange={(e) => {
+                                        setProvinceId(e.target.value);
+                                        dispatch(
+                                            getDistrict({
+                                                provinceId: e.target.value,
+                                            }),
+                                        );
+                                    }}
                                 >
                                     <option value=""> Tỉnh/Thành</option>
-                                    {province?.map((item: any, index) => {
-                                        return (
-                                            <option
-                                                key={index}
-                                                value={item.code}
-                                            >
-                                                {item?.name}
-                                            </option>
-                                        );
-                                    })}
+                                    {listProvince?.map(
+                                        (item: any, index: number) => {
+                                            return (
+                                                <option
+                                                    key={index}
+                                                    value={item.id}
+                                                >
+                                                    {item?.name}
+                                                </option>
+                                            );
+                                        },
+                                    )}
                                 </select>
                             </div>
                             <div className="pb-6">
@@ -249,18 +227,28 @@ const FormLoan = () => {
                                     id="asset-filter"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Tỉnh/Thành"
+                                    onChange={(e) => {
+                                        dispatch(
+                                            getStores({
+                                                districtId: e.target.value,
+                                                provinceId,
+                                            }),
+                                        );
+                                    }}
                                 >
                                     <option value=""> Quận/Huyện</option>
-                                    {districts?.map((item: any, index) => {
-                                        return (
-                                            <option
-                                                key={index}
-                                                value={item.name}
-                                            >
-                                                {item?.name}
-                                            </option>
-                                        );
-                                    })}
+                                    {listDistrict?.map(
+                                        (item: any, index: number) => {
+                                            return (
+                                                <option
+                                                    key={index}
+                                                    value={item.id}
+                                                >
+                                                    {item?.name}
+                                                </option>
+                                            );
+                                        },
+                                    )}
                                 </select>
                             </div>
                             <div className="pb-6">
@@ -268,14 +256,36 @@ const FormLoan = () => {
                                     htmlFor="province"
                                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                                 >
-                                    Địa chỉ{" "}
+                                    Cửa hàng{" "}
                                     <span className="text-red-600">*</span>
                                 </label>
-                                <input
-                                    {...register("address")}
-                                    type="text"
+
+                                <select
+                                    {...register("storeId")}
+                                    id="asset-filter"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                />
+                                    placeholder="Cửa hàng"
+                                    required
+                                >
+                                    <option value="">Cửa hàng</option>
+                                    {listStore?.map(
+                                        (item: any, index: number) => {
+                                            return (
+                                                <option
+                                                    key={index}
+                                                    value={item.id}
+                                                >
+                                                    {item?.name},{" "}
+                                                    {item.district.name},{" "}
+                                                    {
+                                                        item.district.province
+                                                            .name
+                                                    }
+                                                </option>
+                                            );
+                                        },
+                                    )}
+                                </select>
                             </div>
                         </div>
                     </div>
