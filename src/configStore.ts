@@ -23,6 +23,7 @@ import service from "./Slices/service";
 import submenu from "./Slices/submenu";
 import province from "./Slices/province";
 import district from "./Slices/district";
+import whychoose from "./Slices/whychoose";
 
 const store = configureStore({
   reducer: {
@@ -49,6 +50,7 @@ const store = configureStore({
     submenu,
     province,
     district,
+    whychoose,
   },
 });
 

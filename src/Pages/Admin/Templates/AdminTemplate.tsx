@@ -163,6 +163,13 @@ const items: MenuItem[] = [
         <NavLink to="question"></NavLink>
       </div>,
     ),
+    getItem(
+      "Tại Sao",
+      "WhyChooseList",
+      <div>
+        <NavLink to="whychoose"></NavLink>
+      </div>,
+    ),
   ]),
   getItem("Menu", "Menu", <SketchOutlined />, [
     getItem(
