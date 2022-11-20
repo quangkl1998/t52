@@ -27,7 +27,7 @@ const District = () => {
   useEffect(() => {
     dispatch(getList());
     dispatch(getProvince());
-  }, [dispatch]);
+  }, []);
 
   const onCreate = (values: any) => {
     const data = {

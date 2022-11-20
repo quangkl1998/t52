@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { addStore } from "Slices/StoreAdmin";
 import Swal from "sweetalert2";
 import { getList as getProvince } from "Slices/province";
-import { getByIdProvince, getList as getDistrict } from "Slices/district";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const { Option } = Select;
 const AddStore = () => {
@@ -14,22 +13,23 @@ const AddStore = () => {
 
   let navigate = useNavigate();
 
+  const [distTrictList, setDistTrictList] = useState<any>([]);
+
   const { list: ListProvince } = useSelector(
     (state: RootState) => state.province,
   );
 
-  const { list: ListDistrict } = useSelector(
-    (state: RootState) => state.district,
-  );
-
   const onChooseProvince = (id: string) => {
-    dispatch(getByIdProvince(id));
+    const newListDistTrict = ListProvince.find((item) => item?.id === id);
+    setDistTrictList(newListDistTrict?.districts);
+    form?.setFieldsValue({
+      districtId: "",
+    });
   };
 
   useEffect(() => {
     dispatch(getProvince());
-    dispatch(getDistrict());
-  }, [dispatch]);
+  }, []);
 
   const [form] = Form.useForm();
 
@@ -145,7 +145,7 @@ const AddStore = () => {
             ]}
           >
             <Select>
-              {ListDistrict.map((e) => {
+              {distTrictList.map((e: any) => {
                 return (
                   <Option key={e.id} value={e.id}>
                     {e.name}

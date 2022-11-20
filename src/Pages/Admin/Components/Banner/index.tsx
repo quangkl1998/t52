@@ -34,7 +34,7 @@ const BannerList = () => {
 
   useEffect(() => {
     dispatch(getBanner());
-  }, [dispatch]);
+  }, []);
 
   const onCreate = (values: any) => {
     const data = {

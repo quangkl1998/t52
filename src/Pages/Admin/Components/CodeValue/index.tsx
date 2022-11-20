@@ -13,7 +13,7 @@ const CoreValue = () => {
   const { list } = useSelector((state: RootState) => state.corevalue);
   useEffect(() => {
     dispatch(getCoreValueList());
-  }, [dispatch]);
+  }, []);
 
   const onDelete = (id: string) => {
     dispatch(deleteCoreValue(id))

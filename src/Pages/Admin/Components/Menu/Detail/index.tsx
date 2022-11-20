@@ -33,7 +33,7 @@ const MenuDetail = () => {
 
   useEffect(() => {
     dispatch(getById(id!));
-  }, [dispatch, id]);
+  }, [id]);
 
   const onCreate = (values: any) => {
     const data = {

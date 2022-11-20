@@ -16,7 +16,7 @@ const StoreList = () => {
 
   useEffect(() => {
     dispatch(getStoreList());
-  }, [dispatch]);
+  }, []);
 
   const { stores } = useSelector((state: RootState) => state.storeAdmin);
 

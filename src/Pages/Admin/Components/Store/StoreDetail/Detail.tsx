@@ -22,6 +22,7 @@ const Detail = ({ data, idStore }: any) => {
   useEffect(() => {
     dispatch(getProvince());
   }, [dispatch]);
+
   useEffect(() => {
     if (data?.district?.province?.id) {
       dispatch(getByIdProvince(data?.district?.province?.id));

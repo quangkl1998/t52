@@ -20,7 +20,7 @@ const Province = () => {
 
   useEffect(() => {
     dispatch(getList());
-  }, [dispatch]);
+  }, []);
 
   const onCreate = (values: any) => {
     const data = {

@@ -25,7 +25,7 @@ const SubMenu = () => {
   useEffect(() => {
     dispatch(getsubMenu());
     dispatch(getMenu());
-  }, [dispatch]);
+  }, []);
 
   const onCreate = (values: any) => {
     const data = {

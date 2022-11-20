@@ -25,7 +25,7 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(getById(id!));
-  }, [dispatch, id]);
+  }, [id]);
 
   const onCreate = (data: any) => {
     const newsData = {

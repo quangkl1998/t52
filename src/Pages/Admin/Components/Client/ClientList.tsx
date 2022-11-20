@@ -89,8 +89,6 @@ const ClientList = () => {
       ],
       filteredValue: filteredInfo.isLoan || null,
       onFilter: (value, record) => {
-        console.log(value.toString(), "ll");
-        console.log(record.isLoan.toString(), "22");
         console.log(record.isLoan.toString().includes(value.toString()));
         return record.isLoan.toString().includes(value.toString());
       },
@@ -110,6 +108,12 @@ const ClientList = () => {
     {
       title: "Số điện thoại",
       dataIndex: "phone",
+      width: 150,
+      render: (value) => <div>{value}</div>,
+    },
+    {
+      title: "Ghi chú",
+      dataIndex: "note",
       width: 150,
       render: (value) => <div>{value}</div>,
     },
