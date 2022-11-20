@@ -27,7 +27,7 @@ const Tagnews = () => {
 
   useEffect(() => {
     dispatch(getTagNewsList());
-  }, [dispatch]);
+  }, []);
 
   const onDelete = (id: string) => {
     dispatch(deleteTagNews(id))

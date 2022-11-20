@@ -26,9 +26,6 @@ const AddNews = () => {
   const [imgContent, SetImgContent] = useState<any>([]);
 
   const [subMenuList, setSubMenuList] = useState<any>([]);
-  useEffect(() => {
-    console.log(subMenuList, 1);
-  }, [subMenuList]);
 
   const { tag } = useSelector((state: RootState) => state.tagNewsAdmin);
   const { list } = useSelector((state: RootState) => state.menu);
@@ -36,7 +33,7 @@ const AddNews = () => {
   useEffect(() => {
     dispatch(getTagNewsList());
     dispatch(getMenuList());
-  }, [dispatch]);
+  }, []);
 
   const onChangeMenu = (e: any) => {
     const submenu = list.find((item) => item?.id === e);
@@ -270,7 +267,7 @@ const AddNews = () => {
           </Form.Item>
           <Form.Item
             name="type"
-            label="Loại Tin"
+            label="Tags"
             hasFeedback
             rules={[
               {

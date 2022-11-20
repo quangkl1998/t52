@@ -24,7 +24,7 @@ const DetailService = () => {
 
   useEffect(() => {
     dispatch(getById(id!));
-  }, [dispatch, id]);
+  }, [id]);
   const { detail } = useSelector((state: RootState) => state.service);
   useEffect(() => {
     if (detail) {

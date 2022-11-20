@@ -35,7 +35,7 @@ const Question = () => {
 
   useEffect(() => {
     dispatch(getQuestionList());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     console.log(contentnew, "pp");

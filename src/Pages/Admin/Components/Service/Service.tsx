@@ -14,7 +14,7 @@ const Service = () => {
 
   useEffect(() => {
     dispatch(getList());
-  }, [dispatch]);
+  }, []);
 
   const onDelete = (id: string) => {
     dispatch(deleteItem(id))

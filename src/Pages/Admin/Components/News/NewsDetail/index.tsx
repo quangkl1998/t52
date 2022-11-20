@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { getTagNewsList } from "Slices/TagNewsAdmin";
 import { getNewDetail } from "Slices/news";
+import { getById, getList } from "Slices/menu";
 
 const { Option } = Select;
 
@@ -24,20 +25,38 @@ const NewsDetail = () => {
   const [content, SetContent] = useState("");
 
   const [open, SetOpen] = useState(false);
+
   const [imgContent, SetImgContent] = useState<any>([]);
 
+  const [subMenuList, setSubMenuList] = useState<any>([]);
+
   const { tag } = useSelector((state: RootState) => state.tagNewsAdmin);
+
   const { newsDetail } = useSelector((state: RootState) => state.news);
+
+  const { list, detail } = useSelector((state: RootState) => state.menu);
 
   useEffect(() => {
     if (newsDetail) {
       SetContent(newsDetail?.content);
     }
   }, [newsDetail]);
+
   useEffect(() => {
     dispatch(getNewDetail(slug!));
     dispatch(getTagNewsList());
+    dispatch(getList());
   }, [dispatch, slug]);
+
+  const onChangeMenu = (e: any) => {
+    // const submenu = list.find((item) => item?.id === e);
+    // setSubMenuList(submenu?.submenus);
+    dispatch(getById(e));
+    console.log(detail, "menudetail");
+    form.setFieldsValue({
+      submenuId: "",
+    });
+  };
 
   const onCreate = (data: any) => {
     const newsData = {
@@ -80,8 +99,6 @@ const NewsDetail = () => {
             title: `Thêm Thành công`,
           });
           SetContent(content + `<img src='${result?.img}' alt="img" />`);
-          // console.log(contentImage);
-
           SetImgContent([...imgContent, result?.img]);
           SetOpen(false);
         } else {
@@ -169,17 +186,20 @@ const NewsDetail = () => {
   //endForm Upload
 
   const [form] = Form.useForm();
-  if (newsDetail) {
-    const types: any[] = [];
-    newsDetail?.typenews?.map((e: any) => types.push(e?.name));
-    form.setFieldsValue({
-      name: newsDetail?.name,
-      descript: newsDetail?.descript,
-      content: content,
-      id: newsDetail?.id,
-      type: types,
-    });
-  }
+  useEffect(() => {
+    if (newsDetail) {
+      const types: any[] = [];
+      newsDetail?.typenews?.map((e: any) => types.push(e?.name));
+      form.setFieldsValue({
+        name: newsDetail?.name,
+        descript: newsDetail?.descript,
+        content: content,
+        id: newsDetail?.id,
+        type: types,
+        menuId: newsDetail?.menuId,
+      });
+    }
+  }, [form, newsDetail]);
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
@@ -216,7 +236,46 @@ const NewsDetail = () => {
           >
             <Input></Input>
           </Form.Item>
-
+          <Form.Item
+            name={"menuId"}
+            label="Menu"
+            rules={[
+              {
+                required: true,
+                message: "Không được bỏ trống mục này",
+              },
+            ]}
+          >
+            <Select onChange={(e) => onChangeMenu(e)}>
+              {list.map((e: any) => {
+                return (
+                  <Option key={e.id} value={e.id}>
+                    {e.name}
+                  </Option>
+                );
+              })}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            name={"submenuId"}
+            label="Mục"
+            rules={[
+              {
+                required: true,
+                message: "Không được bỏ trống mục này",
+              },
+            ]}
+          >
+            <Select>
+              {detail?.submenus?.map((e: any) => {
+                return (
+                  <Option key={e.id} value={e.id}>
+                    {e.name}
+                  </Option>
+                );
+              })}
+            </Select>
+          </Form.Item>
           <Form.Item
             name="img"
             label="New Banner"

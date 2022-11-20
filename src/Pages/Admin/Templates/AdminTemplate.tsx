@@ -108,7 +108,7 @@ const items: MenuItem[] = [
       </div>,
     ),
     getItem(
-      "Loại tin",
+      "Tags",
       "TagNewsList",
       <div>
         <NavLink to="tagnews"></NavLink>

@@ -29,7 +29,7 @@ const ManagerList = () => {
 
   useEffect(() => {
     dispatch(getManagerList());
-  }, [dispatch]);
+  }, []);
 
   const onDelete = (id: string) => {
     dispatch(deleteManagerAdmin(id))
