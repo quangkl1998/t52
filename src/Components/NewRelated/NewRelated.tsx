@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import { getNewsLimit, setNewsDetail } from "Slices/news";
-import { data } from "Utill/NewsData";
 
 const NewRelated = () => {
     const dispatch = useDispatch<AppDispatch>();

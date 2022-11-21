@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import Logo from "Assets/logt52.png";
 import NavLinks from "./Navlinks";
 import { NavLink } from "react-router-dom";
+import { AppDispatch } from "configStore";
+import { useDispatch } from "react-redux";
+import { getList } from "Slices/menu";
 
 const Header = () => {
     const [open, setOpen] = useState(false);
@@ -10,6 +13,12 @@ const Header = () => {
     const handleOpen = () => {
         setOpen(!open);
     };
+
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        dispatch(getList());
+    }, []);
 
     useEffect(() => {
         const onscrollBackTop = () => {
@@ -45,15 +54,9 @@ const Header = () => {
                             </NavLink>
                             <NavLink
                                 to="/cua-hang-gan-ban"
-                                className="px-4 border-r font-semibold text-black hover:text-gray-700 duration-100 text-sm"
-                            >
-                                Hệ thống cửa hàng T52
-                            </NavLink>
-                            <NavLink
-                                to="/kien-thuc-tai-chinh"
                                 className="px-4 font-semibold text-black hover:text-gray-700 duration-100 text-sm"
                             >
-                                Kiến thức tài chính
+                                Hệ thống cửa hàng T52
                             </NavLink>
                         </div>
                     </div>
@@ -153,7 +156,6 @@ const Header = () => {
                             </a>
                         </button>
                     </div>
-                    {/* Mobile nav */}
                     <ul
                         className={`
         lg:hidden bg-white fixed w-full top-20 overflow-y-auto bottom-0 pt-10 pb-24 z-10 pl-4
@@ -172,13 +174,6 @@ const Header = () => {
                                 >
                                     Về T52
                                 </NavLink>
-                                {/* <NavLink
-                                    to="/quan-he-nha-dau-tu"
-                                    onClick={() => setOpen(!open)}
-                                    className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
-                                >
-                                    Quan hệ Nhà đầu tư
-                                </NavLink> */}
                                 <NavLink
                                     to="/tin-tuc"
                                     onClick={() => setOpen(!open)}
@@ -192,13 +187,6 @@ const Header = () => {
                                     className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
                                 >
                                     Hệ thống cửa hàng T52
-                                </NavLink>
-                                <NavLink
-                                    to="/kien-thuc-tai-chinh"
-                                    onClick={() => setOpen(!open)}
-                                    className="px-4 font-semibold text-gray-500 hover:text-black duration-100 text-lg"
-                                >
-                                    Kiến thức tài chính
                                 </NavLink>
                             </div>
                         </div>

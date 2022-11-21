@@ -9,6 +9,15 @@ const menuAPI = {
     getById: (id: string) => {
         return axiosClient.get<any>(`menu/detail/${id}`);
     },
+    getListNewBySlug: (body: any) => {
+        return axiosClient.get<any>(`menu/list`, {
+            params: {
+                slugMenu: body?.slugMenu,
+                slugSubMenu: body?.slugSubMenu,
+                limit: body?.limit,
+            },
+        });
+    },
     deleteItem: (id: string) => {
         return axiosClient.delete(`menu/${id}`);
     },

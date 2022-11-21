@@ -4,6 +4,9 @@ const newsAPI = {
     getNews: () => {
         return axiosClient.get<any>("news");
     },
+    getRandomNews: () => {
+        return axiosClient.get<any>("news/random");
+    },
     getNewsLimit: (limit: any) => {
         return axiosClient.get<any>("news/limit", {
             params: {

@@ -3,14 +3,18 @@ import moment from "moment";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { getNews, getNewsLimit, setNewsDetail } from "Slices/news";
-import { data } from "Utill/NewsData";
+import {
+    getNews,
+    getNewsLimit,
+    getRandomNews,
+    setNewsDetail,
+} from "Slices/news";
 
 const Activities = () => {
-    const { listNew } = useSelector((state: RootState) => state.news);
+    const { listNewRandom } = useSelector((state: RootState) => state.news);
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
-        dispatch(getNewsLimit(4));
+        dispatch(getRandomNews());
     }, []);
 
     return (
@@ -31,7 +35,7 @@ const Activities = () => {
                     </NavLink>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {listNew?.map((news: any, index: number) => {
+                    {listNewRandom?.map((news: any, index: number) => {
                         if (index < 4)
                             return (
                                 <NavLink

@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getMedia } from "Slices/media";
-import { data } from "Utill/VideoData";
 
 const Story = () => {
     const { listMedia, isLoading, error } = useSelector(
