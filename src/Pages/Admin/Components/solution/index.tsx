@@ -106,7 +106,7 @@ const WhyChooseList = () => {
     {
       title: "Hình Ảnh",
       dataIndex: "img",
-      width: 300,
+      width: 150,
       render: (value, record, index) => (
         <img
           className="mb-2"
