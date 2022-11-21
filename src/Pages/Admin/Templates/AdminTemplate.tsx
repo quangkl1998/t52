@@ -13,7 +13,7 @@ import {
   QuestionOutlined,
   SketchOutlined,
 } from "@ant-design/icons";
-import { Col, Layout, Menu, Row } from "antd";
+import { Col, Layout, Menu, Row, Select } from "antd";
 import type { MenuProps } from "antd";
 
 import { Outlet } from "react-router-dom";
@@ -164,7 +164,7 @@ const items: MenuItem[] = [
       </div>,
     ),
     getItem(
-      "Tại Sao",
+      "Tại sao",
       "WhyChooseList",
       <div>
         <NavLink to="whychoose"></NavLink>
@@ -203,14 +203,20 @@ const items: MenuItem[] = [
   ]),
 ];
 
+const { Option } = Select;
+
 const AdminTemplate = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   const [open, setOpen] = useState(false);
 
-  const [show, SetShow] = useState(false);
+  const [store, SetStore] = useState(false);
 
-  const [question, SetQuestion] = useState(false);
+  const [news, SetNews] = useState(false);
+
+  const [about, SetAbout] = useState(false);
+
+  const [menu, SetMenu] = useState(false);
 
   return (
     <div>
@@ -280,9 +286,9 @@ const AdminTemplate = () => {
           <Outlet></Outlet>
         </Layout>
       </Layout>
-      <ul
+      <div
         className={`
-        lg:hidden bg-white fixed w-full top-20 overflow-y-auto bottom-0 pt-10 pb-24 z-10 pl-4
+        md:hidden bg-white fixed w-full top-20 overflow-y-auto bottom-0 pt-10 pb-24 z-10 pl-4
         duration-500 ${open ? "left-0" : "left-[-100%]"}
         `}
       >
@@ -293,142 +299,262 @@ const AdminTemplate = () => {
               onClick={() => setOpen(!open)}
               className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
             >
-              Dashboard
-            </NavLink>
-            <NavLink
-              to="/dashboard/store"
-              onClick={() => setOpen(!open)}
-              className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
-            >
-              Store
+              Tổng quan
             </NavLink>
 
+            <div
+              onClick={() => SetAbout(!about)}
+              className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+            >
+              <div
+                onClick={() => SetAbout(!about)}
+                className="flex justify-between"
+              >
+                <div>Về T52</div>
+                <span className="text-xl lg:hidden inline">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={10}
+                    height={6}
+                    viewBox="0 0 10 6"
+                    fill="#FFFF00"
+                  >
+                    <path
+                      d="M1 1L5 5L9 1"
+                      stroke="#FFFF00"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div className={about ? "" : "hidden"}>
+                <NavLink
+                  to="/dashboard/introduce"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Giới thiệu
+                </NavLink>
+                <NavLink
+                  to="/dashboard/corevalue"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Giá trị cốt lõi
+                </NavLink>
+                <NavLink
+                  to="/dashboard/future"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Trong tương lai
+                </NavLink>
+                <NavLink
+                  to="/dashboard/question"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Câu hỏi
+                </NavLink>
+                <NavLink
+                  to="/dashboard/whychoose"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Tại sao
+                </NavLink>
+                <NavLink
+                  to="/dashboard/solution"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Giải pháp
+                </NavLink>
+              </div>
+            </div>
+            <div
+              onClick={() => SetMenu(!menu)}
+              className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+            >
+              <div
+                onClick={() => SetMenu(!menu)}
+                className="flex justify-between"
+              >
+                <div>Menu</div>
+                <span className="text-xl lg:hidden inline">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={10}
+                    height={6}
+                    viewBox="0 0 10 6"
+                    fill="#FFFF00"
+                  >
+                    <path
+                      d="M1 1L5 5L9 1"
+                      stroke="#FFFF00"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div className={menu ? "" : "hidden"}>
+                <NavLink
+                  to="/dashboard/menu"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Menu
+                </NavLink>
+                <NavLink
+                  to="/dashboard/submenu"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Mục
+                </NavLink>
+              </div>
+            </div>
+            <div
+              onClick={() => SetNews(!news)}
+              className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+            >
+              <div
+                onClick={() => SetNews(!news)}
+                className="flex justify-between"
+              >
+                <div>Tin tức</div>
+                <span className="text-xl lg:hidden inline">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={10}
+                    height={6}
+                    viewBox="0 0 10 6"
+                    fill="#FFFF00"
+                  >
+                    <path
+                      d="M1 1L5 5L9 1"
+                      stroke="#FFFF00"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div className={news ? "" : "hidden"}>
+                <NavLink
+                  to="/dashboard/newslist"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Tin
+                </NavLink>
+                <NavLink
+                  to="/dashboard/tagnews"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Tags
+                </NavLink>
+              </div>
+            </div>
+            <div
+              onClick={() => SetStore(!store)}
+              className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+            >
+              <div
+                onClick={() => SetStore(!store)}
+                className="flex justify-between"
+              >
+                <div>Cửa hàng</div>
+                <span className="text-xl lg:hidden inline">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={10}
+                    height={6}
+                    viewBox="0 0 10 6"
+                    fill="#FFFF00"
+                  >
+                    <path
+                      d="M1 1L5 5L9 1"
+                      stroke="#FFFF00"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div className={store ? "" : "hidden"}>
+                <NavLink
+                  to="/dashboard/province"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Tỉnh/Thành
+                </NavLink>
+                <NavLink
+                  to="/dashboard/district"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Quận/Huyện
+                </NavLink>
+                <NavLink
+                  to="/dashboard/store"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Cửa hàng
+                </NavLink>
+                <NavLink
+                  to="/dashboard/client"
+                  onClick={() => setOpen(!open)}
+                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
+                >
+                  Người vay
+                </NavLink>
+              </div>
+            </div>
             <NavLink
-              to="/dashboard/client"
+              to="/dashboard/banner"
               onClick={() => setOpen(!open)}
               className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
             >
-              Client
-            </NavLink>
-            <NavLink
-              to="/dashboard/manager"
-              onClick={() => setOpen(!open)}
-              className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
-            >
-              Manager
+              Banner
             </NavLink>
             <NavLink
               to="/dashboard/partner"
               onClick={() => setOpen(!open)}
               className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
             >
-              Partner
-            </NavLink>
-            <NavLink
-              to="/dashboard/tagnews"
-              onClick={() => setOpen(!open)}
-              className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
-            >
-              TagNews
+              Đối tác
             </NavLink>
             <NavLink
               to="/dashboard/media"
               onClick={() => setOpen(!open)}
               className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
             >
-              Media
+              Video
             </NavLink>
-            <div
-              onClick={() => SetShow(!show)}
+            <NavLink
+              to="/dashboard/manager"
+              onClick={() => setOpen(!open)}
               className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
             >
-              <div
-                onClick={() => SetShow(!show)}
-                className="flex justify-between"
-              >
-                <div>News</div>
-                <span className="text-xl lg:hidden inline">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={10}
-                    height={6}
-                    viewBox="0 0 10 6"
-                    fill="#FFFF00"
-                  >
-                    <path
-                      d="M1 1L5 5L9 1"
-                      stroke="#FFFF00"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </div>
-              <div className={show ? "" : "hidden"}>
-                <NavLink
-                  to="/dashboard/newslist"
-                  onClick={() => setOpen(!open)}
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
-                >
-                  news
-                </NavLink>
-                <NavLink
-                  to="/dashboard/newslist/addnews"
-                  onClick={() => setOpen(!open)}
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
-                >
-                  addNews
-                </NavLink>
-              </div>
-            </div>
-            <div
-              onClick={() => SetQuestion(!question)}
+              Tài khoản
+            </NavLink>
+            <NavLink
+              to="/dashboard/service"
+              onClick={() => setOpen(!open)}
               className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
             >
-              <div
-                onClick={() => SetQuestion(!question)}
-                className="flex justify-between"
-              >
-                <div>Question</div>
-                <span className="text-xl lg:hidden inline">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={10}
-                    height={6}
-                    viewBox="0 0 10 6"
-                    fill="#FFFF00"
-                  >
-                    <path
-                      d="M1 1L5 5L9 1"
-                      stroke="#FFFF00"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </div>
-              <div className={question ? "" : "hidden"}>
-                <NavLink
-                  to="/dashboard/question"
-                  onClick={() => setOpen(!open)}
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
-                >
-                  QuestionList
-                </NavLink>
-                <NavLink
-                  to="/dashboard/newslist/addquestion"
-                  onClick={() => setOpen(!open)}
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:text-amber-500"
-                >
-                  AddQuestion
-                </NavLink>
-              </div>
-            </div>
-
+              Dịch vụ
+            </NavLink>
             <HeaderAdmin />
           </div>
         </div>
-      </ul>
+      </div>
     </div>
   );
 };

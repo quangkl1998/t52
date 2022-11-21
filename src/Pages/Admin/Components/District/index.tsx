@@ -163,7 +163,7 @@ const District = () => {
     return (
       <Modal
         open={visible}
-        title="Thêm Tỉnh Thành"
+        title="Thêm "
         okText="Thêm"
         cancelText="Hủy"
         onCancel={onCancel}
@@ -243,7 +243,7 @@ const District = () => {
     return (
       <Modal
         open={showEdit}
-        title="Sửa Tỉnh Thành"
+        title="Sửa "
         okText="Sửa"
         cancelText="Hủy"
         onCancel={onCancelEdit}

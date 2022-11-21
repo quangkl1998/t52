@@ -33,8 +33,6 @@ const Service = () => {
       });
   };
 
-  const onEdit = (values: any) => {};
-
   const columns: ColumnsType<any> = [
     {
       title: "Tiêu đề",

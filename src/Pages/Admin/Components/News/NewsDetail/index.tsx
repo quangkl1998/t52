@@ -278,7 +278,7 @@ const NewsDetail = () => {
           </Form.Item>
           <Form.Item
             name="img"
-            label="New Banner"
+            label="Banner Mới"
             valuePropName="fileList"
             getValueFromEvent={normFile}
           >

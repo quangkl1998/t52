@@ -30,7 +30,7 @@ const StoreDetail = () => {
       <div className="container mx-auto p-5">
         <div className="grid md:grid-cols-2 grid-cols-1">
           <Detail idStore={idStore} data={data} />
-          <div className="pl-5">
+          <div className="pl-5 md:order-last order-first mb-5">
             <iframe
               src={storesDetail?.idMap}
               className="w-full h-96 rounded-lg"

@@ -247,6 +247,7 @@ const Menu = () => {
         columns={columns}
         dataSource={list}
         onChange={onChange}
+        scroll={{ x: 800 }}
         bordered
       />
       <CollectionCreateForm

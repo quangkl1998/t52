@@ -365,6 +365,9 @@ const ManagerList = () => {
 
   return (
     <div>
+      <h1 className="text-center font-bold text-4xl text-red-500">
+        Danh Sách Tài Khoản
+      </h1>
       <Button className="mb-2" onClick={() => setVisible(true)}>
         Thêm
       </Button>
