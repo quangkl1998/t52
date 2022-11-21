@@ -5,7 +5,7 @@ import { getList } from "Slices/loanguide";
 
 const InfoLoanByCar = ({ detail }: any) => {
     const { list, error } = useSelector((state: RootState) => state.loanguide);
-    console.log(list);
+
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(getList());
@@ -52,7 +52,7 @@ const InfoLoanByCar = ({ detail }: any) => {
                             </div>
                             <div className="md:px-8 lg:px-16">
                                 {list[0]?.contentProviso
-                                    .split(".")
+                                    .split(",")
                                     .map((item: any) => {
                                         return (
                                             <div className="flex items-center">
@@ -76,40 +76,23 @@ const InfoLoanByCar = ({ detail }: any) => {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-base">
-                                        2.Thủ tục cầm đăng ký/ cà vẹt
+                                        {list[0]?.titleProcedure}
                                     </h4>
                                 </div>
                             </div>
                             <div className="md:px-8 lg:px-16">
-                                <div className="flex items-center">
-                                    <i className="fa fa-check" />
-                                    <span className="pl-2 text-base font-medium py-2">
-                                        <span className="font-bold text-lg">
-                                            Bước 1:{" "}
-                                        </span>
-                                        Đăng ký thông tin tư vấn
-                                    </span>
-                                </div>
-                                <div className="flex items-center">
-                                    <i className="fa fa-check" />
-                                    <span className="pl-2 text-base font-medium py-2">
-                                        <span className="font-bold text-lg">
-                                            Bước 2:{" "}
-                                        </span>
-                                        Tư vấn qua điện thoại trong vòng 15 phút
-                                    </span>
-                                </div>
-                                <div className="flex items-center">
-                                    <i className="fa fa-check" />
-                                    <span className="pl-2 text-base font-medium py-2">
-                                        <span className="font-bold text-lg">
-                                            Bước 3:{" "}
-                                        </span>
-                                        Đến PGD của T52 thẩm định tài sản và
-                                        giải ngân nhanh chóng bằng tiền mặt hoặc
-                                        chuyển khoản
-                                    </span>
-                                </div>
+                                {list[0]?.contentProcedure
+                                    .split(",")
+                                    .map((item: any) => {
+                                        return (
+                                            <div className="flex items-center">
+                                                <i className="fa fa-check" />
+                                                <span className="pl-2 text-base font-medium py-2">
+                                                    {item}
+                                                </span>
+                                            </div>
+                                        );
+                                    })}
                             </div>
                         </div>
                     </div>

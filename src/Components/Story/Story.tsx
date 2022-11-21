@@ -9,7 +9,7 @@ const Story = () => {
     const { listMedia, isLoading, error } = useSelector(
         (state: RootState) => state.media,
     );
-    console.log(listMedia);
+
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(getMedia());

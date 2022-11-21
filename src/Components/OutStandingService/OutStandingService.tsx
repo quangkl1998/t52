@@ -21,7 +21,6 @@ const OutStandingService = () => {
         dispatch(getList());
     }, [dispatch]);
 
-    console.log(listService);
     const items: any = [];
     listService?.map((service, index) => {
         items.push({

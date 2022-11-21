@@ -41,16 +41,15 @@ const FormLoan = () => {
         mode: "onTouched",
     });
     const onSubmit = (values: any) => {
-        console.log(values);
         const store = listStore.find((item: any) => item.id == values.storeId);
-        console.log(store);
+
         const nameStore = `${store.name}, ${store.district.name}, ${store.district.province.name}`;
 
         const data = {
             ...values,
             nameStore,
         };
-        console.log(data);
+
         dispatch(
             addClient({
                 ...values,

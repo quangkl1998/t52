@@ -24,7 +24,6 @@ const Transaction = () => {
         mode: "onTouched",
     });
     const onSubmit = (values: any) => {
-        console.log(values);
         dispatch(findByName(values.name));
         //
     };

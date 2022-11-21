@@ -7,7 +7,6 @@ const CoreValues = () => {
     const { list: listCorevalue } = useSelector(
         (state: RootState) => state.corevalue,
     );
-    console.log(listCorevalue);
 
     const dispatch = useDispatch<AppDispatch>();
 

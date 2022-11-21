@@ -7,7 +7,6 @@ const Future = () => {
     const { list: listFuture } = useSelector(
         (state: RootState) => state.future,
     );
-    console.log(listFuture);
 
     const dispatch = useDispatch<AppDispatch>();
 

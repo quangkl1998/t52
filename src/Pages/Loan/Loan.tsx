@@ -11,7 +11,6 @@ import { getDetailMenu } from "Slices/menu";
 const Loan = () => {
     const { slug } = useParams();
     const { detail } = useSelector((state: RootState) => state.menu);
-    console.log(detail);
 
     const dispatch = useDispatch<AppDispatch>();
 
