@@ -3,6 +3,7 @@ import menuAPI from "Services/menuAPI";
 
 interface State {
     list: any[];
+    listNewBySlug: any;
     detail: any;
     isloading: boolean;
     error?: string | null;
@@ -10,6 +11,7 @@ interface State {
 
 const initialState: State = {
     list: [],
+    listNewBySlug: null,
     detail: null,
     isloading: false,
     error: null,
@@ -32,6 +34,17 @@ export const getById = createAsyncThunk("menu/getById", async (id: string) => {
         throw error;
     }
 });
+export const getListNewBySlug = createAsyncThunk(
+    "menu/getListNewBySlug",
+    async (body: any) => {
+        try {
+            const data = await menuAPI.getListNewBySlug(body);
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    },
+);
 export const getDetailMenu = createAsyncThunk(
     "menu/getDetailMenu",
     async (body: any) => {
@@ -91,6 +104,19 @@ const menuSlice = createSlice({
         });
 
         builder.addCase(getList.rejected, (state, { error }) => {
+            state.isloading = true;
+            state.error = error.message;
+        });
+        builder.addCase(getListNewBySlug.pending, (state) => {
+            state.isloading = true;
+        });
+
+        builder.addCase(getListNewBySlug.fulfilled, (state, { payload }) => {
+            state.isloading = false;
+            state.listNewBySlug = payload;
+        });
+
+        builder.addCase(getListNewBySlug.rejected, (state, { error }) => {
             state.isloading = true;
             state.error = error.message;
         });

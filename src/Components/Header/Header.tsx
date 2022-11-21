@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import Logo from "Assets/logt52.png";
 import NavLinks from "./Navlinks";
 import { NavLink } from "react-router-dom";
+import { AppDispatch } from "configStore";
+import { useDispatch } from "react-redux";
+import { getList } from "Slices/menu";
 
 const Header = () => {
     const [open, setOpen] = useState(false);
@@ -10,6 +13,12 @@ const Header = () => {
     const handleOpen = () => {
         setOpen(!open);
     };
+
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        dispatch(getList());
+    }, []);
 
     useEffect(() => {
         const onscrollBackTop = () => {

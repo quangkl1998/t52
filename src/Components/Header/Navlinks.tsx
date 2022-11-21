@@ -11,14 +11,9 @@ const NavLinks = ({ handleOpen }: any) => {
     const navigate = useNavigate();
 
     const { list: listMenu } = useSelector((state: RootState) => state.menu);
-    // console.log(listMenu);
+    console.log(listMenu);
 
-    const dispatch = useDispatch<AppDispatch>();
-
-    useEffect(() => {
-        dispatch(getList());
-    }, []);
-
+    if (!listMenu) return <></>;
     const listLink = listMenu?.map((item) => {
         return {
             name: item?.name,
