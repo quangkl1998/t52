@@ -29,7 +29,7 @@ const DetailNew = () => {
                     <div className="py-5 flex gap-3 text-base">
                         <p>Thể loại: </p>
                         <NavLink
-                            to="/tin-tuc-hoat-dong"
+                            to="/tin-tuc"
                             className="underline text-yellow-800 hover:text-yellow-600 cursor-pointer"
                         >
                             {newsDetail?.type}

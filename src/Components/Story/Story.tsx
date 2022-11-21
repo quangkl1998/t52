@@ -26,7 +26,7 @@ const Story = () => {
                         CÂU CHUYỆN T52
                     </NavLink>
                     <NavLink
-                        to="/tin-tuc-hoat-dong"
+                        to="/tin-tuc"
                         className="uppercase text-gray-600 hover:text-yellow-600 duration-150 mr-2"
                     >
                         xem thêm <i className="fa fa-angle-right" />
@@ -40,13 +40,6 @@ const Story = () => {
                                     key={index}
                                     className="rounded-lg bg-white shadow overflow-hidden border border-transparent hover:border-gray-100 hover:text-amber-500 cursor-pointer duration-150 flex flex-col justify-between"
                                 >
-                                    {/* <video
-                                    controls
-                                    poster={tt.poster}
-                                    className="h-52 object-cover w-full"
-                                >
-                                    <source src={tt.video} />
-                                </video> */}
                                     <div>
                                         <iframe
                                             width={270}
@@ -58,7 +51,7 @@ const Story = () => {
                                             allowFullScreen
                                         />
 
-                                        <div className="m-3 font-bold text-lg line-clamp-2 overflow-hidden text-ellipsis">
+                                        <div className="m-3 font-bold text-lg line-clamp-3 overflow-hidden text-ellipsis">
                                             {item?.name}
                                         </div>
                                     </div>
