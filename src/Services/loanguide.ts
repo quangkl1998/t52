@@ -1,37 +1,45 @@
 import axiosClient from "./axiosClient";
 const sloanguildAPI = {
   getList: () => {
-    return axiosClient.get<any[]>(`service`);
+    return axiosClient.get<any[]>(`loanguide`);
   },
   add: (data: any) => {
     const form = new FormData();
     Object.keys(data).forEach((key) => {
-      if (key === "img") {
+      if (key === "imgProcedure") {
         if (data[key]) {
-          form.append("img", data?.img[0]?.originFileObj);
+          form.append("imgProcedure", data?.imgProcedure[0]?.originFileObj);
+        }
+      } else if (key === "imgProviso") {
+        if (data[key]) {
+          form.append("imgProviso", data?.imgProviso[0]?.originFileObj);
         }
       } else form.append(key, data[key]);
     });
 
-    return axiosClient.post(`service`, form);
+    return axiosClient.post(`loanguide`, form);
   },
   getById: (id: string) => {
-    return axiosClient.get(`service/detail/${id}`);
+    return axiosClient.get(`loanguide/detail/${id}`);
   },
   deleteItem: (id: string) => {
-    return axiosClient.delete(`service/${id}`);
+    return axiosClient.delete(`loanguide/${id}`);
   },
   update: (data: any) => {
     const form = new FormData();
     Object.keys(data).forEach((key) => {
-      if (key === "img") {
+      if (key === "imgProcedure") {
         if (data[key]) {
-          form.append("img", data?.img[0]?.originFileObj);
+          form.append("imgProcedure", data?.imgProcedure[0]?.originFileObj);
+        }
+      } else if (key === "imgProviso") {
+        if (data[key]) {
+          form.append("imgProviso", data?.imgProviso[0]?.originFileObj);
         }
       } else form.append(key, data[key]);
     });
 
-    return axiosClient.put(`service/${data?.id}`, form);
+    return axiosClient.put(`loanguide/${data?.id}`, form);
   },
 };
 

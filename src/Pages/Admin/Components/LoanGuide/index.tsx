@@ -43,7 +43,7 @@ const LoanGuide = () => {
       dataIndex: "title",
     },
     {
-      title: "Tên thông tin",
+      title: "Thông tin",
       dataIndex: "name",
     },
     {
@@ -51,10 +51,10 @@ const LoanGuide = () => {
       dataIndex: "description",
     },
     {
-      title: "Hình ảnh",
+      title: "Hình ảnh điều kiện",
       align: "center",
-      dataIndex: "img",
-      width: 300,
+      dataIndex: "imgProviso",
+      width: 150,
       render: (value, record, index) => (
         <div className="w-full flex justify-center">
           <img
@@ -71,14 +71,34 @@ const LoanGuide = () => {
       ),
     },
     {
-      title: "ACTION",
+      title: "Hình ảnh thủ tục",
+      align: "center",
+      dataIndex: "imgProcedure",
+      width: 150,
+      render: (value, record, index) => (
+        <div className="w-full flex justify-center">
+          <img
+            className="mb-2 object-contain"
+            style={{
+              width: "100px",
+              height: "100px",
+              borderRadius: "10px",
+            }}
+            src={value}
+            alt={`hình ${index}`}
+          />
+        </div>
+      ),
+    },
+    {
+      title: "Hành động",
       width: 150,
       render: (value, record, index) => (
         <div>
           <Button
             block
             onClick={() => {
-              navigate(`/dashboard/service/detail/${record?.id}`);
+              navigate(`/dashboard/loanguide/detail/${record?.id}`);
             }}
             className="mb-2"
           >
@@ -127,7 +147,7 @@ const LoanGuide = () => {
       </h1>
       <Button
         className="mb-2"
-        onClick={() => navigate("/dashboard/service/addservice")}
+        onClick={() => navigate("/dashboard/loanguide/addloanguide")}
       >
         Thêm
       </Button>
