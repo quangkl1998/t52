@@ -39,6 +39,7 @@ const NewsDetail = () => {
   useEffect(() => {
     if (newsDetail) {
       SetContent(newsDetail?.content);
+      dispatch(getById(newsDetail?.menuId));
     }
   }, [newsDetail]);
 
@@ -50,6 +51,7 @@ const NewsDetail = () => {
 
   const onChangeMenu = (e: any) => {
     dispatch(getById(e));
+
     form.setFieldsValue({
       submenuId: "",
     });
@@ -234,16 +236,7 @@ const NewsDetail = () => {
           >
             <Input></Input>
           </Form.Item>
-          <Form.Item
-            name={"menuId"}
-            label="Menu"
-            rules={[
-              {
-                required: true,
-                message: "Không được bỏ trống mục này",
-              },
-            ]}
-          >
+          <Form.Item name={"menuId"} label="Menu">
             <Select onChange={(e) => onChangeMenu(e)}>
               {list.map((e: any) => {
                 return (
@@ -254,16 +247,7 @@ const NewsDetail = () => {
               })}
             </Select>
           </Form.Item>
-          <Form.Item
-            name={"submenuId"}
-            label="Mục"
-            rules={[
-              {
-                required: true,
-                message: "Không được bỏ trống mục này",
-              },
-            ]}
-          >
+          <Form.Item name={"submenuId"} label="Mục">
             <Select>
               {detail?.submenus?.map((e: any) => {
                 return (
