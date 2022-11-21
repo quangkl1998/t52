@@ -10,6 +10,7 @@ import { add } from "Slices/service";
 import Swal from "sweetalert2";
 const AddService = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const [form] = Form.useForm();
 
   let navigate = useNavigate();
 
@@ -25,29 +26,6 @@ const AddService = () => {
     }
     return e?.fileList;
   };
-
-  const onCreate = (values: any) => {
-    let data = {
-      ...values,
-      content: tags,
-    };
-    console.log(data, "data");
-    dispatch(add(data))
-      .unwrap()
-      .then((result) => {
-        if (result?.id) {
-          Swal.fire({
-            title: `Thêm Thành công`,
-          });
-          navigate("/dashboard/service", { replace: true });
-        } else {
-          Swal.fire({
-            title: `Thêm thất bại`,
-          });
-        }
-      });
-  };
-  const [form] = Form.useForm();
 
   const layout = {
     labelCol: { span: 8 },
@@ -106,6 +84,27 @@ const AddService = () => {
     setTags(newTags);
     setEditInputIndex(-1);
     setInputValue("");
+  };
+
+  const onCreate = (values: any) => {
+    let data = {
+      ...values,
+      content: tags,
+    };
+    dispatch(add(data))
+      .unwrap()
+      .then((result) => {
+        if (result?.id) {
+          Swal.fire({
+            title: `Thêm Thành công`,
+          });
+          navigate("/dashboard/service", { replace: true });
+        } else {
+          Swal.fire({
+            title: `Thêm thất bại`,
+          });
+        }
+      });
   };
   return (
     <div className="w-full">
