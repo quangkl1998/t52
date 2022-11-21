@@ -139,14 +139,6 @@ const Header = () => {
                     </div>
                     <div className="lg:flex hidden justify-around items-center">
                         <NavLinks open={handleOpen} />
-                        {/* <div>
-                            <NavLink
-                                to="/"
-                                className="inline-block font-semibold text-2xl lg:text-xl text-black lg:text-white hover:text-white border-b-4 border-b-transparent hover:border-b-yellow-400 duration-150"
-                            >
-                                Mua bán xe máy cũ
-                            </NavLink>
-                        </div> */}
                     </div>
                     <div className="lg:block hidden">
                         <button className="border border-yellow-500 bg-white hover:text-yellow-400 duration-150 px-3 py-2 rounded-lg shadow-lg text-yellow-500 text-lg">
@@ -170,14 +162,6 @@ const Header = () => {
                     >
                         <div className="mx-5 border-b">
                             <NavLinks open={handleOpen} />
-                            {/* <div className="mx-3 lg:pr-0 mb-4 lg:pb-0 border-b-4 border-b-transparent hover:border-b-yellow-400 duration-15">
-                                <NavLink
-                                    to="/"
-                                    className="inline-block font-semibold text-2xl lg:text-xl text-black lg:text-white hover:text-black 0"
-                                >
-                                    Mua bán xe máy cũ
-                                </NavLink>
-                            </div> */}
                         </div>
                         <div className="container mx-auto">
                             <div className="flex flex-col justify-center px-3 py-4">
