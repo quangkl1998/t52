@@ -1,20 +1,39 @@
 import FormServices from "Components/FormServices/FormServices";
 import { AppDispatch, RootState } from "configStore";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDetailMenu } from "Slices/menu";
+import { getDetailSubMenu } from "Slices/submenu";
 
 const HomeSlug = () => {
-    const { slug } = useParams();
-    const { detail } = useSelector((state: RootState) => state.menu);
-    console.log(detail);
+    const { menuslug, subslug } = useParams();
+    const { detail: detailMenu } = useSelector(
+        (state: RootState) => state.menu,
+    );
+    const { detail: detailSubMenu } = useSelector(
+        (state: RootState) => state.submenu,
+    );
+    console.log(detailSubMenu);
 
+    const [status, setStatus] = useState<any>(0);
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
-        if (slug) dispatch(getDetailMenu({ slugMenu: slug }));
-    }, [slug]);
+        if (subslug) {
+            dispatch(getDetailSubMenu({ slugSubMenu: subslug }));
+            setStatus(1);
+        } else {
+            if (menuslug) {
+                dispatch(getDetailMenu({ slugMenu: menuslug }));
+                setStatus(2);
+            }
+        }
+    }, [menuslug]);
+    if (detailMenu || detailSubMenu) {
+    } else {
+        return <></>;
+    }
 
     return (
         <div className="bg-gray-100">
@@ -22,11 +41,20 @@ const HomeSlug = () => {
             <div className="container mx-auto px-10">
                 <div className="flex gap-10">
                     <div className="w-full lg:w-3/4">
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: detail[0]?.content,
-                            }}
-                        />
+                        {status == 1 && (
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: detailSubMenu?.content,
+                                }}
+                            />
+                        )}
+                        {status == 2 && (
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: detailMenu?.content,
+                                }}
+                            />
+                        )}
                     </div>
                     <div className="hidden lg:block lg:w-1/4">
                         <FormServices />
