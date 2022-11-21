@@ -180,11 +180,9 @@ const AddService = () => {
                 >
                   <span
                     onDoubleClick={(e) => {
-                      if (index !== 0) {
-                        setEditInputIndex(index);
-                        setEditInputValue(tag);
-                        e.preventDefault();
-                      }
+                      setEditInputIndex(index);
+                      setEditInputValue(tag);
+                      e.preventDefault();
                     }}
                   >
                     {isLongTag ? `${tag.slice(0, 20)}...` : tag}

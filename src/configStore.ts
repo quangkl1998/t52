@@ -25,6 +25,7 @@ import province from "./Slices/province";
 import district from "./Slices/district";
 import whychoose from "./Slices/whychoose";
 import solution from "./Slices/solution";
+import loanguide from "./Slices/loanguide";
 
 const store = configureStore({
   reducer: {
@@ -53,6 +54,7 @@ const store = configureStore({
     district,
     whychoose,
     solution,
+    loanguide,
   },
 });
 

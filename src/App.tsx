@@ -49,6 +49,7 @@ const DistrictList = lazy(
 const ServiceList = lazy(
   () => import("Pages/Admin/Components/Service/Service"),
 );
+const Loanguide = lazy(() => import("Pages/Admin/Components/LoanGuide"));
 const AddServiceList = lazy(
   () => import("Pages/Admin/Components/Service/addService/index"),
 );
@@ -148,6 +149,7 @@ function App() {
                 <Route path="province" element={<ProvinceList />}></Route>
 
                 <Route path="manager" element={<ManagerList />}></Route>
+                <Route path="loanguide" element={<Loanguide />}></Route>
                 <Route path="service" element={<ServiceList />}></Route>
                 <Route
                   path="service/addservice"

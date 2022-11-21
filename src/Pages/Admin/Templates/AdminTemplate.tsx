@@ -79,6 +79,13 @@ const items: MenuItem[] = [
         <NavLink to="client" />
       </div>,
     ),
+    getItem(
+      "Thủ Tục",
+      "loanguild",
+      <div>
+        <NavLink to="loanguide" />
+      </div>,
+    ),
   ]),
   getItem("Banner", "Banner", <ShopOutlined />, [
     getItem(
