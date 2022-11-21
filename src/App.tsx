@@ -6,14 +6,14 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import HomeTemplate from "Templates/HomeTemplate";
 import MortgageLoanTemplate from "Templates/MortgageLoanTemplate";
 import AdminTemplate from "Pages/Admin/Templates/AdminTemplate";
-import ActivityNews from "Pages/ActivityNews/ActivityNews";
 import loading from "Assets/loading.gif";
 import ErrorBoundary from "Pages/Admin/Components/ErrorBoundary";
 import ProtectedRoute from "Routes/ProtectedRoute";
-import HomeSlug from "Pages/HomeSlug/HomeSlug";
-import Loan from "Pages/Loan/Loan";
-import LoanByCar from "Pages/LoanByCar/LoanByCar";
 
+const ActivityNews = lazy(() => import("Pages/ActivityNews/ActivityNews"));
+const HomeSlug = lazy(() => import("Pages/HomeSlug/HomeSlug"));
+const Loan = lazy(() => import("Pages/Loan/Loan"));
+const LoanByCar = lazy(() => import("Pages/LoanByCar/LoanByCar"));
 const ManagerList = lazy(
     () => import("Pages/Admin/Components/Manager/Manager"),
 );

@@ -5,7 +5,7 @@ import { getList } from "Slices/loanguide";
 
 const InfoLoanByCar = ({ detail }: any) => {
     const { list, error } = useSelector((state: RootState) => state.loanguide);
-    console.log(list);
+
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(getList());
@@ -52,7 +52,7 @@ const InfoLoanByCar = ({ detail }: any) => {
                             </div>
                             <div className="md:px-8 lg:px-16">
                                 {list[0]?.contentProviso
-                                    .split(".")
+                                    .split(",")
                                     .map((item: any) => {
                                         return (
                                             <div className="flex items-center">
@@ -82,7 +82,7 @@ const InfoLoanByCar = ({ detail }: any) => {
                             </div>
                             <div className="md:px-8 lg:px-16">
                                 {list[0]?.contentProcedure
-                                    .split(".")
+                                    .split(",")
                                     .map((item: any) => {
                                         return (
                                             <div className="flex items-center">

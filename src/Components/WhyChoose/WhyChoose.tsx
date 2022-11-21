@@ -5,7 +5,7 @@ import { getwhychoose } from "Slices/whychoose";
 
 const WhyChoose = () => {
     const { list, error } = useSelector((state: RootState) => state.whychoose);
-    console.log(list);
+
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(getwhychoose());

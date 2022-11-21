@@ -12,7 +12,7 @@ const Outstanding = () => {
         (state: RootState) => state.menu,
     );
     const [nextPage, setNextPage] = useState(4);
-
+    console.log(listNewBySlug);
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(

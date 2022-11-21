@@ -16,7 +16,6 @@ const ReView = () => {
     const { list: listFeedback } = useSelector(
         (state: RootState) => state.feedback,
     );
-    console.log(listFeedback);
 
     const dispatch = useDispatch<AppDispatch>();
 
