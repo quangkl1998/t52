@@ -11,7 +11,6 @@ import loading from "Assets/loading.gif";
 import ErrorBoundary from "Pages/Admin/Components/ErrorBoundary";
 import ProtectedRoute from "Routes/ProtectedRoute";
 import HomeSlug from "Pages/HomeSlug/HomeSlug";
-import ThongBao from "Pages/ThongBao/ThongBao";
 import Loan from "Pages/Loan/Loan";
 import LoanByCar from "Pages/LoanByCar/LoanByCar";
 
@@ -109,18 +108,13 @@ const AddNews = lazy(
 );
 const Login = lazy(() => import("Pages/Admin/Pages/Login/Login"));
 const DashBoard = lazy(() => import("Pages/Admin/Components/DashBoard"));
-const Register = lazy(() => import("Pages/Register/Register"));
 const Home = lazy(() => import("Pages/Home/Home"));
 
 const About = lazy(() => import("Pages/About/About"));
-const InvestorRelations = lazy(
-    () => import("Pages/InvestorRelations/InvestorRelations"),
-);
+
 const News = lazy(() => import("Pages/News/News"));
 const StoresNearYou = lazy(() => import("Pages/StoresNearYou/StoresNearYou"));
-const FinancialKnowledge = lazy(
-    () => import("Pages/FinancialKnowledge/FinancialKnowledge"),
-);
+
 const NewsDetail = lazy(() => import("Pages/NewsDetail/NewsDetail"));
 
 function App() {
@@ -181,8 +175,12 @@ function App() {
                                     element={<Loanguide />}
                                 ></Route>
                                 <Route
-                                    path="addloanguide"
+                                    path="loanguide/add"
                                     element={<AddLoanguide />}
+                                ></Route>
+                                <Route
+                                    path="loanguide/detail/:id"
+                                    element={<LoanguideDetail />}
                                 ></Route>
                                 <Route
                                     path="loanguidedetail"
@@ -325,20 +323,12 @@ function App() {
                                 element={<News />}
                             />
                             <Route
-                                path="/quan-he-nha-dau-tu"
-                                element={<InvestorRelations />}
-                            />
-                            <Route
                                 path="/tin-tuc-chi-tiet/:name"
                                 element={<NewsDetail />}
                             />
                             <Route
                                 path="/cua-hang-gan-ban"
                                 element={<StoresNearYou />}
-                            />
-                            <Route
-                                path="/kien-thuc-tai-chinh"
-                                element={<FinancialKnowledge />}
                             />
                             <Route path="" element={<MortgageLoanTemplate />}>
                                 <Route
@@ -352,8 +342,6 @@ function App() {
                             </Route>
                             <Route path="/tin-tuc" element={<ActivityNews />} />
                         </Route>
-
-                        <Route path="/register" element={<Register />} />
                         <Route path="*" element={<Navigate to={""} />} />
                     </Routes>
                 </BrowserRouter>

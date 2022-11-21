@@ -9,7 +9,6 @@ import {
     getRandomNews,
     setNewsDetail,
 } from "Slices/news";
-import { data } from "Utill/NewsData";
 
 const Activities = () => {
     const { listNewRandom } = useSelector((state: RootState) => state.news);

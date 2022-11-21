@@ -44,16 +44,18 @@ const NavLinks = ({ handleOpen }: any) => {
                                 <div className="px-3 text-left lg:cursor-pointer group relative">
                                     {link?.type == "link" && (
                                         <a
-                                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-white duration-150 lg:border-b-transparent"
+                                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-red-600 lg:hover:text-white duration-150 lg:border-b-transparent"
                                             href={link?.url}
+                                            onClick={() => handleOpen()}
                                         >
                                             {link?.name}
                                         </a>
                                     )}
                                     {link?.type == "trang" && (
                                         <NavLink
-                                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-white duration-150 lg:border-b-transparent"
+                                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-red-600 lg:hover:text-white duration-150 lg:border-b-transparent"
                                             to={`/${link?.slug}`}
+                                            onClick={() => handleOpen()}
                                         >
                                             {link?.name}
                                         </NavLink>
@@ -62,7 +64,8 @@ const NavLinks = ({ handleOpen }: any) => {
                                         <>
                                             <NavLink
                                                 to={`${link?.slug}/tin-tuc`}
-                                                className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-white duration-150 lg:border-b-transparent"
+                                                className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-red-600 lg:hover:text-white duration-150 lg:border-b-transparent"
+                                                onClick={() => handleOpen()}
                                             >
                                                 {link?.name}
 
@@ -104,6 +107,9 @@ const NavLinks = ({ handleOpen }: any) => {
                                                                                 <a
                                                                                     href={`${mysublinks.url}`}
                                                                                     className="block px-5 py-1 text-lg text-black hover:text-black cursor-pointer"
+                                                                                    onClick={() =>
+                                                                                        handleOpen()
+                                                                                    }
                                                                                 >
                                                                                     {
                                                                                         mysublinks.name
@@ -121,6 +127,9 @@ const NavLinks = ({ handleOpen }: any) => {
                                                                                 <NavLink
                                                                                     to={`${link?.slug}/page/${mysublinks.slug}`}
                                                                                     className="block px-5 py-1 text-lg text-black hover:text-black cursor-pointer"
+                                                                                    onClick={() =>
+                                                                                        handleOpen()
+                                                                                    }
                                                                                 >
                                                                                     {
                                                                                         mysublinks.name
@@ -138,6 +147,9 @@ const NavLinks = ({ handleOpen }: any) => {
                                                                                 <NavLink
                                                                                     to={`${link?.slug}/${mysublinks.slug}`}
                                                                                     className="block px-5 py-1 text-lg text-black hover:text-black cursor-pointer"
+                                                                                    onClick={() =>
+                                                                                        handleOpen()
+                                                                                    }
                                                                                 >
                                                                                     {
                                                                                         mysublinks.name
@@ -222,28 +234,6 @@ const NavLinks = ({ handleOpen }: any) => {
                                     )}
                                 </div>
                                 {/* Mobile menus */}
-                                <div
-                                    className={`
-                ${heading === link.name ? "lg:hidden mb-3" : "hidden"}
-              `}
-                                >
-                                    {/* sublinks */}
-                                    {link?.sublinks?.map((slinks: any) => (
-                                        <NavLink
-                                            to={slinks.slug}
-                                            key={slinks.name}
-                                            onClick={() => {
-                                                subHeading !== slinks.name
-                                                    ? setSubHeading(slinks.name)
-                                                    : setSubHeading("");
-                                                handleOpen();
-                                            }}
-                                            className="pl-7 p-1 ml-2 border-l font-semibold flex justify-between items-center cursor-pointer text-lg text-black"
-                                        >
-                                            {slinks.name}
-                                        </NavLink>
-                                    ))}
-                                </div>
                             </div>
                         );
                     } else {
@@ -252,7 +242,7 @@ const NavLinks = ({ handleOpen }: any) => {
                                 <div className="px-3 text-left lg:cursor-pointer group relative">
                                     {link?.type == "link" && (
                                         <a
-                                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-white duration-150 lg:border-b-transparent"
+                                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-red-600 lg:hover:text-white duration-150 lg:border-b-transparent"
                                             href={link?.url}
                                         >
                                             {link?.name}
@@ -260,7 +250,7 @@ const NavLinks = ({ handleOpen }: any) => {
                                     )}
                                     {link?.type == "trang" && (
                                         <NavLink
-                                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-white duration-150 lg:border-b-transparent"
+                                            className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-red-600 lg:hover:text-white duration-150 lg:border-b-transparent"
                                             to={`/${link?.slug}`}
                                         >
                                             {link?.name}
@@ -268,7 +258,7 @@ const NavLinks = ({ handleOpen }: any) => {
                                     )}
                                     {link?.type == "thong-bao" && (
                                         <>
-                                            <div className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-white duration-150 lg:border-b-transparent">
+                                            <div className=" flex justify-between items-center lg:pr-0 pr-5 pb-4 lg:pb-0 group font-semibold text-2xl lg:text-lg cursor-pointer text-red-600 lg:text-white border-b-4 border-b-transparent hover:text-red-600 lg:hover:text-white duration-150 lg:border-b-transparent">
                                                 {link?.name}
 
                                                 {link?.submenu && (
@@ -305,6 +295,9 @@ const NavLinks = ({ handleOpen }: any) => {
                                                                     <NavLink
                                                                         to={`vay-bang/${mysublinks.slug}`}
                                                                         className="block px-5 py-1 text-lg text-black hover:text-black cursor-pointer"
+                                                                        onClick={() =>
+                                                                            handleOpen()
+                                                                        }
                                                                     >
                                                                         {
                                                                             mysublinks.name
@@ -344,29 +337,6 @@ const NavLinks = ({ handleOpen }: any) => {
                                             </div>
                                         </div>
                                     )}
-                                </div>
-                                {/* Mobile menus */}
-                                <div
-                                    className={`
-                ${heading === link.name ? "lg:hidden mb-3" : "hidden"}
-              `}
-                                >
-                                    {/* sublinks */}
-                                    {link?.sublinks?.map((slinks: any) => (
-                                        <NavLink
-                                            to={slinks.slug}
-                                            key={slinks.name}
-                                            onClick={() => {
-                                                subHeading !== slinks.name
-                                                    ? setSubHeading(slinks.name)
-                                                    : setSubHeading("");
-                                                handleOpen();
-                                            }}
-                                            className="pl-7 p-1 ml-2 border-l font-semibold flex justify-between items-center cursor-pointer text-lg text-black"
-                                        >
-                                            {slinks.name}
-                                        </NavLink>
-                                    ))}
                                 </div>
                             </div>
                         );
