@@ -49,10 +49,7 @@ const NewsDetail = () => {
   }, [dispatch, slug]);
 
   const onChangeMenu = (e: any) => {
-    // const submenu = list.find((item) => item?.id === e);
-    // setSubMenuList(submenu?.submenus);
     dispatch(getById(e));
-    console.log(detail, "menudetail");
     form.setFieldsValue({
       submenuId: "",
     });
@@ -197,6 +194,7 @@ const NewsDetail = () => {
         id: newsDetail?.id,
         type: types,
         menuId: newsDetail?.menuId,
+        submenuId: newsDetail?.submenuId,
       });
     }
   }, [form, newsDetail]);

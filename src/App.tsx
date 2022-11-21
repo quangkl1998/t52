@@ -50,6 +50,12 @@ const ServiceList = lazy(
   () => import("Pages/Admin/Components/Service/Service"),
 );
 const Loanguide = lazy(() => import("Pages/Admin/Components/LoanGuide"));
+const AddLoanguide = lazy(
+  () => import("Pages/Admin/Components/LoanGuide/addloanguide"),
+);
+const LoanguideDetail = lazy(
+  () => import("Pages/Admin/Components/LoanGuide/loanguidedetail"),
+);
 const AddServiceList = lazy(
   () => import("Pages/Admin/Components/Service/addService/index"),
 );
@@ -150,6 +156,11 @@ function App() {
 
                 <Route path="manager" element={<ManagerList />}></Route>
                 <Route path="loanguide" element={<Loanguide />}></Route>
+                <Route path="addloanguide" element={<AddLoanguide />}></Route>
+                <Route
+                  path="loanguidedetail"
+                  element={<LoanguideDetail />}
+                ></Route>
                 <Route path="service" element={<ServiceList />}></Route>
                 <Route
                   path="service/addservice"

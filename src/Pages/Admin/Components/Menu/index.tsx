@@ -89,6 +89,10 @@ const Menu = () => {
       dataIndex: "name",
     },
     {
+      title: "Loại",
+      dataIndex: "type",
+    },
+    {
       title: "Active",
       dataIndex: "isActive",
       align: "center",

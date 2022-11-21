@@ -209,16 +209,7 @@ const AddNews = () => {
           >
             <Input></Input>
           </Form.Item>
-          <Form.Item
-            name={"menuId"}
-            label="Menu"
-            rules={[
-              {
-                required: true,
-                message: "Không được bỏ trống mục này",
-              },
-            ]}
-          >
+          <Form.Item name={"menuId"} label="Menu">
             <Select onChange={(e) => onChangeMenu(e)}>
               {list.map((e) => {
                 return (
@@ -229,16 +220,7 @@ const AddNews = () => {
               })}
             </Select>
           </Form.Item>
-          <Form.Item
-            name={"submenuId"}
-            label="Mục"
-            rules={[
-              {
-                required: true,
-                message: "Không được bỏ trống mục này",
-              },
-            ]}
-          >
+          <Form.Item name={"submenuId"} label="Mục">
             <Select>
               {subMenuList?.map((e: any) => {
                 return (
