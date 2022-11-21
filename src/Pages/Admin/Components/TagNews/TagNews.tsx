@@ -210,7 +210,7 @@ const Tagnews = () => {
     return (
       <Modal
         open={showEdit}
-        title="Sửa Partner"
+        title="Sửa"
         okText="Sửa"
         cancelText="Hủy"
         onCancel={onCancelEdit}
