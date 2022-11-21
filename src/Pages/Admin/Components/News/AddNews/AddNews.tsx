@@ -15,6 +15,7 @@ const { Option } = Select;
 
 const AddNews = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const [form] = Form.useForm();
 
   let navigate = useNavigate();
 
@@ -41,28 +42,6 @@ const AddNews = () => {
     form.setFieldsValue({
       submenuId: "",
     });
-  };
-
-  const onCreate = (data: any) => {
-    const newsData = {
-      ...data,
-      content: content,
-      contentImg: imgContent,
-    };
-    dispatch(addNews(newsData))
-      .unwrap()
-      .then((result) => {
-        if (result?.id) {
-          Swal.fire({
-            title: `Thêm Thành công`,
-          });
-          navigate("/dashboard/newslist", { replace: true });
-        } else {
-          Swal.fire({
-            title: `Thêm thất bại`,
-          });
-        }
-      });
   };
 
   const config: any = {
@@ -171,14 +150,35 @@ const AddNews = () => {
 
   //endForm Upload
 
-  const [form] = Form.useForm();
-
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
   };
   const handleChange = (e: any) => {
     // console.log(e);
+  };
+
+  const onCreate = (data: any) => {
+    const newsData = {
+      ...data,
+      content: content,
+      contentImg: imgContent,
+    };
+
+    dispatch(addNews(newsData))
+      .unwrap()
+      .then((result) => {
+        if (result?.id) {
+          Swal.fire({
+            title: `Thêm Thành công`,
+          });
+          navigate("/dashboard/newslist", { replace: true });
+        } else {
+          Swal.fire({
+            title: `Thêm thất bại`,
+          });
+        }
+      });
   };
   return (
     <div className="w-full">
@@ -285,7 +285,7 @@ const AddNews = () => {
           </div>
         </div>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" danger htmlType="submit">
+          <Button type="primary" danger htmlType="submit" className="mt-2">
             Thêm
           </Button>
         </Form.Item>

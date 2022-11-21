@@ -26,28 +26,6 @@ const AddLoanGuide = () => {
     return e?.fileList;
   };
 
-  const onCreate = (values: any) => {
-    let data = {
-      ...values,
-      contentProviso: tags,
-      contentProcedure: tags2,
-    };
-    console.log(data, "data");
-    dispatch(add(data))
-      .unwrap()
-      .then((result) => {
-        if (result?.id) {
-          Swal.fire({
-            title: `Thêm Thành công`,
-          });
-          navigate("/dashboard/loanguide", { replace: true });
-        } else {
-          Swal.fire({
-            title: `Thêm thất bại`,
-          });
-        }
-      });
-  };
   const [form] = Form.useForm();
 
   const layout = {
@@ -163,6 +141,29 @@ const AddLoanGuide = () => {
   };
 
   /* tags 2 */
+
+  const onCreate = (values: any) => {
+    let data = {
+      ...values,
+      contentProviso: tags,
+      contentProcedure: tags2,
+    };
+    dispatch(add(data))
+      .unwrap()
+      .then((result) => {
+        console.log(result, "result");
+        if (result?.id) {
+          Swal.fire({
+            title: `Thêm Thành công`,
+          });
+          navigate("/dashboard/loanguide", { replace: true });
+        } else {
+          Swal.fire({
+            title: `Thêm thất bại`,
+          });
+        }
+      });
+  };
   return (
     <div className="w-full">
       <h1 className="text-center text-4xl text-red-500 ">Thêm Thủ Tục</h1>

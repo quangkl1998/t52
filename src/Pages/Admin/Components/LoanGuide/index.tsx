@@ -20,7 +20,7 @@ const LoanGuide = () => {
     dispatch(deleteItem(id))
       .unwrap()
       .then((result) => {
-        if (result === "Delete successfully") {
+        if (result === "Delete successfuly") {
           Swal.fire({
             title: `Xóa thành công`,
           });
@@ -35,14 +35,6 @@ const LoanGuide = () => {
 
   const columns: ColumnsType<any> = [
     {
-      title: "Tiêu đề điều kiện",
-      dataIndex: "title",
-    },
-    {
-      title: "Tiêu đề thủ tục",
-      dataIndex: "title",
-    },
-    {
       title: "Thông tin",
       dataIndex: "name",
     },
@@ -54,7 +46,7 @@ const LoanGuide = () => {
       title: "Hình ảnh điều kiện",
       align: "center",
       dataIndex: "imgProviso",
-      width: 150,
+      width: 300,
       render: (value, record, index) => (
         <div className="w-full flex justify-center">
           <img
@@ -74,7 +66,7 @@ const LoanGuide = () => {
       title: "Hình ảnh thủ tục",
       align: "center",
       dataIndex: "imgProcedure",
-      width: 150,
+      width: 300,
       render: (value, record, index) => (
         <div className="w-full flex justify-center">
           <img
@@ -147,7 +139,7 @@ const LoanGuide = () => {
       </h1>
       <Button
         className="mb-2"
-        onClick={() => navigate("/dashboard/loanguide/addloanguide")}
+        onClick={() => navigate("/dashboard/loanguide/add")}
       >
         Thêm
       </Button>

@@ -47,7 +47,7 @@ const NewsDetail = () => {
     dispatch(getNewDetail(slug!));
     dispatch(getTagNewsList());
     dispatch(getList());
-  }, [dispatch, slug]);
+  }, [slug]);
 
   const onChangeMenu = (e: any) => {
     dispatch(getById(e));
@@ -67,7 +67,7 @@ const NewsDetail = () => {
     dispatch(updateNews(newsData))
       .unwrap()
       .then((result) => {
-        if (result === "Update successfuly") {
+        if (result === "Update successfully") {
           Swal.fire({
             title: `Sửa Thành công`,
           });
@@ -309,7 +309,7 @@ const NewsDetail = () => {
           </div>
         </div>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" danger htmlType="submit">
+          <Button type="primary" danger htmlType="submit" className="mt-2">
             Sửa
           </Button>
         </Form.Item>
