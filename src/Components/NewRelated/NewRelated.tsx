@@ -28,7 +28,7 @@ const NewRelated = () => {
                         Tin tức liên quan
                     </NavLink>
                     <NavLink
-                        to="/tin-tuc-hoat-dong"
+                        to="/tin-tuc"
                         className="uppercase text-gray-600 hover:text-yellow-600 duration-150 mr-2"
                     >
                         xem thêm <i className="fa fa-angle-right" />

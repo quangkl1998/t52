@@ -218,14 +218,17 @@ function App() {
             <Route path="" element={<HomeTemplate />}>
               <Route path="" element={<Home />} />
               <Route path="/:slug" element={<HomeSlug />} />
-              <Route path="/:menuslug/:subslug" element={<ThongBao />} />
+              {/* <Route
+                                path="/:menuslug/:subslug"
+                                element={<ThongBao />}
+                            /> */}
 
               <Route path="/ve-t52" element={<About />} />
+              <Route path="/:menuslug/:subslug" element={<News />} />
               <Route
                 path="/quan-he-nha-dau-tu"
                 element={<InvestorRelations />}
               />
-              <Route path="/tin-tuc" element={<ActivityNews />} />
               <Route path="/tin-tuc-chi-tiet/:name" element={<NewsDetail />} />
               <Route path="/cua-hang-gan-ban" element={<StoresNearYou />} />
               <Route
@@ -236,7 +239,7 @@ function App() {
                 <Route path="/vay-bang/:slug" element={<Loan />} />
                 <Route path="/vay-ngay" element={<LoanByCar />} />
               </Route>
-              <Route path="/tin-tuc-hoat-dong" element={<ActivityNews />} />
+              <Route path="/tin-tuc" element={<ActivityNews />} />
             </Route>
 
             <Route path="/register" element={<Register />} />
