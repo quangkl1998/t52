@@ -170,6 +170,13 @@ const items: MenuItem[] = [
         <NavLink to="whychoose"></NavLink>
       </div>,
     ),
+    getItem(
+      "Giải Pháp",
+      "SolutionList",
+      <div>
+        <NavLink to="solution"></NavLink>
+      </div>,
+    ),
   ]),
   getItem("Menu", "Menu", <SketchOutlined />, [
     getItem(

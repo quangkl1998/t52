@@ -142,7 +142,7 @@ const WhyChooseList = () => {
             danger
             onClick={() => {
               Swal.fire({
-                title: `Bạn muốn xóa banner`,
+                title: `Bạn muốn xóa `,
                 text: value?.name,
                 showCancelButton: true,
                 confirmButtonColor: "#fb4226",

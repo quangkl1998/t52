@@ -38,6 +38,7 @@ const AddFuture = lazy(() => import("Pages/Admin/Components/Future/Add/index"));
 
 const BannerList = lazy(() => import("Pages/Admin/Components/Banner/index"));
 const WhyChoose = lazy(() => import("Pages/Admin/Components/WhyChoose"));
+const Solution = lazy(() => import("Pages/Admin/Components/solution"));
 const ProvinceList = lazy(
   () => import("Pages/Admin/Components/Province/index"),
 );
@@ -142,6 +143,7 @@ function App() {
                 <Route path="partner" element={<PartnerList />}></Route>
                 <Route path="banner" element={<BannerList />}></Route>
                 <Route path="whychoose" element={<WhyChoose />}></Route>
+                <Route path="solution" element={<Solution />}></Route>
                 <Route path="district" element={<DistrictList />}></Route>
                 <Route path="province" element={<ProvinceList />}></Route>
 
